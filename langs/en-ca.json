@@ -1,1 +1,7 @@
-{}
+{
+	"TYPES": {
+		"Actor": {
+			"hero": "Hero"
+		}
+	}
+}
