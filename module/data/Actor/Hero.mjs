@@ -72,6 +72,14 @@ export class HeroData extends foundry.abstract.TypeDataModel {
 					required: true,
 					nullable: false,
 				}),
+				step: new fields.NumberField({
+					min: 1,
+					initial: 1,
+					max: 3,
+					integer: true,
+					required: true,
+					nullable: false,
+				}),
 				rank: new fields.NumberField({
 					min: 0,
 					initial: 0,
