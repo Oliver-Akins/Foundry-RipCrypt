@@ -2,7 +2,7 @@ const { fields } = foundry.data;
 
 export class HeroData extends foundry.abstract.TypeDataModel {
 	static defineSchema() {
-		const schema = new fields.SchemaField({
+		return {
 			ability: new fields.SchemaField({
 				grit: new fields.NumberField({
 					min: 0,
@@ -53,8 +53,7 @@ export class HeroData extends foundry.abstract.TypeDataModel {
 					nullable: false,
 				}),
 			}),
-		});
-		return schema;
+		};
 	};
 
 	prepareBaseData() {
