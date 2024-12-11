@@ -57,7 +57,16 @@ export class HeroData extends foundry.abstract.TypeDataModel {
 		return schema;
 	};
 
-	prepareBaseData() {};
+	prepareBaseData() {
+		super.prepareBaseData();
+
+		// The limitations imposed on things like inventory spaces and equipped
+		// weapon count
+		this.limit = {
+			weapons: 4,
+			equipment: 12,
+		};
+	};
 
 	prepareDerivedData() {};
 };
