@@ -1,3 +1,5 @@
+import { Logger } from "../utils/Logger.mjs";
+
 const loaders = {
 	svg(data) {
 		const iconName = data.path.split(`/`).slice(-1)[0].slice(0, -4);
