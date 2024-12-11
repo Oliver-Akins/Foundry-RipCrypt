@@ -67,5 +67,13 @@ export class HeroData extends foundry.abstract.TypeDataModel {
 		};
 	};
 
-	prepareDerivedData() {};
+	prepareDerivedData() {
+		super.prepareDerivedData();
+
+		// Movement speeds
+		this.speed = {
+			move: this.ability.gait + 3,
+			run: (this.ability.gait + 3) * 2,
+		};
+	};
 };
