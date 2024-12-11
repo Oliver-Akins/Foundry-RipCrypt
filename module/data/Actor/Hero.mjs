@@ -53,6 +53,15 @@ export class HeroData extends foundry.abstract.TypeDataModel {
 					nullable: false,
 				}),
 			}),
+			level: new fields.SchemaField({
+				glory: new fields.NumberField({
+					min: 0,
+					initial: 0,
+					integer: true,
+					required: true,
+					nullable: false,
+				}),
+			}),
 		};
 	};
 
