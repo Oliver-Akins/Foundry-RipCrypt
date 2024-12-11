@@ -1,3 +1,5 @@
+import { FatePath } from "../../gameTerms.mjs";
+
 const { fields } = foundry.data;
 
 export class HeroData extends foundry.abstract.TypeDataModel {
@@ -52,6 +54,15 @@ export class HeroData extends foundry.abstract.TypeDataModel {
 					required: true,
 					nullable: false,
 				}),
+			}),
+			fate: new fields.StringField({
+				initial: ``,
+				blank: true,
+				trim: true,
+				nullable: false,
+				choices: () => {
+					return Object.values(FatePath).concat(``);
+				},
 			}),
 			level: new fields.SchemaField({
 				glory: new fields.NumberField({
