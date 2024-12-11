@@ -33,6 +33,26 @@ export class HeroData extends foundry.abstract.TypeDataModel {
 					nullable: false,
 				}),
 			}),
+			coin: new fields.SchemaField({
+				gold: new fields.NumberField({
+					initial: 5,
+					integer: true,
+					required: true,
+					nullable: false,
+				}),
+				silver: new fields.NumberField({
+					initial: 0,
+					integer: true,
+					required: true,
+					nullable: false,
+				}),
+				copper: new fields.NumberField({
+					initial: 0,
+					integer: true,
+					required: true,
+					nullable: false,
+				}),
+			}),
 		});
 		return schema;
 	};
