@@ -1,4 +1,5 @@
 dist/
+*.link
 
 # Dependency directories
 node_modules/
