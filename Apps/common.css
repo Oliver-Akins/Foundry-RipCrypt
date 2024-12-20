@@ -1,0 +1,12 @@
+.ripcrypt {
+	.window-content {
+		padding: 0;
+		margin: 0;
+	}
+
+	.HeroSummaryCardV1 {
+		height: 270px;
+		width: 680px;
+		--col-gap: 2px;
+	}
+}

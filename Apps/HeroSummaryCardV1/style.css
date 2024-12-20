@@ -1,0 +1,50 @@
+.ripcrypt .HeroSummaryCardV1 {
+	display: grid;
+	grid-template-columns: minmax(0, 3fr) minmax(0, 2fr) minmax(0, 2fr) minmax(0, 1fr) minmax(0, 2.5fr);
+	grid-template-rows: repeat(15, minmax(0, 1fr));
+	column-gap: var(--col-gap);
+
+	background: white;
+	color: black;
+
+	.row-alt {
+		background: rgba(0,0,0, 0.3);
+	}
+
+	label {
+		box-sizing: border-box;
+		padding: 2px 4px;
+	}
+
+	input {
+		box-sizing: border-box;
+		border: none;
+
+		&[type="text"],
+		&[type="number"] {
+			padding: 2px 4px;
+			border-bottom: 2px dashed blueviolet;
+		}
+	}
+
+	.hero_name {
+		grid-column: span 3;
+		margin-left: calc(var(--col-gap) * -1);
+		padding-left: var(--col-gap);
+	}
+
+	.header {
+		grid-row: span 2;
+		grid-column: span 1;
+		display: grid;
+		grid-template-rows: subgrid;
+		grid-template-columns: minmax(0, 2fr) minmax(0, 1fr);
+
+		.image {
+			grid-row: span 2;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+		}
+	}
+}
