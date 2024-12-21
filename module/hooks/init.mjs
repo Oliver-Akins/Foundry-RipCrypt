@@ -5,6 +5,9 @@ import { HeroSummaryCardV1 } from "../Apps/ActorSheets/HeroSummaryCardV1.mjs";
 import { HeroData } from "../data/Actor/Hero.mjs";
 import { registerDevSettings } from "../settings/devSettings.mjs";
 
+// Class Overrides
+import { CryptDie } from "../dice/CryptDie.mjs";
+
 // Misc
 import { Logger } from "../utils/Logger.mjs";
 
@@ -17,6 +20,10 @@ Hooks.once(`init`, () => {
 
 	// #region Datamodels
 	CONFIG.Actor.dataModels.hero = HeroData;
+	// #endregion
+
+	// #region Class Changes
+	CONFIG.Dice.terms.d = CryptDie;
 	// #endregion
 
 	// #region Sheets
