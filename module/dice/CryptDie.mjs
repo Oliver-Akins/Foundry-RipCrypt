@@ -1,5 +1,3 @@
-import { Logger } from "../utils/Logger.mjs";
-
 const { Die } = foundry.dice.terms;
 
 export class CryptDie extends Die {
