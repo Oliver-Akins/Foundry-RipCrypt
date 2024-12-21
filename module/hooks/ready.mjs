@@ -5,15 +5,16 @@ Hooks.once(`ready`, () => {
 
 	let defaultTab = game.settings.get(`ripcrypt`, `defaultTab`);
 	if (defaultTab) {
-		if (!ui.sidebar?.tabs?.[defaultTab]) {
+		if (!ui.sidebar?.TABS?.[defaultTab]) {
 			Logger.error(`Couldn't find a sidebar tab with ID:`, defaultTab);
 		} else {
 			Logger.debug(`Switching sidebar tab to:`, defaultTab);
-			ui.sidebar.tabs[defaultTab].activate();
+			ui.sidebar.activateTab(defaultTab);
 		};
 	};
 
 	if (game.settings.get(`ripcrypt`, `devMode`)) {
+		ui.sidebar.expand();
 		if (game.paused) { game.togglePause() };
 	};
 });
