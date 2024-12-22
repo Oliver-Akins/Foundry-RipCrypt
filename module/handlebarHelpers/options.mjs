@@ -13,9 +13,8 @@ import { localizer } from "../utils/Localizer.mjs";
  * @param {any} meta
  */
 export function options(selected, opts, meta) {
-	const { localize = false } = meta;
+	const { localize = false } = meta.hash;
 	selected = Handlebars.escapeExpression(selected);
-
 	const htmlOptions = [];
 
 	for (let opt of opts) {
@@ -33,4 +32,5 @@ export function options(selected, opts, meta) {
 			</option>`,
 		);
 	};
+	return new Handlebars.SafeString(htmlOptions.join(`\n`));
 };

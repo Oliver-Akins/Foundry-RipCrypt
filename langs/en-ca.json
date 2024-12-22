@@ -9,7 +9,13 @@
 			"HeroSummaryCardV1": "Hero Stat Card"
 		},
 		"common": {
-			"empty": "---"
+			"empty": "---",
+			"fate": {
+				"North": "North",
+				"East": "East",
+				"South": "South",
+				"West": "West"
+			}
 		}
 	}
 }

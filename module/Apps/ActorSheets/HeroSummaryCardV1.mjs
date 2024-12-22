@@ -1,4 +1,6 @@
 import { filePath } from "../../consts.mjs";
+import { gameTerms } from "../../gameTerms.mjs";
+import { Logger } from "../../utils/Logger.mjs";
 
 const { HandlebarsApplicationMixin } = foundry.applications.api;
 const { ActorSheetV2 } = foundry.applications.sheets;
@@ -43,10 +45,25 @@ export class HeroSummaryCardV1 extends HandlebarsApplicationMixin(ActorSheetV2) 
 
 		ctx.actor = this.document;
 
+		ctx = await this._prepareFatePath(ctx);
+
 		partId = partId.slice(0,1).toUpperCase() + partId.slice(1);
 		if (this[`_prepare${partId}Context`] != null) {
 			ctx = await this[`_prepare${partId}Context`](ctx, opts);
 		};
+
+		Logger.debug(`Context:`, ctx);
+		return ctx;
+	};
+
+	async _prepareFatePath(ctx) {
+		ctx.fate = {};
+		ctx.fate.selected = ctx.actor.system.fate;
+		ctx.fate.options = [
+			{ label: `RipCrypt.common.empty`, v: `` },
+			...gameTerms.FatePath
+				.map(v => ({ label: `RipCrypt.common.fate.${v}`, value: v })),
+		];
 		return ctx;
 	};
 	// #endregion

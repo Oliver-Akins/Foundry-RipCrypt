@@ -1,4 +1,4 @@
-import { FatePath } from "../../gameTerms.mjs";
+import { gameTerms } from "../../gameTerms.mjs";
 
 const { fields } = foundry.data;
 
@@ -61,7 +61,7 @@ export class HeroData extends foundry.abstract.TypeDataModel {
 				trim: true,
 				nullable: false,
 				choices: () => {
-					return Object.values(FatePath).concat(``);
+					return gameTerms.FatePath.concat(``);
 				},
 			}),
 			level: new fields.SchemaField({

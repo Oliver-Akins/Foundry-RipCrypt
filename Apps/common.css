@@ -11,7 +11,7 @@
 	}
 
 	input {
-		all: initial;
+		all: revert;
 		box-sizing: border-box;
 		border: none;
 		outline: none;
@@ -22,5 +22,21 @@
 		&[type="text"] {
 			border-bottom: 2px dashed purple;
 		}
+	}
+
+	select {
+		all: revert;
+		appearance: auto;
+		box-sizing: border-box;
+		border: none;
+		outline: none;
+		font-family: inherit;
+		font-size: inherit;
+		display: flex;
+		align-items: center;
+	}
+
+	label, input, select {
+		cursor: pointer;
 	}
 }
