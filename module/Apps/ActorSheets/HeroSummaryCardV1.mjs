@@ -1,8 +1,9 @@
 import { filePath } from "../../consts.mjs";
 
-const { DocumentSheetV2, HandlebarsApplicationMixin } = foundry.applications.api;
+const { HandlebarsApplicationMixin } = foundry.applications.api;
+const { ActorSheetV2 } = foundry.applications.sheets;
 
-export class HeroSummaryCardV1 extends HandlebarsApplicationMixin(DocumentSheetV2) {
+export class HeroSummaryCardV1 extends HandlebarsApplicationMixin(ActorSheetV2) {
 
 	// #region Options
 	static DEFAULT_OPTIONS = {
@@ -39,6 +40,8 @@ export class HeroSummaryCardV1 extends HandlebarsApplicationMixin(DocumentSheetV
 
 		ctx.meta ??= {};
 		ctx.meta.idp = this.document.uuid;
+
+		ctx.actor = this.document;
 
 		partId = partId.slice(0,1).toUpperCase() + partId.slice(1);
 		if (this[`_prepare${partId}Context`] != null) {

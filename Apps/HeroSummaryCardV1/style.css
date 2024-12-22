@@ -16,17 +16,6 @@
 		padding: 2px 4px;
 	}
 
-	input {
-		box-sizing: border-box;
-		border: none;
-
-		&[type="text"],
-		&[type="number"] {
-			padding: 2px 4px;
-			border-bottom: 2px dashed blueviolet;
-		}
-	}
-
 	.hero_name {
 		grid-column: span 3;
 		margin-left: calc(var(--col-gap) * -1);

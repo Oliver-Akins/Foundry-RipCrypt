@@ -5,8 +5,22 @@
 	}
 
 	.HeroSummaryCardV1 {
-		height: 270px;
+		/* height: 270px; */
 		width: 680px;
 		--col-gap: 2px;
+	}
+
+	input {
+		all: initial;
+		box-sizing: border-box;
+		border: none;
+		outline: none;
+		font-family: inherit;
+		font-size: inherit;
+		position: relative;
+
+		&[type="text"] {
+			border-bottom: 2px dashed purple;
+		}
 	}
 }
