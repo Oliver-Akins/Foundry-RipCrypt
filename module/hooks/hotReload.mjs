@@ -7,10 +7,7 @@ const loaders = {
 		Hooks.call(`${game.system.id}-hmr:svg`, iconName, data);
 	},
 	mjs() {window.location.reload()},
-	css(data) {
-		Logger.debug(`Hot-reloading CSS: ${data.path}`);
-		Hooks.call(`${game.system.id}-hmr:css`, data);
-	},
+	css() {window.location.reload()},
 };
 
 Hooks.on(`hotReload`, async (data) => {
