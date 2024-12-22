@@ -9,6 +9,7 @@ import { registerDevSettings } from "../settings/devSettings.mjs";
 import { CryptDie } from "../dice/CryptDie.mjs";
 
 // Misc
+import helpers from "../handlebarHelpers/_index.mjs";
 import { Logger } from "../utils/Logger.mjs";
 
 Hooks.once(`init`, () => {
@@ -35,4 +36,6 @@ Hooks.once(`init`, () => {
 	});
 	// #endregion
 	// #endregion
+
+	Handlebars.registerHelper(helpers);
 });

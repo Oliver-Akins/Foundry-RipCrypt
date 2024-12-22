@@ -1,6 +1,8 @@
-export const FatePath = {
-	NORTH: `North`,
-	EAST: `East`,
-	SOUTH: `South`,
-	WEST: `West`,
-};
+export const gameTerms = Object.preventExtensions({
+	FatePath: [
+		`North`,
+		`East`,
+		`South`,
+		`West`,
+	],
+});

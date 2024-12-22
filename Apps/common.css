@@ -23,4 +23,13 @@
 			border-bottom: 2px dashed purple;
 		}
 	}
+
+	select {
+		all: initial;
+		box-sizing: border-box;
+		border: none;
+		outline: none;
+		font-family: inherit;
+		font-size: inherit;
+	}
 }

@@ -1,4 +1,8 @@
 .ripcrypt .HeroSummaryCardV1 {
+
+	/* Foundry Variable Tweaks */
+	--input-height: 1rem;
+
 	display: grid;
 	grid-template-columns: minmax(0, 3fr) minmax(0, 2fr) minmax(0, 2fr) minmax(0, 1fr) minmax(0, 2.5fr);
 	grid-template-rows: repeat(15, minmax(0, 1fr));
@@ -7,6 +11,10 @@
 	background: white;
 	color: black;
 
+	.col-header {
+		background: black;
+		color: white;
+	}
 	.row-alt {
 		background: rgba(0,0,0, 0.3);
 	}
@@ -14,12 +22,6 @@
 	label {
 		box-sizing: border-box;
 		padding: 2px 4px;
-	}
-
-	.hero_name {
-		grid-column: span 3;
-		margin-left: calc(var(--col-gap) * -1);
-		padding-left: var(--col-gap);
 	}
 
 	.header {
@@ -35,5 +37,18 @@
 			justify-content: center;
 			align-items: center;
 		}
+	}
+
+	.hero_name {
+		grid-column: span 3;
+		margin-left: calc(var(--col-gap) * -1);
+		padding-left: var(--col-gap);
+	}
+
+	.fate {
+		grid-column: 1 / span 1;
+		grid-row: 4 / span 2;
+		display: grid;
+		grid-template-rows: subgrid;
 	}
 }

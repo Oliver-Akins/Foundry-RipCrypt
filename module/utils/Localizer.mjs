@@ -1,4 +1,7 @@
-import { localizerConfig } from "../config.mjs";
+const config = Object.preventExtensions({
+	subKeyPattern: /@(?<key>[a-zA-Z.]+)/gm,
+	maxDepth: 10,
+});
 
 export function handlebarsLocalizer(key, ...args) {
 	let data = args[0];
@@ -11,10 +14,10 @@ export function handlebarsLocalizer(key, ...args) {
 export function localizer(key, args = {}, depth = 0) {
 	/** @type {string} */
 	let localized = game.i18n.format(key, args);
-	const subkeys = localized.matchAll(localizerConfig.subKeyPattern);
+	const subkeys = localized.matchAll(config.subKeyPattern);
 
 	// Short-cut to help prevent infinite recursion
-	if (depth > localizerConfig.maxDepth) {
+	if (depth > config.maxDepth) {
 		return localized;
 	};
 
@@ -29,7 +32,7 @@ export function localizer(key, args = {}, depth = 0) {
 	};
 
 	return localized.replace(
-		localizerConfig.subKeyPattern,
+		config.subKeyPattern,
 		(_fullMatch, subkey) => {
 			return localizedSubkeys.get(subkey);
 		},
