@@ -7,6 +7,9 @@
 	"RipCrypt": {
 		"sheet-names": {
 			"HeroSummaryCardV1": "Hero Stat Card"
+		},
+		"common": {
+			"empty": "---"
 		}
 	}
 }
