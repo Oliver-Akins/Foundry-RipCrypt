@@ -1,5 +1,6 @@
 import { filePath } from "../../consts.mjs";
 import { gameTerms } from "../../gameTerms.mjs";
+import { localizer } from "../../utils/Localizer.mjs";
 import { Logger } from "../../utils/Logger.mjs";
 
 const { HandlebarsApplicationMixin } = foundry.applications.api;
@@ -45,7 +46,8 @@ export class HeroSummaryCardV1 extends HandlebarsApplicationMixin(ActorSheetV2) 
 
 		ctx.actor = this.document;
 
-		ctx = await this._prepareFatePath(ctx);
+		ctx = await this.prepareFatePath(ctx);
+		ctx = await this.prepareAbilityRow(ctx);
 
 		partId = partId.slice(0,1).toUpperCase() + partId.slice(1);
 		if (this[`_prepare${partId}Context`] != null) {
@@ -56,7 +58,7 @@ export class HeroSummaryCardV1 extends HandlebarsApplicationMixin(ActorSheetV2) 
 		return ctx;
 	};
 
-	async _prepareFatePath(ctx) {
+	async prepareFatePath(ctx) {
 		ctx.fate = {};
 		ctx.fate.selected = ctx.actor.system.fate;
 		ctx.fate.options = [
@@ -66,6 +68,22 @@ export class HeroSummaryCardV1 extends HandlebarsApplicationMixin(ActorSheetV2) 
 		];
 		return ctx;
 	};
+
+	async prepareAbilityRow(ctx) {
+		ctx.abilities = [];
+		for (const key in ctx.actor.system.ability) {
+			ctx.abilities.push({
+				id: key,
+				name: localizer(
+					`RipCrypt.common.ability.${key}`,
+					{ value: ctx.actor.system.ability[key] },
+				),
+				value: ctx.actor.system.ability[key],
+				readonly: true,
+			});
+		};
+		return ctx;
+	}
 	// #endregion
 
 	// #region Actions

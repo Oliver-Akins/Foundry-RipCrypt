@@ -19,9 +19,10 @@
 		background: rgba(0,0,0, 0.3);
 	}
 
-	label {
+	label, .label {
 		box-sizing: border-box;
 		padding: 2px 4px;
+		text-transform: uppercase;
 	}
 
 	.header {
@@ -50,5 +51,42 @@
 		grid-row: 4 / span 2;
 		display: grid;
 		grid-template-rows: subgrid;
+	}
+
+	.abilities {
+		grid-column: 1 / span 4;
+		grid-row: 12 / span 4;
+		display: grid;
+		/* grid-template-rows: minmax(0, 3fr) minmax(0, 1fr); */
+		grid-template-columns: repeat(6, minmax(0, 1fr));
+
+		.ability {
+			display: grid;
+			grid-template-rows: minmax(0, 3fr) minmax(0, 1fr);
+			justify-items: center;
+			align-items: center;
+		}
+
+		label, .label {
+			width: 100%;
+			text-align: center;
+		}
+	}
+
+	.compass {
+		--size: 45px;
+		width: var(--size);
+		height: var(--size);
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		align-items: center;
+		border: 2px solid black;
+		border-radius: 50%;
+		font-size: 1.5rem;
+
+		> input {
+			width: 75%;
+		}
 	}
 }

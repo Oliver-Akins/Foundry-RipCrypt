@@ -30,7 +30,41 @@
 
 	{{!-- * Weapons --}}
 
-	{{!-- * Skills --}}
+	{{!-- * Abilities --}}
+	<div class="abilities">
+		{{!-- Actual Abilities --}}
+		{{#each abilities as | ability |}}
+			<div class="ability">
+				<div class="compass">
+					{{#unless ability.readonly}}
+						<input
+							type="number"
+							id="{{@root.meta.idp}}-{{ability.id}}-input"
+							value="{{ability.value}}"
+						>
+					{{else}}
+						<span>{{ability.value}}</span>
+					{{/unless}}
+				</div>
+				{{#unless ability.readonly}}
+				<label
+					class="col-header"
+					for="{{@root.meta.idp}}-{{ability.id}}-input"
+				>
+					{{ ability.name }}
+				</label>
+				{{else}}
+				<div class="col-header label">
+					{{ ability.name }}
+				</div>
+				{{/unless}}
+			</div>
+		{{/each}}
+
+		{{!-- Health --}}
+
+		{{!-- Move & Run --}}
+	</div>
 
 	{{!-- * Equipment --}}
 </div>
