@@ -1,3 +1,4 @@
+import { barAttribute } from "../helpers.mjs";
 import { gameTerms } from "../../gameTerms.mjs";
 
 const { fields } = foundry.data;
@@ -35,6 +36,7 @@ export class HeroData extends foundry.abstract.TypeDataModel {
 					nullable: false,
 				}),
 			}),
+			guts: barAttribute(0, 5),
 			coin: new fields.SchemaField({
 				gold: new fields.NumberField({
 					initial: 5,
