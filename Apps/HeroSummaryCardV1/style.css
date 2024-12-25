@@ -85,8 +85,10 @@
 		border-radius: 50%;
 		font-size: 1.5rem;
 
-		> input {
-			width: 75%;
+		> .value {
+			background: none;
+			width: 70%;
+			text-align: center;
 		}
 	}
 }

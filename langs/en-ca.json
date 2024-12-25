@@ -15,6 +15,12 @@
 				"East": "East",
 				"South": "South",
 				"West": "West"
+			},
+			"ability": {
+				"grit": "Grit",
+				"gait": "Gait",
+				"grip": "Grip",
+				"glim": "Glim"
 			}
 		}
 	}

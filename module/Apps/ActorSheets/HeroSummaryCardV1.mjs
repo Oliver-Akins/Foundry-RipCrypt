@@ -79,11 +79,11 @@ export class HeroSummaryCardV1 extends HandlebarsApplicationMixin(ActorSheetV2) 
 					{ value: ctx.actor.system.ability[key] },
 				),
 				value: ctx.actor.system.ability[key],
-				readonly: true,
+				readonly: !this.isEditable,
 			});
 		};
 		return ctx;
-	}
+	};
 	// #endregion
 
 	// #region Actions

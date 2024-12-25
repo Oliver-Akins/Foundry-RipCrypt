@@ -23,7 +23,11 @@
 	{{!-- * Fate & Advancement --}}
 	<div class="fate">
 		<label for="{{meta.idp}}-fate-path" class="col-header">Fate</label>
-		<select class="row-alt" id="{{meta.idp}}-fate-path" name="system.fate">
+		<select
+			class="row-alt"
+			id="{{meta.idp}}-fate-path"
+			name="system.fate"
+		>
 			{{rc-options fate.selected fate.options localize=true}}
 		</select>
 	</div>
@@ -40,7 +44,9 @@
 						<input
 							type="number"
 							id="{{@root.meta.idp}}-{{ability.id}}-input"
+							class="value"
 							value="{{ability.value}}"
+							name="system.ability.{{ability.id}}"
 						>
 					{{else}}
 						<span>{{ability.value}}</span>

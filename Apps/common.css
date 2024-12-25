@@ -18,8 +18,10 @@
 		font-family: inherit;
 		font-size: inherit;
 		position: relative;
+		background: none;
 
-		&[type="text"] {
+		&[type="text"],
+		&[type="number"] {
 			border-bottom: 2px dashed purple;
 		}
 	}
