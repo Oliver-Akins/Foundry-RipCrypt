@@ -24,7 +24,7 @@ export function options(selected, opts, meta) {
 		opt.value = Handlebars.escapeExpression(opt.value);
 		htmlOptions.push(
 			`<option
-				value=${opt.value}
+				value="${opt.value}"
 				${selected === opt.value ? `selected` : ``}
 				${opt.disabled ? `disabled` : ``}
 			>
