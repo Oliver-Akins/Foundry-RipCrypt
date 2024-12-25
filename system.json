@@ -36,13 +36,15 @@
 	"flags": {
 		"hotReload": {
 			"extensions": ["css", "hbs", "json", "mjs", "svg"],
-			"paths": ["Apps", "langs", "styles", "module"]
+			"paths": ["Apps", "langs", "module"]
 		}
 	},
 	"documentTypes": {
 		"Actor": {
 			"hero": {}
 		},
-		"Item": {}
+		"Item": {
+			"weapon": {}
+		}
 	}
 }

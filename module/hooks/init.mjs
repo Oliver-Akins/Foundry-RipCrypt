@@ -3,7 +3,7 @@ import { HeroSummaryCardV1 } from "../Apps/ActorSheets/HeroSummaryCardV1.mjs";
 
 // Data Models
 import { HeroData } from "../data/Actor/Hero.mjs";
-import { registerDevSettings } from "../settings/devSettings.mjs";
+import { WeaponData } from "../data/Item/Weapon.mjs";
 
 // Class Overrides
 import { CryptDie } from "../dice/CryptDie.mjs";
@@ -11,6 +11,7 @@ import { CryptDie } from "../dice/CryptDie.mjs";
 // Misc
 import helpers from "../handlebarHelpers/_index.mjs";
 import { Logger } from "../utils/Logger.mjs";
+import { registerDevSettings } from "../settings/devSettings.mjs";
 
 Hooks.once(`init`, () => {
 	Logger.log(`Initializing`);
@@ -21,6 +22,7 @@ Hooks.once(`init`, () => {
 
 	// #region Datamodels
 	CONFIG.Actor.dataModels.hero = HeroData;
+	CONFIG.Item.dataModels.weapon = WeaponData;
 	// #endregion
 
 	// #region Class Changes
