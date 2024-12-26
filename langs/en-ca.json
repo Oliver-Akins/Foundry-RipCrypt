@@ -22,6 +22,12 @@
 				"grip": "Grip",
 				"glim": "Glim"
 			}
+		},
+		"setting": {
+			"abbrAccess": {
+				"name": "Abbreviate Access Names",
+				"hint": "Shortens the Access level names the way the book does. (e.g. \"Common\" becomes \"C\")"
+			}
 		}
 	}
 }

@@ -12,12 +12,14 @@ import { CryptDie } from "../dice/CryptDie.mjs";
 import helpers from "../handlebarHelpers/_index.mjs";
 import { Logger } from "../utils/Logger.mjs";
 import { registerDevSettings } from "../settings/devSettings.mjs";
+import { registerUserSettings } from "../settings/userSettings.mjs";
 
 Hooks.once(`init`, () => {
 	Logger.log(`Initializing`);
 
 	// #region Settings
 	registerDevSettings();
+	registerUserSettings()
 	// #endregion
 
 	// #region Datamodels
