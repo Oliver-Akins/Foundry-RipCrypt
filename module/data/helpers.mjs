@@ -18,3 +18,14 @@ export function barAttribute(min, initial, max = undefined) {
 		}),
 	});
 };
+
+export function optionalInteger({min, initial = null, max} = {}) {
+	return new fields.NumberField({
+		min,
+		initial,
+		max,
+		required: true,
+		nullable: true,
+		integer: true,
+	});
+};

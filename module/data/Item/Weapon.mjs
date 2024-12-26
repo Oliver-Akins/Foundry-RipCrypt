@@ -1,3 +1,5 @@
+import { optionalInteger } from "../helpers.mjs";
+
 const { fields } = foundry.data;
 
 export class WeaponData extends foundry.abstract.TypeDataModel {
@@ -14,6 +16,10 @@ export class WeaponData extends foundry.abstract.TypeDataModel {
 					required: true,
 				},
 			),
+			range: new fields.SchemaField({
+				short: optionalInteger(),
+				long: optionalInteger(),
+			}),
 		};
 	};
 
