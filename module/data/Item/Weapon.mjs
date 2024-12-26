@@ -1,4 +1,4 @@
-import { optionalInteger, requiredInteger } from "../helpers.mjs";
+import { barAttribute, optionalInteger, requiredInteger } from "../helpers.mjs";
 
 const { fields } = foundry.data;
 
@@ -21,6 +21,7 @@ export class WeaponData extends foundry.abstract.TypeDataModel {
 				long: optionalInteger(),
 			}),
 			damage: requiredInteger({ min: 0, initial: 0 }),
+			wear: barAttribute(0, 0, 4),
 		};
 	};
 
