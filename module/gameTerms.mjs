@@ -5,4 +5,10 @@ export const gameTerms = Object.preventExtensions({
 		`South`,
 		`West`,
 	],
+	Access: [
+		`Common`,
+		`Uncommon`,
+		`Rare`,
+		`Scarce`,
+	],
 });
