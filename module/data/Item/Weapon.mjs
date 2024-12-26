@@ -1,4 +1,4 @@
-import { optionalInteger } from "../helpers.mjs";
+import { optionalInteger, requiredInteger } from "../helpers.mjs";
 
 const { fields } = foundry.data;
 
@@ -20,6 +20,7 @@ export class WeaponData extends foundry.abstract.TypeDataModel {
 				short: optionalInteger(),
 				long: optionalInteger(),
 			}),
+			damage: requiredInteger({ min: 0, initial: 0 }),
 		};
 	};
 

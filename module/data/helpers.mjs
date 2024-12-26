@@ -29,3 +29,17 @@ export function optionalInteger({min, initial = null, max} = {}) {
 		integer: true,
 	});
 };
+
+export function requiredInteger({ min, initial, max } = {}) {
+	if (initial == null || typeof initial !== `number`) {
+		throw new Error(`"initial" must be a number`);
+	};
+	return new fields.NumberField({
+		min,
+		initial,
+		max,
+		required: true,
+		nullable: false,
+		integer: true,
+	});
+};
