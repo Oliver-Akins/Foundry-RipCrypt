@@ -2,6 +2,9 @@
 	"TYPES": {
 		"Actor": {
 			"hero": "Hero"
+		},
+		"Item": {
+			"weapon": "Weapon"
 		}
 	},
 	"RipCrypt": {
