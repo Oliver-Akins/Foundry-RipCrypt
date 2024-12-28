@@ -68,8 +68,18 @@
 		{{/each}}
 
 		{{!-- Health --}}
+		<div></div>
 
 		{{!-- Move & Run --}}
+		<div class="ability">
+			<div class="compass dual">
+				<span class="value">{{speed.move}}</span>
+				<span class="max">{{speed.run}}</span>
+			</div>
+			<div aria-hidden="true" class="col-header label">
+				{{rc-i18n "RipCrypt.Apps.HeroSummaryCardV1.move-run"}}
+			</div>
+		</div>
 	</div>
 
 	{{!-- * Equipment --}}

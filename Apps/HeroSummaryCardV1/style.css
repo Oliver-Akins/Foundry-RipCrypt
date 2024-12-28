@@ -60,13 +60,13 @@
 		/* grid-template-rows: minmax(0, 3fr) minmax(0, 1fr); */
 		grid-template-columns: repeat(6, minmax(0, 1fr));
 
-		.ability {
-			display: grid;
-			grid-template-rows: minmax(0, 3fr) minmax(0, 1fr);
-			justify-items: center;
-			align-items: center;
-		}
+	}
 
+	.ability {
+		display: grid;
+		grid-template-rows: minmax(0, 3fr) minmax(0, 1fr);
+		justify-items: center;
+		align-items: center;
 		label, .label {
 			width: 100%;
 			text-align: center;
@@ -89,6 +89,37 @@
 			background: none;
 			width: 70%;
 			text-align: center;
+		}
+
+		&.dual {
+			position: relative;
+			font-size: 1rem;
+			--distance-from-edge: 3px;
+
+			&::after {
+				display: block;
+				content: "";
+				width: 69%;
+				height: 2px;
+				background: black;
+				transform: rotate(-45deg);
+			}
+
+			> .value,
+			> .max {
+				width: 50%;
+				position: absolute;
+				text-align: center;
+			}
+
+			> .value {
+				top: var(--distance-from-edge);
+				left: var(--distance-from-edge);
+			}
+			> .max {
+				bottom: var(--distance-from-edge);
+				right: var(--distance-from-edge);
+			}
 		}
 	}
 }

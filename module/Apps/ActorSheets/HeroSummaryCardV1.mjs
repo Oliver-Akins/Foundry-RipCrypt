@@ -48,6 +48,7 @@ export class HeroSummaryCardV1 extends HandlebarsApplicationMixin(ActorSheetV2) 
 
 		ctx = await this.prepareFatePath(ctx);
 		ctx = await this.prepareAbilityRow(ctx);
+		ctx = await this.prepareSpeed(ctx);
 
 		partId = partId.slice(0,1).toUpperCase() + partId.slice(1);
 		if (this[`_prepare${partId}Context`] != null) {
@@ -82,6 +83,11 @@ export class HeroSummaryCardV1 extends HandlebarsApplicationMixin(ActorSheetV2) 
 				readonly: !this.isEditable,
 			});
 		};
+		return ctx;
+	};
+
+	async prepareSpeed(ctx) {
+		ctx.speed = ctx.actor.system.speed;
 		return ctx;
 	};
 	// #endregion

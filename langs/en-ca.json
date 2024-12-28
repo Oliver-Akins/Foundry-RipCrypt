@@ -10,6 +10,8 @@
 		},
 		"common": {
 			"empty": "---",
+			"move": "Move",
+			"run": "Run",
 			"fate": {
 				"North": "North",
 				"East": "East",
@@ -27,6 +29,11 @@
 			"abbrAccess": {
 				"name": "Abbreviate Access Names",
 				"hint": "Shortens the Access level names the way the book does. (e.g. \"Common\" becomes \"C\")"
+			}
+		},
+		"Apps": {
+			"HeroSummaryCardV1": {
+				"move-run": "@RipCrypt.common.move • @RipCrypt.common.run"
 			}
 		}
 	}
