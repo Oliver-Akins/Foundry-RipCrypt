@@ -40,9 +40,13 @@ export class HeroSummaryCardV1 extends HandlebarsApplicationMixin(ActorSheetV2) 
 	// #region Lifecycle
 	async _preparePartContext(partId, ctx, opts) {
 		ctx = await super._preparePartContext(partId, ctx, opts);
+		delete ctx.document;
+		delete ctx.fields;
 
 		ctx.meta ??= {};
 		ctx.meta.idp = this.document.uuid;
+		ctx.meta.editable = ctx.editable;
+		delete ctx.editable;
 
 		ctx.actor = this.document;
 
@@ -81,7 +85,7 @@ export class HeroSummaryCardV1 extends HandlebarsApplicationMixin(ActorSheetV2) 
 					{ value: ctx.actor.system.ability[key] },
 				),
 				value: ctx.actor.system.ability[key],
-				readonly: !ctx.editable,
+				readonly: !ctx.meta.editable,
 			});
 		};
 		return ctx;
