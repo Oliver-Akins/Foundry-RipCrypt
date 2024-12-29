@@ -26,7 +26,15 @@
 				"gait": "Gait",
 				"grip": "Grip",
 				"glim": "Glim"
-			}
+			},
+			"traits": "Traits",
+			"range": "Range",
+			"weapon": {
+				"singular": "Weapon",
+				"plural": "Weapons"
+			},
+			"wear": "Wear",
+			"damage": "Damage"
 		},
 		"setting": {
 			"abbrAccess": {
@@ -35,9 +43,8 @@
 			}
 		},
 		"Apps": {
-			"HeroSummaryCardV1": {
-				"move-run": "@RipCrypt.common.move • @RipCrypt.common.run"
-			}
+			"move-run": "@RipCrypt.common.move • @RipCrypt.common.run",
+			"traits-range": "@RipCrypt.common.traits • @RipCrypt.common.range"
 		}
 	}
 }

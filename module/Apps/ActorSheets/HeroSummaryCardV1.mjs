@@ -46,9 +46,10 @@ export class HeroSummaryCardV1 extends HandlebarsApplicationMixin(ActorSheetV2) 
 
 		ctx.actor = this.document;
 
-		ctx = await this.prepareFatePath(ctx);
-		ctx = await this.prepareAbilityRow(ctx);
-		ctx = await this.prepareSpeed(ctx);
+		ctx = await HeroSummaryCardV1.prepareWeapons(ctx);
+		ctx = await HeroSummaryCardV1.prepareFatePath(ctx);
+		ctx = await HeroSummaryCardV1.prepareAbilityRow(ctx);
+		ctx = await HeroSummaryCardV1.prepareSpeed(ctx);
 
 		partId = partId.slice(0,1).toUpperCase() + partId.slice(1);
 		if (this[`_prepare${partId}Context`] != null) {
@@ -59,7 +60,7 @@ export class HeroSummaryCardV1 extends HandlebarsApplicationMixin(ActorSheetV2) 
 		return ctx;
 	};
 
-	async prepareFatePath(ctx) {
+	static async prepareFatePath(ctx) {
 		ctx.fate = {};
 		ctx.fate.selected = ctx.actor.system.fate;
 		ctx.fate.options = [
@@ -70,7 +71,7 @@ export class HeroSummaryCardV1 extends HandlebarsApplicationMixin(ActorSheetV2) 
 		return ctx;
 	};
 
-	async prepareAbilityRow(ctx) {
+	static async prepareAbilityRow(ctx) {
 		ctx.abilities = [];
 		for (const key in ctx.actor.system.ability) {
 			ctx.abilities.push({
@@ -80,16 +81,30 @@ export class HeroSummaryCardV1 extends HandlebarsApplicationMixin(ActorSheetV2) 
 					{ value: ctx.actor.system.ability[key] },
 				),
 				value: ctx.actor.system.ability[key],
-				readonly: !this.isEditable,
+				readonly: !ctx.editable,
 			});
 		};
 		return ctx;
 	};
 
-	async prepareSpeed(ctx) {
+	static async prepareSpeed(ctx) {
 		ctx.speed = ctx.actor.system.speed;
 		return ctx;
 	};
+
+	static async prepareWeapons(ctx) {
+		const limit = ctx.actor.system.limit.weapons;
+		ctx.weapons = [];
+		for (let i = 0; i < limit; i++) {
+			ctx.weapons.push({
+				data: null,
+				empty: true,
+				index: i + 1,
+				class: i % 2 === 1 ? `row-alt` : ``,
+			});
+		};
+		return ctx;
+	}
 	// #endregion
 
 	// #region Actions

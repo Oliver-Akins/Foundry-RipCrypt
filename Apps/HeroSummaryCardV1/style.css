@@ -4,7 +4,7 @@
 	--input-height: 1rem;
 
 	display: grid;
-	grid-template-columns: minmax(0, 3fr) minmax(0, 2fr) minmax(0, 2fr) minmax(0, 1fr) minmax(0, 2.5fr);
+	grid-template-columns: minmax(0, 3fr) minmax(0, 2fr) minmax(0, 2fr) minmax(0, 1.25fr) minmax(0, 2.5fr);
 	grid-template-rows: repeat(15, minmax(0, 1fr));
 	column-gap: var(--col-gap);
 
@@ -23,6 +23,10 @@
 		box-sizing: border-box;
 		padding: 2px 4px;
 		text-transform: uppercase;
+		font-size: var(--font-size-14);
+		overflow: hidden;
+		text-overflow: ellipsis;
+		font-weight: bold;
 	}
 
 	.header {
@@ -51,6 +55,24 @@
 		grid-row: 4 / span 2;
 		display: grid;
 		grid-template-rows: subgrid;
+	}
+
+	.weapons {
+		grid-column: 1 / span 4;
+		grid-row: 7 / span 5;
+		display: grid;
+		grid-template-columns: subgrid;
+		grid-auto-rows: min-content;
+		overflow-y: auto;
+
+		thead,
+		tbody,
+		tr {
+			display: contents;
+		}
+		.row-alt > * {
+			background: inherit;
+		}
 	}
 
 	.abilities {

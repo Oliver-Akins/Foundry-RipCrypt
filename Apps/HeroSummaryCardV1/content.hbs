@@ -33,6 +33,30 @@
 	</div>
 
 	{{!-- * Weapons --}}
+	<table class="weapons">
+		<thead>
+			<tr>
+				<th class="label col-header">{{ rc-i18n "RipCrypt.common.weapon.plural" }}</th>
+				<th class="label col-header">{{ rc-i18n "RipCrypt.Apps.traits-range" }}</th>
+				<th class="label col-header">{{ rc-i18n "RipCrypt.common.wear" }}</th>
+				<th class="label col-header">{{ rc-i18n "RipCrypt.common.damage" }}</th>
+			</tr>
+		</thead>
+		<tbody>
+			{{#each weapons as | slot |}}
+				{{#if slot.empty}}
+					<tr data-row="{{slot.index}}" class="{{slot.class}}">
+						<td>---</td>
+						<td></td>
+						<td></td>
+						<td></td>
+					</tr>
+				{{else}}
+					<tr data-row="index"></tr>
+				{{/if}}
+			{{/each}}
+		</tbody>
+	</table>
 
 	{{!-- * Abilities --}}
 	<div class="abilities">
@@ -77,7 +101,7 @@
 				<span class="max">{{speed.run}}</span>
 			</div>
 			<div aria-hidden="true" class="col-header label">
-				{{rc-i18n "RipCrypt.Apps.HeroSummaryCardV1.move-run"}}
+				{{rc-i18n "RipCrypt.Apps.move-run"}}
 			</div>
 		</div>
 	</div>
