@@ -71,6 +71,7 @@
 							class="value"
 							value="{{ability.value}}"
 							name="system.ability.{{ability.id}}"
+							min=0
 						>
 					{{else}}
 						<span>{{ability.value}}</span>
@@ -92,7 +93,44 @@
 		{{/each}}
 
 		{{!-- Health --}}
-		<div></div>
+		<div class="ability">
+			<div class="compass dual">
+				{{#if meta.editable}}
+					<input
+						type="number"
+						id="{{meta.idp}}-guts-value"
+						class="value"
+						name="system.guts.value"
+						value="{{guts.value}}"
+						min="0"
+					>
+				{{else}}
+					<span
+						class="value"
+						aria-describedby="{{meta.idp}}-guts-value-label"
+						{{!-- TODO: aria-label="{{ rc-i18n "RipCrypt.Apps.a11y.guts-value-readonly" }}" --}}
+					>
+						{{ guts.value }}
+					</span>
+				{{/if}}
+				<span
+					class="max"
+					aria-hidden="true"
+					{{!-- TODO: aria-label="{{ rc-i18n "RipCrypt.Apps.a11y.guts-max-readonly" }}" --}}
+				>
+					{{ guts.max }}
+				</span>
+			</div>
+			{{#if meta.editable}}
+				<label class="col-header" for="{{meta.idp}}-guts-value">
+					{{ rc-i18n "RipCrypt.common.guts" }}
+				</label>
+			{{else}}
+				<div class="col-header label" id="{{meta.idp}}-guts-value-label">
+					{{ rc-i18n "RipCrypt.common.guts" }}
+				</div>
+			{{/if}}
+		</div>
 
 		{{!-- Move & Run --}}
 		<div class="ability">

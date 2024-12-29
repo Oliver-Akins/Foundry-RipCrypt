@@ -115,8 +115,8 @@
 
 		&.dual {
 			position: relative;
-			font-size: 1rem;
-			--distance-from-edge: 3px;
+			font-size: var(--font-size-14);
+			--distance-from-edge: 4px;
 
 			&::after {
 				display: block;
@@ -132,11 +132,13 @@
 				width: 50%;
 				position: absolute;
 				text-align: center;
+				/* border-bottom: none; */
 			}
 
 			> .value {
 				top: var(--distance-from-edge);
 				left: var(--distance-from-edge);
+				clip-path: polygon(100% 0, 100% 60%, 60% 100%, 0 100%, 0 0);
 			}
 			> .max {
 				bottom: var(--distance-from-edge);

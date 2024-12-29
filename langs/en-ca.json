@@ -34,7 +34,8 @@
 				"plural": "Weapons"
 			},
 			"wear": "Wear",
-			"damage": "Damage"
+			"damage": "Damage",
+			"guts": "Guts"
 		},
 		"setting": {
 			"abbrAccess": {
@@ -44,7 +45,12 @@
 		},
 		"Apps": {
 			"move-run": "@RipCrypt.common.move • @RipCrypt.common.run",
-			"traits-range": "@RipCrypt.common.traits • @RipCrypt.common.range"
+			"traits-range": "@RipCrypt.common.traits • @RipCrypt.common.range",
+			"a11y": {
+				"guts-value-edit": "The current amount of guts the character has",
+				"guts-value-readonly": "The current amount of guts the character has",
+				"guts-max-readonly": "The maximum amount of guts the character can have"
+			}
 		}
 	}
 }

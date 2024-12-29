@@ -45,11 +45,13 @@ export class HeroSummaryCardV1 extends HandlebarsApplicationMixin(ActorSheetV2) 
 
 		ctx.meta ??= {};
 		ctx.meta.idp = this.document.uuid;
+		ctx.meta.limited = this.actor.limited;
 		ctx.meta.editable = ctx.editable;
 		delete ctx.editable;
 
 		ctx.actor = this.document;
 
+		ctx = await HeroSummaryCardV1.prepareGuts(ctx);
 		ctx = await HeroSummaryCardV1.prepareWeapons(ctx);
 		ctx = await HeroSummaryCardV1.prepareFatePath(ctx);
 		ctx = await HeroSummaryCardV1.prepareAbilityRow(ctx);
@@ -84,7 +86,7 @@ export class HeroSummaryCardV1 extends HandlebarsApplicationMixin(ActorSheetV2) 
 					`RipCrypt.common.ability.${key}`,
 					{ value: ctx.actor.system.ability[key] },
 				),
-				value: ctx.actor.system.ability[key],
+				value: ctx.meta.limited ? `?` : ctx.actor.system.ability[key],
 				readonly: !ctx.meta.editable,
 			});
 		};
@@ -92,7 +94,13 @@ export class HeroSummaryCardV1 extends HandlebarsApplicationMixin(ActorSheetV2) 
 	};
 
 	static async prepareSpeed(ctx) {
-		ctx.speed = ctx.actor.system.speed;
+		ctx.speed = foundry.utils.deepClone(ctx.actor.system.speed);
+		if (ctx.meta.limited) {
+			ctx.speed = {
+				move: `?`,
+				run: `?`,
+			};
+		};
 		return ctx;
 	};
 
@@ -106,6 +114,17 @@ export class HeroSummaryCardV1 extends HandlebarsApplicationMixin(ActorSheetV2) 
 				index: i + 1,
 				class: i % 2 === 1 ? `row-alt` : ``,
 			});
+		};
+		return ctx;
+	};
+
+	static async prepareGuts(ctx) {
+		ctx.guts = foundry.utils.deepClone(ctx.actor.system.guts);
+		if (ctx.meta.limited) {
+			ctx.guts = {
+				value: `?`,
+				max: `?`,
+			};
 		};
 		return ctx;
 	}
