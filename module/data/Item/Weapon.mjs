@@ -4,6 +4,7 @@ import { gameTerms } from "../../gameTerms.mjs";
 const { fields } = foundry.data;
 
 export class WeaponData extends foundry.abstract.TypeDataModel {
+	// MARK: Schema
 	static defineSchema() {
 		return {
 			traits: new fields.SetField(
@@ -32,10 +33,12 @@ export class WeaponData extends foundry.abstract.TypeDataModel {
 		};
 	};
 
+	// MARK: Base Data
 	prepareBaseData() {
 		super.prepareBaseData();
 	};
 
+	// MARK: Derived Data
 	prepareDerivedData() {
 		super.prepareDerivedData();
 	};

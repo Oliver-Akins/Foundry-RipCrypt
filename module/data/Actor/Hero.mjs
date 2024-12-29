@@ -5,6 +5,7 @@ const { fields } = foundry.data;
 
 export class HeroData extends foundry.abstract.TypeDataModel {
 
+	// MARK: Token Attrs
 	static get trackableAttributes() {
 		return {
 			bar: [
@@ -22,6 +23,7 @@ export class HeroData extends foundry.abstract.TypeDataModel {
 		};
 	};
 
+	// MARK: Schema
 	static defineSchema() {
 		return {
 			ability: new fields.SchemaField({
@@ -119,6 +121,7 @@ export class HeroData extends foundry.abstract.TypeDataModel {
 		};
 	};
 
+	// MARK: Base Data
 	prepareBaseData() {
 		super.prepareBaseData();
 
@@ -132,6 +135,7 @@ export class HeroData extends foundry.abstract.TypeDataModel {
 		};
 	};
 
+	// MARK: Derived Data
 	prepareDerivedData() {
 		super.prepareDerivedData();
 
