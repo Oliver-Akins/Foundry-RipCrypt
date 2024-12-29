@@ -41,5 +41,8 @@ Hooks.once(`init`, () => {
 	// #endregion
 	// #endregion
 
+	// #region Token Attrs
+	CONFIG.Actor.trackableAttributes.hero = HeroData.trackableAttributes;
+
 	Handlebars.registerHelper(helpers);
 });

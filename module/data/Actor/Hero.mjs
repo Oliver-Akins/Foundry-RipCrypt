@@ -1,9 +1,27 @@
-import { barAttribute } from "../helpers.mjs";
 import { gameTerms } from "../../gameTerms.mjs";
+import { sumReduce } from "../../utils/sumReduce.mjs";
 
 const { fields } = foundry.data;
 
 export class HeroData extends foundry.abstract.TypeDataModel {
+
+	static get trackableAttributes() {
+		return {
+			bar: [
+				`guts`,
+			],
+			value: [
+				`ability.grit`,
+				`ability.gait`,
+				`ability.grip`,
+				`ability.glim`,
+				`level.glory`,
+				`level.step`,
+				`level.rank`,
+			],
+		};
+	};
+
 	static defineSchema() {
 		return {
 			ability: new fields.SchemaField({
@@ -36,7 +54,14 @@ export class HeroData extends foundry.abstract.TypeDataModel {
 					nullable: false,
 				}),
 			}),
-			guts: barAttribute(0, 5),
+			guts: new fields.SchemaField({
+				value: new fields.NumberField({
+					min: 0,
+					initial: 5,
+					integer: true,
+					nullable: false,
+				}),
+			}),
 			coin: new fields.SchemaField({
 				gold: new fields.NumberField({
 					initial: 5,
@@ -97,6 +122,8 @@ export class HeroData extends foundry.abstract.TypeDataModel {
 	prepareBaseData() {
 		super.prepareBaseData();
 
+		this.guts.max = 0;
+
 		// The limitations imposed on things like inventory spaces and equipped
 		// weapon count
 		this.limit = {
@@ -107,6 +134,8 @@ export class HeroData extends foundry.abstract.TypeDataModel {
 
 	prepareDerivedData() {
 		super.prepareDerivedData();
+
+		this.guts.max += Object.values(this.ability).reduce(sumReduce);
 
 		// Movement speeds
 		this.speed = {
