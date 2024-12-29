@@ -19,7 +19,7 @@ Hooks.once(`init`, () => {
 
 	// #region Settings
 	registerDevSettings();
-	registerUserSettings()
+	registerUserSettings();
 	// #endregion
 
 	// #region Datamodels
