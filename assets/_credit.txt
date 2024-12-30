@@ -1,0 +1,2 @@
+Soetarman Atmodjo:
+	- icons/roll.svg : Rights Purchased.

@@ -1,0 +1,22 @@
+.ripcrypt > .window-content button {
+	all: revert;
+	padding: 2px 4px;
+
+	&.roll {
+		padding: 0;
+		border-radius: 50%;
+		outline: none;
+		border: none;
+		width: 20px;
+		height: 20px;
+
+		&:hover:not(:disabled) {
+			cursor: pointer;
+			outline: none;
+		}
+
+		&:disabled {
+			opacity: 0.6;
+		}
+	}
+}

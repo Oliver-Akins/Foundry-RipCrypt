@@ -89,6 +89,8 @@
 		grid-template-rows: minmax(0, 3fr) minmax(0, 1fr);
 		justify-items: center;
 		align-items: center;
+		position: relative;
+
 		label, .label {
 			width: 100%;
 			text-align: center;
@@ -106,6 +108,7 @@
 		border: 2px solid black;
 		border-radius: 50%;
 		font-size: 1.5rem;
+		position: relative;
 
 		> .value {
 			background: none;
@@ -113,8 +116,15 @@
 			text-align: center;
 		}
 
+		> .roll {
+			--distance: -15%;
+			position: absolute;
+			top: var(--distance);
+			right: var(--distance);
+			z-index: 2;
+		}
+
 		&.dual {
-			position: relative;
 			font-size: var(--font-size-14);
 			--distance-from-edge: 4px;
 

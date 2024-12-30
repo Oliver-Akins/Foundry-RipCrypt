@@ -76,6 +76,20 @@
 					{{else}}
 						<span>{{ability.value}}</span>
 					{{/unless}}
+					{{#if @root.meta.editable}}
+						<button
+							type="button"
+							class="roll"
+							data-action="roll"
+							data-formula="{{ability.value}}d8rc4"
+							data-flavor="{{ability.name}} Roll (Difficulty: 4)"
+						>
+							<rc-icon
+								var:size="20px"
+								name="icons/roll-2"
+							></rc-icon>
+						</button>
+					{{/if}}
 				</div>
 				{{#unless ability.readonly}}
 				<label

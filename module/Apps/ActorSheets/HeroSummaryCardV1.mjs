@@ -5,6 +5,7 @@ import { Logger } from "../../utils/Logger.mjs";
 
 const { HandlebarsApplicationMixin } = foundry.applications.api;
 const { ActorSheetV2 } = foundry.applications.sheets;
+const { Roll } = foundry.dice;
 
 export class HeroSummaryCardV1 extends HandlebarsApplicationMixin(ActorSheetV2) {
 
@@ -23,7 +24,9 @@ export class HeroSummaryCardV1 extends HandlebarsApplicationMixin(ActorSheetV2) 
 		window: {
 			resizable: false,
 		},
-		actions: {},
+		actions: {
+			roll: this.rollDice,
+		},
 		form: {
 			submitOnChange: true,
 			closeOnSubmit: false,
@@ -131,5 +134,24 @@ export class HeroSummaryCardV1 extends HandlebarsApplicationMixin(ActorSheetV2) 
 	// #endregion
 
 	// #region Actions
+	static async rollDice(_$e, el) {
+		const data = el.dataset;
+		const formula = data.formula;
+		Logger.debug(`Attempting to roll formula: ${formula}`);
+
+		let flavor;
+		if (data.flavor) {
+			flavor = localizer(
+				data.flavor,
+			);
+		}
+
+		const roll = new Roll(formula);
+		await roll.evaluate();
+		await roll.toMessage({
+			speaker: ChatMessage.getSpeaker({ actor: this.actor }),
+			flavor,
+		});
+	};
 	// #endregion
 };

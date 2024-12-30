@@ -11,6 +11,7 @@ import { CryptDie } from "../dice/CryptDie.mjs";
 // Misc
 import helpers from "../handlebarHelpers/_index.mjs";
 import { Logger } from "../utils/Logger.mjs";
+import { registerCustomComponents } from "../Apps/elements/_index.mjs";
 import { registerDevSettings } from "../settings/devSettings.mjs";
 import { registerUserSettings } from "../settings/userSettings.mjs";
 
@@ -44,5 +45,6 @@ Hooks.once(`init`, () => {
 	// #region Token Attrs
 	CONFIG.Actor.trackableAttributes.hero = HeroData.trackableAttributes;
 
+	registerCustomComponents();
 	Handlebars.registerHelper(helpers);
 });
