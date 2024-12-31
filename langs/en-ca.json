@@ -37,7 +37,8 @@
 			"damage": "Damage",
 			"guts": "Guts",
 			"glory": "Glory",
-			"step": "Step"
+			"step": "Step",
+			"rank": "Rank"
 		},
 		"setting": {
 			"abbrAccess": {

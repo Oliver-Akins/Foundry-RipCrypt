@@ -91,6 +91,30 @@
 		</div>
 	{{/if}}
 
+	<{{{ifThen meta.editable "label" "div"}}}
+		id="{{meta.idp}}-rank-label"
+		for="{{meta.idp}}-rank"
+		class="rank-label label col-header"
+	>
+		{{ rc-i18n "RipCrypt.common.rank" }}
+	</{{{ifThen meta.editable "label" "div"}}}>
+	{{#if meta.editable}}
+		<select
+			id="{{meta.idp}}-rank"
+			name="system.level.rank"
+			class="rank row-alt"
+		>
+			{{ rc-options level.rank.selected level.rank.options }}
+		</select>
+	{{else}}
+		<div
+			aria-describedby="{{meta.idp}}-rank-label"
+			class="rank row-alt input"
+		>
+			{{ level.rank.selected }}
+		</div>
+	{{/if}}
+
 	{{!-- * Weapons --}}
 	<table class="weapons">
 		<thead>

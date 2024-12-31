@@ -68,6 +68,15 @@
 		grid-row: 5 / span 1;
 	}
 
+	.rank-label {
+		grid-column: 4 / span 1;
+		grid-row: 4 / span 1;
+	}
+	.rank {
+		grid-column: 4 / span 1;
+		grid-row: 5 / span 1;
+	}
+
 	.fate {
 		grid-column: 1 / span 1;
 		grid-row: 4 / span 2;
