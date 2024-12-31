@@ -102,11 +102,12 @@ export class HeroSummaryCardV1 extends GenericSheetMixin(HandlebarsApplicationMi
 
 	static async prepareWeapons(ctx) {
 		const limit = ctx.actor.system.limit.weapons;
+		const embedded = ctx.actor.itemTypes.weapon;
 		ctx.weapons = [];
 		for (let i = 0; i < limit; i++) {
 			ctx.weapons.push({
-				data: null,
-				empty: true,
+				data: embedded[i],
+				empty: embedded.at(i) === undefined,
 				index: i + 1,
 				class: i % 2 === 1 ? `row-alt` : ``,
 			});

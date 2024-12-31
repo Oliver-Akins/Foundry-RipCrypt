@@ -45,14 +45,34 @@
 		<tbody>
 			{{#each weapons as | slot |}}
 				{{#if slot.empty}}
-					<tr data-row="{{slot.index}}" class="{{slot.class}}">
-						<td>---</td>
+					<tr
+						data-row="{{slot.index}}"
+						class="{{slot.class}}"
+						aria-hidden="true"
+					>
+						<td>{{ rc-i18n "RipCrypt.common.empty" }}</td>
 						<td></td>
 						<td></td>
 						<td></td>
 					</tr>
 				{{else}}
-					<tr data-row="index"></tr>
+					<tr data-row="{{slot.index}}" class="{{slot.class}}">
+						<td>{{ slot.data.name }}</td>
+						<td>
+							{{#if slot.data.system.traitString}}
+								<span class="traits">{{ slot.data.system.traitString }}</span>
+							{{/if}}
+							{{#if slot.data.system.rangeString}}
+								<span class="range">{{ slot.data.system.rangeString }}</span>
+							{{/if}}
+						</td>
+						<td>
+							{{ slot.data.system.wear.value }} / {{ slot.data.system.wear.max }}
+						</td>
+						<td>
+							{{ slot.data.system.damage }}
+						</td>
+					</tr>
 				{{/if}}
 			{{/each}}
 		</tbody>

@@ -42,4 +42,17 @@ export class WeaponData extends foundry.abstract.TypeDataModel {
 	prepareDerivedData() {
 		super.prepareDerivedData();
 	};
+
+	// #region Getters
+	get traitString() {
+		return [...this.traits].join(`, `);
+	}
+
+	get rangeString() {
+		if (this.range.short && this.range.long) {
+			return `${this.range.short} / ${this.range.long}`;
+		};
+		return String(this.range.short ?? this.range.long ?? ``);
+	}
+	// #endregion
 };
