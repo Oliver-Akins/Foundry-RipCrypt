@@ -46,9 +46,7 @@ export function GenericSheetMixin(HandlebarsSheet) {
 
 			let flavor;
 			if (data.flavor) {
-				flavor = localizer(
-					data.flavor,
-				);
+				flavor = localizer(data.flavor);
 			}
 
 			const roll = new Roll(formula);
