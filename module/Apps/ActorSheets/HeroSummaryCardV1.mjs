@@ -1,18 +1,20 @@
 import { filePath } from "../../consts.mjs";
 import { gameTerms } from "../../gameTerms.mjs";
+import { GenericSheetMixin } from "./GenericActorSheet.mjs";
 import { localizer } from "../../utils/Localizer.mjs";
 import { Logger } from "../../utils/Logger.mjs";
 
+
 const { HandlebarsApplicationMixin } = foundry.applications.api;
 const { ActorSheetV2 } = foundry.applications.sheets;
-const { Roll } = foundry.dice;
+// const { Roll } = foundry.dice;
 
-export class HeroSummaryCardV1 extends HandlebarsApplicationMixin(ActorSheetV2) {
+export class HeroSummaryCardV1 extends GenericSheetMixin(HandlebarsApplicationMixin(ActorSheetV2)) {
 
 	// #region Options
 	static DEFAULT_OPTIONS = {
 		classes: [
-			`ripcrypt`,
+			// `ripcrypt`,
 			`ripcrypt--actor`,
 			`ripcrypt--HeroSummaryCardV1`,
 			`ripcrypt-theme--dark`,
@@ -25,7 +27,7 @@ export class HeroSummaryCardV1 extends HandlebarsApplicationMixin(ActorSheetV2) 
 			resizable: false,
 		},
 		actions: {
-			roll: this.rollDice,
+			// roll: this.rollDice,
 		},
 		form: {
 			submitOnChange: true,
@@ -43,15 +45,6 @@ export class HeroSummaryCardV1 extends HandlebarsApplicationMixin(ActorSheetV2) 
 	// #region Lifecycle
 	async _preparePartContext(partId, ctx, opts) {
 		ctx = await super._preparePartContext(partId, ctx, opts);
-		delete ctx.document;
-		delete ctx.fields;
-
-		ctx.meta ??= {};
-		ctx.meta.idp = this.document.uuid;
-		ctx.meta.limited = this.actor.limited;
-		ctx.meta.editable = ctx.editable;
-		delete ctx.editable;
-
 		ctx.actor = this.document;
 
 		ctx = await HeroSummaryCardV1.prepareGuts(ctx);
@@ -134,24 +127,24 @@ export class HeroSummaryCardV1 extends HandlebarsApplicationMixin(ActorSheetV2) 
 	// #endregion
 
 	// #region Actions
-	static async rollDice(_$e, el) {
-		const data = el.dataset;
-		const formula = data.formula;
-		Logger.debug(`Attempting to roll formula: ${formula}`);
+	// static async rollDice(_$e, el) {
+	// 	const data = el.dataset;
+	// 	const formula = data.formula;
+	// 	Logger.debug(`Attempting to roll formula: ${formula}`);
 
-		let flavor;
-		if (data.flavor) {
-			flavor = localizer(
-				data.flavor,
-			);
-		}
+	// 	let flavor;
+	// 	if (data.flavor) {
+	// 		flavor = localizer(
+	// 			data.flavor,
+	// 		);
+	// 	}
 
-		const roll = new Roll(formula);
-		await roll.evaluate();
-		await roll.toMessage({
-			speaker: ChatMessage.getSpeaker({ actor: this.actor }),
-			flavor,
-		});
-	};
+	// 	const roll = new Roll(formula);
+	// 	await roll.evaluate();
+	// 	await roll.toMessage({
+	// 		speaker: ChatMessage.getSpeaker({ actor: this.actor }),
+	// 		flavor,
+	// 	});
+	// };
 	// #endregion
 };
