@@ -109,13 +109,13 @@ export class HeroData extends foundry.abstract.TypeDataModel {
 					required: true,
 					nullable: false,
 				}),
-				rank: new fields.NumberField({
-					min: 0,
-					initial: 0,
-					max: 3,
-					integer: true,
+				rank: new fields.StringField({
+					initial: gameTerms.Rank.NOVICE,
 					required: true,
 					nullable: false,
+					blank: false,
+					trim: true,
+					choices: Object.values(gameTerms.Rank),
 				}),
 			}),
 		};

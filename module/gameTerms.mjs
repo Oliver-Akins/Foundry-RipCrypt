@@ -11,4 +11,10 @@ export const gameTerms = Object.preventExtensions({
 		`Rare`,
 		`Scarce`,
 	],
+	Rank: {
+		NOVICE: `Novice`,
+		ADEPT: `Adept`,
+		EXPERT: `Expert`,
+		Master: `Master`,
+	},
 });
