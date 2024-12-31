@@ -1,0 +1,11 @@
+.ripcrypt > .window-content select {
+	all: revert;
+	appearance: auto;
+	box-sizing: border-box;
+	border: none;
+	outline: none;
+	font-family: inherit;
+	font-size: inherit;
+	display: flex;
+	align-items: center;
+}

@@ -1,0 +1,16 @@
+.ripcrypt > .window-content table {
+	all: revert;
+	box-sizing: border-box;
+	border-collapse: collapse;
+
+	thead, tbody, tr {
+		all: revert;
+	}
+
+	td, th {
+		all: revert;
+		padding: 2px 4px;
+		font-weight: initial;
+		text-align: left;
+	}
+}
