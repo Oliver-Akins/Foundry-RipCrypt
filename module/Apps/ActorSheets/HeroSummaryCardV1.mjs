@@ -66,9 +66,11 @@ export class HeroSummaryCardV1 extends GenericSheetMixin(HandlebarsApplicationMi
 	static async prepareLevelData(ctx) {
 		ctx.level = {
 			glory: ctx.actor.system.level.glory,
+			step: ctx.actor.system.level.step,
 		};
 		if (ctx.meta.limited) {
 			ctx.level.glory = `?`;
+			ctx.level.step = `?`;
 		};
 		return ctx;
 	};

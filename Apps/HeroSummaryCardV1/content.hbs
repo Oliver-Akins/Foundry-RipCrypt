@@ -60,6 +60,36 @@
 			{{ level.glory }}
 		</div>
 	{{/if}}
+	{{#if meta.editable}}
+		<label
+			for="{{meta.idp}}-step"
+			class="step-label col-header"
+		>
+			{{ rc-i18n "RipCrypt.common.step" }}
+		</label>
+		<input
+			id="{{meta.idp}}-step"
+			type="number"
+			class="step row-alt"
+			name="system.level.step"
+			value="{{level.step}}"
+			min="1"
+			max="3"
+		>
+	{{else}}
+		<div
+			id="{{meta.idp}}-step-label"
+			class="step-label label col-header"
+		>
+			{{ rc-i18n "RipCrypt.common.step" }}
+		</div>
+		<div
+			class="step row-alt input"
+			aria-describedby="{{meta.idp}}-step-label"
+		>
+			{{ level.step }}
+		</div>
+	{{/if}}
 
 	{{!-- * Weapons --}}
 	<table class="weapons">

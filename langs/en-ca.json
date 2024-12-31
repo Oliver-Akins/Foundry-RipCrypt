@@ -36,7 +36,8 @@
 			"wear": "Wear",
 			"damage": "Damage",
 			"guts": "Guts",
-			"glory": "Glory"
+			"glory": "Glory",
+			"step": "Step"
 		},
 		"setting": {
 			"abbrAccess": {
