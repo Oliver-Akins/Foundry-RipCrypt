@@ -31,6 +31,35 @@
 			{{rc-options fate.selected fate.options localize=true}}
 		</select>
 	</div>
+	{{#if meta.editable}}
+		<label
+			for="{{meta.idp}}-glory"
+			class="glory-label col-header"
+		>
+			{{ rc-i18n "RipCrypt.common.glory" }}
+		</label>
+		<input
+			id="{{meta.idp}}-glory"
+			type="number"
+			class="glory row-alt"
+			name="system.level.glory"
+			value="{{level.glory}}"
+			min="0"
+		>
+	{{else}}
+		<div
+			id="{{meta.idp}}-glory-label"
+			class="glory-label label col-header"
+		>
+			{{ rc-i18n "RipCrypt.common.glory" }}
+		</div>
+		<div
+			class="glory row-alt input"
+			aria-describedby="{{meta.idp}}-glory-label"
+		>
+			{{ level.glory }}
+		</div>
+	{{/if}}
 
 	{{!-- * Weapons --}}
 	<table class="weapons">

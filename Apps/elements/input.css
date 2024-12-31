@@ -1,15 +1,18 @@
-.ripcrypt > .window-content input {
-	all: revert;
-	box-sizing: border-box;
-	border: none;
-	outline: none;
-	font-family: inherit;
-	font-size: inherit;
-	position: relative;
-	background: none;
+.ripcrypt > .window-content {
+	input, .input {
+		all: revert;
+		box-sizing: border-box;
+		border: none;
+		outline: none;
+		font-family: inherit;
+		font-size: inherit;
+		position: relative;
+		background: none;
+		padding: 2px 4px;
 
-	&[type="text"],
-	&[type="number"] {
-		border-bottom: 2px dashed purple;
+		&[type="text"],
+		&[type="number"] {
+			border-bottom: 2px dashed purple;
+		}
 	}
 }

@@ -52,6 +52,7 @@ export class HeroSummaryCardV1 extends GenericSheetMixin(HandlebarsApplicationMi
 		ctx = await HeroSummaryCardV1.prepareFatePath(ctx);
 		ctx = await HeroSummaryCardV1.prepareAbilityRow(ctx);
 		ctx = await HeroSummaryCardV1.prepareSpeed(ctx);
+		ctx = await HeroSummaryCardV1.prepareLevelData(ctx);
 
 		partId = partId.slice(0,1).toUpperCase() + partId.slice(1);
 		if (this[`_prepare${partId}Context`] != null) {
@@ -59,6 +60,16 @@ export class HeroSummaryCardV1 extends GenericSheetMixin(HandlebarsApplicationMi
 		};
 
 		Logger.debug(`Context:`, ctx);
+		return ctx;
+	};
+
+	static async prepareLevelData(ctx) {
+		ctx.level = {
+			glory: ctx.actor.system.level.glory,
+		};
+		if (ctx.meta.limited) {
+			ctx.level.glory = `?`;
+		};
 		return ctx;
 	};
 

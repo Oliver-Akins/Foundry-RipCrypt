@@ -50,6 +50,15 @@
 		padding-left: var(--col-gap);
 	}
 
+	.glory-label {
+		grid-column: 2 / span 1;
+		grid-row: 4 / span 1;
+	}
+	.glory {
+		grid-column: 2 / span 1;
+		grid-row: 5 / span 1;
+	}
+
 	.fate {
 		grid-column: 1 / span 1;
 		grid-row: 4 / span 2;
@@ -114,6 +123,7 @@
 			background: none;
 			width: 70%;
 			text-align: center;
+			padding: 0;
 		}
 
 		> .roll {
