@@ -8,7 +8,7 @@
 		font-size: inherit;
 		position: relative;
 		background: none;
-		padding: 2px 4px;
+		padding: 0px 4px;
 
 		&[type="text"],
 		&[type="number"] {
