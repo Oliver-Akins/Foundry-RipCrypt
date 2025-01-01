@@ -1,6 +1,6 @@
 import { filePath } from "../../consts.mjs";
 import { gameTerms } from "../../gameTerms.mjs";
-import { GenericSheetMixin } from "../GenericSheet.mjs";
+import { GenericAppMixin } from "../GenericApp.mjs";
 import { localizer } from "../../utils/Localizer.mjs";
 import { Logger } from "../../utils/Logger.mjs";
 
@@ -9,7 +9,7 @@ const { HandlebarsApplicationMixin } = foundry.applications.api;
 const { ActorSheetV2 } = foundry.applications.sheets;
 // const { Roll } = foundry.dice;
 
-export class HeroSummaryCardV1 extends GenericSheetMixin(HandlebarsApplicationMixin(ActorSheetV2)) {
+export class HeroSummaryCardV1 extends GenericAppMixin(HandlebarsApplicationMixin(ActorSheetV2)) {
 
 	// #region Options
 	static DEFAULT_OPTIONS = {

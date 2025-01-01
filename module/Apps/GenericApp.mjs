@@ -6,8 +6,8 @@ const { Roll } = foundry.dice;
 /**
  * A mixin that takes the class from HandlebarsApplicationMixin and
  */
-export function GenericSheetMixin(HandlebarsSheet) {
-	class GenericRipCryptSheet extends HandlebarsSheet {
+export function GenericAppMixin(HandlebarsApp) {
+	class GenericRipCryptApp extends HandlebarsApp {
 
 		// #region Options
 		static DEFAULT_OPTIONS = {
@@ -39,7 +39,7 @@ export function GenericSheetMixin(HandlebarsSheet) {
 		// #endregion
 
 		// #region Actions
-		/** @this {GenericRipCryptSheet} */
+		/** @this {GenericRipCryptApp} */
 		static async rollDice(_$e, el) {
 			const data = el.dataset;
 			const formula = data.formula;
@@ -59,5 +59,5 @@ export function GenericSheetMixin(HandlebarsSheet) {
 		};
 		// #endregion
 	};
-	return GenericRipCryptSheet;
+	return GenericRipCryptApp;
 };
