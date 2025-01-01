@@ -2,7 +2,9 @@
 
 @import url("./elements/button.css");
 @import url("./elements/input.css");
+@import url("./elements/lists.css");
 @import url("./elements/select.css");
+@import url("./elements/span.css");
 @import url("./elements/table.css");
 
 .ripcrypt {
@@ -11,7 +13,8 @@
 		margin: 0;
 	}
 
-	.HeroSummaryCardV1 {
+	.HeroSummaryCardV1,
+	.HeroSkillsCardV1 {
 		/* height: 270px; */
 		width: 680px;
 		--col-gap: 2px;

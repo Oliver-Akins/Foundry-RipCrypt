@@ -1,0 +1,12 @@
+.ripcrypt > .window-content {
+	ol {
+		list-style-position: inside;
+		margin: 0;
+		padding: 0;
+
+		> li {
+			margin: 0;
+			padding: 0;
+		}
+	}
+}

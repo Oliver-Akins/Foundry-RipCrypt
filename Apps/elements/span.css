@@ -1,0 +1,5 @@
+.ripcrypt > .window-content span {
+	&.small {
+		font-size: var(--font-size-10)
+	}
+}
