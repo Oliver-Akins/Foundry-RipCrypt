@@ -29,7 +29,7 @@ export class CryptApp extends GenericAppMixin(HandlebarsApplicationMixin(Applica
 		const frame = await super._renderFrame(options);
 		this.window.close.remove(); // Prevent closing
 		return frame;
-	}
+	};
 
 	async _preparePartContext(partId, ctx, opts) {
 		ctx = await super._preparePartContext(partId, ctx, opts);
