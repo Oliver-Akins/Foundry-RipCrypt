@@ -18,6 +18,10 @@ export function GenericAppMixin(HandlebarsApp) {
 				roll: this.rollDice,
 			},
 		};
+
+		static themes = {
+			dark: `SETTINGS.UI.FIELDS.colorScheme.dark`,
+		};
 		// #endregion
 
 		// #region Lifecycle

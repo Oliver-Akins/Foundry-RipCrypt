@@ -1,3 +1,5 @@
+@import url("./vars.css");
+
 @import url("./elements/button.css");
 @import url("./elements/input.css");
 @import url("./elements/select.css");

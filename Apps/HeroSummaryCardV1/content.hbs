@@ -182,13 +182,14 @@
 					{{#if @root.meta.editable}}
 						<button
 							type="button"
-							class="roll"
+							class="roll icon"
 							data-action="roll"
 							data-formula="{{ability.value}}d8rc4"
 							data-flavor="{{ability.name}} Roll (Difficulty: 4)"
 						>
 							<rc-icon
 								var:size="20px"
+								var:fill="currentColor"
 								name="icons/roll"
 							></rc-icon>
 						</button>

@@ -1,4 +1,5 @@
 // Applications
+import { HeroSkillsCardV1 } from "../Apps/ActorSheets/HeroSkillsCardV1.mjs";
 import { HeroSummaryCardV1 } from "../Apps/ActorSheets/HeroSummaryCardV1.mjs";
 
 // Data Models
@@ -38,6 +39,12 @@ Hooks.once(`init`, () => {
 		makeDefault: true,
 		types: [`hero`],
 		label: `RipCrypt.sheet-names.HeroSummaryCardV1`,
+		themes: HeroSummaryCardV1.themes,
+	});
+	Actors.registerSheet(game.system.id, HeroSkillsCardV1, {
+		types: [`hero`],
+		label: `RipCrypt.sheet-names.HeroSkillsCardV1`,
+		themes: HeroSkillsCardV1.themes,
 	});
 	// #endregion
 	// #endregion

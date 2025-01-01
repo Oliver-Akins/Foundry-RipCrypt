@@ -1,0 +1,22 @@
+.theme-rc-dark,
+.theme-dark {
+	--accent-1: #056162;
+	--accent-2: #04262a;
+	--accent-3: #4fb258;
+
+	--section-header-text: white;
+	--section-header-background: var(--accent-1);
+
+	--base-text: white;
+	--base-background: black;
+
+	--alt-row-text: white;
+	--alt-row-background: var(--accent-2);
+
+	--input-underline: 2px dashed var(--accent-3);
+	--input-background: inherit;
+	--input-text: white;
+
+	--button-background: black;
+	--button-text: var(--accent-3);
+}

@@ -1,0 +1,14 @@
+.theme-rc-light,
+.theme-light {
+	--header-text: white;
+	--header-background: black;
+
+	--section-header-text: white;
+	--section-header-background: black;
+
+	--alt-row-text: black;
+	--alt-row-background: rgba(0,0,0, 0.3);
+
+	--base-text: black;
+	--base-background: white;
+}

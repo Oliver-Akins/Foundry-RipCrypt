@@ -7,12 +7,13 @@
 		font-family: inherit;
 		font-size: inherit;
 		position: relative;
-		background: none;
+		background: var(--input-background);
+		color: var(--input-text);
 		padding: 0px 4px;
 
 		&[type="text"],
 		&[type="number"] {
-			border-bottom: 2px dashed purple;
+			border-bottom: var(--input-underline);
 		}
 	}
 }

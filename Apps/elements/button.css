@@ -1,8 +1,10 @@
 .ripcrypt > .window-content button {
 	all: revert;
 	padding: 2px 4px;
+	background: var(--button-background);
+	color: var(--button-text);
 
-	&.roll {
+	&.icon {
 		padding: 0;
 		border-radius: 50%;
 		outline: none;

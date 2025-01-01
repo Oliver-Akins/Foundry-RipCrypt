@@ -19,7 +19,7 @@
 	],
 	"styles": [
 		"Apps/common.css",
-		"Apps/HeroSummaryCardV1/style.css"
+		"Apps/apps.css"
 	],
 	"languages": [
 		{

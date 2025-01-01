@@ -1,0 +1,32 @@
+.ripcrypt .HeroSummaryCardV1 {
+
+	/* Foundry Variable Tweaks */
+	--input-height: 1rem;
+
+	display: grid;
+	grid-template-columns: minmax(0, 3fr) minmax(0, 2fr) minmax(0, 2fr) minmax(0, 1.25fr) minmax(0, 2.5fr);
+	grid-template-rows: repeat(15, minmax(0, 1fr));
+	column-gap: var(--col-gap);
+
+	background: var(--base-background);
+	color: var(--base-text);
+
+	.col-header {
+		background: var(--section-header-background);
+		color: var(--section-header-text);
+	}
+	.row-alt {
+		background: var(--alt-row-background);
+		color: var(--alt-row-text);
+	}
+
+	label, .label {
+		box-sizing: border-box;
+		padding: 2px 4px;
+		text-transform: uppercase;
+		font-size: var(--font-size-14);
+		overflow: hidden;
+		text-overflow: ellipsis;
+		font-weight: bold;
+	}
+}

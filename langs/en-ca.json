@@ -9,7 +9,8 @@
 	},
 	"RipCrypt": {
 		"sheet-names": {
-			"HeroSummaryCardV1": "Hero Stat Card"
+			"HeroSummaryCardV1": "Hero Stat Card",
+			"HeroSkillsCardV1": "Hero Skill Card"
 		},
 		"common": {
 			"empty": "---",

@@ -8,15 +8,16 @@
 	grid-template-rows: repeat(15, minmax(0, 1fr));
 	column-gap: var(--col-gap);
 
-	background: white;
-	color: black;
+	background: var(--base-background);
+	color: var(--base-text);
 
 	.col-header {
-		background: black;
-		color: white;
+		background: var(--section-header-background);
+		color: var(--section-header-text);
 	}
 	.row-alt {
-		background: rgba(0,0,0, 0.3);
+		background: var(--alt-row-background);
+		color: var(--alt-row-text);
 	}
 
 	label, .label {
@@ -132,7 +133,7 @@
 		flex-direction: column;
 		justify-content: center;
 		align-items: center;
-		border: 2px solid black;
+		border: 2px solid var(--accent-1);
 		border-radius: 50%;
 		font-size: 1.5rem;
 		position: relative;
@@ -161,7 +162,7 @@
 				content: "";
 				width: 69%;
 				height: 2px;
-				background: black;
+				background: var(--accent-1);
 				transform: rotate(-45deg);
 			}
 
