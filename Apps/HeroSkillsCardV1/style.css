@@ -55,6 +55,7 @@
 		grid-column: 1 / span 1;
 		grid-row: 2 / span 4;
 	}
+
 	.gait-skills {
 		grid-column: 2 / span 1;
 		grid-row: 2 / span 4;
@@ -66,6 +67,15 @@
 	}
 	.grip-skills {
 		grid-column: 1 / span 1;
+		grid-row: 7 / span 4;
+	}
+
+	.glim-skills-header {
+		grid-column: 2 / span 1;
+		grid-row: 6 / span 1;
+	}
+	.glim-skills {
+		grid-column: 2 / span 1;
 		grid-row: 7 / span 4;
 	}
 }
