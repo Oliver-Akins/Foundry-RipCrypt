@@ -54,11 +54,6 @@ export class HeroSummaryCardV1 extends GenericAppMixin(HandlebarsApplicationMixi
 		ctx = await HeroSummaryCardV1.prepareSpeed(ctx);
 		ctx = await HeroSummaryCardV1.prepareLevelData(ctx);
 
-		partId = partId.slice(0,1).toUpperCase() + partId.slice(1);
-		if (this[`_prepare${partId}Context`] != null) {
-			ctx = await this[`_prepare${partId}Context`](ctx, opts);
-		};
-
 		Logger.debug(`Context:`, ctx);
 		return ctx;
 	};
