@@ -1,6 +1,6 @@
 import { filePath } from "../../consts.mjs";
 import { gameTerms } from "../../gameTerms.mjs";
-import { GenericSheetMixin } from "./GenericActorSheet.mjs";
+import { GenericSheetMixin } from "../GenericSheet.mjs";
 import { localizer } from "../../utils/Localizer.mjs";
 import { Logger } from "../../utils/Logger.mjs";
 

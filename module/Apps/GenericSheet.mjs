@@ -1,5 +1,5 @@
-import { localizer } from "../../utils/Localizer.mjs";
-import { Logger } from "../../utils/Logger.mjs";
+import { localizer } from "../utils/Localizer.mjs";
+import { Logger } from "../utils/Logger.mjs";
 
 const { Roll } = foundry.dice;
 
@@ -32,7 +32,6 @@ export function GenericSheetMixin(HandlebarsSheet) {
 			ctx.meta.editable = ctx.editable;
 			delete ctx.editable;
 
-			ctx.actor = this.document;
 			return ctx;
 		};
 		// #endregion
