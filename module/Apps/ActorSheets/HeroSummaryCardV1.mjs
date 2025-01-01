@@ -4,17 +4,14 @@ import { GenericAppMixin } from "../GenericApp.mjs";
 import { localizer } from "../../utils/Localizer.mjs";
 import { Logger } from "../../utils/Logger.mjs";
 
-
 const { HandlebarsApplicationMixin } = foundry.applications.api;
 const { ActorSheetV2 } = foundry.applications.sheets;
-// const { Roll } = foundry.dice;
 
 export class HeroSummaryCardV1 extends GenericAppMixin(HandlebarsApplicationMixin(ActorSheetV2)) {
 
 	// #region Options
 	static DEFAULT_OPTIONS = {
 		classes: [
-			// `ripcrypt`,
 			`ripcrypt--actor`,
 			`ripcrypt--HeroSummaryCardV1`,
 			`ripcrypt-theme--dark`,
@@ -26,9 +23,7 @@ export class HeroSummaryCardV1 extends GenericAppMixin(HandlebarsApplicationMixi
 		window: {
 			resizable: false,
 		},
-		actions: {
-			// roll: this.rollDice,
-		},
+		actions: {},
 		form: {
 			submitOnChange: true,
 			closeOnSubmit: false,
@@ -137,28 +132,9 @@ export class HeroSummaryCardV1 extends GenericAppMixin(HandlebarsApplicationMixi
 			};
 		};
 		return ctx;
-	}
+	};
 	// #endregion
 
 	// #region Actions
-	// static async rollDice(_$e, el) {
-	// 	const data = el.dataset;
-	// 	const formula = data.formula;
-	// 	Logger.debug(`Attempting to roll formula: ${formula}`);
-
-	// 	let flavor;
-	// 	if (data.flavor) {
-	// 		flavor = localizer(
-	// 			data.flavor,
-	// 		);
-	// 	}
-
-	// 	const roll = new Roll(formula);
-	// 	await roll.evaluate();
-	// 	await roll.toMessage({
-	// 		speaker: ChatMessage.getSpeaker({ actor: this.actor }),
-	// 		flavor,
-	// 	});
-	// };
 	// #endregion
 };
