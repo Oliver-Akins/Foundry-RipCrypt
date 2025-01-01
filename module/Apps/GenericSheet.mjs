@@ -27,9 +27,11 @@ export function GenericSheetMixin(HandlebarsSheet) {
 			delete ctx.fields;
 
 			ctx.meta ??= {};
-			ctx.meta.idp = this.document.uuid;
-			ctx.meta.limited = this.actor.limited;
-			ctx.meta.editable = ctx.editable;
+			ctx.meta.idp = this.document?.uuid ?? this.id;
+			if (this.document) {
+				ctx.meta.limited = this.document.limited;
+				ctx.meta.editable = ctx.editable;
+			}
 			delete ctx.editable;
 
 			return ctx;
