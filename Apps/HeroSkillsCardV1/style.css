@@ -37,11 +37,15 @@
 		align-items: center;
 	}
 	.skill-list {
+		display: grid;
+		grid-template-rows: subgrid;
+
 		& > li {
 			padding-left: 4px;
 		}
 
-		& > :nth-child(even) {
+		&.even > :nth-child(even),
+		&.odd > :nth-child(odd) {
 			background: var(--alt-row-background);
 			color: var(--alt-row-text);
 		}
@@ -54,5 +58,14 @@
 	.gait-skills {
 		grid-column: 2 / span 1;
 		grid-row: 2 / span 4;
+	}
+
+	.grip-skills-header {
+		grid-column: 1 / span 1;
+		grid-row: 6 / span 1;
+	}
+	.grip-skills {
+		grid-column: 1 / span 1;
+		grid-row: 7 / span 4;
 	}
 }
