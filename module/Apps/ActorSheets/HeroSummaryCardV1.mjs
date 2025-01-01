@@ -14,7 +14,6 @@ export class HeroSummaryCardV1 extends GenericAppMixin(HandlebarsApplicationMixi
 		classes: [
 			`ripcrypt--actor`,
 			`ripcrypt--HeroSummaryCardV1`,
-			`ripcrypt-theme--dark`,
 		],
 		position: {
 			width: `auto`,
