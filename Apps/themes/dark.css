@@ -4,11 +4,11 @@
 	--accent-2: #04262a;
 	--accent-3: #4fb258;
 
-	--section-header-text: white;
-	--section-header-background: var(--accent-1);
-
 	--base-text: white;
 	--base-background: black;
+
+	--section-header-text: white;
+	--section-header-background: var(--accent-1);
 
 	--alt-row-text: white;
 	--alt-row-background: var(--accent-2);

@@ -104,13 +104,12 @@
 			align-items: center;
 			background: var(--section-header-background);
 			color: var(--section-header-text);
-			--input-background: black;
-			--input-text: white;
+			--input-background: var(--base-background);
+			--input-text: var(--base-text);
 
 			.input {
 				margin: 2px;
 				border-radius: 999px;
-				/* border-bottom: none; */
 				text-align: center;
 			}
 		}
