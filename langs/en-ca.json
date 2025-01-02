@@ -41,7 +41,12 @@
 			"step": "Step",
 			"rank": "Rank",
 			"gear": "Gear",
-			"slots": "Slots"
+			"slot": "Slot",
+			"currency": {
+				"gold": "Gold",
+				"silver": "Silver",
+				"copper": "Copper"
+			}
 		},
 		"setting": {
 			"abbrAccess": {

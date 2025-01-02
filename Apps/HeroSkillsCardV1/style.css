@@ -90,4 +90,33 @@
 			color: var(--alt-row-text);
 		}
 	}
+
+	.currencies {
+		grid-column: 1 / span 2;
+		grid-row: 13 / span 1;
+		display: grid;
+		column-gap: var(--col-gap);
+		grid-template-columns: repeat(3, minmax(0, 1fr));
+
+		.currency {
+			display: grid;
+			grid-template-columns: minmax(0, 1.5fr) minmax(0, 1fr);
+			align-items: center;
+			background: var(--section-header-background);
+			color: var(--section-header-text);
+			--input-background: black;
+			--input-text: white;
+
+			.input {
+				margin: 2px;
+				border-radius: 999px;
+				/* border-bottom: none; */
+				text-align: center;
+			}
+		}
+	}
+
+	.half-pill {
+		border-radius: 0 999px 999px 0;
+	}
 }

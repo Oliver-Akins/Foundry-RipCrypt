@@ -45,7 +45,7 @@
 
 	<div class="label col-header list-header">
 		<span>{{ rc-i18n "RipCrypt.common.gear" }}</span>
-		<span class="small">{{ rc-i18n "RipCrypt.common.slots" }}</span>
+		<span class="small">{{ rc-i18n "RipCrypt.common.slot" }}</span>
 	</div>
 	<ol class="num-after gear-list">
 		<li></li>
@@ -61,4 +61,49 @@
 		<li></li>
 		<li></li>
 	</ol>
+
+	<div class="currencies">
+		<div class="currency half-pill">
+			<{{{ifThen meta.editable "label" "div" }}}
+				for="{{meta.idp}}-gold"
+				class="label"
+			>
+				{{ rc-i18n "RipCrypt.common.currency.gold"}}
+			</{{{ifThen meta.editable "label" "div" }}}>
+			<input
+				type="number"
+				id="{{meta.idp}}-gold"
+				class="input"
+				value="0"
+			>
+		</div>
+		<div class="currency half-pill">
+			<{{{ifThen meta.editable "label" "div" }}}
+				for="{{meta.idp}}-silver"
+				class="label"
+			>
+				{{ rc-i18n "RipCrypt.common.currency.silver"}}
+			</{{{ifThen meta.editable "label" "div" }}}>
+			<input
+				type="number"
+				id="{{meta.idp}}-silver"
+				class="input"
+				value="0"
+			>
+		</div>
+		<div class="currency half-pill">
+			<{{{ifThen meta.editable "label" "div" }}}
+				for="{{meta.idp}}-copper"
+				class="label"
+			>
+				{{ rc-i18n "RipCrypt.common.currency.copper"}}
+			</{{{ifThen meta.editable "label" "div" }}}>
+			<input
+				type="number"
+				id="{{meta.idp}}-copper"
+				class="input"
+				value="0"
+			>
+		</div>
+	</div>
 </div>
