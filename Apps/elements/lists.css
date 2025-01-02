@@ -1,12 +1,34 @@
 .ripcrypt > .window-content {
 	ol {
-		list-style-position: inside;
+		list-style-type: none;
 		margin: 0;
 		padding: 0;
+		counter-reset: list-index 0;
 
 		> li {
 			margin: 0;
-			padding: 0;
+			padding: 2px 4px;
+			display: flex;
+			flex-direction: row;
+			gap: 8px;
+			align-items: center;
+			counter-increment: list-index 1;
+			position: relative;
+		}
+
+		&.num-before > li::before,
+		&.num-after > li::after {
+			content: counter(list-index);
+			display: block;
+			position: absolute;
+			font-size: var(--font-size-12);
+		}
+
+		&.num-before > li::before {
+			position: revert;
+		}
+		&.num-after > li::after {
+			right: 4px;
 		}
 	}
 }
