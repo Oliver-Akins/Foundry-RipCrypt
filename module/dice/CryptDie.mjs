@@ -43,12 +43,11 @@ export class CryptDie extends Die {
 			}
 		};
 
-		// Count successes and deduct failures from total
+		// Count successes
 		await this.countSuccess(`cs>=${target}`);
-		await this.deductFailures(`df<${target}`);
 	};
 
 	get total() {
 		return Math.max(super.total, 0);
-	}
+	};
 };
