@@ -19,7 +19,7 @@ export class CryptApp extends GenericAppMixin(HandlebarsApplicationMixin(Applica
 
 	static PARTS = {
 		main: {
-			template: filePath(`Apps/CryptApp/main.hbs`),
+			template: filePath(`templates/Apps/CryptApp/main.hbs`),
 		},
 	};
 	// #endregion

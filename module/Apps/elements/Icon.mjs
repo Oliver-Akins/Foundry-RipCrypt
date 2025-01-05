@@ -11,7 +11,7 @@ export class RipCryptIcon extends StyledShadowElement(HTMLElement) {
 	static formAssociated = false;
 
 	/* Stuff for the mixin to use */
-	static _stylePath = `components/icon.css`;
+	static _stylePath = `css/components/icon.css`;
 
 
 	static _cache = new Map();

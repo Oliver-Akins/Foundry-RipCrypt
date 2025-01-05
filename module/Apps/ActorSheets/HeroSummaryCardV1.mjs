@@ -31,7 +31,7 @@ export class HeroSummaryCardV1 extends GenericAppMixin(HandlebarsApplicationMixi
 
 	static PARTS = {
 		content: {
-			template: filePath(`Apps/HeroSummaryCardV1/content.hbs`),
+			template: filePath(`templates/Apps/HeroSummaryCardV1/content.hbs`),
 		},
 	};
 	// #endregion

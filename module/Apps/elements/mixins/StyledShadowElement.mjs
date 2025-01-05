@@ -60,7 +60,7 @@ export function StyledShadowElement(Base) {
 			if (this.constructor._styles) {
 				this._style.innerHTML = this.constructor._styles;
 			} else {
-				fetch(`./systems/${game.system.id}/Apps/${this.constructor._stylePath}`)
+				fetch(`./systems/${game.system.id}/templates/${this.constructor._stylePath}`)
 					.then(r => r.text())
 					.then(t => {
 						this.constructor._styles = t;

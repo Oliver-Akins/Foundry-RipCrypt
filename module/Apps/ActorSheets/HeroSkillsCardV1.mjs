@@ -32,7 +32,7 @@ export class HeroSkillsCardV1 extends GenericAppMixin(HandlebarsApplicationMixin
 
 	static PARTS = {
 		content: {
-			template: filePath(`Apps/HeroSkillsCardV1/content.hbs`),
+			template: filePath(`templates/Apps/HeroSkillsCardV1/content.hbs`),
 		},
 	};
 	// #endregion
