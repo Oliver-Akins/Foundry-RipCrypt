@@ -7,6 +7,9 @@
 	--base-text: white;
 	--base-background: black;
 
+	--title-text: white;
+	--title-background: var(--accent-3);
+
 	--section-header-text: white;
 	--section-header-background: var(--accent-1);
 

@@ -1,0 +1,15 @@
+.ripcrypt.chat-message {
+	position: relative;
+	background: var(--base-background);
+	color: var(--base-text);
+
+	.author {
+		position: absolute;
+		text-align: center;
+		top: 0;
+		left: 50%;
+		transform: translateY(-50%) translateX(-50%);
+		background: var(--title-background);
+		color: var(--title-text);
+	}
+}
