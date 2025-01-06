@@ -153,6 +153,11 @@
 			z-index: 2;
 		}
 
+		&.small {
+			--size: 30px;
+			font-size: 1.15rem;
+		}
+
 		&.dual {
 			font-size: var(--font-size-14);
 			--distance-from-edge: 4px;
@@ -182,6 +187,51 @@
 			> .max {
 				bottom: var(--distance-from-edge);
 				right: var(--distance-from-edge);
+			}
+		}
+	}
+
+	.armour {
+		grid-column: -2 / span 1;
+		grid-row: 1 / -1;
+		display: grid;
+		grid-template-rows: subgrid;
+
+		.section-header {
+			text-align: right;
+		}
+
+		.person {
+			grid-row: 2 / span 9;
+			display: grid;
+			grid-template-columns: repeat(2, minmax(0, 1fr));
+			grid-template-rows: minmax(0, 1fr) minmax(0, 1fr) minmax(0, 1.2fr);
+			justify-items: center;
+			align-items: center;
+
+			> div {
+				display: flex;
+				flex-direction: column;
+				justify-content: center;
+				align-items: center;
+			}
+		}
+
+		/* Positioning */
+		.head, .body, .legs { grid-column: 1; }
+		.arms, .shield { grid-column: 2; }
+		.head { grid-row: 1; }
+		.body, .arms { grid-row: 2; }
+		.legs, .shield { grid-row: 3; }
+		.shield { align-self: end; }
+
+		.armour-items {
+			display: contents;
+
+			> li {
+				display: flex;
+				flex-direction: row-reverse;
+				justify-content: space-between;
 			}
 		}
 	}

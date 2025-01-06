@@ -34,6 +34,7 @@
 				"singular": "Weapon",
 				"plural": "Weapons"
 			},
+			"armour": "Armour",
 			"wear": "Wear",
 			"damage": "Damage",
 			"guts": "Guts",
@@ -46,7 +47,14 @@
 				"gold": "Gold",
 				"silver": "Silver",
 				"copper": "Copper"
-			}
+			},
+			"anatomy": {
+				"head": "Head",
+				"body": "Body",
+				"arms": "Arms",
+				"legs": "Legs"
+			},
+			"shield": "Shield"
 		},
 		"setting": {
 			"abbrAccess": {
