@@ -4,8 +4,8 @@
 	"description": "",
 	"version": "0.0.1",
 	"compatibility": {
-		"minimum": 12,
-		"verified": 12,
+		"minimum": 13,
+		"verified": 13,
 		"maximum": 13
 	},
 	"authors": [
@@ -36,7 +36,7 @@
 	"flags": {
 		"hotReload": {
 			"extensions": ["css", "hbs", "json", "mjs", "svg"],
-			"paths": ["assets", "Apps", "langs", "module"]
+			"paths": ["assets", "templates", "langs", "module"]
 		}
 	},
 	"documentTypes": {
