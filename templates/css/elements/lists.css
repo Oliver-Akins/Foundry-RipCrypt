@@ -7,7 +7,6 @@
 
 		> li {
 			margin: 0;
-			padding: 2px 4px;
 			display: flex;
 			flex-direction: row;
 			gap: 8px;
@@ -29,6 +28,12 @@
 		}
 		&.num-after > li::after {
 			right: 4px;
+		}
+	}
+
+	ul {
+		> li {
+			margin: 0;
 		}
 	}
 }

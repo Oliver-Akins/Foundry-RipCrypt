@@ -90,7 +90,7 @@
 		grid-row: 7 / span 5;
 		display: grid;
 		grid-template-columns: subgrid;
-		grid-auto-rows: min-content;
+		grid-template-rows: subgrid;
 		overflow-y: auto;
 
 		thead,
@@ -121,7 +121,10 @@
 
 		label, .label {
 			width: 100%;
-			text-align: center;
+			height: 100%;
+			display: flex;
+			justify-content: center;
+			align-items: center;
 		}
 	}
 
