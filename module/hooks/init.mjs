@@ -1,4 +1,5 @@
 // Applications
+import { AllItemSheetV1 } from "../Apps/ItemSheets/AllItemSheetV1.mjs";
 import { HeroSkillsCardV1 } from "../Apps/ActorSheets/HeroSkillsCardV1.mjs";
 import { HeroSummaryCardV1 } from "../Apps/ActorSheets/HeroSummaryCardV1.mjs";
 
@@ -34,6 +35,12 @@ Hooks.once(`init`, () => {
 	// #endregion
 
 	// #region Sheets
+	// Unregister core sheets
+	/* eslint-disable no-undef */
+	Items.unregisterSheet(`core`, ItemSheet);
+	Actors.unregisterSheet(`core`, ActorSheet);
+	/* eslint-enabled no-undef */
+
 	// #region Actors
 	Actors.registerSheet(game.system.id, HeroSummaryCardV1, {
 		makeDefault: true,
@@ -45,6 +52,14 @@ Hooks.once(`init`, () => {
 		types: [`hero`],
 		label: `RipCrypt.sheet-names.HeroSkillsCardV1`,
 		themes: HeroSkillsCardV1.themes,
+	});
+	// #endregion
+
+	// #region Items
+	Items.registerSheet(game.system.id, AllItemSheetV1, {
+		makeDefault: true,
+		label: `RipCrypt.sheet-names.AllItemsSheetV1`,
+		themes: AllItemSheetV1.themes,
 	});
 	// #endregion
 	// #endregion
