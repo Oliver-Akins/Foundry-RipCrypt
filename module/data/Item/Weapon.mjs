@@ -55,4 +55,23 @@ export class WeaponData extends foundry.abstract.TypeDataModel {
 		return String(this.range.short ?? this.range.long ?? ``);
 	}
 	// #endregion
+
+	// #region Sheet Data
+	get formFields() {
+		const fields = [
+			{ type: `set`, label: `Traits` },
+			{ type: `integer`, label: `Short Range` },
+			{ type: `integer`, label: `Long Range` },
+			{ type: `integer`, label: `Damage` },
+			{ type: `bar`, label: `Wear` },
+			{ type: `dropdown`, label: `Access` },
+		];
+
+		if (this.parent.isEmbedded) {
+			fields.push({ type: `boolean`, label: `Equipped` });
+		};
+
+		return fields;
+	};
+	// #endregion
 };

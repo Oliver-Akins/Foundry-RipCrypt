@@ -38,7 +38,7 @@ export class AllItemSheetV1 extends GenericAppMixin(HandlebarsApplicationMixin(I
 	// #region Lifecycle
 	async _preparePartContext(partId, ctx, opts) {
 		ctx = await super._preparePartContext(partId, ctx, opts);
-		ctx.actor = this.document;
+		ctx.item = this.document;
 
 		Logger.debug(`Context:`, ctx);
 		return ctx;
