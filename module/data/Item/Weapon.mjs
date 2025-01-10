@@ -57,7 +57,7 @@ export class WeaponData extends foundry.abstract.TypeDataModel {
 	// #endregion
 
 	// #region Sheet Data
-	get formFields() {
+	getFormFields(ctx) {
 		const fields = [
 			{ type: `set`, label: `Traits` },
 			{ type: `integer`, label: `Short Range` },

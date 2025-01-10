@@ -1,3 +1,17 @@
 <div class="AllItemSheetV1">
-	{{{ rc-formFields item.system.formFields }}}
+	<div>
+		{{#if meta.editable}}
+			<label for="{{meta.idp}}-name">Name</label>
+			<input
+				type="text"
+				id="{{meta.idp}}-name"
+				name="name"
+				value="{{item.name}}"
+			>
+		{{else}}
+			<span class="label">Name</span>
+			<span class="value">{{item.name}}</span>
+		{{/if}}
+	</div>
+	{{{ rc-formFields formFields }}}
 </div>

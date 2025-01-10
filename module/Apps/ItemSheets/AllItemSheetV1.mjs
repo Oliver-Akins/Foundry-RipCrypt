@@ -40,6 +40,8 @@ export class AllItemSheetV1 extends GenericAppMixin(HandlebarsApplicationMixin(I
 		ctx = await super._preparePartContext(partId, ctx, opts);
 		ctx.item = this.document;
 
+		ctx.formFields = this.document.system.getFormFields(ctx);
+
 		Logger.debug(`Context:`, ctx);
 		return ctx;
 	};
