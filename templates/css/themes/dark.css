@@ -7,6 +7,9 @@
 	--base-text: white;
 	--base-background: black;
 
+	--header-text: black;
+	--header-background: var(--accent-3);
+
 	--section-header-text: white;
 	--section-header-background: var(--accent-1);
 
@@ -19,4 +22,11 @@
 
 	--button-background: black;
 	--button-text: var(--accent-3);
+
+	/* Additional Variables */
+	--string-tags-border: inherit;
+	--string-tags-tag-background: inherit;
+	--string-tags-tag-text: inherit;
+	--string-tags-add-background: inherit;
+	--string-tags-add-text: var(--accent-3);
 }

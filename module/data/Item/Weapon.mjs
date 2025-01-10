@@ -59,7 +59,12 @@ export class WeaponData extends foundry.abstract.TypeDataModel {
 	// #region Sheet Data
 	getFormFields(ctx) {
 		const fields = [
-			{ type: `set`, label: `Traits` },
+			{
+				type: `string-set`,
+				label: `RipCrypt.common.traits`,
+				path: `system.traits`,
+				value: this.traitString,
+			},
 			{ type: `integer`, label: `Short Range` },
 			{ type: `integer`, label: `Long Range` },
 			{ type: `integer`, label: `Damage` },

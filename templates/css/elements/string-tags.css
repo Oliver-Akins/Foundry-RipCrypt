@@ -1,0 +1,28 @@
+.ripcrypt string-tags {
+	--input-background: var(--string-tags-input-background);
+
+	display: grid;
+	grid-template-columns: 1fr min-content;
+	grid-template-rows: repeat(2, minmax(0, 1fr));
+
+	padding: 2px;
+	border: var(--string-tags-border);
+
+	.tags {
+		grid-column: 1 / -1;
+	}
+
+	.tag {
+		background: var(--tag-background, var(--header-background));
+		color: var(--tag-text, var(--header-text));
+		padding: 2px 4px;
+	}
+
+	button.icon.icon {
+		font-family: var(--font-awesome);
+		background: var(--string-tags-add-background);
+		color: var(--string-tags-add-text);
+		width: 30px;
+		border-radius: 4px;
+	}
+}

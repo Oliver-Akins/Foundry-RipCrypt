@@ -2,6 +2,11 @@
 	--input-height: 1rem;
 	--col-gap: 8px;
 
+	--string-tags-tag-text: var(--header-text);
+	--string-tags-tag-background: var(--header-background);
+	--string-tags-add-text: white;
+	--string-tags-add-background: var(--accent-1);
+
 	display: grid;
 	grid-template-rows: minmax(0, 1fr);
 	grid-auto-rows: minmax(0, 1fr);
@@ -13,6 +18,11 @@
 	> :nth-child(odd) {
 		background: var(--alt-row-background);
 		color: var(--alt-row-text);
+
+		--string-tags-tag-text: var(--header-text);
+		--string-tags-tag-background: var(--header-background);
+		--string-tags-add-text: var(--button-text);
+		--string-tags-add-background: var(--button-background);
 	}
 
 	label, .label {
@@ -25,7 +35,15 @@
 		font-weight: bold;
 	}
 
-	.input-group {
-		display: contents;
+	[data-input-type="string-set"] {
+		padding: 2px 4px;
+		display: flex;
+		flex-direction: row;
+		column-gap: var(--col-gap);
+		grid-row: span 2;
+
+		label, .label {
+			padding: 0;
+		}
 	}
 }
