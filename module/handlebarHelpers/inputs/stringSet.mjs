@@ -1,7 +1,10 @@
 import { localizer } from "../../utils/Localizer.mjs";
 
+const { randomID } = foundry.utils;
+
 export function stringSet(input, data) {
 	const label = localizer(input.label);
+	const id = `${data.meta.idp}-${randomID(10)}`;
 
 	if (!data.meta.editable) {
 		return `<div data-input-type="string-set">
@@ -12,12 +15,12 @@ export function stringSet(input, data) {
 
 	return `<div data-input-type="string-set">
 		<label
-			for="${data.meta.idp}-traits"
+			for="${id}"
 		>
 			${label}
 		</label>
 		<string-tags
-			id="${data.meta.idp}-traits"
+			id="${id}"
 			value="${input.value}"
 			name="${input.path}"
 		/>
