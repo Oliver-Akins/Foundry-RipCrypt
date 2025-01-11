@@ -1,4 +1,4 @@
-import { stringSet } from "./string-set.mjs";
+import { stringSet } from "./stringSet.mjs";
 
 const inputTypes = {
 	"string-set": stringSet,
