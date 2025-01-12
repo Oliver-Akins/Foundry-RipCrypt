@@ -74,7 +74,10 @@
 				"guts-value-edit": "The current amount of guts the character has",
 				"guts-value-readonly": "The current amount of guts the character has",
 				"guts-max-readonly": "The maximum amount of guts the character can have"
-			}
+			},
+			"traits-placeholder": "New Trait...",
+			"short-range": "Short @RipCrypt.common.range",
+			"long-range": "Long @RipCrypt.common.range"
 		}
 	}
 }

@@ -15,5 +15,9 @@
 		&[type="number"] {
 			border-bottom: var(--input-underline);
 		}
+
+		&::placeholder {
+			color: var(--input-placeholder-text);
+		}
 	}
 }

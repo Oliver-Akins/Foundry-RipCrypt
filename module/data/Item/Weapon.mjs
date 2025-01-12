@@ -62,14 +62,33 @@ export class WeaponData extends foundry.abstract.TypeDataModel {
 			{
 				type: `string-set`,
 				label: `RipCrypt.common.traits`,
+				placeholder: `RipCrypt.Apps.traits-placeholder`,
 				path: `system.traits`,
-				value: this.traitString,
+				value: ctx.meta.limited ? `???` : this.traitString,
 			},
-			{ type: `integer`, label: `Short Range` },
-			{ type: `integer`, label: `Long Range` },
-			{ type: `integer`, label: `Damage` },
-			{ type: `bar`, label: `Wear` },
-			{ type: `dropdown`, label: `Access` },
+			{
+				type: `integer`,
+				label: `RipCrypt.Apps.short-range`,
+				path: `system.range.short`,
+				value: ctx.meta.limited ? `???` : (this.range.short ?? ``),
+				min: 0,
+			},
+			{
+				type: `integer`,
+				label: `RipCrypt.Apps.long-range`,
+				path: `system.range.long`,
+				value: ctx.meta.limited ? `???` : (this.range.long ?? ``),
+				min: 0,
+			},
+			{
+				type: `integer`,
+				label: `RipCrypt.common.damage`,
+				path: `system.damage`,
+				value: ctx.meta.limited ? `???` : this.damage,
+				min: 0,
+			},
+			// { type: `bar`, label: `Wear` },
+			// { type: `dropdown`, label: `Access` },
 		];
 
 		if (this.parent.isEmbedded) {

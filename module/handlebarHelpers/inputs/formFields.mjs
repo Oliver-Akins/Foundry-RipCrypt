@@ -1,8 +1,9 @@
+import { numberInput } from "./numberInput.mjs";
 import { stringSet } from "./stringSet.mjs";
 
 const inputTypes = {
 	"string-set": stringSet,
-	integer: displayOnly,
+	integer: numberInput,
 	bar: displayOnly,
 	dropdown: displayOnly,
 	boolean: displayOnly,
@@ -13,10 +14,10 @@ function displayOnly(input) {
 };
 
 export function formFields(inputs, opts) {
-	let htmlString = ``;
+	const fields = [];
 	for (const input of inputs) {
 		if (inputTypes[input.type] == null) { continue };
-		htmlString += inputTypes[input.type](input, opts.data.root);
+		fields.push(inputTypes[input.type](input, opts.data.root));
 	};
-	return htmlString;
+	return fields.join(opts.hash?.joiner ?? `<hr />`);
 };

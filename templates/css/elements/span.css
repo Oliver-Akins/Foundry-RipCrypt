@@ -2,4 +2,8 @@
 	&.small {
 		font-size: var(--font-size-10)
 	}
+
+	&:empty::before {
+		content: "\200b";
+	}
 }

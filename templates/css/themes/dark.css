@@ -19,9 +19,13 @@
 	--input-underline: 2px dashed var(--accent-3);
 	--input-background: inherit;
 	--input-text: white;
+	--input-placeholder-text: rgba(255,255,255, 0.5);
 
 	--button-background: black;
 	--button-text: var(--accent-3);
+
+	--col-gap: 2px;
+	--row-gap: 0px;
 
 	/* Additional Variables */
 	--string-tags-border: inherit;

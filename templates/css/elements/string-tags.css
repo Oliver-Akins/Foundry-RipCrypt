@@ -5,16 +5,14 @@
 	grid-template-columns: 1fr min-content;
 	grid-template-rows: repeat(2, minmax(0, 1fr));
 
-	padding: 2px;
 	border: var(--string-tags-border);
 
 	.tags {
 		grid-column: 1 / -1;
 	}
 
-	.tag {
-		background: var(--tag-background, var(--header-background));
-		color: var(--tag-text, var(--header-text));
+	input[type="text"] {
+		border-radius: 4px;
 		padding: 2px 4px;
 	}
 
@@ -25,4 +23,14 @@
 		width: 30px;
 		border-radius: 4px;
 	}
+
+	&:has(.tags.input-element-tags:empty) {
+		grid-template-rows: auto;
+	}
+}
+
+.ripcrypt .tag {
+	background: var(--tag-background, var(--header-background));
+	color: var(--tag-text, var(--header-text));
+	padding: 2px 4px;
 }
