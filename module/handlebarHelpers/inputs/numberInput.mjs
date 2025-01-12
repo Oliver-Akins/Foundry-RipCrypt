@@ -9,7 +9,7 @@ export function numberInput(input, data) {
 	if (!data.meta.editable) {
 		return `<div data-input-type="integer">
 			<span class="label">${label}</span>
-			<span class="value">${data.meta.limited ? `???` : input.value}</span>
+			<span class="value">${data.meta.limited && input.limited ? `???` : input.value}</span>
 		</div>`;
 	};
 

@@ -33,4 +33,12 @@
 	--string-tags-tag-text: inherit;
 	--string-tags-add-background: inherit;
 	--string-tags-add-text: var(--accent-3);
+
+	--pill-border: var(--accent-2);
+	--pill-background: var(--accent-2);
+	--pill-divider: var(--accent-3);
+	--pill-input-text: white;
+	--pill-input-background: var(--accent-2);
+	--pill-input-disabled-text: white;
+	--pill-input-disabled-background: black;
 }

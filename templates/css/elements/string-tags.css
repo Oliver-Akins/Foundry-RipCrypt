@@ -2,8 +2,8 @@
 	--input-background: var(--string-tags-input-background);
 
 	display: grid;
-	grid-template-columns: 1fr min-content;
-	grid-template-rows: repeat(2, minmax(0, 1fr));
+	grid-template-columns: minmax(0, 1fr) min-content;
+	grid-template-rows: repeat(2, min-content);
 
 	border: var(--string-tags-border);
 

@@ -14,8 +14,11 @@
 	--input-text: white;
 	--input-background: var(--accent-2);
 
+	--pill-width: 100%;
+	--pill-border-radius: 4px;
+
 	display: grid;
-	grid-template-columns: auto minmax(0, 1fr);
+	grid-template-columns: auto 200px;
 	column-gap: var(--col-gap);
 	row-gap: var(--row-gap);
 

@@ -14,21 +14,23 @@ export function stringSet(input, data) {
 			.map(t => {
 				return `<div class="tag">${t.trim()}</div>`;
 			});
+		let count = tagList.length;
 		let tags = tagList.join(``);
 
 		if (tagList.length === 0) {
 			tags = `---`;
 		};
 
-		if (data.meta.limited) {
+		if (data.meta.limited && input.limited) {
+			count = 0;
 			tags = `???`;
 		};
 
 		return `<div data-input-type="string-set">
 			<span class="label">${label}</span>
 			<div
-				class="input-element-tags tags ${tags.length == 0 ? `empty` : ``}"
-				data-tag-count="${tagList.length}"
+				class="input-element-tags tags ${count == 0 ? `empty` : ``}"
+				data-tag-count="${count}"
 			>
 				${tags}
 			</div>

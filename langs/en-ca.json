@@ -83,7 +83,9 @@
 			},
 			"traits-placeholder": "New Trait...",
 			"short-range": "Short @RipCrypt.common.range",
-			"long-range": "Long @RipCrypt.common.range"
+			"long-range": "Long @RipCrypt.common.range",
+			"current-wear": "Current @RipCrypt.common.wear",
+			"max-wear": "Maximum @RipCrypt.common.wear"
 		}
 	}
 }

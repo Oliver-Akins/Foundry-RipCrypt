@@ -87,12 +87,28 @@ export class WeaponData extends foundry.abstract.TypeDataModel {
 				value: this.damage,
 				min: 0,
 			},
-			// { type: `bar`, label: `Wear` },
+			{
+				type: `bar`,
+				label: `RipCrypt.common.wear`,
+				value: {
+					label: `RipCrypt.Apps.current-wear`,
+					path: `system.wear.value`,
+					value: this.wear.value,
+					min: 0, max: this.wear.max,
+				},
+				max: {
+					label: `RipCrypt.Apps.max-wear`,
+					path: `system.wear.max`,
+					value: this.wear.max,
+					min: 0,
+				},
+			},
 			{
 				type: `dropdown`,
 				label: `Access`,
 				path: `system.access`,
 				value: this.access,
+				limited: false,
 				options: [
 					{
 						label: `RipCrypt.common.empty`,
