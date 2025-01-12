@@ -55,7 +55,13 @@
 				"arms": "Arms",
 				"legs": "Legs"
 			},
-			"shield": "Shield"
+			"shield": "Shield",
+			"access": {
+				"Common": "Common",
+				"Uncommon": "Uncommon",
+				"Rare": "Rare",
+				"Scarce": "Scarce"
+			}
 		},
 		"setting": {
 			"abbrAccess": {

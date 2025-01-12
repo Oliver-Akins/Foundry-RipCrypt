@@ -8,4 +8,7 @@
 	font-size: inherit;
 	display: flex;
 	align-items: center;
+
+	background: var(--input-background);
+	color: var(--input-text);
 }

@@ -9,7 +9,10 @@
 	--string-tags-add-text: white;
 	--string-tags-add-background: var(--accent-1);
 	--string-tags-input-text: white;
-	--string-tags-input-background: var(--accent-1);
+	--string-tags-input-background: var(--accent-2);
+
+	--input-text: white;
+	--input-background: var(--accent-2);
 
 	display: grid;
 	grid-template-columns: auto minmax(0, 1fr);
@@ -45,12 +48,9 @@
 		font-weight: bold;
 	}
 
-	input, .value, [data-tag-count] {
+	input, select, .value, [data-tag-count] {
 		border-radius: 4px;
 		padding: 2px 4px;
-	}
-	input {
-		background: var(--accent-2);
 	}
 	.value, [data-tag-count="0"] {
 		border: 2px solid var(--accent-2);
