@@ -61,4 +61,9 @@
 	[data-tag-count="0"] {
 		justify-content: start;
 	}
+
+	[data-input-type="boolean"] > .checkbox-container {
+		display: flex;
+		justify-content: right;
+	}
 }

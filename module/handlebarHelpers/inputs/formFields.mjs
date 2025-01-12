@@ -1,4 +1,5 @@
 import { barInput } from "./barInput.mjs";
+import { booleanInput } from "./booleanInput.mjs";
 import { dropdownInput } from "./dropdownInput.mjs";
 import { numberInput } from "./numberInput.mjs";
 import { stringSet } from "./stringSet.mjs";
@@ -10,7 +11,7 @@ const inputTypes = {
 	integer: numberInput,
 	bar: barInput,
 	dropdown: dropdownInput,
-	boolean: displayOnly,
+	boolean: booleanInput,
 };
 
 const typesToSanitize = new Set([ `string`, `number` ]);
