@@ -4,6 +4,7 @@ import { HeroSkillsCardV1 } from "../Apps/ActorSheets/HeroSkillsCardV1.mjs";
 import { HeroSummaryCardV1 } from "../Apps/ActorSheets/HeroSummaryCardV1.mjs";
 
 // Data Models
+import { ArmourData } from "../data/Item/Armour.mjs";
 import { HeroData } from "../data/Actor/Hero.mjs";
 import { WeaponData } from "../data/Item/Weapon.mjs";
 
@@ -15,18 +16,21 @@ import helpers from "../handlebarHelpers/_index.mjs";
 import { Logger } from "../utils/Logger.mjs";
 import { registerCustomComponents } from "../Apps/elements/_index.mjs";
 import { registerDevSettings } from "../settings/devSettings.mjs";
+import { registerMetaSettings } from "../settings/metaSettings.mjs";
 import { registerUserSettings } from "../settings/userSettings.mjs";
 
 Hooks.once(`init`, () => {
 	Logger.log(`Initializing`);
 
 	// #region Settings
+	registerMetaSettings();
 	registerDevSettings();
 	registerUserSettings();
 	// #endregion
 
 	// #region Datamodels
 	CONFIG.Actor.dataModels.hero = HeroData;
+	CONFIG.Item.dataModels.armour = ArmourData;
 	CONFIG.Item.dataModels.weapon = WeaponData;
 	// #endregion
 

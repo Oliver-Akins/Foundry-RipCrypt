@@ -4,6 +4,7 @@
 			"hero": "Hero"
 		},
 		"Item": {
+			"armour": "Armour",
 			"weapon": "Weapon"
 		}
 	},
