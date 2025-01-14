@@ -6,6 +6,7 @@ import { Logger } from "../../utils/Logger.mjs";
 
 const { HandlebarsApplicationMixin } = foundry.applications.api;
 const { ActorSheetV2 } = foundry.applications.sheets;
+const { ContextMenu } = foundry.applications.ui;
 
 export class HeroSummaryCardV1 extends GenericAppMixin(HandlebarsApplicationMixin(ActorSheetV2)) {
 
@@ -22,7 +23,9 @@ export class HeroSummaryCardV1 extends GenericAppMixin(HandlebarsApplicationMixi
 		window: {
 			resizable: false,
 		},
-		actions: {},
+		actions: {
+			editItem: (_event, target) => this._editItem(target),
+		},
 		form: {
 			submitOnChange: true,
 			closeOnSubmit: false,
@@ -37,6 +40,32 @@ export class HeroSummaryCardV1 extends GenericAppMixin(HandlebarsApplicationMixi
 	// #endregion
 
 	// #region Lifecycle
+	async _onRender(context, options) {
+		await super._onRender(context, options);
+
+		const itemMenuOptions = [
+			{
+				name: `Edit`,
+				condition: () => this.isEditable,
+				callback: HeroSummaryCardV1._editItem,
+			},
+			{
+				name: `Delete`,
+				condition: () => this.isEditable,
+				callback: async (el) => {
+					const itemEl = el.closest(`[data-item-id]`);
+					if (!itemEl) { return };
+					const itemId = itemEl.dataset.itemId;
+					const item = await fromUuid(itemId);
+					await item.delete();
+				},
+			},
+		];
+		if (itemMenuOptions.length) {
+			new ContextMenu(this.element, `.weapon-ctx-menu`, itemMenuOptions, { jQuery: false, fixed: true });
+		}
+	};
+
 	async _preparePartContext(partId, ctx, opts) {
 		ctx = await super._preparePartContext(partId, ctx, opts);
 		ctx.actor = this.document;
@@ -135,5 +164,13 @@ export class HeroSummaryCardV1 extends GenericAppMixin(HandlebarsApplicationMixi
 	// #endregion
 
 	// #region Actions
+	static async _editItem(target) {
+		const itemEl = target.closest(`[data-item-id]`);
+		if (!itemEl) { return };
+		const itemId = itemEl.dataset.itemId;
+		if (!itemId) { return };
+		const item = await fromUuid(itemId);
+		item.sheet.render({ force: true });
+	};
 	// #endregion
 };

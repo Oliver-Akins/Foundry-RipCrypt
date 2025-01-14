@@ -181,8 +181,23 @@
 						<td></td>
 					</tr>
 				{{else}}
-					<tr data-row="{{slot.index}}" class="{{slot.class}}">
-						<td>{{ slot.data.name }}</td>
+					<tr
+						data-row="{{ slot.index }}"
+						class="{{slot.class}}"
+						data-item-id="{{ slot.data.uuid }}"
+					>
+						<td>
+							<rc-icon
+								class="weapon-ctx-menu"
+								var:size="1rem"
+								var:fill="var(--accent-3)"
+								name="icons/edit"
+								data-action="editItem"
+							></rc-icon>
+							<span class="ellipses">
+								{{ slot.data.name }}
+							</span>
+						</td>
 						<td>
 							{{#if slot.data.system.traitString}}
 								<span class="traits">{{ slot.data.system.traitString }}</span>

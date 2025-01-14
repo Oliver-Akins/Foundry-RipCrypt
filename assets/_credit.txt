@@ -1,2 +1,5 @@
 Soetarman Atmodjo:
-	- icons/roll.svg : Rights Purchased.
+	- icons/roll.svg (https://thenounproject.com/icon/dice-5195278/) : Rights Purchased.
+
+SuperNdre:
+	- icons/edit.svg (https://thenounproject.com/icon/edit-5208207/) : Rights Purchased

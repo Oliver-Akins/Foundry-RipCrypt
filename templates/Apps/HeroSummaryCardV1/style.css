@@ -91,12 +91,17 @@
 		display: grid;
 		grid-template-columns: subgrid;
 		grid-template-rows: subgrid;
-		overflow-y: auto;
 
 		thead,
 		tbody,
 		tr {
 			display: contents;
+		}
+		td {
+			display: flex;
+			flex-direction: row;
+			align-items: center;
+			gap: 4px;
 		}
 		.row-alt > * {
 			background: inherit;
