@@ -30,6 +30,7 @@ export default [
 				Dialog: `readonly`,
 				renderTemplate: `readonly`,
 				TextEditor: `readonly`,
+				fromUuid: `readonly`,
 			},
 		},
 	},
