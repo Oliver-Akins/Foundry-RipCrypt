@@ -15,6 +15,12 @@ export const gameTerms = Object.preventExtensions({
 		NOVICE: `Novice`,
 		ADEPT: `Adept`,
 		EXPERT: `Expert`,
-		Master: `Master`,
+		MASTER: `Master`,
 	},
+	Anatomy: Object.freeze({
+		HEAD: `head`,
+		BODY: `body`,
+		ARMS: `arms`,
+		LEGS: `legs`,
+	}),
 });

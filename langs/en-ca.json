@@ -63,7 +63,8 @@
 				"Rare": "Rare",
 				"Scarce": "Scarce"
 			},
-			"protection": "Protection"
+			"protection": "Protection",
+			"location": "Location"
 		},
 		"setting": {
 			"abbrAccess": {
@@ -87,7 +88,8 @@
 			"short-range": "Short @RipCrypt.common.range",
 			"long-range": "Long @RipCrypt.common.range",
 			"current-wear": "Current @RipCrypt.common.wear",
-			"max-wear": "Maximum @RipCrypt.common.wear"
+			"max-wear": "Maximum @RipCrypt.common.wear",
+			"location-placeholder": "New Location..."
 		}
 	}
 }

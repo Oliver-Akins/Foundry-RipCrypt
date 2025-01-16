@@ -1,3 +1,4 @@
+import { gameTerms } from "../../gameTerms.mjs";
 import { requiredInteger } from "../helpers.mjs";
 
 const { fields } = foundry.data;
@@ -7,6 +8,18 @@ export class ArmourData extends foundry.abstract.TypeDataModel {
 	static defineSchema() {
 		return {
 			protection: requiredInteger({ min: 0, initial: 1 }),
+			location: new fields.SetField(
+				new fields.StringField({
+					blank: false,
+					trim: true,
+					nullable: false,
+					options: Object.values(gameTerms.Anatomy),
+				}),
+				{
+					nullable: false,
+					required: true,
+				},
+			),
 		};
 	};
 
@@ -20,9 +33,22 @@ export class ArmourData extends foundry.abstract.TypeDataModel {
 		super.prepareDerivedData();
 	};
 
+	// #region Getters
+	get locationString() {
+		return [...this.location].join(`, `);
+	};
+	// #endregion
+
 	// #region Sheet Data
 	getFormFields(ctx) {
 		const fields = [
+			{
+				type: `string-set`,
+				label: `RipCrypt.common.location`,
+				placeholder: `RipCrypt.Apps.location-placeholder`,
+				path: `system.location`,
+				value: this.locationString,
+			},
 			{
 				type: `integer`,
 				label: `RipCrypt.common.protection`,
