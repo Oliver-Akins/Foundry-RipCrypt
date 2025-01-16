@@ -1,3 +1,6 @@
+Kýnan Antos (Gritsilk Games):
+	- hero-silhouette.svg : Licensed to Distribute and Modify within the bounds of the "Foundry-RipCrypt" system.
+
 Soetarman Atmodjo:
 	- icons/roll.svg (https://thenounproject.com/icon/dice-5195278/) : Rights Purchased.
 

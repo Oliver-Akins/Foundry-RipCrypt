@@ -145,6 +145,7 @@
 		border-radius: 50%;
 		font-size: 1.5rem;
 		position: relative;
+		background: var(--base-background);
 
 		> .value {
 			background: none;
@@ -162,8 +163,8 @@
 		}
 
 		&.small {
-			--size: 30px;
-			font-size: 1.15rem;
+			--size: 35px;
+			font-size: 1.1rem;
 		}
 
 		&.dual {
@@ -216,12 +217,21 @@
 			grid-template-rows: minmax(0, 1fr) minmax(0, 1fr) minmax(0, 1.2fr);
 			justify-items: center;
 			align-items: center;
+			position: relative;
 
 			> div {
 				display: flex;
 				flex-direction: column;
 				justify-content: center;
 				align-items: center;
+				z-index: 1;
+			}
+
+			> rc-svg {
+				position: absolute;
+				bottom: 0;
+				left: 0;
+				width: 58%;
 			}
 		}
 

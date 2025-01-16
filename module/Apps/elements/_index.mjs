@@ -1,8 +1,10 @@
 import { Logger } from "../../utils/Logger.mjs";
 import { RipCryptIcon } from "./Icon.mjs";
+import { RipCryptSVGLoader } from "./svgLoader.mjs";
 
 const components = [
 	RipCryptIcon,
+	RipCryptSVGLoader,
 ];
 
 export function registerCustomComponents() {
