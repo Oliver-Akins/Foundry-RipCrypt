@@ -62,7 +62,8 @@
 				"Uncommon": "Uncommon",
 				"Rare": "Rare",
 				"Scarce": "Scarce"
-			}
+			},
+			"protection": "Protection"
 		},
 		"setting": {
 			"abbrAccess": {
