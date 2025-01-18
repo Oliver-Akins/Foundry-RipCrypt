@@ -26,7 +26,8 @@ export class CryptDie extends Die {
 		};
 
 		/*
-		Handles "Crypting" rolls, which is a single explosion that allows
+		Handles "Crypting" rolls, which is a single explosion on 1's which if it
+		results in a second 1, causes the roll to "crypt"
 		*/
 		if (!this.ripCryptState) {
 			await this.explode(`xo=1`, { recursive: false });
