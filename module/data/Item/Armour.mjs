@@ -48,6 +48,7 @@ export class ArmourData extends foundry.abstract.TypeDataModel {
 	getFormFields(ctx) {
 		const fields = [
 			{
+				id: `location`,
 				type: `string-set`,
 				label: `RipCrypt.common.location`,
 				placeholder: `RipCrypt.Apps.location-placeholder`,
@@ -55,6 +56,7 @@ export class ArmourData extends foundry.abstract.TypeDataModel {
 				value: this.locationString,
 			},
 			{
+				id: `protection`,
 				type: `integer`,
 				label: `RipCrypt.common.protection`,
 				value: this.protection,

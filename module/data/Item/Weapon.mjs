@@ -60,6 +60,7 @@ export class WeaponData extends foundry.abstract.TypeDataModel {
 	getFormFields(ctx) {
 		const fields = [
 			{
+				id: `traits`,
 				type: `string-set`,
 				label: `RipCrypt.common.traits`,
 				placeholder: `RipCrypt.Apps.traits-placeholder`,
@@ -67,6 +68,7 @@ export class WeaponData extends foundry.abstract.TypeDataModel {
 				value: this.traitString,
 			},
 			{
+				id: `short-range`,
 				type: `integer`,
 				label: `RipCrypt.Apps.short-range`,
 				path: `system.range.short`,
@@ -74,6 +76,7 @@ export class WeaponData extends foundry.abstract.TypeDataModel {
 				min: 0,
 			},
 			{
+				id: `long-range`,
 				type: `integer`,
 				label: `RipCrypt.Apps.long-range`,
 				path: `system.range.long`,
@@ -81,6 +84,7 @@ export class WeaponData extends foundry.abstract.TypeDataModel {
 				min: 0,
 			},
 			{
+				id: `damage`,
 				type: `integer`,
 				label: `RipCrypt.common.damage`,
 				path: `system.damage`,
@@ -104,6 +108,7 @@ export class WeaponData extends foundry.abstract.TypeDataModel {
 				},
 			},
 			{
+				id: `access`,
 				type: `dropdown`,
 				label: `Access`,
 				path: `system.access`,
@@ -123,7 +128,11 @@ export class WeaponData extends foundry.abstract.TypeDataModel {
 		];
 
 		if (this.parent.isEmbedded) {
-			fields.push({ type: `boolean`, label: `Equipped` });
+			fields.push({
+				id: `equipped`,
+				type: `boolean`,
+				label: `Equipped`,
+			});
 		};
 
 		return fields;

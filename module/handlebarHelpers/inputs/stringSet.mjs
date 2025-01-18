@@ -1,11 +1,9 @@
 import { localizer } from "../../utils/Localizer.mjs";
 
-const { randomID } = foundry.utils;
-
 export function stringSet(input, data) {
 	const label = localizer(input.label);
 	const placeholder = localizer(input.placeholder ?? ``);
-	const id = `${data.meta.idp}-${randomID(10)}`;
+	const id = `${data.meta.idp}-${input.id}`;
 
 	if (!data.meta.editable) {
 		const tagList = input.value
