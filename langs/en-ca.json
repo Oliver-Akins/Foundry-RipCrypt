@@ -90,7 +90,18 @@
 			"long-range": "Long @RipCrypt.common.range",
 			"current-wear": "Current @RipCrypt.common.wear",
 			"max-wear": "Maximum @RipCrypt.common.wear",
-			"location-placeholder": "New Location..."
+			"location-placeholder": "New Location...",
+			"numberOfDice": "# of Dice",
+			"rollTarget": "Target",
+			"difficulty": "(DC: {dc})"
+		},
+		"notifs": {
+			"error": {
+				"invalid-delta": "The delta for \"{name}\" is not a number, cannot finish processing the action."
+			},
+			"warn": {
+				"cannot-go-negative": "\"{name}\" is unable to be a negative number."
+			}
 		}
 	}
 }

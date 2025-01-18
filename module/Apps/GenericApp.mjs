@@ -1,7 +1,4 @@
-import { localizer } from "../utils/Localizer.mjs";
-import { Logger } from "../utils/Logger.mjs";
-
-const { Roll } = foundry.dice;
+import { DicePool } from "./DicePool.mjs";
 
 /**
  * A mixin that takes the class from HandlebarsApplicationMixin and
@@ -46,20 +43,11 @@ export function GenericAppMixin(HandlebarsApp) {
 		/** @this {GenericRipCryptApp} */
 		static async rollDice(_$e, el) {
 			const data = el.dataset;
-			const formula = data.formula;
-			Logger.debug(`Attempting to roll formula: ${formula}`);
+			const diceCount = parseInt(data.diceCount);
+			const flavor = data.flavor;
 
-			let flavor;
-			if (data.flavor) {
-				flavor = localizer(data.flavor);
-			}
-
-			const roll = new Roll(formula);
-			await roll.evaluate();
-			await roll.toMessage({
-				speaker: ChatMessage.getSpeaker({ actor: this.actor }),
-				flavor,
-			});
+			const dp = new DicePool({ diceCount, flavor });
+			dp.render({ force: true });
 		};
 		// #endregion
 	};

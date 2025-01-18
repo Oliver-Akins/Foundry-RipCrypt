@@ -1,10 +1,12 @@
 import { Logger } from "../../utils/Logger.mjs";
+import { RipCryptBorder } from "./RipCryptBorder.mjs";
 import { RipCryptIcon } from "./Icon.mjs";
 import { RipCryptSVGLoader } from "./svgLoader.mjs";
 
 const components = [
 	RipCryptIcon,
 	RipCryptSVGLoader,
+	RipCryptBorder,
 ];
 
 export function registerCustomComponents() {

@@ -1,0 +1,32 @@
+<rc-border
+	var:border-color="var(--accent-1)"
+	var:padding-top="16px"
+>
+	<div slot="title">Target</div>
+	<div slot="content" class="d8-incrementer">
+		<button
+			type="button"
+			data-action="targetDelta"
+			data-delta="1"
+			{{#if incrementDisabled}}disabled{{/if}}
+		>
+			+
+		</button>
+		<div class="dice-target">
+			<rc-icon
+				name="icons/d8-outline"
+				var:size="35px"
+				var:fill="var(--accent-1)"
+			></rc-icon>
+			<div class="value">{{target}}</div>
+		</div>
+		<button
+			type="button"
+			data-action="targetDelta"
+			data-delta="-1"
+			{{#if decrementDisabled}}disabled{{/if}}
+		>
+			-
+		</button>
+	</div>
+</rc-border>

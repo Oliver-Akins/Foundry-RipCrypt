@@ -1,8 +1,19 @@
 .ripcrypt > .window-content button {
 	all: revert;
+	outline: none;
+	border: none;
 	padding: 2px 4px;
 	background: var(--button-background);
 	color: var(--button-text);
+
+	&:hover:not(:disabled) {
+		cursor: pointer;
+		outline: none;
+	}
+
+	&:disabled {
+		opacity: 0.6;
+	}
 
 	&.icon {
 		padding: 0;
@@ -11,14 +22,5 @@
 		border: none;
 		width: 20px;
 		height: 20px;
-
-		&:hover:not(:disabled) {
-			cursor: pointer;
-			outline: none;
-		}
-
-		&:disabled {
-			opacity: 0.6;
-		}
 	}
 }

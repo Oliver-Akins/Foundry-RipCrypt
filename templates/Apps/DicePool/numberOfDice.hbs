@@ -1,0 +1,33 @@
+<rc-border
+	var:border-color="var(--accent-1)"
+	var:padding-top="16px"
+>
+	<div slot="title">
+		{{ rc-i18n "RipCrypt.Apps.numberOfDice" }}
+	</div>
+	<div slot="content" class="d8-incrementer">
+		<button
+			type="button"
+			data-action="diceCountDelta"
+			data-delta="1"
+		>
+			+
+		</button>
+		<div class="dice-count-row">
+			<rc-icon
+				name="icons/d8-outline"
+				var:size="35px"
+				var:fill="var(--accent-1)"
+			></rc-icon>
+			<span><span aria-hidden="true">x</span>{{ numberOfDice }}</span>
+		</div>
+		<button
+			type="button"
+			data-action="diceCountDelta"
+			data-delta="-1"
+			{{#if decrementDisabled}}disabled{{/if}}
+		>
+			-
+		</button>
+	</div>
+</rc-border>
