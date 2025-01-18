@@ -147,4 +147,37 @@ export class HeroData extends foundry.abstract.TypeDataModel {
 			run: (this.ability.gait + 3) * 2,
 		};
 	};
+
+	// #region Getters
+	get equippedArmour() {
+		const armours = this.parent.itemTypes.armour;
+		const slots = Object.fromEntries(
+			gameTerms.Anatomy.map(v => [v, null]),
+		);
+		for (const armour of armours) {
+			if (!armour.system.equipped) { continue };
+			for (const locationTag of [...armour.system.location.values()]) {
+				const location = locationTag.toLowerCase();
+				slots[location] = armour;
+			};
+		};
+		return slots;
+	};
+
+	get equippedShield() {
+		return null;
+	};
+
+	get defense() {
+		const defenses = {};
+		const armour = this.equippedArmour;
+		for (const slot in armour) {
+			defenses[slot] = armour[slot]?.system.protection ?? 0;
+		};
+
+		// TODO: add shield defenses
+
+		return defenses;
+	};
+	// #endregion
 };

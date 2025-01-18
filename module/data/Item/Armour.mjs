@@ -20,6 +20,11 @@ export class ArmourData extends foundry.abstract.TypeDataModel {
 					required: true,
 				},
 			),
+			equipped: new fields.BooleanField({
+				initial: false,
+				required: true,
+				nullable: false,
+			}),
 		};
 	};
 

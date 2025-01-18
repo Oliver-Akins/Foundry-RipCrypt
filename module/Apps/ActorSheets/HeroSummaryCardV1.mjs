@@ -72,6 +72,7 @@ export class HeroSummaryCardV1 extends GenericAppMixin(HandlebarsApplicationMixi
 
 		ctx = await HeroSummaryCardV1.prepareGuts(ctx);
 		ctx = await HeroSummaryCardV1.prepareWeapons(ctx);
+		ctx = await HeroSummaryCardV1.prepareArmor(ctx);
 		ctx = await HeroSummaryCardV1.prepareFatePath(ctx);
 		ctx = await HeroSummaryCardV1.prepareAbilityRow(ctx);
 		ctx = await HeroSummaryCardV1.prepareSpeed(ctx);
@@ -131,6 +132,20 @@ export class HeroSummaryCardV1 extends GenericAppMixin(HandlebarsApplicationMixi
 			ctx.speed = {
 				move: `?`,
 				run: `?`,
+			};
+		};
+		return ctx;
+	};
+
+	static async prepareArmor(ctx) {
+		ctx.armours = {};
+		const equipped = ctx.actor.system.equippedArmour;
+		for (const slot of gameTerms.Anatomy) {
+			const item = equipped[slot];
+			ctx.armours[slot] = {
+				name: item?.name ?? ``,
+				uuid: item?.uuid ?? ``,
+				defense: 0,
 			};
 		};
 		return ctx;

@@ -250,6 +250,16 @@
 				display: flex;
 				flex-direction: row-reverse;
 				justify-content: space-between;
+				align-items: center;
+				flex-wrap: nowrap;
+				padding: 0 2px;
+				gap: 4px;
+				min-width: 0;
+			}
+
+			.label {
+				text-overflow: initial;
+				flex-shrink: 0;
 			}
 		}
 	}
