@@ -12,9 +12,9 @@ export function numberInput(input, data) {
 	};
 
 	let attrs = ``;
-	if (input.min) { attrs += ` min="${input.min}"` };
-	if (input.max) { attrs += ` max="${input.max}"` };
-	if (input.step) { attrs += `step="${input.step}"` };
+	if (input.min != undefined) { attrs += ` min="${input.min}"` };
+	if (input.max != undefined) { attrs += ` max="${input.max}"` };
+	if (input.step != undefined) { attrs += `step="${input.step}"` };
 
 	return `<div data-input-type="integer">
 		<label
