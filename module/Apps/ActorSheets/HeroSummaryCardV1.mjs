@@ -140,12 +140,14 @@ export class HeroSummaryCardV1 extends GenericAppMixin(HandlebarsApplicationMixi
 	static async prepareArmor(ctx) {
 		ctx.armours = {};
 		const equipped = ctx.actor.system.equippedArmour;
-		for (const slot of gameTerms.Anatomy) {
+		const defenses = ctx.actor.system.defense;
+		for (const slot of Object.values(gameTerms.Anatomy)) {
 			const item = equipped[slot];
 			ctx.armours[slot] = {
 				name: item?.name ?? ``,
 				uuid: item?.uuid ?? ``,
-				defense: 0,
+				defense: defenses[slot],
+				shielded: false,
 			};
 		};
 		return ctx;

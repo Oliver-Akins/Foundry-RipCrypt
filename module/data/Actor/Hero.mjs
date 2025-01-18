@@ -152,7 +152,7 @@ export class HeroData extends foundry.abstract.TypeDataModel {
 	get equippedArmour() {
 		const armours = this.parent.itemTypes.armour;
 		const slots = Object.fromEntries(
-			gameTerms.Anatomy.map(v => [v, null]),
+			Object.values(gameTerms.Anatomy).map(v => [v, null]),
 		);
 		for (const armour of armours) {
 			if (!armour.system.equipped) { continue };

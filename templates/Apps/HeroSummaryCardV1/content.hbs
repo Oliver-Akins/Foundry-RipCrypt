@@ -31,6 +31,13 @@
 				class="silhouette"
 				name="hero-silhouette"
 			></rc-svg>
+			{{#each armours as | slot |}}
+				<div class="{{@key}}">
+					<div class="compass small">{{ slot.defense }}</div>
+					<span class="label">{{ rc-i18n (concat "RipCrypt.common.anatomy." @key) }}</span>
+				</div>
+			{{/each}}
+			<!--
 			<div class="head">
 				<div class="compass small">0</div>
 				<span class="label">{{ rc-i18n "RipCrypt.common.anatomy.head" }}</span>
@@ -47,6 +54,7 @@
 				<div class="compass small">0</div>
 				<span class="label">{{ rc-i18n "RipCrypt.common.anatomy.legs" }}</span>
 			</div>
+			-->
 			<div class="shield">
 				<span class="label">{{ rc-i18n "RipCrypt.common.shield" }}</span>
 			</div>
