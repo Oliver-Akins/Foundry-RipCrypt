@@ -1,6 +1,7 @@
 .ripcrypt.ripcrypt--CombinedHeroSheet {
 	> .window-content {
 		gap: 4px;
+		background: var(--base-background);
 	}
 
 	.HeroSkillsCardV1 {
