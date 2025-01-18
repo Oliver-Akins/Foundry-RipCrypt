@@ -42,7 +42,10 @@ export class HeroSummaryCardV1 extends GenericAppMixin(HandlebarsApplicationMixi
 	// #region Lifecycle
 	async _onRender(context, options) {
 		await super._onRender(context, options);
+		HeroSummaryCardV1._onRender.bind(this)(context, options);
+	};
 
+	static async _onRender() {
 		const itemMenuOptions = [
 			{
 				name: `Edit`,
@@ -63,7 +66,7 @@ export class HeroSummaryCardV1 extends GenericAppMixin(HandlebarsApplicationMixi
 		];
 		if (itemMenuOptions.length) {
 			new ContextMenu(this.element, `.weapon-ctx-menu`, itemMenuOptions, { jQuery: false, fixed: true });
-		}
+		};
 	};
 
 	async _preparePartContext(partId, ctx, opts) {

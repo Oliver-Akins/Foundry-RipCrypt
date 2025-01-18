@@ -11,6 +11,7 @@
 	"RipCrypt": {
 		"sheet-names": {
 			"AllItemsSheetV1": "RipCrypt Item Sheet",
+			"CombinedHeroSheet": "Hero Sheet",
 			"HeroSummaryCardV1": "Hero Stat Card",
 			"HeroSkillsCardV1": "Hero Skill Card"
 		},
