@@ -16,10 +16,6 @@ const inputTypes = {
 
 const typesToSanitize = new Set([ `string`, `number` ]);
 
-function displayOnly(input) {
-	return `<div data-input-type="${input.type}">${input.label}</div>`;
-};
-
 export function formFields(inputs, opts) {
 	const fields = [];
 	for (const input of inputs) {
