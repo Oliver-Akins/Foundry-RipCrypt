@@ -1,0 +1,18 @@
+{
+	"version": 1.1,
+	"globalAttributes": [
+		{ "name": "data-tooltip", "description": "The content for the tooltip to display" },
+		{ "name": "data-tooltip-direction", "description": "The direction that the tooltip renders in, in relation to the element that has the tooltip", "valueSet": "tooltip-direction" }
+	],
+	"valueSets": [
+		{
+			"name": "tooltip-direction",
+			"values": [
+				{ "name": "UP", "description": "Put the tooltip above the element" },
+				{ "name": "LEFT", "description": "Put the tooltip to the left of the element" },
+				{ "name": "RIGHT", "description": "Put the tooltip to the right of element" },
+				{ "name": "DOWN", "description": "Put the tooltip below the element" }
+			]
+		}
+	]
+}

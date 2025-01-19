@@ -4,5 +4,9 @@
 	},
 	"search.exclude": {
 		"foundry.*.link": true
-	}
+	},
+	"html.customData": [
+		"./.vscode/foundry.html-data.json",
+		"./.vscode/ripcrypt.html-data.json"
+	]
 }
