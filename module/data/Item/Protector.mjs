@@ -3,7 +3,8 @@ import { requiredInteger } from "../helpers.mjs";
 
 const { fields } = foundry.data;
 
-export class ArmourData extends foundry.abstract.TypeDataModel {
+/** Used for Armour and Shields */
+export class ProtectorData extends foundry.abstract.TypeDataModel {
 	// MARK: Schema
 	static defineSchema() {
 		return {
