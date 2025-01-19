@@ -26,7 +26,6 @@ export class RipCryptIcon extends StyledShadowElement(HTMLElement) {
 
 	constructor() {
 		super();
-		// this._shadow = this.attachShadow({ mode: `open`, delegatesFocus: true });
 
 		this.#container = document.createElement(`div`);
 		this._shadow.appendChild(this.#container);
