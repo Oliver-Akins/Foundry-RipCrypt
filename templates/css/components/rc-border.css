@@ -20,6 +20,33 @@
 	margin-top: var(--margin-top, var(--vertical-displacement));
 	padding-top: var(--padding-top, var(--vertical-displacement));
 
+	&::before {
+		display: block;
+		content: "";
+		position: absolute;
+		top: -3px;
+		height: 5px;
+		left: 50%;
+		right: -3px;
+		background: var(--border-mask, var(--base-background));
+	}
+	&::after {
+		display: block;
+		content: "";
+		position: absolute;
+		width: 6px;
+		top: -3px;
+		right: -3px;
+		height: 30px;
+		background: rgb(0,0,0);
+		background: linear-gradient(
+			180deg,
+			var(--border-mask, var(--base-background)) 0%,
+			var(--border-mask, var(--base-background)) 50%,
+			rgba(0,255,255,0) 100%
+		);
+	}
+
 	.title {
 		position: absolute;
 		top: calc(-1 * var(--vertical-displacement));
