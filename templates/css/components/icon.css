@@ -14,5 +14,10 @@ svg {
 	width: var(--size, 1rem);
 	height: var(--size, 1rem);
 	fill: var(--fill);
+}
+
+path {
 	stroke: var(--stroke);
+	stroke-width: var(--stroke-width);
+	stroke-linejoin: var(--stroke-linejoin);
 }

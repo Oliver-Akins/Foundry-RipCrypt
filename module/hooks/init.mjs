@@ -32,6 +32,7 @@ Hooks.once(`init`, () => {
 	// #region Datamodels
 	CONFIG.Actor.dataModels.hero = HeroData;
 	CONFIG.Item.dataModels.armour = ProtectorData;
+	CONFIG.Item.dataModels.shield = ProtectorData;
 	CONFIG.Item.dataModels.weapon = WeaponData;
 	// #endregion
 

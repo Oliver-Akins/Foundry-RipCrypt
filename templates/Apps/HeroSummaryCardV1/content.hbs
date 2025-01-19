@@ -33,31 +33,26 @@
 			></rc-svg>
 			{{#each armours as | slot |}}
 				<div class="{{@key}}">
-					<div class="compass small">{{ slot.defense }}</div>
+					<div class="compass small">
+						<span class="value">
+							{{ slot.defense }}
+						</span>
+						{{#if slot.shielded}}
+							<rc-icon
+								class="shield"
+								name="icons/shield-solid"
+								data-tooltip="{{ rc-i18n "RipCrypt.tooltips.shield-bonus" value=@root.shield.bonus }}"
+								data-tooltip-direction="UP"
+								var:size="20px"
+								var:fill="var(--accent-3)"
+								var:stroke="black"
+								var:stroke-width="8px"
+							></rc-icon>
+						{{/if}}
+					</div>
 					<span class="label">{{ rc-i18n (concat "RipCrypt.common.anatomy." @key) }}</span>
 				</div>
 			{{/each}}
-			<!--
-			<div class="head">
-				<div class="compass small">0</div>
-				<span class="label">{{ rc-i18n "RipCrypt.common.anatomy.head" }}</span>
-			</div>
-			<div class="body">
-				<div class="compass small">0</div>
-				<span class="label">{{ rc-i18n "RipCrypt.common.anatomy.body" }}</span>
-			</div>
-			<div class="arms">
-				<div class="compass small">0</div>
-				<span class="label">{{ rc-i18n "RipCrypt.common.anatomy.arms" }}</span>
-			</div>
-			<div class="legs">
-				<div class="compass small">0</div>
-				<span class="label">{{ rc-i18n "RipCrypt.common.anatomy.legs" }}</span>
-			</div>
-			-->
-			<div class="shield">
-				<span class="label">{{ rc-i18n "RipCrypt.common.shield" }}</span>
-			</div>
 		</div>
 		<ul class="armour-items">
 			<li class="row-alt">
@@ -78,6 +73,7 @@
 			</li>
 			<li class="row-alt">
 				<span class="label">{{ rc-i18n "RipCrypt.common.shield" }}</span>
+				<span class="value ellipses">{{ shield.name }}</span>
 			</li>
 		</ul>
 	</div>

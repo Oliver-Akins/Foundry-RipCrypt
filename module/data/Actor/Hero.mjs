@@ -165,7 +165,8 @@ export class HeroData extends foundry.abstract.TypeDataModel {
 	};
 
 	get equippedShield() {
-		return null;
+		const shields = this.parent.itemTypes.shield;
+		return shields.find(item => item.system.equipped);
 	};
 
 	get defense() {
@@ -175,7 +176,13 @@ export class HeroData extends foundry.abstract.TypeDataModel {
 			defenses[slot] = armour[slot]?.system.protection ?? 0;
 		};
 
-		// TODO: add shield defenses
+		const shield = this.equippedShield;
+		if (shield) {
+			for (const location of [...shield.system.location.values()]) {
+				const slot = location.toLowerCase();
+				defenses[slot] += shield.system.protection;
+			};
+		};
 
 		return defenses;
 	};

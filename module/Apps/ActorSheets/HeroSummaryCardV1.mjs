@@ -143,6 +143,7 @@ export class HeroSummaryCardV1 extends GenericAppMixin(HandlebarsApplicationMixi
 	static async prepareArmor(ctx) {
 		ctx.armours = {};
 		const equipped = ctx.actor.system.equippedArmour;
+		const shield = ctx.actor.system.equippedShield;
 		const defenses = ctx.actor.system.defense;
 		for (const slot of Object.values(gameTerms.Anatomy)) {
 			const item = equipped[slot];
@@ -150,9 +151,16 @@ export class HeroSummaryCardV1 extends GenericAppMixin(HandlebarsApplicationMixi
 				name: item?.name ?? ``,
 				uuid: item?.uuid ?? ``,
 				defense: defenses[slot],
-				shielded: false,
+				shielded: shield?.system.location.has(slot) ?? false,
 			};
 		};
+
+		ctx.shield = {
+			name: shield?.name ?? ``,
+			uuid: shield?.uuid ?? ``,
+			bonus: shield?.system.protection ?? 0,
+		};
+
 		return ctx;
 	};
 

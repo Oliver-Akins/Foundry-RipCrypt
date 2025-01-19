@@ -5,6 +5,7 @@
 		},
 		"Item": {
 			"armour": "Armour",
+			"shield": "Shield",
 			"weapon": "Weapon"
 		}
 	},
@@ -102,6 +103,9 @@
 			"warn": {
 				"cannot-go-negative": "\"{name}\" is unable to be a negative number."
 			}
+		},
+		"tooltips": {
+			"shield-bonus": "Shield Bonus: {value}"
 		}
 	}
 }

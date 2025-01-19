@@ -237,11 +237,17 @@
 
 		/* Positioning */
 		.head, .body, .legs { grid-column: 1; }
-		.arms, .shield { grid-column: 2; }
+		.arms { grid-column: 2; }
 		.head { grid-row: 1; }
 		.body, .arms { grid-row: 2; }
-		.legs, .shield { grid-row: 3; }
-		.shield { align-self: end; }
+		.legs { grid-row: 3; }
+
+		.shield {
+			--distance: -7px;
+			position: absolute;
+			top: var(--distance);
+			right: var(--distance);
+		}
 
 		.armour-items {
 			display: contents;
