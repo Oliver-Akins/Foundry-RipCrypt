@@ -8,4 +8,4 @@ SuperNdre:
 	- icons/edit.svg (https://thenounproject.com/icon/edit-5208207/) : Rights Purchased
 
 YANDI RS:
-	- icons/d8-outline (https://thenounproject.com/icon/d8-7272826/) : Rights Purchased
+	- icons/d8-outline.svg (https://thenounproject.com/icon/d8-7272826/) : Rights Purchased
