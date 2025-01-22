@@ -199,12 +199,11 @@
 				{{else}}
 					<tr
 						data-row="{{ slot.index }}"
-						class="{{slot.class}}"
+						class="{{slot.class}} weapon-ctx-menu"
 						data-item-id="{{ slot.data.uuid }}"
 					>
 						<td>
 							<rc-icon
-								class="weapon-ctx-menu"
 								var:size="1rem"
 								var:fill="var(--accent-3)"
 								name="icons/edit"
