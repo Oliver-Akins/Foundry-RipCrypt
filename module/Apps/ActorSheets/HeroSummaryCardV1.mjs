@@ -46,27 +46,35 @@ export class HeroSummaryCardV1 extends GenericAppMixin(HandlebarsApplicationMixi
 	};
 
 	static async _onRender() {
-		const itemMenuOptions = [
-			{
-				name: `Edit`,
-				condition: () => this.isEditable,
-				callback: HeroSummaryCardV1._editItem,
-			},
-			{
-				name: `Delete`,
-				condition: () => this.isEditable,
-				callback: async (el) => {
-					const itemEl = el.closest(`[data-item-id]`);
-					if (!itemEl) { return };
-					const itemId = itemEl.dataset.itemId;
-					const item = await fromUuid(itemId);
-					await item.delete();
+		new ContextMenu(
+			this.element,
+			`[data-ctx-menu="weapon"],[data-ctx-menu="armour"]`,
+			[
+				{
+					name: `Edit`,
+					condition: (el) => {
+						const itemId = el.dataset.itemId;
+						return this.isEditable && itemId !== ``;
+					},
+					callback: HeroSummaryCardV1._editItem,
 				},
-			},
-		];
-		if (itemMenuOptions.length) {
-			new ContextMenu(this.element, `.weapon-ctx-menu`, itemMenuOptions, { jQuery: false, fixed: true });
-		};
+				{
+					name: `Delete`,
+					condition: (el) => {
+						const itemId = el.dataset.itemId;
+						return this.isEditable && itemId !== ``;
+					},
+					callback: async (el) => {
+						const itemEl = el.closest(`[data-item-id]`);
+						if (!itemEl) { return };
+						const itemId = itemEl.dataset.itemId;
+						const item = await fromUuid(itemId);
+						await item.delete();
+					},
+				},
+			],
+			{ jQuery: false, fixed: true },
+		);
 	};
 
 	async _preparePartContext(partId, ctx, opts) {
