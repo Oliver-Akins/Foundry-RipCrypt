@@ -8,6 +8,7 @@ import { HeroSummaryCardV1 } from "../Apps/ActorSheets/HeroSummaryCardV1.mjs";
 import { AmmoData } from "../data/Item/Ammo.mjs";
 import { HeroData } from "../data/Actor/Hero.mjs";
 import { ProtectorData } from "../data/Item/Protector.mjs";
+import { SkillData } from "../data/Item/Skill.mjs";
 import { WeaponData } from "../data/Item/Weapon.mjs";
 
 // Class Overrides
@@ -38,6 +39,7 @@ Hooks.once(`init`, () => {
 	CONFIG.Item.dataModels.ammo = AmmoData,
 	CONFIG.Item.dataModels.armour = ProtectorData;
 	CONFIG.Item.dataModels.shield = ProtectorData;
+	CONFIG.Item.dataModels.skill = SkillData;
 	CONFIG.Item.dataModels.weapon = WeaponData;
 	// #endregion
 
