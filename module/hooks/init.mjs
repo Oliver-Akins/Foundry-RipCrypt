@@ -5,6 +5,7 @@ import { HeroSkillsCardV1 } from "../Apps/ActorSheets/HeroSkillsCardV1.mjs";
 import { HeroSummaryCardV1 } from "../Apps/ActorSheets/HeroSummaryCardV1.mjs";
 
 // Data Models
+import { AmmoData } from "../data/Item/Ammo.mjs";
 import { HeroData } from "../data/Actor/Hero.mjs";
 import { ProtectorData } from "../data/Item/Protector.mjs";
 import { WeaponData } from "../data/Item/Weapon.mjs";
@@ -34,6 +35,7 @@ Hooks.once(`init`, () => {
 
 	// #region Datamodels
 	CONFIG.Actor.dataModels.hero = HeroData;
+	CONFIG.Item.dataModels.ammo = AmmoData,
 	CONFIG.Item.dataModels.armour = ProtectorData;
 	CONFIG.Item.dataModels.shield = ProtectorData;
 	CONFIG.Item.dataModels.weapon = WeaponData;

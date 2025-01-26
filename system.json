@@ -44,6 +44,7 @@
 			"hero": {}
 		},
 		"Item": {
+			"ammo": {},
 			"armour": {},
 			"shield": {},
 			"weapon": {}
