@@ -11,7 +11,7 @@ export async function editItemFromElement(target) {
 	const itemId = itemEl.dataset.itemId;
 	if (!itemId) { return };
 	const item = await fromUuid(itemId);
-	item.sheet.render({ force: true });
+	item.sheet.render({ force: true, orBringToFront: true });
 };
 
 /**
