@@ -12,6 +12,9 @@ import { WeaponData } from "../data/Item/Weapon.mjs";
 // Class Overrides
 import { CryptDie } from "../dice/CryptDie.mjs";
 
+// Documents
+import { RipCryptItem } from "../documents/item.mjs";
+
 // Misc
 import helpers from "../handlebarHelpers/_index.mjs";
 import { Logger } from "../utils/Logger.mjs";
@@ -37,6 +40,7 @@ Hooks.once(`init`, () => {
 	// #endregion
 
 	// #region Class Changes
+	CONFIG.Item.documentClass = RipCryptItem;
 	CONFIG.Dice.terms.d = CryptDie;
 	// #endregion
 

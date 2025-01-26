@@ -1,13 +1,15 @@
+import { CommonItemData } from "./Common.mjs";
 import { gameTerms } from "../../gameTerms.mjs";
 import { requiredInteger } from "../helpers.mjs";
 
 const { fields } = foundry.data;
 
 /** Used for Armour and Shields */
-export class ProtectorData extends foundry.abstract.TypeDataModel {
+export class ProtectorData extends CommonItemData {
 	// MARK: Schema
 	static defineSchema() {
 		return {
+			...super.defineSchema(),
 			protection: requiredInteger({ min: 0, initial: 1 }),
 			location: new fields.SetField(
 				new fields.StringField({
@@ -48,6 +50,14 @@ export class ProtectorData extends foundry.abstract.TypeDataModel {
 	// #region Sheet Data
 	getFormFields(_ctx) {
 		const fields = [
+			{
+				id: `quantity`,
+				type: `integer`,
+				label: `RipCrypt.Apps.quantity`,
+				path: `system.quantity`,
+				value: this.quantity,
+				min: 0,
+			},
 			{
 				id: `location`,
 				type: `string-set`,

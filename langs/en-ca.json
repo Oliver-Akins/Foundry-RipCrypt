@@ -17,6 +17,7 @@
 			"HeroSkillsCardV1": "Hero Skill Card"
 		},
 		"common": {
+			"quantity": "Quantity",
 			"equipped": "Equipped",
 			"edit": "Edit",
 			"delete": "Delete",

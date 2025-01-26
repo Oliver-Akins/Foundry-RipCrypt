@@ -1,12 +1,14 @@
 import { barAttribute, optionalInteger, requiredInteger } from "../helpers.mjs";
+import { CommonItemData } from "./Common.mjs";
 import { gameTerms } from "../../gameTerms.mjs";
 
 const { fields } = foundry.data;
 
-export class WeaponData extends foundry.abstract.TypeDataModel {
+export class WeaponData extends CommonItemData {
 	// MARK: Schema
 	static defineSchema() {
 		return {
+			...super.defineSchema(),
 			traits: new fields.SetField(
 				new fields.StringField({
 					blank: false,
@@ -59,6 +61,14 @@ export class WeaponData extends foundry.abstract.TypeDataModel {
 	// #region Sheet Data
 	getFormFields(_ctx) {
 		const fields = [
+			{
+				id: `quantity`,
+				type: `integer`,
+				label: `RipCrypt.common.quantity`,
+				path: `system.quantity`,
+				value: this.quantity,
+				min: 0,
+			},
 			{
 				id: `traits`,
 				type: `string-set`,

@@ -96,7 +96,7 @@ export class HeroSkillsCardV1 extends GenericAppMixin(HandlebarsApplicationMixin
 			ctx.gear.push({
 				index: ctx.gear.length,
 				uuid: item.uuid,
-				name: item.name,
+				name: item.quantifiedName,
 				empty: false,
 			});
 
