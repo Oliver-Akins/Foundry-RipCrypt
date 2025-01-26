@@ -65,6 +65,16 @@ export class ProtectorData extends foundry.abstract.TypeDataModel {
 				min: 0,
 			},
 		];
+
+		if (this.parent.isEmbedded) {
+			fields.push({
+				id: `equipped`,
+				type: `boolean`,
+				label: `RipCrypt.common.equipped`,
+				value: this.equipped,
+			});
+		};
+
 		return fields;
 	};
 	// #endregion

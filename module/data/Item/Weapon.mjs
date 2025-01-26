@@ -131,7 +131,8 @@ export class WeaponData extends foundry.abstract.TypeDataModel {
 			fields.push({
 				id: `equipped`,
 				type: `boolean`,
-				label: `Equipped`,
+				label: `RipCrypt.common.equipped`,
+				value: this.equipped,
 			});
 		};
 
