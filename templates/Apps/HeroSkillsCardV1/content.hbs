@@ -60,14 +60,21 @@
 		{{/each}}
 	</ol>
 
+	<div class="ammo half-pill">
+		<div class="label">
+			{{ rc-i18n "RipCrypt.common.ammo"}}
+		</div>
+		<div class="input">
+			{{ ammo }}
+		</div>
+	</div>
+
+	{{!-- * Currencies --}}
 	<div class="currencies">
 		<div class="currency half-pill">
-			<{{{ifThen meta.editable "label" "div" }}}
-				for="{{meta.idp}}-gold"
-				class="label"
-			>
+			<label for="{{meta.idp}}-gold" >
 				{{ rc-i18n "RipCrypt.common.currency.gold"}}
-			</{{{ifThen meta.editable "label" "div" }}}>
+			</label>
 			<input
 				type="number"
 				id="{{meta.idp}}-gold"
@@ -76,12 +83,9 @@
 			>
 		</div>
 		<div class="currency half-pill">
-			<{{{ifThen meta.editable "label" "div" }}}
-				for="{{meta.idp}}-silver"
-				class="label"
-			>
+			<label for="{{meta.idp}}-silver" >
 				{{ rc-i18n "RipCrypt.common.currency.silver"}}
-			</{{{ifThen meta.editable "label" "div" }}}>
+			</label>
 			<input
 				type="number"
 				id="{{meta.idp}}-silver"
@@ -90,12 +94,9 @@
 			>
 		</div>
 		<div class="currency half-pill">
-			<{{{ifThen meta.editable "label" "div" }}}
-				for="{{meta.idp}}-copper"
-				class="label"
-			>
+			<label for="{{meta.idp}}-copper" >
 				{{ rc-i18n "RipCrypt.common.currency.copper"}}
-			</{{{ifThen meta.editable "label" "div" }}}>
+			</label>
 			<input
 				type="number"
 				id="{{meta.idp}}-copper"

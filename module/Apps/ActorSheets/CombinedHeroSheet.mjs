@@ -79,6 +79,7 @@ export class CombinedHeroSheet extends GenericAppMixin(HandlebarsApplicationMixi
 		ctx = await HeroSummaryCardV1.prepareLevelData(ctx);
 
 		ctx = await HeroSkillsCardV1.prepareGear(ctx);
+		ctx = await HeroSkillsCardV1.prepareAmmo(ctx);
 
 		Logger.debug(`Context:`, ctx);
 		return ctx;

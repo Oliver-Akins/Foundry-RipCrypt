@@ -80,6 +80,7 @@ export class HeroSkillsCardV1 extends GenericAppMixin(HandlebarsApplicationMixin
 		ctx.actor = this.document;
 
 		ctx = await HeroSkillsCardV1.prepareGear(ctx);
+		ctx = await HeroSkillsCardV1.prepareAmmo(ctx);
 
 		Logger.debug(`Context:`, ctx);
 		return ctx;
@@ -114,6 +115,11 @@ export class HeroSkillsCardV1 extends GenericAppMixin(HandlebarsApplicationMixin
 			};
 		};
 
+		return ctx;
+	};
+
+	static async prepareAmmo(ctx) {
+		ctx.ammo = 0;
 		return ctx;
 	};
 	// #endregion
