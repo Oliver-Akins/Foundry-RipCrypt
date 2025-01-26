@@ -133,6 +133,7 @@ export class WeaponData extends foundry.abstract.TypeDataModel {
 				type: `boolean`,
 				label: `RipCrypt.common.equipped`,
 				value: this.equipped,
+				path: `system.equipped`,
 			});
 		};
 

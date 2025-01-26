@@ -92,7 +92,7 @@ export class HeroSkillsCardV1 extends GenericAppMixin(HandlebarsApplicationMixin
 		for (const item of items) {
 			if (!gameTerms.gearItemTypes.has(item.type)) { continue };
 
-			if ( `equipped` in item.system && !item.system.equipped) { continue };
+			if (`equipped` in item.system && item.system.equipped) { continue };
 			ctx.gear.push({
 				index: ctx.gear.length,
 				uuid: item.uuid,
