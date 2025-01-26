@@ -1,3 +1,4 @@
+import { deleteItemFromElement, editItemFromElement } from "./utils.mjs";
 import { DicePool } from "./DicePool.mjs";
 
 /**
@@ -12,7 +13,9 @@ export function GenericAppMixin(HandlebarsApp) {
 				`ripcrypt`,
 			],
 			actions: {
-				roll: this.rollDice,
+				roll: this._rollDice,
+				editItem: (_event, target) => editItemFromElement(target),
+				deleteItem: (_event, target) => deleteItemFromElement(target),
 			},
 		};
 
@@ -22,6 +25,19 @@ export function GenericAppMixin(HandlebarsApp) {
 		// #endregion
 
 		// #region Lifecycle
+		/**
+		 * @override
+		 * Making it so that if the app is already open, it's brought to
+		 * top after being re-rendered as normal
+		 */
+		async render(options = {}, _options = {}) {
+			super.render(options, _options);
+			const instance = foundry.applications.instances.get(this.id);
+			if (instance !== undefined && !options.noBringToFront) {
+				instance.bringToFront();
+			};
+		};
+
 		async _preparePartContext(partId, ctx, opts) {
 			ctx = await super._preparePartContext(partId, ctx, opts);
 			delete ctx.document;
@@ -41,7 +57,7 @@ export function GenericAppMixin(HandlebarsApp) {
 
 		// #region Actions
 		/** @this {GenericRipCryptApp} */
-		static async rollDice(_$e, el) {
+		static async _rollDice(_$e, el) {
 			const data = el.dataset;
 			const diceCount = parseInt(data.diceCount);
 			const flavor = data.flavor;

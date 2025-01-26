@@ -46,7 +46,7 @@ export class ProtectorData extends foundry.abstract.TypeDataModel {
 	// #endregion
 
 	// #region Sheet Data
-	getFormFields(ctx) {
+	getFormFields(_ctx) {
 		const fields = [
 			{
 				id: `location`,

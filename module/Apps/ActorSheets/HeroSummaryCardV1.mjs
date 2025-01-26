@@ -1,3 +1,4 @@
+import { deleteItemFromElement, editItemFromElement } from "../utils.mjs";
 import { filePath } from "../../consts.mjs";
 import { gameTerms } from "../../gameTerms.mjs";
 import { GenericAppMixin } from "../GenericApp.mjs";
@@ -24,7 +25,6 @@ export class HeroSummaryCardV1 extends GenericAppMixin(HandlebarsApplicationMixi
 			resizable: false,
 		},
 		actions: {
-			editItem: (_event, target) => this._editItem(target),
 		},
 		form: {
 			submitOnChange: true,
@@ -45,32 +45,30 @@ export class HeroSummaryCardV1 extends GenericAppMixin(HandlebarsApplicationMixi
 		HeroSummaryCardV1._onRender.bind(this)(context, options);
 	};
 
-	static async _onRender() {
+	static async _onRender(context, options) {
+		const {
+			element = this.element,
+			isEditable = this.isEditable,
+		} = options;
 		new ContextMenu(
-			this.element,
+			element,
 			`[data-ctx-menu="weapon"],[data-ctx-menu="armour"]`,
 			[
 				{
-					name: `Edit`,
+					name: localizer(`RipCrypt.common.edit`),
 					condition: (el) => {
 						const itemId = el.dataset.itemId;
-						return this.isEditable && itemId !== ``;
+						return isEditable && itemId !== ``;
 					},
-					callback: HeroSummaryCardV1._editItem,
+					callback: editItemFromElement,
 				},
 				{
-					name: `Delete`,
+					name: localizer(`RipCrypt.common.delete`),
 					condition: (el) => {
 						const itemId = el.dataset.itemId;
-						return this.isEditable && itemId !== ``;
+						return isEditable && itemId !== ``;
 					},
-					callback: async (el) => {
-						const itemEl = el.closest(`[data-item-id]`);
-						if (!itemEl) { return };
-						const itemId = itemEl.dataset.itemId;
-						const item = await fromUuid(itemId);
-						await item.delete();
-					},
+					callback: deleteItemFromElement,
 				},
 			],
 			{ jQuery: false, fixed: true },
@@ -200,13 +198,5 @@ export class HeroSummaryCardV1 extends GenericAppMixin(HandlebarsApplicationMixi
 	// #endregion
 
 	// #region Actions
-	static async _editItem(target) {
-		const itemEl = target.closest(`[data-item-id]`);
-		if (!itemEl) { return };
-		const itemId = itemEl.dataset.itemId;
-		if (!itemId) { return };
-		const item = await fromUuid(itemId);
-		item.sheet.render({ force: true });
-	};
 	// #endregion
 };

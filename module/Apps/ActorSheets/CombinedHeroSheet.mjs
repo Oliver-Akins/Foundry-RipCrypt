@@ -1,5 +1,6 @@
 import { filePath } from "../../consts.mjs";
 import { GenericAppMixin } from "../GenericApp.mjs";
+import { HeroSkillsCardV1 } from "./HeroSkillsCardV1.mjs";
 import { HeroSummaryCardV1 } from "./HeroSummaryCardV1.mjs";
 import { Logger } from "../../utils/Logger.mjs";
 
@@ -43,7 +44,26 @@ export class CombinedHeroSheet extends GenericAppMixin(HandlebarsApplicationMixi
 	// #region Lifecycle
 	async _onRender(context, options) {
 		await super._onRender(context, options);
-		HeroSummaryCardV1._onRender.bind(this)(context, options);
+
+		const summaryElement = this.element.querySelector(`.HeroSummaryCardV1`);
+		HeroSummaryCardV1._onRender(
+			context,
+			{
+				...options,
+				element: summaryElement,
+				isEditable: this.isEditable,
+			},
+		);
+
+		const skillsElement = this.element.querySelector(`.HeroSkillsCardV1`);
+		HeroSkillsCardV1._onRender.bind(this)(
+			context,
+			{
+				...options,
+				element: skillsElement,
+				isEditable: this.isEditable,
+			},
+		);
 	};
 
 	async _preparePartContext(partId, ctx, opts) {
@@ -57,6 +77,8 @@ export class CombinedHeroSheet extends GenericAppMixin(HandlebarsApplicationMixi
 		ctx = await HeroSummaryCardV1.prepareAbilityRow(ctx);
 		ctx = await HeroSummaryCardV1.prepareSpeed(ctx);
 		ctx = await HeroSummaryCardV1.prepareLevelData(ctx);
+
+		ctx = await HeroSkillsCardV1.prepareGear(ctx);
 
 		Logger.debug(`Context:`, ctx);
 		return ctx;

@@ -17,6 +17,8 @@
 			"HeroSkillsCardV1": "Hero Skill Card"
 		},
 		"common": {
+			"edit": "Edit",
+			"delete": "Delete",
 			"empty": "---",
 			"move": "Move",
 			"run": "Run",

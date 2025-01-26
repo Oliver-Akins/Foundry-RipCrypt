@@ -48,18 +48,16 @@
 		<span class="small">{{ rc-i18n "RipCrypt.common.slot" }}</span>
 	</div>
 	<ol class="num-after gear-list">
-		<li></li>
-		<li></li>
-		<li></li>
-		<li></li>
-		<li></li>
-		<li></li>
-		<li></li>
-		<li></li>
-		<li></li>
-		<li></li>
-		<li></li>
-		<li></li>
+		{{#each gear as | itemInSlot |}}
+			<li
+				data-slot="{{itemInSlot.index}}"
+				data-ctx-menu="gear"
+				data-slot-empty="{{ itemInSlot.empty }}"
+				data-item-id="{{ itemInSlot.uuid }}"
+			>
+				{{itemInSlot.name}}
+			</li>
+		{{/each}}
 	</ol>
 
 	<div class="currencies">

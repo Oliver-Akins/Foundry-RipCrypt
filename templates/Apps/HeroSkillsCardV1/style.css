@@ -85,6 +85,10 @@
 		grid-template-rows: subgrid;
 		list-style-type: none;
 
+		> li {
+			padding: 0 4px;
+		}
+
 		> :nth-child(even) {
 			background: var(--alt-row-background);
 			color: var(--alt-row-text);
