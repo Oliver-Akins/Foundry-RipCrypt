@@ -32,6 +32,11 @@ export class WeaponData extends CommonItemData {
 				trim: true,
 				choices: gameTerms.Access,
 			}),
+			equipped: new fields.BooleanField({
+				initial: false,
+				required: true,
+				nullable: false,
+			}),
 		};
 	};
 

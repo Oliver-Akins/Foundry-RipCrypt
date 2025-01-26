@@ -174,14 +174,32 @@ export class HeroSummaryCardV1 extends GenericAppMixin(HandlebarsApplicationMixi
 		const limit = ctx.actor.system.limit.weapons;
 		const embedded = ctx.actor.itemTypes.weapon;
 		ctx.weapons = [];
-		for (let i = 0; i < limit; i++) {
+		for (const item of embedded) {
+			if (!item.system.equipped) { continue };
+
+			const index = ctx.weapons.length;
 			ctx.weapons.push({
-				data: embedded[i],
-				empty: embedded.at(i) === undefined,
-				index: i + 1,
-				class: i % 2 === 1 ? `row-alt` : ``,
+				data: item,
+				empty: false,
+				index,
+				class: index % 2 === 1 ? `row-alt` : ``,
 			});
+
+			if (ctx.weapons.length >= limit) { break };
 		};
+
+		if (ctx.weapons.length < limit) {
+			for (let i = ctx.weapons.length - 1; i <= limit; i++) {
+				const itemIndex = ctx.weapons.length;
+				ctx.weapons.push({
+					data: null,
+					empty: true,
+					index: itemIndex,
+					class: itemIndex % 2 === 1 ? `row-alt` : ``,
+				});
+			};
+		};
+
 		return ctx;
 	};
 
