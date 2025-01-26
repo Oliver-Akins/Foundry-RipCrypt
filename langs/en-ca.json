@@ -19,61 +19,62 @@
 			"HeroSkillsCardV1": "Hero Skill Card"
 		},
 		"common": {
-			"ammo": "Ammo",
-			"quantity": "Quantity",
-			"equipped": "Equipped",
-			"edit": "Edit",
-			"delete": "Delete",
-			"empty": "---",
-			"move": "Move",
-			"run": "Run",
-			"fate": {
-				"North": "North",
-				"East": "East",
-				"South": "South",
-				"West": "West"
-			},
 			"ability": {
 				"grit": "Grit",
 				"gait": "Gait",
 				"grip": "Grip",
 				"glim": "Glim"
 			},
-			"traits": "Traits",
-			"range": "Range",
-			"weapon": {
-				"singular": "Weapon",
-				"plural": "Weapons"
-			},
-			"armour": "Armour",
-			"wear": "Wear",
-			"damage": "Damage",
-			"guts": "Guts",
-			"glory": "Glory",
-			"step": "Step",
-			"rank": "Rank",
-			"gear": "Gear",
-			"slot": "Slot",
-			"currency": {
-				"gold": "Gold",
-				"silver": "Silver",
-				"copper": "Copper"
-			},
-			"anatomy": {
-				"head": "Head",
-				"body": "Body",
-				"arms": "Arms",
-				"legs": "Legs"
-			},
-			"shield": "Shield",
 			"access": {
 				"Common": "Common",
 				"Uncommon": "Uncommon",
 				"Rare": "Rare",
 				"Scarce": "Scarce"
 			},
+			"ammo": "Ammo",
+			"anatomy": {
+				"head": "Head",
+				"body": "Body",
+				"arms": "Arms",
+				"legs": "Legs"
+			},
+			"armour": "Armour",
+			"currency": {
+				"gold": "Gold",
+				"silver": "Silver",
+				"copper": "Copper"
+			},
+			"damage": "Damage",
+			"delete": "Delete",
+			"edit": "Edit",
+			"empty": "---",
+			"equipped": "Equipped",
+			"fate": "Fate",
+			"gear": "Gear",
+			"glory": "Glory",
+			"guts": "Guts",
+			"location": "Location",
+			"move": "Move",
+			"path": {
+				"North": "North",
+				"East": "East",
+				"South": "South",
+				"West": "West"
+			},
 			"protection": "Protection",
-			"location": "Location"
+			"quantity": "Quantity",
+			"rank": "Rank",
+			"range": "Range",
+			"run": "Run",
+			"shield": "Shield",
+			"slot": "Slot",
+			"step": "Step",
+			"traits": "Traits",
+			"weapon": {
+				"singular": "Weapon",
+				"plural": "Weapons"
+			},
+			"wear": "Wear"
 		},
 		"setting": {
 			"abbrAccess": {
