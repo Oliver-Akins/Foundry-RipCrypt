@@ -76,6 +76,10 @@
 			"abbrAccess": {
 				"name": "Abbreviate Access Names",
 				"hint": "Shortens the Access level names the way the book does. (e.g. \"Common\" becomes \"C\")"
+			},
+			"condensedRange": {
+				"name": "Condense Weapon Range Input",
+				"hint": "With this enabled, the weapon range will be displayed as \"X / Y\" when editing a weapon. While disabled it will be as displayed as two different rows, one for Short Range and one for Long Range"
 			}
 		},
 		"Apps": {

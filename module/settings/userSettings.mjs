@@ -10,4 +10,14 @@ export function registerUserSettings() {
 		default: false,
 		requiresReload: false,
 	});
+
+	game.settings.register(`ripcrypt`, `condensedRange`, {
+		name: `RipCrypt.setting.condensedRange.name`,
+		hint: `RipCrypt.setting.condensedRange.hint`,
+		scope: userScope,
+		type: Boolean,
+		config: true,
+		default: true,
+		requiresReload: false,
+	});
 };

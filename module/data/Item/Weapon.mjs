@@ -77,7 +77,27 @@ export class WeaponData extends CommonItemData {
 				path: `system.traits`,
 				value: this.traitString,
 			},
-			{
+		];
+
+		// Add the range inputs depending on whether the user wants condensed range
+		// or not.
+		if (game.settings.get(`ripcrypt`, `condensedRange`)) {
+			fields.push({
+				type: `bar`,
+				label: `RipCrypt.common.range`,
+				value: {
+					label: `RipCrypt.Apps.short-range`,
+					path: `system.range.short`,
+					value: this.range.short,
+				},
+				max: {
+					label: `RipCrypt.Apps.long-range`,
+					path: `system.range.long`,
+					value: this.range.long,
+				},
+			});
+		} else {
+			fields.push({
 				id: `short-range`,
 				type: `integer`,
 				label: `RipCrypt.Apps.short-range`,
@@ -92,7 +112,10 @@ export class WeaponData extends CommonItemData {
 				path: `system.range.long`,
 				value: this.range.long ?? ``,
 				min: 0,
-			},
+			});
+		};
+
+		fields.push(
 			{
 				id: `damage`,
 				type: `integer`,
@@ -135,7 +158,7 @@ export class WeaponData extends CommonItemData {
 					})),
 				],
 			},
-		];
+		);
 
 		if (this.parent.isEmbedded) {
 			fields.push({
