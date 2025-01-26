@@ -16,7 +16,16 @@ export class AmmoData extends CommonItemData {
 
 	// #region Sheet Data
 	getFormFields(_ctx) {
-		const fields = [];
+		const fields = [
+			{
+				id: `quantity`,
+				type: `integer`,
+				label: `RipCrypt.common.quantity`,
+				path: `system.quantity`,
+				value: this.quantity,
+				min: 0,
+			},
+		];
 		return fields;
 	};
 	// #endregion
