@@ -53,7 +53,7 @@ export class ProtectorData extends CommonItemData {
 			{
 				id: `quantity`,
 				type: `integer`,
-				label: `RipCrypt.Apps.quantity`,
+				label: `RipCrypt.common.quantity`,
 				path: `system.quantity`,
 				value: this.quantity,
 				min: 0,

@@ -96,7 +96,7 @@ export class RipCryptIcon extends StyledShadowElement(HTMLElement) {
 	async #getIcon(path) {
 		// Cache hit!
 		if (this.constructor._cache.has(path)) {
-			Logger.debug(`Icon ${path} cache hit`);
+			Logger.debug(`Image ${path} cache hit`);
 			return this.constructor._cache.get(path);
 		};
 
@@ -110,7 +110,7 @@ export class RipCryptIcon extends StyledShadowElement(HTMLElement) {
 				return;
 		};
 
-		Logger.debug(`Adding icon ${path} to the cache`);
+		Logger.debug(`Adding image ${path} to the cache`);
 		const svg = this.#parseSVG(await r.text());
 		this.constructor._cache.set(path, svg);
 		return svg;
