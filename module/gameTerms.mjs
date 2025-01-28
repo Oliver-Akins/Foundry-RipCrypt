@@ -11,12 +11,12 @@ export const gameTerms = Object.preventExtensions({
 		`Rare`,
 		`Scarce`,
 	],
-	Rank: {
-		NOVICE: `Novice`,
-		ADEPT: `Adept`,
-		EXPERT: `Expert`,
-		MASTER: `Master`,
-	},
+	Rank: Object.freeze({
+		NOVICE: `novice`,
+		ADEPT: `adept`,
+		EXPERT: `expert`,
+		MASTER: `master`,
+	}),
 	Anatomy: Object.freeze({
 		HEAD: `head`,
 		BODY: `body`,

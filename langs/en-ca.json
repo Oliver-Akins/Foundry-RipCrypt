@@ -64,6 +64,12 @@
 			"protection": "Protection",
 			"quantity": "Quantity",
 			"rank": "Rank",
+			"rankNames": {
+				"novice": "Novice",
+				"adept": "Adept",
+				"expert": "Expert",
+				"master": "Master"
+			},
 			"range": "Range",
 			"run": "Run",
 			"shield": "Shield",
