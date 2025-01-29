@@ -1,8 +1,10 @@
 import { barAttribute, optionalInteger, requiredInteger } from "../helpers.mjs";
 import { CommonItemData } from "./Common.mjs";
 import { gameTerms } from "../../gameTerms.mjs";
+import { localizer } from "../../utils/Localizer.mjs";
 
 const { fields } = foundry.data;
+const { hasProperty, mergeObject } = foundry.utils;
 
 export class WeaponData extends CommonItemData {
 	// MARK: Schema
@@ -49,6 +51,27 @@ export class WeaponData extends CommonItemData {
 	prepareDerivedData() {
 		super.prepareDerivedData();
 	};
+
+	// #region Lifecycle
+	async _preUpdate(changes, options, user) {
+		if (options.force && game.settings.get(`ripcrypt`, `devMode`)) { return };
+		let valid = super._preUpdate(changes, options, user);
+
+		if (hasProperty(changes, `system.equipped`) && !this.parent.isEmbedded) {
+			ui.notifications.error(localizer(
+				`RipCrypt.notifs.error.cannot-equip-not-embedded`,
+				{ itemType: `@TYPES.Item.${this.parent.type}` },
+			));
+			mergeObject(
+				changes,
+				{ "-=system.equipped": null },
+				{ inplace: true, performDeletions: true },
+			);
+			return false;
+		};
+		return valid;
+	};
+	// #endregion
 
 	// #region Getters
 	get traitString() {
