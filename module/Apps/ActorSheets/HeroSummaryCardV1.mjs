@@ -125,7 +125,7 @@ export class HeroSummaryCardV1 extends GenericAppMixin(HandlebarsApplicationMixi
 			ctx.abilities.push({
 				id: key,
 				name: localizer(
-					`RipCrypt.common.ability.${key}`,
+					`RipCrypt.common.abilities.${key}`,
 					{ value: ctx.actor.system.ability[key] },
 				),
 				value: ctx.meta.limited ? `?` : ctx.actor.system.ability[key],
