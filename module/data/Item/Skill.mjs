@@ -58,6 +58,20 @@ export class SkillData extends foundry.abstract.TypeDataModel {
 					value: ability,
 				})),
 			},
+			{
+				type: `group`,
+				title: `RipCrypt.common.advances`,
+				paddingTop: `20px`,
+				fields: Object.values(gameTerms.Rank).map(rank => {
+					return {
+						id: `advance-${rank}`,
+						type: `text`,
+						label: `RipCrypt.common.rankNames.${rank}`,
+						path: `system.advances.${rank}`,
+						value: this.advances[rank] ?? ``,
+					};
+				}),
+			},
 		];
 		return fields;
 	};

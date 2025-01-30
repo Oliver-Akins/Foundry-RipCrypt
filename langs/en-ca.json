@@ -33,6 +33,7 @@
 				"Rare": "Rare",
 				"Scarce": "Scarce"
 			},
+			"advances": "Advances",
 			"ammo": "Ammo",
 			"anatomy": {
 				"head": "Head",
