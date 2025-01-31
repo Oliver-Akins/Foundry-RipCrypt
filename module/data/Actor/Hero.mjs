@@ -132,6 +132,7 @@ export class HeroData extends foundry.abstract.TypeDataModel {
 		this.limit = {
 			weapons: 4,
 			equipment: 12,
+			skills: 4,
 		};
 	};
 

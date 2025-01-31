@@ -2,19 +2,17 @@ import { gameTerms } from "../../gameTerms.mjs";
 
 const { fields } = foundry.data;
 
-const abilityPaths = [`grit`, `gait`, `grip`, `glim`, `thin-glim`];
-
 export class SkillData extends foundry.abstract.TypeDataModel {
 	// MARK: Schema
 	static defineSchema() {
 		const schema = {
 			ability: new fields.StringField({
-				initial: abilityPaths[0],
+				initial: gameTerms.Abilities.GRIT,
 				blank: true,
 				trim: true,
 				nullable: false,
 				required: true,
-				choices: () => abilityPaths,
+				choices: () => Object.values(gameTerms.Abilities),
 			}),
 		};
 
@@ -53,7 +51,7 @@ export class SkillData extends foundry.abstract.TypeDataModel {
 				label: `RipCrypt.common.ability`,
 				path: `system.ability`,
 				value: this.ability,
-				options: abilityPaths.map(ability => ({
+				options: Object.values(gameTerms.Abilities).map(ability => ({
 					label: `RipCrypt.common.abilities.${ability}`,
 					value: ability,
 				})),

@@ -41,7 +41,10 @@
 		grid-template-rows: subgrid;
 
 		& > li {
-			padding-left: 4px;
+			padding: 0 4px;
+			.name {
+				flex-grow: 1;
+			}
 		}
 
 		&.even > :nth-child(even),

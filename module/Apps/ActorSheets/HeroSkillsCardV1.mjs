@@ -1,5 +1,5 @@
 import { deleteItemFromElement, editItemFromElement } from "../utils.mjs";
-import { filePath } from "../../consts.mjs";
+import { documentSorter, filePath } from "../../consts.mjs";
 import { gameTerms } from "../../gameTerms.mjs";
 import { GenericAppMixin } from "../GenericApp.mjs";
 import { localizer } from "../../utils/Localizer.mjs";
@@ -52,7 +52,7 @@ export class HeroSkillsCardV1 extends GenericAppMixin(HandlebarsApplicationMixin
 		} = options;
 		new ContextMenu(
 			element,
-			`[data-ctx-menu="gear"]`,
+			`[data-ctx-menu="gear"],[data-ctx-menu="skill"]`,
 			[
 				{
 					name: localizer(`RipCrypt.common.edit`),
@@ -81,6 +81,7 @@ export class HeroSkillsCardV1 extends GenericAppMixin(HandlebarsApplicationMixin
 
 		ctx = await HeroSkillsCardV1.prepareGear(ctx);
 		ctx = await HeroSkillsCardV1.prepareAmmo(ctx);
+		ctx = await HeroSkillsCardV1.prepareSkills(ctx);
 
 		Logger.debug(`Context:`, ctx);
 		return ctx;
@@ -120,6 +121,48 @@ export class HeroSkillsCardV1 extends GenericAppMixin(HandlebarsApplicationMixin
 
 	static async prepareAmmo(ctx) {
 		ctx.ammo = 0;
+		return ctx;
+	};
+
+	static async prepareSkills(ctx) {
+		ctx.skills = {};
+		const abilities = Object.values(gameTerms.Abilities);
+		const heroRank = ctx.actor.system.level.rank;
+		const embeddedSkills = ctx.actor.itemTypes.skill.sort(documentSorter);
+
+		for (let ability of abilities) {
+			const skills = [];
+			for (const skill of embeddedSkills) {
+				if (skill.system.ability !== ability) { continue };
+				skills.push({
+					uuid: skill.uuid,
+					name: skill.name,
+					use: skill.system.advances[heroRank],
+				});
+			};
+
+			// Thin Glim is grouped with full glim.
+			if (ability === gameTerms.Abilities.THINGLIM) {
+				ability = gameTerms.Abilities.GLIM;
+			};
+
+			ctx.skills[ability] ??= [];
+			ctx.skills[ability].push(...skills);
+		};
+
+		const limit = ctx.actor.system.limit.skills;
+		for (const ability of abilities) {
+			if (ctx.skills[ability] == null) { continue };
+
+			const length = ctx.skills[ability].length;
+			if (length >= limit) {
+				ctx.skills[ability] = ctx.skills[ability].slice(0, limit);
+			} else {
+				ctx.skills[ability] = ctx.skills[ability]
+					.concat(Array(limit - length).fill(null))
+					.slice(0, limit);
+			};
+		}
 		return ctx;
 	};
 	// #endregion

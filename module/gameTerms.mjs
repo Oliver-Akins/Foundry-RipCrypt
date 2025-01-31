@@ -1,4 +1,11 @@
 export const gameTerms = Object.preventExtensions({
+	Abilities: Object.freeze({
+		GRIT: `grit`,
+		GRIP: `grip`,
+		GAIT: `gait`,
+		GLIM: `glim`,
+		THINGLIM: `thin-glim`,
+	}),
 	FatePath: [
 		`North`,
 		`East`,

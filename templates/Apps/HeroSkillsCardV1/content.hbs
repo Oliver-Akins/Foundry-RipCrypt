@@ -4,10 +4,22 @@
 		<span class="small">{{ rc-i18n "RipCrypt.common.rank" }}</span>
 	</div>
 	<ol class="num-before skill-list even grit-skills">
-		<li></li>
-		<li></li>
-		<li></li>
-		<li></li>
+		{{#each skills.grit as | skill |}}
+			{{#if skill}}
+				<li data-item-id="{{skill.uuid}}" data-ctx-menu="skill">
+					<span class="name">{{ skill.name }}</span>
+					<rc-icon
+						name="icons/info-circle"
+						var:size="16px"
+						var:fill="currentColor"
+						data-tooltip="{{ skill.use }}"
+						data-tooltip-direction="UP"
+					></rc-icon>
+				</li>
+			{{else}}
+				<li></li>
+			{{/if}}
+		{{/each}}
 	</ol>
 
 	<div class="label col-header list-header gait-skills-header">
@@ -15,10 +27,22 @@
 		<span class="small">{{ rc-i18n "RipCrypt.common.rank" }}</span>
 	</div>
 	<ol class="num-before skill-list even gait-skills">
-		<li></li>
-		<li></li>
-		<li></li>
-		<li></li>
+		{{#each skills.gait as | skill |}}
+			{{#if skill}}
+				<li data-item-id="{{skill.uuid}}" data-ctx-menu="skill">
+					<span class="name">{{ skill.name }}</span>
+					<rc-icon
+						name="icons/info-circle"
+						var:size="16px"
+						var:fill="currentColor"
+						data-tooltip="{{ skill.use }}"
+						data-tooltip-direction="UP"
+					></rc-icon>
+				</li>
+			{{else}}
+				<li></li>
+			{{/if}}
+		{{/each}}
 	</ol>
 
 	<div class="label col-header list-header grip-skills-header">
@@ -26,10 +50,22 @@
 		<span class="small">{{ rc-i18n "RipCrypt.common.rank" }}</span>
 	</div>
 	<ol class="num-before skill-list odd grip-skills">
-		<li></li>
-		<li></li>
-		<li></li>
-		<li></li>
+		{{#each skills.grip as | skill |}}
+			{{#if skill}}
+				<li data-item-id="{{skill.uuid}}" data-ctx-menu="skill">
+					<span class="name">{{ skill.name }}</span>
+					<rc-icon
+						name="icons/info-circle"
+						var:size="16px"
+						var:fill="currentColor"
+						data-tooltip="{{ skill.use }}"
+						data-tooltip-direction="UP"
+					></rc-icon>
+				</li>
+			{{else}}
+				<li></li>
+			{{/if}}
+		{{/each}}
 	</ol>
 
 	<div class="label col-header list-header glim-skills-header">
@@ -37,10 +73,22 @@
 		<span class="small">{{ rc-i18n "RipCrypt.common.rank" }}</span>
 	</div>
 	<ol class="num-before skill-list odd glim-skills">
-		<li></li>
-		<li></li>
-		<li></li>
-		<li></li>
+		{{#each skills.glim as | skill |}}
+			{{#if skill}}
+				<li data-item-id="{{skill.uuid}}" data-ctx-menu="skill">
+					<span class="name">{{ skill.name }}</span>
+					<rc-icon
+						name="icons/info-circle"
+						var:size="16px"
+						var:fill="currentColor"
+						data-tooltip="{{ skill.use }}"
+						data-tooltip-direction="UP"
+					></rc-icon>
+				</li>
+			{{else}}
+				<li></li>
+			{{/if}}
+		{{/each}}
 	</ol>
 
 	<div class="label col-header list-header">
