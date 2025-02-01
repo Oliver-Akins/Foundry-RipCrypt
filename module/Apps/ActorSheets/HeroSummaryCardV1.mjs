@@ -97,7 +97,10 @@ export class HeroSummaryCardV1 extends GenericAppMixin(HandlebarsApplicationMixi
 			step: ctx.actor.system.level.step,
 			rank: {
 				selected: ctx.actor.system.level.rank,
-				options: Object.values(gameTerms.Rank),
+				options: Object.values(gameTerms.Rank).map(rank => ({
+					label: `RipCrypt.common.rankNames.${rank}`,
+					value: rank,
+				})),
 			},
 		};
 		if (ctx.meta.limited) {
