@@ -128,7 +128,7 @@ export class HeroSkillsCardV1 extends GenericAppMixin(HandlebarsApplicationMixin
 		ctx.skills = {};
 		const abilities = Object.values(gameTerms.Abilities);
 		const heroRank = ctx.actor.system.level.rank;
-		const embeddedSkills = ctx.actor.itemTypes.skill.sort(documentSorter);
+		const embeddedSkills = ctx.actor.itemTypes.skill;
 
 		for (let ability of abilities) {
 			const skills = [];
@@ -137,6 +137,7 @@ export class HeroSkillsCardV1 extends GenericAppMixin(HandlebarsApplicationMixin
 				skills.push({
 					uuid: skill.uuid,
 					name: skill.name,
+					sort: skill.sort,
 					use: skill.system.advances[heroRank],
 				});
 			};
@@ -162,6 +163,9 @@ export class HeroSkillsCardV1 extends GenericAppMixin(HandlebarsApplicationMixin
 					.concat(Array(limit - length).fill(null))
 					.slice(0, limit);
 			};
+
+			// Sort the skills
+			ctx.skills[ability] = ctx.skills[ability].sort(documentSorter);
 		}
 		return ctx;
 	};
