@@ -4,5 +4,8 @@ export function registerMetaSettings() {
 		type: Number,
 		config: false,
 		requiresReload: false,
+		onChange: () => {
+			CONFIG.ui.crypt.render({ parts: [ `delveConditions` ]});
+		},
 	});
 };

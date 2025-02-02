@@ -1,0 +1,17 @@
+<div>
+	<rc-border
+		var:border-color="var(--accent-1)"
+	>
+		<div slot="title">
+			Difficulty
+		</div>
+		<div slot="content">
+			<span>{{ difficulty }}</span>
+			{{#if meta.editable}}
+				<select id="{{meta.idp}}-difficulty">
+					{{ rc-options difficulty options localize=true }}
+				</select>
+			{{/if}}
+		</div>
+	</rc-border>
+</div>

@@ -49,6 +49,12 @@
 			},
 			"damage": "Damage",
 			"delete": "Delete",
+			"difficulties": {
+				"easy": "Easy",
+				"normal": "Normal",
+				"tough": "Tough",
+				"hard": "Hard"
+			},
 			"edit": "Edit",
 			"empty": "---",
 			"equipped": "Equipped",

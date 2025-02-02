@@ -17,7 +17,7 @@
 	--alt-row-background: var(--accent-2);
 
 	--input-underline: 2px dashed var(--accent-3);
-	--input-background: inherit;
+	--input-background: var(--accent-2);
 	--input-text: white;
 	--input-placeholder-text: rgba(255,255,255, 0.5);
 

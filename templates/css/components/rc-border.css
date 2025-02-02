@@ -1,7 +1,7 @@
 :host {
 	display: flex;
 	flex-direction: column;
-	--vertical-displacement: 10px;
+	--vertical-displacement: 12.5px;
 }
 
 .rc-border {
@@ -18,7 +18,7 @@
 	border-radius: 8px;
 	position: relative;
 	margin-top: var(--margin-top, var(--vertical-displacement));
-	padding-top: var(--padding-top, var(--vertical-displacement));
+	padding-top: var(--padding-top, calc(var(--vertical-displacement) + 4px));
 
 	&::before {
 		display: block;
@@ -60,5 +60,6 @@
 		max-width: 75%;
 		min-width: 50px;
 		border-radius: 4px;
+		text-align: center;
 	}
 }
