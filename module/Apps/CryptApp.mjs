@@ -4,6 +4,13 @@ import { Logger } from "../utils/Logger.mjs";
 
 const { HandlebarsApplicationMixin, ApplicationV2 } = foundry.applications.api;
 
+const conditions = [
+	{ label: `RipCrypt.common.difficulties.easy`, value: 4 },
+	{ label: `RipCrypt.common.difficulties.normal`, value: 5 },
+	{ label: `RipCrypt.common.difficulties.tough`, value: 6 },
+	{ label: `RipCrypt.common.difficulties.hard`, value: 7 },
+];
+
 export class CryptApp extends GenericAppMixin(HandlebarsApplicationMixin(ApplicationV2)) {
 	// #region Options
 	static DEFAULT_OPTIONS = {
@@ -18,9 +25,11 @@ export class CryptApp extends GenericAppMixin(HandlebarsApplicationMixin(Applica
 			minimizable: false,
 		},
 		position: {
-			width: 100,
+			width: `auto`,
 		},
-		actions: {},
+		actions: {
+			randomCondition: this.#randomCondition,
+		},
 	};
 
 	static PARTS = {
@@ -79,17 +88,17 @@ export class CryptApp extends GenericAppMixin(HandlebarsApplicationMixin(Applica
 	};
 
 	_prepareDifficulty(ctx) {
-		ctx.options = [
-			{ label: `RipCrypt.common.difficulties.easy`, value: 4 },
-			{ label: `RipCrypt.common.difficulties.normal`, value: 5 },
-			{ label: `RipCrypt.common.difficulties.tough`, value: 6 },
-			{ label: `RipCrypt.common.difficulties.hard`, value: 7 },
-		];
+		ctx.options = conditions;
 		ctx.difficulty = game.settings.get(`ripcrypt`, `dc`);
 		return ctx;
 	};
 	// #endregion
 
 	// #region Actions
+	static async #randomCondition() {
+		const dc = conditions[Math.floor(Math.random() * conditions.length)];
+		await game.settings.set(`ripcrypt`, `dc`, dc.value);
+		await this.render({ parts: [`delveConditions`] });
+	};
 	// #endregion
 };

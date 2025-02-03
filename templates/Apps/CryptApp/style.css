@@ -10,4 +10,9 @@
 		background: var(--base-background);
 		padding: 4px;
 	};
+
+	.row {
+		display: flex;
+		flex-direction: row;
+	}
 }

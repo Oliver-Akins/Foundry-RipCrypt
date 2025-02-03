@@ -8,9 +8,21 @@
 		<div slot="content">
 			<span>{{ difficulty }}</span>
 			{{#if meta.editable}}
-				<select id="{{meta.idp}}-difficulty">
-					{{ rc-options difficulty options localize=true }}
-				</select>
+				<div class="row">
+					<select id="{{meta.idp}}-difficulty">
+						{{ rc-options difficulty options localize=true }}
+					</select>
+					<button
+						type="button"
+						data-action="randomCondition"
+					>
+						<rc-icon
+							name="icons/roll"
+							var:size="20px"
+							var:fill="var(--accent-3)"
+						></rc-icon>
+					</button>
+				</div>
 			{{/if}}
 		</div>
 	</rc-border>
