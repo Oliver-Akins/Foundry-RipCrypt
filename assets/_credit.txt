@@ -1,3 +1,6 @@
+Oliver Akins:
+	- geist-silhouette.v2.svg : All rights reserved.
+
 Abdulloh Fauzan:
 	- icons/info-circle.svg (https://thenounproject.com/icon/information-4176576/) : Rights Purchased
 
