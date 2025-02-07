@@ -24,12 +24,6 @@ export function StyledShadowElement(Base) {
 		/** @type {ShadowRoot} */
 		_shadow;
 
-		/**
-		 * The hook ID for this element's CSS hot reload
-		 * @type {number}
-		 */
-		#cssHmr;
-
 		constructor() {
 			super();
 
@@ -49,24 +43,16 @@ export function StyledShadowElement(Base) {
 
 		disconnectedCallback() {
 			if (!this.#mounted) { return };
-			if (this.#cssHmr != null) {
-				Hooks.off(`dd-hmr:css`, this.#cssHmr);
-				this.#cssHmr = null;
-			};
 			this.#mounted = false;
 		};
 
 		_getStyles() {
-			if (this.constructor._styles) {
-				this._style.innerHTML = this.constructor._styles;
-			} else {
-				fetch(`./systems/${game.system.id}/templates/${this.constructor._stylePath}`)
-					.then(r => r.text())
-					.then(t => {
-						this.constructor._styles = t;
-						this._style.innerHTML = t;
-					});
-			}
+			// TODO: Cache the CSS content in a more sane way that doesn't break
+			fetch(`./systems/${game.system.id}/templates/${this.constructor._stylePath}`)
+				.then(r => r.text())
+				.then(t => {
+					this._style.innerHTML = t;
+				});
 		};
 	};
 };
