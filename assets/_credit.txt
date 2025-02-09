@@ -1,6 +1,9 @@
 Oliver Akins:
 	- geist-silhouette.v2.svg : All rights reserved.
 
+ARISO:
+	- icons/hourglass.svg (https://thenounproject.com/icon/hourglass-7546736/) : Rights Purchased
+
 Abdulloh Fauzan:
 	- icons/info-circle.svg (https://thenounproject.com/icon/information-4176576/) : Rights Purchased
 
