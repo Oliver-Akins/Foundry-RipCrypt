@@ -3,6 +3,7 @@ import { GenericAppMixin } from "../GenericApp.mjs";
 import { HeroSkillsCardV1 } from "./HeroSkillsCardV1.mjs";
 import { HeroSummaryCardV1 } from "./HeroSummaryCardV1.mjs";
 import { Logger } from "../../utils/Logger.mjs";
+import { HeroCraftCardV1 } from "./HeroCraftCardV1.mjs";
 
 const { HandlebarsApplicationMixin } = foundry.applications.api;
 const { ActorSheetV2 } = foundry.applications.sheets;
@@ -38,6 +39,9 @@ export class CombinedHeroSheet extends GenericAppMixin(HandlebarsApplicationMixi
 		skills: {
 			template: filePath(`templates/Apps/HeroSkillsCardV1/content.hbs`),
 		},
+		craft: {
+			template: filePath(`templates/Apps/CombinedHeroSheet/crafts.hbs`),
+		},
 	};
 	// #endregion
 
@@ -64,25 +68,47 @@ export class CombinedHeroSheet extends GenericAppMixin(HandlebarsApplicationMixi
 				isEditable: this.isEditable,
 			},
 		);
+
+		const craftsElement = this.element.querySelector(`.crafts-summary`);
+		HeroCraftCardV1._onRender.bind(this)(
+			context,
+			{
+				...options,
+				element: craftsElement,
+				isEditable: this.isEditable,
+			},
+		);
 	};
 
 	async _preparePartContext(partId, ctx, opts) {
 		ctx = await super._preparePartContext(partId, ctx, opts);
 		ctx.actor = this.document;
+		Logger.debug(`partID:`, partId);
 
-		ctx = await HeroSummaryCardV1.prepareGuts(ctx);
-		ctx = await HeroSummaryCardV1.prepareWeapons(ctx);
-		ctx = await HeroSummaryCardV1.prepareArmor(ctx);
-		ctx = await HeroSummaryCardV1.prepareFatePath(ctx);
-		ctx = await HeroSummaryCardV1.prepareAbilityRow(ctx);
-		ctx = await HeroSummaryCardV1.prepareSpeed(ctx);
-		ctx = await HeroSummaryCardV1.prepareLevelData(ctx);
+		switch (partId) {
+			case `summary`: {
+				ctx = await HeroSummaryCardV1.prepareGuts(ctx);
+				ctx = await HeroSummaryCardV1.prepareWeapons(ctx);
+				ctx = await HeroSummaryCardV1.prepareArmor(ctx);
+				ctx = await HeroSummaryCardV1.prepareFatePath(ctx);
+				ctx = await HeroSummaryCardV1.prepareAbilityRow(ctx);
+				ctx = await HeroSummaryCardV1.prepareSpeed(ctx);
+				ctx = await HeroSummaryCardV1.prepareLevelData(ctx);
+				break;
+			};
+			case `skills`: {
+				ctx = await HeroSkillsCardV1.prepareGear(ctx);
+				ctx = await HeroSkillsCardV1.prepareAmmo(ctx);
+				ctx = await HeroSkillsCardV1.prepareSkills(ctx);
+				break;
+			};
+			case `craft`: {
+				ctx = await HeroCraftCardV1.prepareCraft(ctx);
+				break;
+			};
+		};
 
-		ctx = await HeroSkillsCardV1.prepareGear(ctx);
-		ctx = await HeroSkillsCardV1.prepareAmmo(ctx);
-		ctx = await HeroSkillsCardV1.prepareSkills(ctx);
-
-		Logger.debug(`Context:`, ctx);
+		Logger.debug(`Context keys:`, Object.keys(ctx));
 		return ctx;
 	};
 	// #endregion

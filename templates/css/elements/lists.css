@@ -13,6 +13,7 @@
 			align-items: center;
 			counter-increment: list-index 1;
 			position: relative;
+			padding: 0 4px;
 		}
 
 		&.num-before > li::before,

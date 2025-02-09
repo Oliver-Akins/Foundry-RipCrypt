@@ -1,0 +1,67 @@
+<div class="crafts-summary">
+	<div class="label col-header">Focus</div>
+	<ol class="craft-list num-before">
+		{{#each craft.focus as | craft |}}
+			{{#if craft}}
+				<li data-item-id="{{craft.uuid}}" data-ctx-menu="craft">
+					<span class="name">{{ craft.name }}</span>
+					{{#if craft.use}}
+						<rc-icon
+							name="icons/info-circle"
+							var:size="16px"
+							var:fill="currentColor"
+							data-tooltip="{{ craft.use }}"
+							data-tooltip-direction="UP"
+						></rc-icon>
+					{{/if}}
+				</li>
+			{{else}}
+				<li></li>
+			{{/if}}
+		{{/each}}
+	</ol>
+
+	<div class="label col-header">Fract</div>
+	<ol class="craft-list num-before">
+		{{#each craft.fract as | craft |}}
+			{{#if craft}}
+				<li data-item-id="{{craft.uuid}}" data-ctx-menu="craft">
+					<span class="name">{{ craft.name }}</span>
+					{{#if craft.use}}
+						<rc-icon
+							name="icons/info-circle"
+							var:size="16px"
+							var:fill="currentColor"
+							data-tooltip="{{ craft.use }}"
+							data-tooltip-direction="UP"
+						></rc-icon>
+					{{/if}}
+				</li>
+			{{else}}
+				<li></li>
+			{{/if}}
+		{{/each}}
+	</ol>
+
+	<div class="label col-header">Flect</div>
+	<ol class="craft-list num-before">
+		{{#each craft.flect as | craft |}}
+			{{#if craft}}
+				<li data-item-id="{{craft.uuid}}" data-ctx-menu="craft">
+					<span class="name">{{ craft.name }}</span>
+					{{#if craft.use}}
+						<rc-icon
+							name="icons/info-circle"
+							var:size="16px"
+							var:fill="currentColor"
+							data-tooltip="{{ craft.use }}"
+							data-tooltip-direction="UP"
+						></rc-icon>
+					{{/if}}
+				</li>
+			{{else}}
+				<li></li>
+			{{/if}}
+		{{/each}}
+	</ol>
+</div>

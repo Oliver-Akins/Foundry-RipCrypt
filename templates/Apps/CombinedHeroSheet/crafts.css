@@ -1,0 +1,36 @@
+.ripcrypt.ripcrypt--CombinedHeroSheet .crafts-summary {
+	display: grid;
+	column-gap: var(--col-gap);
+	grid-template-columns: repeat(3, minmax(0, 3fr));
+	grid-template-rows: repeat(5, minmax(0, 1fr));
+	grid-auto-flow: column;
+
+	.col-header {
+		background: var(--section-header-background);
+		color: var(--section-header-text);
+	}
+
+	label, .label {
+		box-sizing: border-box;
+		padding: 2px 4px;
+		text-transform: uppercase;
+		font-size: var(--font-size-14);
+		overflow: hidden;
+		text-overflow: ellipsis;
+		font-weight: bold;
+	}
+
+	.craft-list {
+		grid-row: span 4;
+		display: contents;
+
+		> :nth-child(odd) {
+			background: var(--alt-row-background);
+			color: var(--alt-row-text);
+		}
+	}
+
+	span.name {
+		flex-grow: 1;
+	}
+}

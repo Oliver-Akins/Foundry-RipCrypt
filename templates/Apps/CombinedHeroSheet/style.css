@@ -1,3 +1,5 @@
+@import url("./crafts.css");
+
 .ripcrypt.ripcrypt--CombinedHeroSheet {
 	> .window-content {
 		gap: 4px;
