@@ -11,9 +11,9 @@ export function StyledShadowElement(Base) {
 
 		/**
 		 * The stringified CSS to use
-		 * @type {string}
+		 * @type {Map<string, string>}
 		 */
-		static _styles;
+		static _styles = new Map();
 
 		/**
 		 * The HTML element of the stylesheet
@@ -48,11 +48,17 @@ export function StyledShadowElement(Base) {
 
 		_getStyles() {
 			// TODO: Cache the CSS content in a more sane way that doesn't break
-			fetch(`./systems/${game.system.id}/templates/${this.constructor._stylePath}`)
-				.then(r => r.text())
-				.then(t => {
-					this._style.innerHTML = t;
-				});
+			const stylePath = this.constructor._stylePath;
+			if (this.constructor._styles.has(stylePath)) {
+				this._style.innerHTML = this.constructor._styles.get(stylePath);
+			} else {
+				fetch(`./systems/${game.system.id}/templates/${stylePath}`)
+					.then(r => r.text())
+					.then(t => {
+						this.constructor._styles.set(stylePath, t);
+						this._style.innerHTML = t;
+					});
+			}
 		};
 	};
 };
