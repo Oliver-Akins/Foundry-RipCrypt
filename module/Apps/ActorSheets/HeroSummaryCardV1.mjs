@@ -192,7 +192,7 @@ export class HeroSummaryCardV1 extends GenericAppMixin(HandlebarsApplicationMixi
 		};
 
 		if (ctx.weapons.length < limit) {
-			for (let i = ctx.weapons.length - 1; i <= limit; i++) {
+			for (let i = ctx.weapons.length; i < limit; i++) {
 				const itemIndex = ctx.weapons.length;
 				ctx.weapons.push({
 					data: null,
