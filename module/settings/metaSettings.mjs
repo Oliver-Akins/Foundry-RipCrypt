@@ -5,7 +5,7 @@ export function registerMetaSettings() {
 		config: false,
 		requiresReload: false,
 		onChange: () => {
-			CONFIG.ui.crypt.render({ parts: [ `delveConditions` ]});
+			ui.crypt.render({ parts: [ `delveConditions` ]});
 		},
 	});
 };

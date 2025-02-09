@@ -1,7 +1,7 @@
 // Applications
 import { AllItemSheetV1 } from "../Apps/ItemSheets/AllItemSheetV1.mjs";
 import { CombinedHeroSheet } from "../Apps/ActorSheets/CombinedHeroSheet.mjs";
-import { CryptApp } from "../Apps/CryptApp.mjs";
+import { DelveTourApp } from "../Apps/DelveTourApp.mjs";
 import { HeroSkillsCardV1 } from "../Apps/ActorSheets/HeroSkillsCardV1.mjs";
 import { HeroSummaryCardV1 } from "../Apps/ActorSheets/HeroSummaryCardV1.mjs";
 
@@ -29,7 +29,7 @@ import { registerUserSettings } from "../settings/userSettings.mjs";
 Hooks.once(`init`, () => {
 	Logger.log(`Initializing`);
 
-	CONFIG.ui.crypt = CryptApp;
+	CONFIG.ui.crypt = DelveTourApp;
 
 	// #region Settings
 	registerMetaSettings();

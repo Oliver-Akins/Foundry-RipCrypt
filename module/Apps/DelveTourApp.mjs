@@ -11,14 +11,14 @@ const conditions = [
 	{ label: `RipCrypt.common.difficulties.hard`, value: 7 },
 ];
 
-export class CryptApp extends GenericAppMixin(HandlebarsApplicationMixin(ApplicationV2)) {
+export class DelveTourApp extends GenericAppMixin(HandlebarsApplicationMixin(ApplicationV2)) {
 	// #region Options
 	static DEFAULT_OPTIONS = {
 		classes: [
 			`ripcrypt--CryptApp`,
 		],
 		window: {
-			title: `Crypt`,
+			title: `Delve Tour`,
 			frame: true,
 			positioned: true,
 			resizable: false,
