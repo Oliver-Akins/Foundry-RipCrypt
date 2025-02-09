@@ -1,4 +1,3 @@
-import { CryptApp } from "../Apps/CryptApp.mjs";
 import { Logger } from "../utils/Logger.mjs";
 
 Hooks.once(`ready`, () => {
@@ -19,6 +18,5 @@ Hooks.once(`ready`, () => {
 		if (game.paused) { game.togglePause() };
 	};
 
-	CONFIG.ui.crypt = new CryptApp();
-	CONFIG.ui.crypt.render({ force: true });
+	ui.crypt.render({ force: true });
 });
