@@ -46,6 +46,7 @@
 		"Item": {
 			"ammo": {},
 			"armour": {},
+			"craft": {},
 			"shield": {},
 			"skill": {},
 			"weapon": {}

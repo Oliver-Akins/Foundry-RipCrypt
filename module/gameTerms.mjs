@@ -6,6 +6,11 @@ export const gameTerms = Object.preventExtensions({
 		GLIM: `glim`,
 		THINGLIM: `thin-glim`,
 	}),
+	Aspects: Object.freeze({
+		FOCUS: `focus`,
+		FLECT: `flect`,
+		FRACT: `fract`,
+	}),
 	FatePath: [
 		`North`,
 		`East`,

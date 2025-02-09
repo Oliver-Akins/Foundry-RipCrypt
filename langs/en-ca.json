@@ -6,6 +6,7 @@
 		"Item": {
 			"ammo": "Ammo",
 			"armour": "Armour",
+			"craft": "Craft",
 			"shield": "Shield",
 			"skill": "Skill",
 			"weapon": "Weapon"
@@ -42,6 +43,12 @@
 				"legs": "Legs"
 			},
 			"armour": "Armour",
+			"aspect": "Aspect",
+			"aspectNames": {
+				"flect": "Flect",
+				"fract": "Fract",
+				"focus": "Focus"
+			},
 			"currency": {
 				"gold": "Gold",
 				"silver": "Silver",
