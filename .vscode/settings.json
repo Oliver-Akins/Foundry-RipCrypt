@@ -8,5 +8,8 @@
 	"html.customData": [
 		"./.vscode/foundry.html-data.json",
 		"./.vscode/ripcrypt.html-data.json"
-	]
+	],
+	"workbench.editorAssociations": {
+		"*.svg": "default",
+	}
 }
