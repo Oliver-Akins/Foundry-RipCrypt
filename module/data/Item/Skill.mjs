@@ -14,6 +14,11 @@ export class SkillData extends foundry.abstract.TypeDataModel {
 				required: true,
 				choices: () => Object.values(gameTerms.Abilities),
 			}),
+			description: new fields.HTMLField({
+				blank: true,
+				nullable: false,
+				trim: true,
+			}),
 		};
 
 		const advances = {};
@@ -55,6 +60,14 @@ export class SkillData extends foundry.abstract.TypeDataModel {
 					label: `RipCrypt.common.abilities.${ability}`,
 					value: ability,
 				})),
+			},
+			{
+				// TODO: Figure out how tf to make this work nicely on a generic level
+				id: `description`,
+				type: `prosemirror`,
+				label: `RipCrypt.common.description`,
+				path: `system.description`,
+				collaborative: true,
 			},
 			{
 				type: `group`,
