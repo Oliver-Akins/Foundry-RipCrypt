@@ -1,0 +1,16 @@
+<div>
+	{{#if editable}}
+		<prose-mirror
+			name="{{ path }}"
+			value="{{ raw }}"
+			{{ifThen compact "compact" ""}}
+			{{#if collaborative}}
+				data-document-uuid="{{ uuid }}"
+			{{/if}}
+		>
+			{{{ enriched }}}
+		</prose-mirror>
+	{{else}}
+		{{{ enriched }}}
+	{{/if}}
+</div>

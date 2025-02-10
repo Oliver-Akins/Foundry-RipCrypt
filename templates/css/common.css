@@ -1,9 +1,12 @@
+@layer exceptions;
+
 @import url("./vars.css");
 
 @import url("./elements/button.css");
 @import url("./elements/input.css");
 @import url("./elements/lists.css");
 @import url("./elements/pill-bar.css");
+@import url("./elements/prose-mirror.css") layer(exceptions);
 @import url("./elements/select.css");
 @import url("./elements/span.css");
 @import url("./elements/string-tags.css");
