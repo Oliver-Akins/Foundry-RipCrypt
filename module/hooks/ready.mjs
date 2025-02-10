@@ -18,5 +18,7 @@ Hooks.once(`ready`, () => {
 		if (game.paused) { game.togglePause() };
 	};
 
-	ui.crypt.render({ force: true });
+	if (game.settings.get(`ripcrypt`, `showDelveTour`)) {
+		ui.crypt.render({ force: true });
+	};
 });

@@ -26,6 +26,7 @@ import { registerCustomComponents } from "../Apps/elements/_index.mjs";
 import { registerDevSettings } from "../settings/devSettings.mjs";
 import { registerMetaSettings } from "../settings/metaSettings.mjs";
 import { registerUserSettings } from "../settings/userSettings.mjs";
+import { registerWorldSettings } from "../settings/worldSettings.mjs";
 
 Hooks.once(`init`, () => {
 	Logger.log(`Initializing`);
@@ -36,6 +37,7 @@ Hooks.once(`init`, () => {
 	registerMetaSettings();
 	registerDevSettings();
 	registerUserSettings();
+	registerWorldSettings();
 	// #endregion
 
 	// #region Datamodels
