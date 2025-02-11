@@ -1,9 +1,9 @@
 import { filePath } from "../../consts.mjs";
 import { GenericAppMixin } from "../GenericApp.mjs";
+import { HeroCraftCardV1 } from "./HeroCraftCardV1.mjs";
 import { HeroSkillsCardV1 } from "./HeroSkillsCardV1.mjs";
 import { HeroSummaryCardV1 } from "./HeroSummaryCardV1.mjs";
 import { Logger } from "../../utils/Logger.mjs";
-import { HeroCraftCardV1 } from "./HeroCraftCardV1.mjs";
 
 const { HandlebarsApplicationMixin } = foundry.applications.api;
 const { ActorSheetV2 } = foundry.applications.sheets;
