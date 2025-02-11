@@ -5,7 +5,7 @@ export function textInput(input, data) {
 	const id = `${data.meta.idp}-${input.id}`;
 
 	if (!data.meta.editable) {
-		return `<div data-input-type="integer">
+		return `<div data-input-type="text">
 			<span class="label">${label}</span>
 			<span class="value">${data.meta.limited && input.limited ? `???` : input.value}</span>
 		</div>`;
