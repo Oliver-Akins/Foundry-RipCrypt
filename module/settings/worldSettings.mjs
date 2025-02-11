@@ -1,5 +1,4 @@
 export function registerWorldSettings() {
-
 	game.settings.register(`ripcrypt`, `showDelveTour`, {
 		name: `Delve Tour Popup`,
 		scope: `world`,
