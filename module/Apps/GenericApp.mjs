@@ -1,5 +1,7 @@
 import { deleteItemFromElement, editItemFromElement } from "./utils.mjs";
 import { DicePool } from "./DicePool.mjs";
+import { RichEditor } from "./RichEditor.mjs";
+import { toBoolean } from "../consts.mjs";
 
 /**
  * A mixin that takes the class from HandlebarsApplicationMixin and
@@ -16,6 +18,7 @@ export function GenericAppMixin(HandlebarsApp) {
 				roll: this._rollDice,
 				editItem: (_event, target) => editItemFromElement(target),
 				deleteItem: (_event, target) => deleteItemFromElement(target),
+				openRichEditor: this.#openRichEditor,
 			},
 		};
 
@@ -57,13 +60,38 @@ export function GenericAppMixin(HandlebarsApp) {
 
 		// #region Actions
 		/** @this {GenericRipCryptApp} */
-		static async _rollDice(_$e, el) {
-			const data = el.dataset;
+		static async _rollDice(_event, target) {
+			const data = target.dataset;
 			const diceCount = parseInt(data.diceCount);
 			const flavor = data.flavor;
 
 			const dp = new DicePool({ diceCount, flavor });
 			dp.render({ force: true });
+		};
+
+		/** @this {GenericRipCryptApp} */
+		static async #openRichEditor(_event, target) {
+			const data = target.dataset;
+			const {
+				uuid,
+				path,
+				collaborative,
+				compact,
+			} = data;
+
+			if (!uuid || !path) {
+				console.error(`Rich Editor requires a document uuid and path to edit`);
+				return;
+			};
+
+			const document = await fromUuid(uuid);
+			const app = new RichEditor({
+				document,
+				path,
+				collaborative: toBoolean(collaborative),
+				compact: toBoolean(compact ),
+			});
+			app.render({ force: true });
 		};
 		// #endregion
 	};

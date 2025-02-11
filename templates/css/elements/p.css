@@ -1,0 +1,10 @@
+.ripcrypt > .window-content p {
+	&.warning {
+		padding: 0.75rem;
+		margin: 0.25rem;
+		border-radius: 8px;
+		border-color: yellow;
+		border-style: solid;
+		border-width: 2px;
+	}
+}

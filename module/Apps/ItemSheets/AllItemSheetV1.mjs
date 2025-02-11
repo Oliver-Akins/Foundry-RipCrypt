@@ -20,8 +20,6 @@ export class AllItemSheetV1 extends GenericAppMixin(HandlebarsApplicationMixin(I
 		window: {
 			resizable: false,
 		},
-		actions: {
-		},
 		form: {
 			submitOnChange: true,
 			closeOnSubmit: false,
@@ -40,7 +38,7 @@ export class AllItemSheetV1 extends GenericAppMixin(HandlebarsApplicationMixin(I
 		ctx = await super._preparePartContext(partId, ctx, opts);
 		ctx.item = this.document;
 
-		ctx.formFields = this.document.system.getFormFields(ctx);
+		ctx.formFields = await this.document.system.getFormFields(ctx);
 
 		Logger.debug(`Context:`, ctx);
 		return ctx;

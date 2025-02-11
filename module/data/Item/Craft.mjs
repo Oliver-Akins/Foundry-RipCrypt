@@ -35,7 +35,7 @@ export class CraftData extends SkillData {
 	// #endregion
 
 	// #region Sheet Data
-	getFormFields(_ctx) {
+	async getFormFields(_ctx) {
 		const fields = [
 			{
 				id: `fate-path`,
@@ -47,6 +47,15 @@ export class CraftData extends SkillData {
 					label: `RipCrypt.common.aspectNames.${aspect}`,
 					value: aspect,
 				})),
+			},
+			{
+				id: `description`,
+				type: `prosemirror`,
+				label: `RipCrypt.common.description`,
+				path: `system.description`,
+				uuid: this.parent.uuid,
+				value: await TextEditor.enrichHTML(this.description),
+				collaborative: false,
 			},
 			{
 				type: `group`,

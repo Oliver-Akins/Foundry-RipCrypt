@@ -48,7 +48,7 @@ export class SkillData extends foundry.abstract.TypeDataModel {
 	// #endregion
 
 	// #region Sheet Data
-	getFormFields(_ctx) {
+	async getFormFields(_ctx) {
 		const fields = [
 			{
 				id: `fate-path`,
@@ -62,12 +62,13 @@ export class SkillData extends foundry.abstract.TypeDataModel {
 				})),
 			},
 			{
-				// TODO: Figure out how tf to make this work nicely on a generic level
 				id: `description`,
 				type: `prosemirror`,
 				label: `RipCrypt.common.description`,
 				path: `system.description`,
-				collaborative: true,
+				uuid: this.parent.uuid,
+				value: await TextEditor.enrichHTML(this.description),
+				collaborative: false,
 			},
 			{
 				type: `group`,

@@ -1,9 +1,29 @@
+const { getType } = foundry.utils;
+
 // MARK: filePath
 export function filePath(path) {
 	if (path.startsWith(`/`)) {
 		path = path.slice(1);
 	};
 	return `systems/ripcrypt/${path}`;
+};
+
+// MARK: toBoolean
+/**
+ * Converts a value into a boolean based on the type of the value provided
+ *
+ * @param {any} val The value to convert
+ */
+export function toBoolean(val) {
+	switch (getType(val)) {
+		case `string`: {
+			return val === `true`;
+		};
+		case `number`: {
+			return val === 1;
+		};
+	};
+	return Boolean(val);
 };
 
 // MARK: documentSorter

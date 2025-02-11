@@ -79,11 +79,6 @@ export class RichEditor extends HandlebarsApplicationMixin(DocumentSheetV2) {
 			path: this.path,
 		};
 
-		console.log({
-			doc: this.document,
-			path: this.path,
-			value: this.document.system.description,
-		});
 		const value = getProperty(this.document, this.path);
 		ctx.enriched = await TextEditor.enrichHTML(value);
 		ctx.raw = value;

@@ -13,6 +13,8 @@
 
 	--input-text: white;
 	--input-background: var(--accent-2);
+	--button-text: white;
+	--button-background: var(--accent-2);
 
 	--pill-width: 100%;
 	--pill-border-radius: 4px;
@@ -21,6 +23,7 @@
 	grid-template-columns: auto 200px;
 	column-gap: var(--col-gap);
 	row-gap: var(--row-gap);
+	max-width: 300px;
 
 	padding: 8px;
 	background: var(--base-background);
@@ -29,6 +32,7 @@
 	[data-input-type] {
 		display: contents;
 	}
+
 	> [data-input-type="group"] {
 		display: unset;
 		grid-column: 1 / -1;
@@ -38,6 +42,36 @@
 			grid-template-columns: minmax(0, 1fr) minmax(0, 3fr);
 			column-gap: var(--col-gap);
 			row-gap: var(--row-gap);
+		}
+	}
+
+	> [data-input-type="prose-mirror"] {
+		grid-column: 1 / -1;
+		display: flex;
+		flex-direction: column;
+		gap: var(--row-gap);
+
+		> .label-row {
+			display: flex;
+			flex-direction: row;
+			width: 100%;
+			justify-content: space-between;
+		}
+
+		.value {
+			background: var(--input-background);
+			color: var(--input-text);
+
+			> :first-child {
+				margin-top: 0;
+			}
+			> :last-child {
+				margin-bottom: 0;
+			}
+
+			&:empty {
+				display: none;
+			}
 		}
 	}
 
@@ -62,7 +96,7 @@
 		font-weight: bold;
 	}
 
-	input, select, .value, [data-tag-count] {
+	button, input, select, .value, [data-tag-count] {
 		border-radius: 4px;
 		padding: 2px 4px;
 	}

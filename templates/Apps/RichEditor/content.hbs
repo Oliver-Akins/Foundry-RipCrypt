@@ -1,5 +1,10 @@
 <div>
 	{{#if editable}}
+		{{#if (not collaborative)}}
+			<p class="warning">
+				{{ rc-i18n "RipCrypt.Apps.RichEditor-no-collaborative" }}
+			</p>
+		{{/if}}
 		<prose-mirror
 			name="{{ path }}"
 			value="{{ raw }}"

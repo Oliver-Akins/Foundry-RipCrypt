@@ -3,6 +3,7 @@ import { booleanInput } from "./booleanInput.mjs";
 import { dropdownInput } from "./dropdownInput.mjs";
 import { groupInput } from "./groupInput.mjs";
 import { numberInput } from "./numberInput.mjs";
+import { prosemirrorInput } from "./prosemirrorInput.mjs";
 import { stringSet } from "./stringSet.mjs";
 import { textInput } from "./textInput.mjs";
 
@@ -10,6 +11,7 @@ const { getType } = foundry.utils;
 
 const inputTypes = {
 	"string-set": stringSet,
+	prosemirror: prosemirrorInput,
 	integer: numberInput,
 	bar: barInput,
 	dropdown: dropdownInput,
@@ -29,7 +31,10 @@ export function formFields(inputs, opts) {
 			input.limited ??= true;
 		};
 
-		if (typesToSanitize.has(getType(input.value))) {
+		if (
+			input.type !== `prosemirror`
+			&& typesToSanitize.has(getType(input.value))
+		) {
 			input.value = Handlebars.escapeExpression(input.value);
 		};
 		fields.push(inputTypes[input.type](input, opts.data.root));
