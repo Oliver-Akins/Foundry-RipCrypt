@@ -1,0 +1,9 @@
+.ripcrypt.ripcrypt--TabbedHeroSheet {
+	> .window-content {
+		gap: 4px;
+		background: var(--base-background);
+		> .tab:not(.visible) {
+			display: none;
+		}
+	}
+}

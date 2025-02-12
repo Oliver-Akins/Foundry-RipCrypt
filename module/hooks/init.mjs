@@ -4,6 +4,7 @@ import { CombinedHeroSheet } from "../Apps/ActorSheets/CombinedHeroSheet.mjs";
 import { DelveTourApp } from "../Apps/DelveTourApp.mjs";
 import { HeroSkillsCardV1 } from "../Apps/ActorSheets/HeroSkillsCardV1.mjs";
 import { HeroSummaryCardV1 } from "../Apps/ActorSheets/HeroSummaryCardV1.mjs";
+import { TabbedHeroSheet } from "../Apps/ActorSheets/TabbedHeroSheet.mjs";
 
 // Data Models
 import { AmmoData } from "../data/Item/Ammo.mjs";
@@ -68,6 +69,12 @@ Hooks.once(`init`, () => {
 		types: [`hero`],
 		label: `RipCrypt.sheet-names.CombinedHeroSheet`,
 		themes: CombinedHeroSheet.themes,
+	});
+	Actors.registerSheet(game.system.id, TabbedHeroSheet, {
+		makeDefault: false,
+		types: [`hero`],
+		label: `RipCrypt.sheet-names.TabbedHeroSheet`,
+		themes: TabbedHeroSheet.themes,
 	});
 	Actors.registerSheet(game.system.id, HeroSummaryCardV1, {
 		types: [`hero`],
