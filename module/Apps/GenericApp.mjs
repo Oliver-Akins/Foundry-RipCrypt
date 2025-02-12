@@ -15,7 +15,7 @@ export function GenericAppMixin(HandlebarsApp) {
 				`ripcrypt`,
 			],
 			actions: {
-				roll: this._rollDice,
+				roll: this.#rollDice,
 				editItem: (_event, target) => editItemFromElement(target),
 				deleteItem: (_event, target) => deleteItemFromElement(target),
 				openRichEditor: this.#openRichEditor,
@@ -60,7 +60,7 @@ export function GenericAppMixin(HandlebarsApp) {
 
 		// #region Actions
 		/** @this {GenericRipCryptApp} */
-		static async _rollDice(_event, target) {
+		static async #rollDice(_event, target) {
 			const data = target.dataset;
 			const diceCount = parseInt(data.diceCount);
 			const flavor = data.flavor;

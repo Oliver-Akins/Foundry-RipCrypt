@@ -23,9 +23,7 @@ export class CombinedHeroSheet extends GenericAppMixin(HandlebarsApplicationMixi
 		window: {
 			resizable: false,
 		},
-		actions: {
-			editItem: (_event, target) => HeroSummaryCardV1._editItem(target),
-		},
+		actions: {},
 		form: {
 			submitOnChange: true,
 			closeOnSubmit: false,
@@ -83,7 +81,6 @@ export class CombinedHeroSheet extends GenericAppMixin(HandlebarsApplicationMixi
 	async _preparePartContext(partId, ctx, opts) {
 		ctx = await super._preparePartContext(partId, ctx, opts);
 		ctx.actor = this.document;
-		Logger.debug(`partID:`, partId);
 
 		switch (partId) {
 			case `summary`: {
