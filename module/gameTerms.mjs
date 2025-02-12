@@ -40,5 +40,6 @@ export const gameTerms = Object.preventExtensions({
 		`armour`,
 		`weapon`,
 		`shield`,
+		`good`,
 	]),
 });

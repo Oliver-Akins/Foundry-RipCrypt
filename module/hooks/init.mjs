@@ -8,6 +8,7 @@ import { HeroSummaryCardV1 } from "../Apps/ActorSheets/HeroSummaryCardV1.mjs";
 // Data Models
 import { AmmoData } from "../data/Item/Ammo.mjs";
 import { CraftData } from "../data/Item/Craft.mjs";
+import { GoodData } from "../data/Item/Good.mjs";
 import { HeroData } from "../data/Actor/Hero.mjs";
 import { ProtectorData } from "../data/Item/Protector.mjs";
 import { SkillData } from "../data/Item/Skill.mjs";
@@ -45,6 +46,7 @@ Hooks.once(`init`, () => {
 	CONFIG.Item.dataModels.ammo = AmmoData,
 	CONFIG.Item.dataModels.armour = ProtectorData;
 	CONFIG.Item.dataModels.craft = CraftData;
+	CONFIG.Item.dataModels.good = GoodData;
 	CONFIG.Item.dataModels.shield = ProtectorData;
 	CONFIG.Item.dataModels.skill = SkillData;
 	CONFIG.Item.dataModels.weapon = WeaponData;
