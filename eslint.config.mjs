@@ -31,6 +31,7 @@ export default [
 				renderTemplate: `readonly`,
 				TextEditor: `readonly`,
 				fromUuid: `readonly`,
+				Combat: `readonly`,
 			},
 		},
 	},
