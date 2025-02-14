@@ -1,5 +1,6 @@
 Oliver Akins:
 	- geist-silhouette.v2.svg : All rights reserved.
+	- caster-silhouette.v1.svg : All rights reserved.
 
 ARISO:
 	- icons/hourglass.svg (https://thenounproject.com/icon/hourglass-7546736/) : Rights Purchased
