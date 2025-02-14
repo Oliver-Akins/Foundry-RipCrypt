@@ -16,6 +16,7 @@ export default [
 		languageOptions: {
 			globals: {
 				CONFIG: `writable`,
+				CONST: `readonly`,
 				game: `readonly`,
 				Handlebars: `readonly`,
 				Hooks: `readonly`,
@@ -32,6 +33,7 @@ export default [
 				TextEditor: `readonly`,
 				fromUuid: `readonly`,
 				Combat: `readonly`,
+				Combatant: `readonly`,
 			},
 		},
 	},

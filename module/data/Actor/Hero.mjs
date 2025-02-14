@@ -90,7 +90,7 @@ export class HeroData extends foundry.abstract.TypeDataModel {
 				trim: true,
 				nullable: false,
 				choices: () => {
-					return gameTerms.FatePath.concat(``);
+					return Object.values(gameTerms.FatePath).concat(``);
 				},
 			}),
 			level: new fields.SchemaField({

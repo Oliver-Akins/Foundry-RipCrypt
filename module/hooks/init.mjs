@@ -28,6 +28,9 @@ import { registerDevSettings } from "../settings/devSettings.mjs";
 import { registerMetaSettings } from "../settings/metaSettings.mjs";
 import { registerUserSettings } from "../settings/userSettings.mjs";
 import { registerWorldSettings } from "../settings/worldSettings.mjs";
+import { RipCryptCombat } from "../documents/combat.mjs";
+import { RipCryptCombatant } from "../documents/combatant.mjs";
+import { RipCryptCombatTracker } from "../Apps/sidebar/CombatTracker.mjs";
 
 Hooks.once(`init`, () => {
 	Logger.log(`Initializing`);
@@ -53,6 +56,9 @@ Hooks.once(`init`, () => {
 	// #endregion
 
 	// #region Class Changes
+	CONFIG.ui.combat = RipCryptCombatTracker;
+	CONFIG.Combat.documentClass = RipCryptCombat;
+	CONFIG.Combatant.documentClass = RipCryptCombatant;
 	CONFIG.Item.documentClass = RipCryptItem;
 	CONFIG.Dice.terms.d = CryptDie;
 	// #endregion

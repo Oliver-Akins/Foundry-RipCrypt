@@ -11,12 +11,12 @@ export const gameTerms = Object.preventExtensions({
 		FLECT: `flect`,
 		FRACT: `fract`,
 	}),
-	FatePath: [
-		`North`,
-		`East`,
-		`South`,
-		`West`,
-	],
+	FatePath: Object.freeze({
+		NORTH: `North`,
+		EAST: `East`,
+		SOUTH: `South`,
+		WEST: `West`,
+	}),
 	Access: [
 		`Common`,
 		`Uncommon`,
