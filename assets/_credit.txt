@@ -2,14 +2,14 @@ Oliver Akins:
 	- geist-silhouette.v2.svg : All rights reserved.
 	- caster-silhouette.v1.svg : All rights reserved.
 
+Kýnan Antos (Gritsilk Games):
+	- hero-silhouette.svg : Licensed to Distribute and Modify within the bounds of the "Foundry-RipCrypt" system.
+
 ARISO:
 	- icons/hourglass.svg (https://thenounproject.com/icon/hourglass-7546736/) : Rights Purchased
 
 Abdulloh Fauzan:
 	- icons/info-circle.svg (https://thenounproject.com/icon/information-4176576/) : Rights Purchased
-
-Kýnan Antos (Gritsilk Games):
-	- hero-silhouette.svg : Licensed to Distribute and Modify within the bounds of the "Foundry-RipCrypt" system.
 
 Soetarman Atmodjo:
 	- icons/roll.svg (https://thenounproject.com/icon/dice-5195278/) : Rights Purchased
