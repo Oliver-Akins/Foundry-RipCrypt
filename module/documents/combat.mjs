@@ -93,7 +93,7 @@ export class RipCryptCombat extends Combat {
 				this.round = 0;
 				return this;
 			};
-			return this.previousRound()
+			return this.previousRound();
 		}
 
 		const advanceTime = this.getTimeDelta(this.round, this.turn, this.round, previousTurn);

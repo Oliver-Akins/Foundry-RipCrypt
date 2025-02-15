@@ -4,6 +4,7 @@ import { CombinedHeroSheet } from "../Apps/ActorSheets/CombinedHeroSheet.mjs";
 import { DelveTourApp } from "../Apps/DelveTourApp.mjs";
 import { HeroSkillsCardV1 } from "../Apps/ActorSheets/HeroSkillsCardV1.mjs";
 import { HeroSummaryCardV1 } from "../Apps/ActorSheets/HeroSummaryCardV1.mjs";
+import { RipCryptCombatTracker } from "../Apps/sidebar/CombatTracker.mjs";
 
 // Data Models
 import { AmmoData } from "../data/Item/Ammo.mjs";
@@ -18,7 +19,10 @@ import { WeaponData } from "../data/Item/Weapon.mjs";
 import { CryptDie } from "../dice/CryptDie.mjs";
 
 // Documents
+import { RipCryptCombat } from "../documents/combat.mjs";
+import { RipCryptCombatant } from "../documents/combatant.mjs";
 import { RipCryptItem } from "../documents/item.mjs";
+import { RipCryptToken } from "../documents/token.mjs";
 
 // Misc
 import helpers from "../handlebarHelpers/_index.mjs";
@@ -28,10 +32,6 @@ import { registerDevSettings } from "../settings/devSettings.mjs";
 import { registerMetaSettings } from "../settings/metaSettings.mjs";
 import { registerUserSettings } from "../settings/userSettings.mjs";
 import { registerWorldSettings } from "../settings/worldSettings.mjs";
-import { RipCryptCombat } from "../documents/combat.mjs";
-import { RipCryptCombatant } from "../documents/combatant.mjs";
-import { RipCryptCombatTracker } from "../Apps/sidebar/CombatTracker.mjs";
-import { RipCryptToken } from "../documents/token.mjs";
 
 Hooks.once(`init`, () => {
 	Logger.log(`Initializing`);

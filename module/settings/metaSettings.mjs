@@ -18,6 +18,7 @@ export function registerMetaSettings() {
 			ui.crypt.render({ parts: [ `fate` ] });
 		},
 	});
+
 	game.settings.register(`ripcrypt`, `whoFirst`, {
 		scope: `world`,
 		type: String,
