@@ -103,6 +103,7 @@ Hooks.once(`init`, () => {
 
 	// #region Token Attrs
 	CONFIG.Actor.trackableAttributes.hero = HeroData.trackableAttributes;
+	// #endregion
 
 	registerCustomComponents();
 	Handlebars.registerHelper(helpers);

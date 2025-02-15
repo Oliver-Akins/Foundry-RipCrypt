@@ -30,4 +30,11 @@ export function registerMetaSettings() {
 			await ui.combat.render({ parts: [ `tracker` ] });
 		},
 	});
+
+	game.settings.register(`ripcrypt`, `firstLoadFinished`, {
+		scope: `world`,
+		type: Boolean,
+		initial: false,
+		requiresReload: false,
+	});
 };
