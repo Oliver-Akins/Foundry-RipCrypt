@@ -34,6 +34,7 @@ export default [
 				fromUuid: `readonly`,
 				Combat: `readonly`,
 				Combatant: `readonly`,
+				canvas: `readonly`,
 			},
 		},
 	},

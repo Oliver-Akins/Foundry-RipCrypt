@@ -35,6 +35,7 @@ import { RipCryptCombatTracker } from "../Apps/sidebar/CombatTracker.mjs";
 Hooks.once(`init`, () => {
 	Logger.log(`Initializing`);
 
+	CONFIG.Combat.initiative.decimals = 1;
 	CONFIG.ui.crypt = DelveTourApp;
 
 	// #region Settings
