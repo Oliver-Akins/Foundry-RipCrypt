@@ -10,9 +10,9 @@ export class RipCryptCombatTracker extends CombatTracker {
 		turn.hasDecimals = true;
 		turn.initiative = combatant.dynamicInitiative;
 
-		const groupKey = combatant.groupKey;
+		const groupKey = combatant?.groupKey;
 		if (groupKey && combat.started) {
-			turn.active ||= combat.combatant.groupKey === groupKey;
+			turn.active ||= combat.combatant?.groupKey === groupKey;
 			if (turn.active && !turn.css.includes(`active`)) {
 				turn.css += `active`;
 			};

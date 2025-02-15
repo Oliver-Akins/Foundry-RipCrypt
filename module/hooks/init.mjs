@@ -31,11 +31,12 @@ import { registerWorldSettings } from "../settings/worldSettings.mjs";
 import { RipCryptCombat } from "../documents/combat.mjs";
 import { RipCryptCombatant } from "../documents/combatant.mjs";
 import { RipCryptCombatTracker } from "../Apps/sidebar/CombatTracker.mjs";
+import { RipCryptToken } from "../documents/token.mjs";
 
 Hooks.once(`init`, () => {
 	Logger.log(`Initializing`);
 
-	CONFIG.Combat.initiative.decimals = 1;
+	CONFIG.Combat.initiative.decimals = 2;
 	CONFIG.ui.crypt = DelveTourApp;
 
 	// #region Settings
@@ -60,6 +61,7 @@ Hooks.once(`init`, () => {
 	CONFIG.ui.combat = RipCryptCombatTracker;
 	CONFIG.Combat.documentClass = RipCryptCombat;
 	CONFIG.Combatant.documentClass = RipCryptCombatant;
+	CONFIG.Token.objectClass = RipCryptToken;
 	CONFIG.Item.documentClass = RipCryptItem;
 	CONFIG.Dice.terms.d = CryptDie;
 	// #endregion

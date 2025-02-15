@@ -48,7 +48,7 @@ export class RipCryptCombat extends Combat {
 
 		const turn = this.turn ?? -1;
 
-		const groupKey = this.combatant.groupKey;
+		const groupKey = this.turns[turn]?.groupKey;
 
 		// Determine the next turn number
 		let nextTurn = null;
@@ -88,6 +88,14 @@ export class RipCryptCombat extends Combat {
 			}
 		}
 
+		if (previousTurn < 0) {
+			if (this.round === 1) {
+				this.round = 0;
+				return this;
+			};
+			return this.previousRound()
+		}
+
 		const advanceTime = this.getTimeDelta(this.round, this.turn, this.round, previousTurn);
 
 		// Update the document, passing data through a hook first
@@ -104,8 +112,6 @@ export class RipCryptCombat extends Combat {
 	 * @internal
 	 */
 	_updateTurnMarkers() {
-		return super._updateTurnMarkers();
-		/* eslint-disable no-unreachable */
 		if (!canvas.ready) { return };
 
 		const tokenGroup = this.combatant?.groupKey;
@@ -118,15 +124,21 @@ export class RipCryptCombat extends Combat {
 
 		if (!this.active) { return };
 		const currentToken = this.combatant?.token?._object;
-		console.log(this.combatant.token._object)
 		if (!tokenGroup && currentToken) {
 			currentToken.renderFlags.set({refreshTurnMarker: true});
 		} else {
-			for (const combatant of this.groups.get(tokenGroup)) {
-				console.log(combatant.token._object);
-				combatant.token._object.renderFlags.set({ refreshTurnMarker: true });
+			const group = this.groups.get(tokenGroup) ?? [];
+			for (const combatant of group) {
+				combatant.token?._object?.renderFlags.set({ refreshTurnMarker: true });
 			}
 		}
-		/* eslint-enable no-unreachable */
 	}
+
+	async _manageTurnEvents() {
+		try {
+			await super._manageTurnEvents();
+		} catch {
+			this._updateTurnMarkers();
+		};
+	};
 };

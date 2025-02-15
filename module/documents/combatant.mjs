@@ -3,7 +3,7 @@ import { distanceBetweenFates } from "../utils/distanceBetweenFates.mjs";
 export class RipCryptCombatant extends Combatant {
 
 	get disposition() {
-		switch (this.token.disposition) {
+		switch (this.token?.disposition) {
 			case CONST.TOKEN_DISPOSITIONS.HOSTILE:
 				return `hostile`;
 			case CONST.TOKEN_DISPOSITIONS.FRIENDLY:
@@ -12,6 +12,10 @@ export class RipCryptCombatant extends Combatant {
 		return `unknown`;
 	};
 
+	/**
+	 * Used by the Combat tracker to order combatants according to their
+	 * fate path and the coin flip.
+	 */
 	get dynamicInitiative() {
 		let total = 0;
 
@@ -21,13 +25,11 @@ export class RipCryptCombatant extends Combatant {
 
 		const whoFirst = game.settings.get(`ripcrypt`, `whoFirst`);
 		const disposition = this.disposition;
-		if (whoFirst) {
-			if (disposition === `unknown`) {
-				total += 0.25;
-			} else if (whoFirst !== disposition) {
-				total += 0.5;
-			};
-		}
+		if (disposition === `unknown`) {
+			total += 0.25;
+		} else if (whoFirst && whoFirst !== disposition) {
+			total += 0.5;
+		};
 
 		return total;
 	};
@@ -39,16 +41,20 @@ export class RipCryptCombatant extends Combatant {
 		if (!path) { return null };
 
 		// Token Disposition (group into: friendlies, unknown, hostiles)
-		let disposition = `unknown`;
-		switch (this.token.disposition) {
-			case CONST.TOKEN_DISPOSITIONS.HOSTILE:
-				disposition = `hostile`;
-				break;
-			case CONST.TOKEN_DISPOSITIONS.FRIENDLY:
-				disposition = `friendly`;
-				break;
-		};
+		let disposition = this.disposition;
 
 		return `${path}:${disposition}`;
+	};
+
+	_onCreate() {
+		if (this.token) {
+			this.token._object._refreshTurnMarker();
+		};
+	};
+
+	_onDelete() {
+		if (this.token) {
+			this.token._object._refreshTurnMarker();
+		};
 	};
 };
