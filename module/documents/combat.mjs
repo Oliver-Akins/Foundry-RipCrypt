@@ -44,7 +44,7 @@ export class RipCryptCombat extends Combat {
 	};
 
 	async nextTurn() {
-		if ( this.round === 0 ) {return this.nextRound()}
+		if (this.round === 0) {return this.nextRound()}
 
 		const turn = this.turn ?? -1;
 
@@ -61,7 +61,7 @@ export class RipCryptCombat extends Combat {
 		};
 
 		// Maybe advance to the next round
-		if ( (nextTurn === null) || (nextTurn >= this.turns.length) ) {return this.nextRound()}
+		if ((nextTurn === null) || (nextTurn >= this.turns.length)) {return this.nextRound()}
 
 		const advanceTime = this.getTimeDelta(this.round, this.turn, this.round, nextTurn);
 
@@ -107,9 +107,12 @@ export class RipCryptCombat extends Combat {
 	};
 
 	/**
-	 * Update display of Token combat turn markers.
+	 * Overridden to make it so that there can be multiple tokens with turn markers
+	 * visible at the same time.
+	 *
 	 * @protected
 	 * @internal
+	 * @override
 	 */
 	_updateTurnMarkers() {
 		if (!canvas.ready) { return };
@@ -133,12 +136,4 @@ export class RipCryptCombat extends Combat {
 			}
 		}
 	}
-
-	async _manageTurnEvents() {
-		try {
-			await super._manageTurnEvents();
-		} catch {
-			this._updateTurnMarkers();
-		};
-	};
 };

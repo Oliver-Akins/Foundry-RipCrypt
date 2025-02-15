@@ -2,6 +2,10 @@ const { CombatTracker } = foundry.applications.sidebar.tabs;
 
 export class RipCryptCombatTracker extends CombatTracker {
 	/**
+	 * Changes the way the combat tracker renders combatant rows to account for
+	 * multiple combatants being in the same combat "group", thus all going at the
+	 * same time.
+	 *
 	 * @override
 	 */
 	async _prepareTurnContext(combat, combatant, index) {
@@ -14,7 +18,7 @@ export class RipCryptCombatTracker extends CombatTracker {
 		if (groupKey && combat.started) {
 			turn.active ||= combat.combatant?.groupKey === groupKey;
 			if (turn.active && !turn.css.includes(`active`)) {
-				turn.css += `active`;
+				turn.css += ` active`;
 			};
 		};
 
@@ -26,8 +30,8 @@ export class RipCryptCombatTracker extends CombatTracker {
 
 		// Purge the combat controls that I don't want to exist because they don't
 		// make sense in the system.
-		this.element.querySelector(`[data-action="resetAll"]`)?.remove();
-		this.element.querySelector(`[data-action="rollNPC"]`)?.remove();
-		this.element.querySelector(`[data-action="rollAll"]`)?.remove();
+		this.element?.querySelector(`[data-action="resetAll"]`)?.remove();
+		this.element?.querySelector(`[data-action="rollNPC"]`)?.remove();
+		this.element?.querySelector(`[data-action="rollAll"]`)?.remove();
 	};
 };

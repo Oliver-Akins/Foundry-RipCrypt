@@ -24,11 +24,13 @@ export class RipCryptCombatant extends Combatant {
 		total += distanceBetweenFates(start, end);
 
 		const whoFirst = game.settings.get(`ripcrypt`, `whoFirst`);
-		const disposition = this.disposition;
-		if (disposition === `unknown`) {
-			total += 0.25;
-		} else if (whoFirst && whoFirst !== disposition) {
-			total += 0.5;
+		if (whoFirst) {
+			const disposition = this.disposition;
+			if (disposition === `unknown`) {
+				total += 0.25;
+			} else if (whoFirst !== disposition) {
+				total += 0.5;
+			};
 		};
 
 		return total;
@@ -46,15 +48,23 @@ export class RipCryptCombatant extends Combatant {
 		return `${path}:${disposition}`;
 	};
 
+	/**
+	 * Used to create the turn marker when the combatant is added if they're in
+	 * the group whose turn it is.
+	 *
+	 * @override
+	 */
 	_onCreate() {
-		if (this.token) {
-			this.token._object._refreshTurnMarker();
-		};
+		this.token?._object?._refreshTurnMarker();
 	};
 
+	/**
+	 * Used to remove the turn marker when the combatant is removed from combat
+	 * if they had it visible so that it doesn't stick around infinitely.
+	 *
+	 * @override
+	 */
 	_onDelete() {
-		if (this.token) {
-			this.token._object._refreshTurnMarker();
-		};
+		this.token?._object?._refreshTurnMarker();
 	};
 };

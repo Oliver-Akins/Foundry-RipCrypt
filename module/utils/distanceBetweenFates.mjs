@@ -4,8 +4,8 @@ import { Logger } from "./Logger.mjs";
 const { FatePath } = gameTerms;
 
 export function isOppositeFates(a, b) {
-	return a === FatePath.NORTH && b === FatePath.SOUTH
-		|| a === FatePath.EAST && FatePath.WEST;
+	return (a === FatePath.NORTH && b === FatePath.SOUTH)
+		|| (a === FatePath.EAST && b === FatePath.WEST);
 };
 
 export function distanceBetweenFates(start, end) {

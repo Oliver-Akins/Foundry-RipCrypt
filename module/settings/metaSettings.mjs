@@ -14,8 +14,10 @@ export function registerMetaSettings() {
 		type: String,
 		config: false,
 		requiresReload: false,
-		onChange: () => {
-			ui.crypt.render({ parts: [ `fate` ] });
+		onChange: async () => {
+			await ui.crypt.render({ parts: [ `fate` ] });
+			await game.combat.setupTurns();
+			await ui.combat.render({ parts: [ `tracker` ] });
 		},
 	});
 

@@ -1,6 +1,13 @@
 const { TokenTurnMarker } = foundry.canvas.placeables.tokens;
 
 export class RipCryptToken extends Token {
+	/**
+	 * Overridden using a slightly modified implementation in order to make it so
+	 * that the turn marker shows up on tokens if they're in the same group as the
+	 * currently active combatant
+	 *
+	 * @override
+	 */
 	_refreshTurnMarker() {
 		// Should a Turn Marker be active?
 		const {turnMarker} = this.document;
@@ -12,13 +19,13 @@ export class RipCryptToken extends Token {
 		const markerActive = markersEnabled && isTurn && !isDefeated;
 
 		// Activate a Turn Marker
-		if ( markerActive ) {
-			if ( !this.turnMarker ) {
+		if (markerActive) {
+			if (!this.turnMarker) {
 				this.turnMarker = this.addChildAt(new TokenTurnMarker(this), 0);
 			};
 			canvas.tokens.turnMarkers.add(this);
 			this.turnMarker.draw();
-		} else if ( this.turnMarker ) {
+		} else if (this.turnMarker) {
 			canvas.tokens.turnMarkers.delete(this);
 			this.turnMarker.destroy();
 			this.turnMarker = null;
