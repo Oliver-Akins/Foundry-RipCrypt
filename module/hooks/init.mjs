@@ -4,6 +4,7 @@ import { CombinedHeroSheet } from "../Apps/ActorSheets/CombinedHeroSheet.mjs";
 import { DelveTourApp } from "../Apps/DelveTourApp.mjs";
 import { HeroSkillsCardV1 } from "../Apps/ActorSheets/HeroSkillsCardV1.mjs";
 import { HeroSummaryCardV1 } from "../Apps/ActorSheets/HeroSummaryCardV1.mjs";
+import { RipCryptCombatTracker } from "../Apps/sidebar/CombatTracker.mjs";
 
 // Data Models
 import { AmmoData } from "../data/Item/Ammo.mjs";
@@ -18,7 +19,10 @@ import { WeaponData } from "../data/Item/Weapon.mjs";
 import { CryptDie } from "../dice/CryptDie.mjs";
 
 // Documents
+import { RipCryptCombat } from "../documents/combat.mjs";
+import { RipCryptCombatant } from "../documents/combatant.mjs";
 import { RipCryptItem } from "../documents/item.mjs";
+import { RipCryptToken } from "../documents/token.mjs";
 
 // Misc
 import helpers from "../handlebarHelpers/_index.mjs";
@@ -32,6 +36,7 @@ import { registerWorldSettings } from "../settings/worldSettings.mjs";
 Hooks.once(`init`, () => {
 	Logger.log(`Initializing`);
 
+	CONFIG.Combat.initiative.decimals = 2;
 	CONFIG.ui.crypt = DelveTourApp;
 
 	// #region Settings
@@ -53,6 +58,10 @@ Hooks.once(`init`, () => {
 	// #endregion
 
 	// #region Class Changes
+	CONFIG.ui.combat = RipCryptCombatTracker;
+	CONFIG.Combat.documentClass = RipCryptCombat;
+	CONFIG.Combatant.documentClass = RipCryptCombatant;
+	CONFIG.Token.objectClass = RipCryptToken;
 	CONFIG.Item.documentClass = RipCryptItem;
 	CONFIG.Dice.terms.d = CryptDie;
 	// #endregion
@@ -94,6 +103,7 @@ Hooks.once(`init`, () => {
 
 	// #region Token Attrs
 	CONFIG.Actor.trackableAttributes.hero = HeroData.trackableAttributes;
+	// #endregion
 
 	registerCustomComponents();
 	Handlebars.registerHelper(helpers);
