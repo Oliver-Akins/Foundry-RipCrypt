@@ -1,4 +1,5 @@
 import { CommonItemData } from "./Common.mjs";
+import { gameTerms } from "../../gameTerms.mjs";
 
 const { fields } = foundry.data;
 
@@ -39,6 +40,24 @@ export class GoodData extends CommonItemData {
 				path: `system.quantity`,
 				value: this.quantity,
 				min: 0,
+			},
+			{
+				id: `access`,
+				type: `dropdown`,
+				label: `Access`,
+				path: `system.access`,
+				value: this.access,
+				limited: false,
+				options: [
+					{
+						label: `RipCrypt.common.empty`,
+						value: ``,
+					},
+					...gameTerms.Access.map(opt => ({
+						label: `RipCrypt.common.access.${opt}`,
+						value: opt,
+					})),
+				],
 			},
 			{
 				id: `description`,

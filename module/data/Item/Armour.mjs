@@ -117,6 +117,24 @@ export class ArmourData extends CommonItemData {
 				min: 0,
 			},
 			{
+				id: `access`,
+				type: `dropdown`,
+				label: `Access`,
+				path: `system.access`,
+				value: this.access,
+				limited: false,
+				options: [
+					{
+						label: `RipCrypt.common.empty`,
+						value: ``,
+					},
+					...gameTerms.Access.map(opt => ({
+						label: `RipCrypt.common.access.${opt}`,
+						value: opt,
+					})),
+				],
+			},
+			{
 				id: `location`,
 				type: `string-set`,
 				label: `RipCrypt.common.location`,

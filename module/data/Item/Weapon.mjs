@@ -28,12 +28,6 @@ export class WeaponData extends CommonItemData {
 			}),
 			damage: requiredInteger({ min: 0, initial: 0 }),
 			wear: barAttribute(0, 0, 4),
-			access: new fields.StringField({
-				blank: true,
-				nullable: false,
-				trim: true,
-				choices: gameTerms.Access,
-			}),
 			equipped: new fields.BooleanField({
 				initial: false,
 				required: true,
@@ -87,7 +81,7 @@ export class WeaponData extends CommonItemData {
 	// #endregion
 
 	// #region Sheet Data
-	getFormFields(_ctx) {
+	async getFormFields(_ctx) {
 		const fields = [
 			{
 				id: `quantity`,
@@ -96,6 +90,24 @@ export class WeaponData extends CommonItemData {
 				path: `system.quantity`,
 				value: this.quantity,
 				min: 0,
+			},
+			{
+				id: `access`,
+				type: `dropdown`,
+				label: `Access`,
+				path: `system.access`,
+				value: this.access,
+				limited: false,
+				options: [
+					{
+						label: `RipCrypt.common.empty`,
+						value: ``,
+					},
+					...gameTerms.Access.map(opt => ({
+						label: `RipCrypt.common.access.${opt}`,
+						value: opt,
+					})),
+				],
 			},
 			{
 				id: `traits`,
