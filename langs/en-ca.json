@@ -135,7 +135,7 @@
 		},
 		"notifs": {
 			"error": {
-				"cannot-equip-not-embedded": "Cannot equip an {itemType} when it isn't within an Actor",
+				"cannot-equip": "Cannot equip the {itemType}, see console for more details.",
 				"invalid-delta": "The delta for \"{name}\" is not a number, cannot finish processing the action."
 			},
 			"warn": {

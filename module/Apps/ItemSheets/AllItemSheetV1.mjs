@@ -43,6 +43,27 @@ export class AllItemSheetV1 extends GenericAppMixin(HandlebarsApplicationMixin(I
 		Logger.debug(`Context:`, ctx);
 		return ctx;
 	};
+
+	async _onRender() {
+		// remove the flag if it exists when we render the sheet
+		delete this.document?.system?.forceRerender;
+	};
+
+	/**
+	 * Used to make it so that items that don't get updated because of the
+	 * _preUpdate hook removing/changing the data submitted, can still get
+	 * re-rendered when the diff is empty. If the document does get updated,
+	 * this rerendering does not happen.
+	 *
+	 * @override
+	 */
+	async _processSubmitData(...args) {
+		await super._processSubmitData(...args);
+
+		if (this.document.system.forceRerender) {
+			await this.render(false);
+		};
+	};
 	// #endregion
 
 	// #region Actions

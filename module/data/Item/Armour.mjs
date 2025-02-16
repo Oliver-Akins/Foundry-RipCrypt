@@ -1,13 +1,14 @@
 import { CommonItemData } from "./Common.mjs";
 import { gameTerms } from "../../gameTerms.mjs";
 import { localizer } from "../../utils/Localizer.mjs";
+import { Logger } from "../../utils/Logger.mjs";
 import { requiredInteger } from "../helpers.mjs";
 
 const { fields } = foundry.data;
-const { hasProperty, mergeObject } = foundry.utils;
+const { hasProperty, diffObject, mergeObject } = foundry.utils;
 
 /** Used for Armour and Shields */
-export class ProtectorData extends CommonItemData {
+export class ArmourData extends CommonItemData {
 	// MARK: Schema
 	static defineSchema() {
 		return {
@@ -45,22 +46,56 @@ export class ProtectorData extends CommonItemData {
 
 	// #region Lifecycle
 	async _preUpdate(changes, options, user) {
+		// return false
 		if (options.force && game.settings.get(`ripcrypt`, `devMode`)) { return };
-		let valid = super._preUpdate(changes, options, user);
 
-		if (hasProperty(changes, `system.equipped`) && !this.parent.isEmbedded) {
-			ui.notifications.error(localizer(
-				`RipCrypt.notifs.error.cannot-equip-not-embedded`,
-				{ itemType: `@TYPES.Item.${this.parent.type}` },
-			));
-			mergeObject(
-				changes,
-				{ "-=system.equipped": null },
-				{ inplace: true, performDeletions: true },
+		// Ensure changes is a diffed object
+		const diff = diffObject(this.parent._source, changes);
+		let valid = await super._preUpdate(changes, options, user);
+
+		if (hasProperty(diff, `system.equipped`) && !this._canEquip()) {
+			ui.notifications.error(
+				localizer(
+					`RipCrypt.notifs.error.cannot-equip`,
+					{ itemType: `@TYPES.Item.${this.parent.type}` },
+				),
+				{ console: false },
 			);
+
+			// Don't stop the update, but don't allow changing the equipped status
+			mergeObject(changes, {
+				"system.equipped": false,
+			});
+
+			// Set a flag so that we can tell the sheet that it needs to rerender
+			this.forceRerender = true;
+		};
+
+		return valid;
+	};
+
+	/** Used to tell the preUpdate logic whether or not to prevent the */
+	_canEquip() {
+		const parent = this.parent;
+		if (!parent.isEmbedded || !(parent.parent instanceof Actor)) {
+			Logger.error(`Unable to equip item when it's not embedded`);
 			return false;
 		};
-		return valid;
+
+		if (this.location.size === 0) {
+			Logger.error(`Unable to equip an item without any locations`);
+			return false;
+		};
+
+		const slots = parent.parent.system.equippedArmour ?? {};
+		Logger.debug(`slots`, slots);
+		for (const locationTag of this.location) {
+			if (slots[locationTag.toLowerCase()] != null) {
+				Logger.error(`Unable to equip multiple items in the same slot`);
+				return false;
+			};
+		};
+		return true;
 	};
 	// #endregion
 
