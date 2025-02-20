@@ -7,7 +7,6 @@
 		padding: 8px;
 		gap: 8px;
 		width: 250px;
-		height: 185px;
 	}
 
 	--button-background: var(--alt-row-background);

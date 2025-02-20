@@ -64,7 +64,9 @@
 				"tough": "Tough",
 				"hard": "Hard"
 			},
+			"drag": "Drag",
 			"edit": "Edit",
+			"edge": "Edge",
 			"empty": "---",
 			"equipped": "Equipped",
 			"fate": "Fate",

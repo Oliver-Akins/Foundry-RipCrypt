@@ -1,0 +1,28 @@
+<div>
+	<rc-border
+		var:border-color="var(--accent-1)"
+	>
+		<div slot="title">
+			{{ rc-i18n "RipCrypt.common.drag" }}
+		</div>
+		<div slot="content">
+			<button
+				type="button"
+				data-action="dragDelta"
+				data-delta="-1"
+				{{#if decrementDisabled}}disabled{{/if}}
+			>
+				-
+			</button>
+			<span>{{drag}}</span>
+			<button
+				type="button"
+				data-action="dragDelta"
+				data-delta="1"
+				{{#if incrementDisabled}}disabled{{/if}}
+			>
+				+
+			</button>
+		</div>
+	</rc-border>
+</div>

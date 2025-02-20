@@ -1,0 +1,28 @@
+<div>
+	<rc-border
+		var:border-color="var(--accent-1)"
+	>
+		<div slot="title">
+			{{ rc-i18n "RipCrypt.common.edge" }}
+		</div>
+		<div slot="content">
+			<button
+				type="button"
+				data-action="edgeDelta"
+				data-delta="-1"
+				{{#if decrementDisabled}}disabled{{/if}}
+			>
+				-
+			</button>
+			<span>{{edge}}</span>
+			<button
+				type="button"
+				data-action="edgeDelta"
+				data-delta="not a number"
+				{{#if incrementDisabled}}disabled{{/if}}
+			>
+				+
+			</button>
+		</div>
+	</rc-border>
+</div>
