@@ -1,3 +1,4 @@
+const { Token } = foundry.canvas.placeables;
 const { TokenTurnMarker } = foundry.canvas.placeables.tokens;
 
 export class RipCryptToken extends Token {
