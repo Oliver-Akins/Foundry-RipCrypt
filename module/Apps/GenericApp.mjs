@@ -1,4 +1,4 @@
-import { deleteItemFromElement, editItemFromElement } from "./utils.mjs";
+import { createItemFromElement, deleteItemFromElement, editItemFromElement } from "./utils.mjs";
 import { DicePool } from "./DicePool.mjs";
 import { RichEditor } from "./RichEditor.mjs";
 import { toBoolean } from "../consts.mjs";
@@ -16,6 +16,10 @@ export function GenericAppMixin(HandlebarsApp) {
 			],
 			actions: {
 				roll: this.#rollDice,
+				createItem: (_event, target) => {
+					const parent = this.document;
+					createItemFromElement(target, { parent });
+				},
 				editItem: (_event, target) => editItemFromElement(target),
 				deleteItem: (_event, target) => deleteItemFromElement(target),
 				openRichEditor: this.#openRichEditor,
