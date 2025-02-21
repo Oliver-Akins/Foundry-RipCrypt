@@ -23,7 +23,7 @@
 	grid-template-columns: auto 200px;
 	column-gap: var(--col-gap);
 	row-gap: var(--row-gap);
-	max-width: 300px;
+	max-width: 350px;
 
 	padding: 8px;
 	background: var(--base-background);

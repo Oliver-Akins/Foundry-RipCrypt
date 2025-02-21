@@ -42,4 +42,9 @@ export const gameTerms = Object.preventExtensions({
 		`shield`,
 		`good`,
 	]),
+	WeightRatings: Object.freeze({
+		LIGHT: `light`,
+		MODEST: `modest`,
+		HEAVY: `heavy`,
+	}),
 });

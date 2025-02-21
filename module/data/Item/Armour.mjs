@@ -31,6 +31,12 @@ export class ArmourData extends CommonItemData {
 				required: true,
 				nullable: false,
 			}),
+			weight: new fields.StringField({
+				blank: false,
+				nullable: true,
+				initial: null,
+				options: Object.values(gameTerms.WeightRatings),
+			}),
 		};
 	};
 
@@ -119,7 +125,7 @@ export class ArmourData extends CommonItemData {
 			{
 				id: `access`,
 				type: `dropdown`,
-				label: `Access`,
+				label: `RipCrypt.common.access`,
 				path: `system.access`,
 				value: this.access,
 				limited: false,
@@ -129,7 +135,24 @@ export class ArmourData extends CommonItemData {
 						value: ``,
 					},
 					...gameTerms.Access.map(opt => ({
-						label: `RipCrypt.common.access.${opt}`,
+						label: `RipCrypt.common.accessLevels.${opt}`,
+						value: opt,
+					})),
+				],
+			},
+			{
+				id: `weight`,
+				type: `dropdown`,
+				label: `RipCrypt.common.weightRating`,
+				path: `system.weight`,
+				value: this.weight,
+				options: [
+					{
+						label: `RipCrypt.common.empty`,
+						value: null,
+					},
+					...Object.values(gameTerms.WeightRatings).map(opt => ({
+						label: `RipCrypt.common.weightRatings.${opt}`,
 						value: opt,
 					})),
 				],

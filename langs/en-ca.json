@@ -29,7 +29,8 @@
 				"thin-glim": "Thin Glim"
 			},
 			"ability": "Ability",
-			"access": {
+			"access": "Access",
+			"accessLevels": {
 				"Common": "Common",
 				"Uncommon": "Uncommon",
 				"Rare": "Rare",
@@ -100,7 +101,13 @@
 				"singular": "Weapon",
 				"plural": "Weapons"
 			},
-			"wear": "Wear"
+			"wear": "Wear",
+			"weightRating": "Weight",
+			"weightRatings": {
+				"light": "Light",
+				"modest": "Modest",
+				"heavy": "Heavy"
+			}
 		},
 		"setting": {
 			"abbrAccess": {

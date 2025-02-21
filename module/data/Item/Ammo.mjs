@@ -29,7 +29,7 @@ export class AmmoData extends CommonItemData {
 			{
 				id: `access`,
 				type: `dropdown`,
-				label: `Access`,
+				label: `RipCrypt.common.access`,
 				path: `system.access`,
 				value: this.access,
 				limited: false,
@@ -39,7 +39,7 @@ export class AmmoData extends CommonItemData {
 						value: ``,
 					},
 					...gameTerms.Access.map(opt => ({
-						label: `RipCrypt.common.access.${opt}`,
+						label: `RipCrypt.common.accessLevels.${opt}`,
 						value: opt,
 					})),
 				],
