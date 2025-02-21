@@ -16,7 +16,7 @@ export function GenericAppMixin(HandlebarsApp) {
 			],
 			actions: {
 				roll: this.#rollDice,
-				createItem: (_event, target) => {
+				createItem(_event, target) { // uses arrow-less function for "this"
 					const parent = this.document;
 					createItemFromElement(target, { parent });
 				},
