@@ -1,10 +1,8 @@
 export function registerUserSettings() {
-	const userScope = game.release.generation >= 13 ? `user` : `client`;
-
 	game.settings.register(`ripcrypt`, `abbrAccess`, {
 		name: `RipCrypt.setting.abbrAccess.name`,
 		hint: `RipCrypt.setting.abbrAccess.hint`,
-		scope: userScope,
+		scope: `user`,
 		type: Boolean,
 		config: true,
 		default: false,
@@ -14,7 +12,7 @@ export function registerUserSettings() {
 	game.settings.register(`ripcrypt`, `condensedRange`, {
 		name: `RipCrypt.setting.condensedRange.name`,
 		hint: `RipCrypt.setting.condensedRange.hint`,
-		scope: userScope,
+		scope: `user`,
 		type: Boolean,
 		config: true,
 		default: true,
