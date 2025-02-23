@@ -1,5 +1,6 @@
 import { barInput } from "./barInput.mjs";
 import { booleanInput } from "./booleanInput.mjs";
+import { costInput } from "./currency.mjs";
 import { dropdownInput } from "./dropdownInput.mjs";
 import { groupInput } from "./groupInput.mjs";
 import { numberInput } from "./numberInput.mjs";
@@ -18,6 +19,7 @@ const inputTypes = {
 	boolean: booleanInput,
 	group: groupInput,
 	text: textInput,
+	cost: costInput,
 };
 
 const typesToSanitize = new Set([ `string`, `number` ]);

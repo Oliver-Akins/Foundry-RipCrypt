@@ -27,6 +27,14 @@ export class AmmoData extends CommonItemData {
 				min: 0,
 			},
 			{
+				id: `cost`,
+				type: `cost`,
+				label: `RipCrypt.common.cost`,
+				gold: this.cost.gold,
+				silver: this.cost.silver,
+				copper: this.cost.copper,
+			},
+			{
 				id: `access`,
 				type: `dropdown`,
 				label: `RipCrypt.common.access`,

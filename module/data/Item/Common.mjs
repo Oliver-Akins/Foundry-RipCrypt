@@ -1,5 +1,5 @@
+import { optionalInteger, requiredInteger } from "../helpers.mjs";
 import { gameTerms } from "../../gameTerms.mjs";
-import { requiredInteger } from "../helpers.mjs";
 
 const { fields } = foundry.data;
 
@@ -13,6 +13,11 @@ export class CommonItemData extends foundry.abstract.TypeDataModel {
 				nullable: false,
 				trim: true,
 				choices: gameTerms.Access,
+			}),
+			cost: new fields.SchemaField({
+				gold: optionalInteger(),
+				silver: optionalInteger(),
+				copper: optionalInteger(),
 			}),
 		};
 	};

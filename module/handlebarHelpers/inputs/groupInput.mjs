@@ -16,7 +16,7 @@ export function groupInput(input, data) {
 		data-input-type="group"
 		var:border-color="${input.borderColor ?? `var(--accent-1)`}"
 		var:vertical-displacement="${input.verticalDisplacement ?? `12px`}"
-		var:padding-top="${input.paddingTop ?? `16px`}"
+		var:padding-top="${input.paddingTop ?? `20px`}"
 	>
 		<div slot="title">${title}</div>
 		<div slot="content" class="content">

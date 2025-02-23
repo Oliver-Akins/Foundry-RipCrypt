@@ -83,6 +83,11 @@
 		margin: 0 auto;
 	}
 
+	hr:has(+ [data-input-type="group"]),
+	[data-input-type="group"] + hr {
+		display: none;
+	};
+
 	label, .label {
 		display: flex;
 		align-items: center;

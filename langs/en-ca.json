@@ -51,6 +51,7 @@
 				"fract": "Fract",
 				"focus": "Focus"
 			},
+			"cost": "Cost",
 			"currency": {
 				"gold": "Gold",
 				"silver": "Silver",
