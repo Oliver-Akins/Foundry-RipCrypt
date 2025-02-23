@@ -23,8 +23,16 @@ export class HeroSummaryCardV1 extends GenericAppMixin(HandlebarsApplicationMixi
 		},
 		window: {
 			resizable: false,
+			controls: [
+				{
+					action: `openEffectManager`,
+					label: `RipCrypt.Apps.manage-active-effects`,
+					ownership: `OWNER`,
+				},
+			],
 		},
 		actions: {
+			openEffectManager: this.#openEffectManager,
 		},
 		form: {
 			submitOnChange: true,
@@ -219,5 +227,13 @@ export class HeroSummaryCardV1 extends GenericAppMixin(HandlebarsApplicationMixi
 	// #endregion
 
 	// #region Actions
+	/** @this {HeroCraftCardV1} */
+	static async #openEffectManager() {
+		await this.actor.createEmbeddedDocuments(
+			`ActiveEffect`,
+			[{name: `AE Tester`}],
+			{ renderSheet: true },
+		);
+	};
 	// #endregion
 };
