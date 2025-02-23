@@ -19,6 +19,9 @@ export class HeroData extends foundry.abstract.TypeDataModel {
 				`level.glory`,
 				`level.step`,
 				`level.rank`,
+				`coin.gold`,
+				`coin.silver`,
+				`coin.copper`,
 			],
 		};
 	};
