@@ -26,6 +26,20 @@
 				{ "name": "var:stroke-width", "description": "The stroke width of the icon, must be a valid CSS unit" },
 				{ "name": "var:stroke-linejoin", "description": "The stroke linejoin of the icon, must be a valid CSS value" }
 			]
+		},
+		{
+			"name": "rc-border",
+			"description": "Creates a stylized border in the same sort of design that the published RipCrypt book uses",
+			"attributes": [
+				{ "name": "var:vertical-displacement", "description": "How much vertical displacement the title receives, defaults to 12.5px" },
+				{ "name": "var:padding", "description": "How much padding the border container has" },
+				{ "name": "var:border-color", "description": "The CSS value that is used as the colour of the border" },
+				{ "name": "var:padding-top", "description": "How much padding the top of the border element has, if not provided, defaults to the value of vertical displacement plus 4px" },
+				{ "name": "var:margin-top", "description": "How much margin the top of the border element has, if not provided, defaults to the value of vertical displacement" },
+				{ "name": "var:border-mask", "description": "The CSS colour used to mask out the border element, if not provided defaults to the --base-background CSS variable"},
+				{ "name": "var:title-height", "description": "The CSS height for the title, defaults to 20px" },
+				{ "name": "var:title-background", "description": "The CSS colour to make the title element, defaults to var:border-color" }
+			]
 		}
 	]
 }
