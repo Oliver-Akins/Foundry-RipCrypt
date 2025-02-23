@@ -19,6 +19,17 @@ export function barAttribute(min, initial, max = undefined) {
 	});
 };
 
+export function derivedMaximumBar(min, initial) {
+	return new fields.SchemaField({
+		value: new fields.NumberField({
+			min,
+			initial,
+			integer: true,
+			nullable: false,
+		}),
+	});
+};
+
 export function optionalInteger({min, initial = null, max} = {}) {
 	return new fields.NumberField({
 		min,

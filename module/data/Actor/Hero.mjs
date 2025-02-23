@@ -1,3 +1,4 @@
+import { derivedMaximumBar } from "../helpers.mjs";
 import { gameTerms } from "../../gameTerms.mjs";
 import { sumReduce } from "../../utils/sumReduce.mjs";
 
@@ -59,14 +60,7 @@ export class HeroData extends foundry.abstract.TypeDataModel {
 					nullable: false,
 				}),
 			}),
-			guts: new fields.SchemaField({
-				value: new fields.NumberField({
-					min: 0,
-					initial: 5,
-					integer: true,
-					nullable: false,
-				}),
-			}),
+			guts: derivedMaximumBar(0, 5),
 			coin: new fields.SchemaField({
 				gold: new fields.NumberField({
 					initial: 5,
