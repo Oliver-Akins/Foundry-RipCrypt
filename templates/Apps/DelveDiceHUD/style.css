@@ -1,0 +1,18 @@
+#ripcrypt-delve-dice {
+	display: grid;
+	grid-template-columns: max-content 1fr 1fr 1fr max-content;
+	gap: 8px;
+	padding: 4px 1.5rem;
+	background: var(--DelveDice-background);
+	align-items: center;
+	justify-items: center;
+	pointer-events: all;
+
+	border-radius: 0 0 999px 999px;
+
+	button {
+		&:hover {
+			cursor: pointer;
+		}
+	}
+}

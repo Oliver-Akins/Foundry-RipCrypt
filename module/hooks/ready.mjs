@@ -23,6 +23,8 @@ Hooks.once(`ready`, () => {
 		ui.crypt.render({ force: true });
 	};
 
+	ui.delveDice.render({ force: true });
+
 	// MARK: 1-time updates
 	if (!game.settings.get(`ripcrypt`, `firstLoadFinished`)) {
 		// Update the turnMarker to be the RipCrypt defaults

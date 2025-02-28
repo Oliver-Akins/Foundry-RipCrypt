@@ -5,8 +5,17 @@ export function registerMetaSettings() {
 		config: false,
 		requiresReload: false,
 		onChange: () => {
-			ui.crypt.render({ parts: [ `delveConditions` ]});
+			ui.delveDice.render({ parts: [`difficulty`] });
 		},
+	});
+
+	game.settings.register(`ripcrypt`, `sandsOfFate`, {
+		scope: `world`,
+		type: Number,
+		initial: 8,
+		config: false,
+		requiresReload: false,
+		onChange: async () => {},
 	});
 
 	game.settings.register(`ripcrypt`, `currentFate`, {
@@ -14,11 +23,7 @@ export function registerMetaSettings() {
 		type: String,
 		config: false,
 		requiresReload: false,
-		onChange: async () => {
-			await ui.crypt.render({ parts: [ `fate` ] });
-			await game.combat.setupTurns();
-			await ui.combat.render({ parts: [ `tracker` ] });
-		},
+		onChange: async () => {},
 	});
 
 	game.settings.register(`ripcrypt`, `whoFirst`, {
