@@ -83,6 +83,10 @@ export class DelveDiceHUD extends HandlebarsApplicationMixin(ApplicationV2) {
 				await this._prepareDifficultyContext(ctx);
 				break;
 			};
+			case `fateCompass`: {
+				await this._prepareFateCompassContext(ctx);
+				break;
+			};
 		};
 
 		Logger.log(`${partId} Context`, ctx);
@@ -95,12 +99,20 @@ export class DelveDiceHUD extends HandlebarsApplicationMixin(ApplicationV2) {
 
 	async _prepareDifficultyContext(ctx) {
 		ctx.dc = game.settings.get(`ripcrypt`, `dc`);
+	};
+
+	async _prepareFateCompassContext(ctx) {
+		ctx.direction = game.settings.get(`ripcrypt`, `currentFate`);
 	}
 	// #endregion
 
 	// #region Actions
 	static async #tourDelta() {
-		ui.notifications.info(`Button Clicked!`, { console: false });
+		ui.notifications.info(`Delve Tour Changed`, { console: false });
+	};
+
+	static async #setFate() {
+		ui.notifications.info(`Fate Set!`, { console: false });
 	};
 	// #endregion
 };

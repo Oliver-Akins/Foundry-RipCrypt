@@ -3,6 +3,8 @@
 	outline: none;
 	border: none;
 	padding: 2px 4px;
+	font-family: inherit;
+	font-size: inherit;
 	background: var(--button-background);
 	color: var(--button-text);
 
@@ -22,5 +24,11 @@
 		border: none;
 		width: 20px;
 		height: 20px;
+	}
+
+	&.transparent {
+		background: inherit;
+		color: inherit;
+		padding: 0;
 	}
 }

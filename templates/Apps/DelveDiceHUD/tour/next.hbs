@@ -1,7 +1,20 @@
-<button
-	type="button"
-	class="icon"
-	data-action="tourDelta"
->
-	&gt;
-</button>
+<div>
+	{{!-- This is here to prevent height collapsing --}}
+	&ZeroWidthSpace;
+
+	{{#if meta.editable}}
+		<button
+			type="button"
+			class="icon"
+			data-action="tourDelta"
+			data-tooltip="Next Delve Tour"
+		>
+			<rc-icon
+				name="icons/arrow-right"
+				var:size="0.75rem"
+				var:fill="currentColor"
+			></rc-icon>
+		</button>
+	{{/if}}
+</div>
+
