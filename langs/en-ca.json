@@ -118,6 +118,20 @@
 			"condensedRange": {
 				"name": "Condense Weapon Range Input",
 				"hint": "With this enabled, the weapon range will be displayed as \"X / Y\" when editing a weapon. While disabled it will be as displayed as two different rows, one for Short Range and one for Long Range"
+			},
+			"sandsOfFateInitial": {
+				"name": "Sands of Fate Initial",
+				"hint": "What value should The Hourglass reset to when a Cryptic Event occurs"
+			},
+			"onCrypticEvent": {
+				"name": "Cryptic Event Alert",
+				"hint": "What happens when a cryptic event occurs by clicking the \"Next Delve Tour\" button in the HUD",
+				"options": {
+					"notif": "Notification",
+					"pause": "Pause Game",
+					"both": "Notification and Pause Game",
+					"nothing": "Do Nothing"
+				}
 			}
 		},
 		"Apps": {
@@ -150,6 +164,9 @@
 			},
 			"warn": {
 				"cannot-go-negative": "\"{name}\" is unable to be a negative number."
+			},
+			"info": {
+				"cryptic-event-alert": "A Cryptic Event Has Occured!"
 			}
 		},
 		"tooltips": {

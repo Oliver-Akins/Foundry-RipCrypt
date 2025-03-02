@@ -31,3 +31,21 @@ export function distanceBetweenFates(start, end) {
 	};
 	return 3;
 };
+
+const fateOrder = [
+	FatePath.WEST, // to make the .find not integer overflow
+	FatePath.NORTH,
+	FatePath.EAST,
+	FatePath.SOUTH,
+	FatePath.WEST,
+];
+
+export function nextFate(fate) {
+	const fateIndex = fateOrder.findIndex(f => f === fate);
+	return fateOrder[fateIndex + 1];
+};
+
+export function previousFate(fate) {
+	const fateIndex = fateOrder.lastIndexOf(fate);
+	return fateOrder[fateIndex - 1];
+};

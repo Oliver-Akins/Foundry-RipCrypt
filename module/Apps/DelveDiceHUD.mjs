@@ -1,6 +1,7 @@
-import { distanceBetweenFates } from "../utils/distanceBetweenFates.mjs";
+import { distanceBetweenFates, nextFate, previousFate } from "../utils/fates.mjs";
 import { filePath } from "../consts.mjs";
 import { gameTerms } from "../gameTerms.mjs";
+import { localizer } from "../utils/Localizer.mjs";
 import { Logger } from "../utils/Logger.mjs";
 
 const { HandlebarsApplicationMixin, ApplicationV2 } = foundry.applications.api;
@@ -128,35 +129,96 @@ export class DelveDiceHUD extends HandlebarsApplicationMixin(ApplicationV2) {
 			this.#animateCompassTo();
 		};
 
-		if (parts.includes(`sandsOfFate`)) {};
+		if (parts.includes(`sandsOfFate`)) {
+			this.#animateSandsTo();
+		};
 	};
 
 	#animateCompassTo(newFate) {
+		if (newFate === this._currentFate) { return };
+
 		/** @type {HTMLElement|undefined} */
 		const pointer = this.element.querySelector(`.compass-pointer`);
 		if (!pointer) { return };
 
+		newFate ??= game.settings.get(`ripcrypt`, `currentFate`);
+
 		let distance = distanceBetweenFates(this._currentFate, newFate);
-		Logger.table({ newFate, fate: this._currentFate, distance, _rotation: this._rotation });
 		if (distance === 3) { distance = -1 };
 
 		this._rotation += distance * 90;
 
 		pointer.style.setProperty(`transform`, `rotate(${this._rotation}deg)`);
+		this._currentFate = newFate;
+	};
+
+	#animateSandsTo(newSands) {
+		/** @type {HTMLElement|undefined} */
+		const sands = this.element.querySelector(`.sands-value`);
+		if (!sands) { return };
+
+		newSands ??= game.settings.get(`ripcrypt`, `sandsOfFate`);
+
+		sands.innerHTML = newSands;
+		this._sandsOfFate = newSands;
 	};
 	// #endregion
 
 	// #region Actions
-	static async #tourDelta() {};
+	/** @this {DelveDiceHUD} */
+	static async #tourDelta(_event, element) {
+		const delta = parseInt(element.dataset.delta);
+		const initial = game.settings.get(`ripcrypt`, `sandsOfFateInitial`);
+		let newSands = this._sandsOfFate + delta;
+
+		if (newSands > initial) {
+			Logger.info(`Cannot go to a previous Delve Tour above the initial value`);
+			return;
+		};
+
+		if (newSands === 0) {
+			newSands = initial;
+			await this.alertCrypticEvent();
+		};
+
+		switch (Math.sign(delta)) {
+			case -1: {
+				game.settings.set(`ripcrypt`, `currentFate`, nextFate(this._currentFate));
+				break;
+			}
+			case 1: {
+				game.settings.set(`ripcrypt`, `currentFate`, previousFate(this._currentFate));
+				break;
+			}
+		};
+
+		this.#animateSandsTo(newSands);
+		game.settings.set(`ripcrypt`, `sandsOfFate`, newSands);
+	};
 
 	/** @this {DelveDiceHUD} */
 	static async #setFate(_event, element) {
 		const fate = element.dataset.toFate;
 		this.#animateCompassTo(fate);
-
-		// must be done after animate, otherwise it won't change the rotation
-		this._currentFate = fate;
 		game.settings.set(`ripcrypt`, `currentFate`, fate);
+	};
+	// #endregion
+
+	// #region Public API
+	async alertCrypticEvent() {
+		const alertType = game.settings.get(`ripcrypt`, `onCrypticEvent`);
+		if (alertType === `nothing`) { return };
+
+		if ([`both`, `notif`].includes(alertType)) {
+			ui.notifications.info(
+				localizer(`RipCrypt.notifs.info.cryptic-event-alert`),
+				{ console: false },
+			);
+		};
+
+		if ([`both`, `pause`].includes(alertType) && game.user.isGM) {
+			game.togglePause(true, { broadcast: true });
+		};
 	};
 	// #endregion
 };

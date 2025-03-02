@@ -1,12 +1,13 @@
 <div id="the-hourglass">
 	<div
 		class="icon-container"
-		data-tooltip="Current Delve Tour: 8"
+		data-tooltip="Current Delve Tour"
 	>
-		<span>
-			8
+		<span class="sands-value">
+			{{sandsOfFate}}
 		</span>
 		<rc-svg
+			aria-hidden="true"
 			class="hourglass"
 			name="icons/hourglass"
 			var:fill="var(--accent-2)"
