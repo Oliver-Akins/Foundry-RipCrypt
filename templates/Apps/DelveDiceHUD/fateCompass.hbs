@@ -1,16 +1,64 @@
 <div id="fate-compass">
 	<div class="compass-container">
 		<div class="compass">
-			<button type="button" class="transparent" style="grid-area: N;">N</button>
-			<button type="button" class="transparent" style="grid-area: W;">W</button>
 			<rc-icon
 				class="compass-pointer"
 				name="icons/arrow-compass"
 				var:fill="var(--accent-3)"
 				var:size="1rem"
+				style="transform: rotate({{rotation}})"
 			></rc-icon>
-			<button type="button" class="transparent" style="grid-area: E;">E</button>
-			<button type="button" class="transparent" style="grid-area: S;">S</button>
+			{{#if meta.editable}}
+				<button
+					type="button"
+					class="transparent"
+					style="grid-area: N;"
+					data-action="setFate"
+					data-to-fate="North"
+					data-tooltip="Set Fate to North"
+					data-tooltip-direction="LEFT"
+				>
+					N
+				</button>
+				<button
+					type="button"
+					class="transparent"
+					style="grid-area: W;"
+					data-action="setFate"
+					data-to-fate="West"
+					data-tooltip="Set Fate to West"
+					data-tooltip-direction="LEFT"
+				>
+					W
+				</button>
+				<button
+					type="button"
+					class="transparent"
+					style="grid-area: E;"
+					data-action="setFate"
+					data-to-fate="East"
+					data-tooltip="Set Fate to East"
+					data-tooltip-direction="RIGHT"
+				>
+					E
+				</button>
+				<button
+					type="button"
+					class="transparent"
+					style="grid-area: S;"
+					data-action="setFate"
+					data-to-fate="South"
+					data-tooltip="Set Fate to South"
+					data-tooltip-direction="DOWN"
+				>
+					S
+				</button>
+			{{else}}
+				<span style="grid-area: N;">N</span>
+				<span style="grid-area: W;">W</span>
+				<span style="grid-area: E;">E</span>
+				<span style="grid-area: S;">S</span>
+			{{/if}}
 		</div>
 	</div>
 </div>
