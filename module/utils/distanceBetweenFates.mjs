@@ -14,12 +14,18 @@ export function distanceBetweenFates(start, end) {
 		return undefined;
 	};
 
-	if (isOppositeFates(start, end)) {
+	if (start === end) {
+		return 0;
+	};
+
+	if (isOppositeFates(start, end) || isOppositeFates(end, start)) {
 		return 2;
 	};
 
 	let isForward = start === FatePath.SOUTH && end === FatePath.WEST;
 	isForward ||= start === FatePath.NORTH && end === FatePath.EAST;
+	isForward ||= start === FatePath.WEST && end === FatePath.NORTH;
+	isForward ||= start === FatePath.EAST && end === FatePath.SOUTH;
 	if (isForward) {
 		return 1;
 	};
