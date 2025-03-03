@@ -5,6 +5,7 @@ import { localizer } from "../utils/Localizer.mjs";
 import { Logger } from "../utils/Logger.mjs";
 
 const { HandlebarsApplicationMixin, ApplicationV2 } = foundry.applications.api;
+const { ContextMenu } = foundry.applications.ui;
 const { FatePath } = gameTerms;
 
 const CompassRotations = {
@@ -96,6 +97,25 @@ export class DelveDiceHUD extends HandlebarsApplicationMixin(ApplicationV2) {
 
 		// Shortcut because users can't edit
 		if (!game.user.isGM) { return };
+
+		new ContextMenu(
+			this.element,
+			`#delve-difficulty`,
+			[
+				...conditions.map(condition => ({
+					name: localizer(condition.label),
+					callback: DelveDiceHUD.#setDifficulty.bind(this, condition.value),
+				})),
+				{
+					name: localizer(`RipCrypt.common.difficulties.random`),
+					callback: () => {
+						const condition = conditions[Math.floor(Math.random() * conditions.length)];
+						DelveDiceHUD.#setDifficulty.bind(this)(condition.value);
+					},
+				},
+			],
+			{ jQuery: false, fixed: true },
+		);
 	};
 
 	async _preparePartContext(partId, ctx, opts) {
@@ -201,6 +221,12 @@ export class DelveDiceHUD extends HandlebarsApplicationMixin(ApplicationV2) {
 		const fate = element.dataset.toFate;
 		this.#animateCompassTo(fate);
 		game.settings.set(`ripcrypt`, `currentFate`, fate);
+	};
+
+	/** @this {DelveDiceHUD} */
+	static async #setDifficulty(value) {
+		this._difficulty = value;
+		game.settings.set(`ripcrypt`, `dc`, value);
 	};
 	// #endregion
 
