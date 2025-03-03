@@ -33,6 +33,7 @@ import { registerDevSettings } from "../settings/devSettings.mjs";
 import { registerMetaSettings } from "../settings/metaSettings.mjs";
 import { registerUserSettings } from "../settings/userSettings.mjs";
 import { registerWorldSettings } from "../settings/worldSettings.mjs";
+import { DifficultyDeltaBehaviorData } from "../data/region-behaviors/DifficultyDelta.mjs";
 
 Hooks.once(`init`, () => {
 	Logger.log(`Initializing`);
@@ -56,6 +57,7 @@ Hooks.once(`init`, () => {
 	CONFIG.Item.dataModels.shield = ShieldData;
 	CONFIG.Item.dataModels.skill = SkillData;
 	CONFIG.Item.dataModels.weapon = WeaponData;
+	CONFIG.RegionBehavior.dataModels.difficultyDelta = DifficultyDeltaBehaviorData;
 	// #endregion
 
 	// #region Class Changes

@@ -11,6 +11,9 @@
 			"shield": "Shield",
 			"skill": "Skill",
 			"weapon": "Weapon"
+		},
+		"RegionBehavior": {
+			"difficultyDelta": "Condition Delta"
 		}
 	},
 	"RipCrypt": {
@@ -154,6 +157,16 @@
 		},
 		"tooltips": {
 			"shield-bonus": "Shield Bonus: {value}"
+		},
+		"region": {
+			"difficultyDelta": {
+				"FIELDS": {
+					"delta": {
+						"label": "Delta",
+						"hint": "How much should actors in this area have their difficulty changed from the global value."
+					}
+				}
+			}
 		}
 	}
 }

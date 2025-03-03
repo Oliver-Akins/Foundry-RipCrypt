@@ -51,6 +51,9 @@
 			"shield": {},
 			"skill": {},
 			"weapon": {}
+		},
+		"RegionBehavior": {
+			"difficultyDelta": {}
 		}
 	}
 }
