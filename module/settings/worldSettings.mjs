@@ -1,15 +1,6 @@
 const { NumberField, StringField } = foundry.data.fields;
 
 export function registerWorldSettings() {
-	game.settings.register(`ripcrypt`, `showDelveTour`, {
-		name: `Delve Tour Popup`,
-		scope: `world`,
-		type: Boolean,
-		config: false,
-		default: true,
-		requiresReload: false,
-	});
-
 	game.settings.register(`ripcrypt`, `sandsOfFateInitial`, {
 		name: `RipCrypt.setting.sandsOfFateInitial.name`,
 		hint: `RipCrypt.setting.sandsOfFateInitial.hint`,

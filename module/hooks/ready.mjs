@@ -19,10 +19,6 @@ Hooks.once(`ready`, () => {
 		if (game.paused) { game.togglePause() };
 	};
 
-	if (game.settings.get(`ripcrypt`, `showDelveTour`)) {
-		ui.crypt.render({ force: true });
-	};
-
 	ui.delveDice.render({ force: true });
 
 	// MARK: 1-time updates
