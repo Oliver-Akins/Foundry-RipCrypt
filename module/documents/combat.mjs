@@ -7,7 +7,7 @@ Resources:
 
 export class RipCryptCombat extends Combat {
 
-	get groups() {
+	get customGroups() {
 		let groups = new Map();
 
 		for (const combatant of this.combatants) {
@@ -130,7 +130,7 @@ export class RipCryptCombat extends Combat {
 		if (!tokenGroup && currentToken) {
 			currentToken.renderFlags.set({refreshTurnMarker: true});
 		} else {
-			const group = this.groups.get(tokenGroup) ?? [];
+			const group = this.customGroups.get(tokenGroup) ?? [];
 			for (const combatant of group) {
 				combatant.token?._object?.renderFlags.set({ refreshTurnMarker: true });
 			}
