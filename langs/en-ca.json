@@ -67,6 +67,7 @@
 				"hard": "Hard",
 				"random": "Random Condition"
 			},
+			"difficulty": "Difficulty",
 			"drag": "Drag",
 			"edit": "Edit",
 			"edge": "Edge",
@@ -78,11 +79,23 @@
 			"guts": "Guts",
 			"location": "Location",
 			"move": "Move",
-			"path": {
-				"North": "North",
-				"East": "East",
-				"South": "South",
-				"West": "West"
+			"ordinals": {
+				"North": {
+					"full": "North",
+					"abbv": "N"
+				},
+				"East": {
+					"full": "East",
+					"abbv": "E"
+				},
+				"South": {
+					"full": "South",
+					"abbv": "S"
+				},
+				"West": {
+					"full": "West",
+					"abbv": "W"
+				}
 			},
 			"protection": "Protection",
 			"quantity": "Quantity",
@@ -171,7 +184,11 @@
 			}
 		},
 		"tooltips": {
-			"shield-bonus": "Shield Bonus: {value}"
+			"shield-bonus": "Shield Bonus: {value}",
+			"set-fate-to": "Set Fate to {ordinal}",
+			"current-tour": "Current Delve Tour",
+			"next-tour": "Next Delve Tour",
+			"prev-tour": "Previous Delve Tour"
 		}
 	}
 }
