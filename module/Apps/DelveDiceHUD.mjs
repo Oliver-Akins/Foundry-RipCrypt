@@ -30,6 +30,7 @@ export class DelveDiceHUD extends HandlebarsApplicationMixin(ApplicationV2) {
 		classes: [
 			`ripcrypt`,
 			`ripcrypt--DelveDiceHUD`,
+			`hud`,
 		],
 		window: {
 			frame: false,

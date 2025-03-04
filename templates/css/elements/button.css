@@ -1,4 +1,5 @@
-.ripcrypt button {
+.ripcrypt.hud button,
+.ripcrypt > .window-content button {
 	all: revert;
 	outline: none;
 	border: none;
