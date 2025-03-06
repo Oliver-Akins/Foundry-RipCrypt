@@ -1,0 +1,58 @@
+.ripcrypt .HeroCraftCardV1 {
+	--col-gap: 8px;
+
+	display: grid;
+	column-gap: var(--col-gap);
+	grid-template-columns: repeat(2, minmax(0, 1fr));
+	grid-template-rows: repeat(15, minmax(0, 1fr));
+
+	background: var(--base-background);
+	color: var(--base-text);
+
+	.col-header {
+		display: flex;
+		flex-direction: row;
+		align-items: center;
+		background: var(--section-header-background);
+		color: var(--section-header-text);
+		padding: 2px 4px;
+		border-radius: 999px;
+	}
+
+	label, .label {
+		box-sizing: border-box;
+		padding: 2px 4px;
+		text-transform: uppercase;
+		font-size: var(--font-size-14);
+		overflow: hidden;
+		text-overflow: ellipsis;
+		font-weight: bold;
+	}
+
+	.craft-list {
+		display: grid;
+		grid-template-rows: subgrid;
+
+		> :nth-child(even) {
+			background: var(--alt-row-background);
+			color: var(--alt-row-text);
+		}
+	}
+
+	span.name {
+		flex-grow: 1;
+	}
+
+	[data-aspect="focus"] { --row: 6; --col: 1; }
+
+	[data-aspect] {
+		&.aspect-header {
+			grid-row: var(--row);
+			grid-column: var(--col);
+		}
+		&.craft-list {
+			grid-row: calc(var(--row) + 1) / span 4;
+			grid-column: var(--col);
+		}
+	}
+}

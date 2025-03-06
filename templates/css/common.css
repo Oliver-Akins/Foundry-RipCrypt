@@ -21,7 +21,9 @@
 	}
 
 	.HeroSummaryCardV1,
-	.HeroSkillsCardV1 {
+	.HeroSkillsCardV1,
+	.HeroCraftCardV1 {
+		padding: 8px;
 		/* height: 270px; */
 		width: 680px;
 		--col-gap: 2px;
