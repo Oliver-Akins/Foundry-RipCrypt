@@ -117,7 +117,7 @@ export class HeroSummaryCardV1 extends GenericAppMixin(HandlebarsApplicationMixi
 		ctx.fate.options = [
 			{ label: `RipCrypt.common.empty`, v: `` },
 			...Object.values(gameTerms.FatePath)
-				.map(v => ({ label: `RipCrypt.common.path.${v}`, value: v })),
+				.map(v => ({ label: `RipCrypt.common.ordinals.${v}.full`, value: v })),
 		];
 		return ctx;
 	};

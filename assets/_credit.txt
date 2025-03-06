@@ -11,6 +11,11 @@ ARISO:
 Abdulloh Fauzan:
 	- icons/info-circle.svg (https://thenounproject.com/icon/information-4176576/) : Rights Purchased
 
+QOLBIN SALIIM:
+	- icons/arrow-left.svg (https://thenounproject.com/icon/arrow-1933583/) : Rights Purchased
+	- icons/arrow-right.svg (https://thenounproject.com/icon/arrow-1933581/) : Rights Purchased
+	- icons/arrow-compass.svg (https://thenounproject.com/icon/arrow-2052607/) : Rights Purchased
+
 Soetarman Atmodjo:
 	- icons/roll.svg (https://thenounproject.com/icon/dice-5195278/) : Rights Purchased
 

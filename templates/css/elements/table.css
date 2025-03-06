@@ -1,3 +1,4 @@
+.ripcrypt.hud table,
 .ripcrypt > .window-content table {
 	all: revert;
 	box-sizing: border-box;

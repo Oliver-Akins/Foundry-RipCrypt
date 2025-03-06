@@ -1,7 +1,7 @@
 // Applications
 import { AllItemSheetV1 } from "../Apps/ItemSheets/AllItemSheetV1.mjs";
 import { CombinedHeroSheet } from "../Apps/ActorSheets/CombinedHeroSheet.mjs";
-import { DelveTourApp } from "../Apps/DelveTourApp.mjs";
+import { DelveDiceHUD } from "../Apps/DelveDiceHUD.mjs";
 import { HeroSkillsCardV1 } from "../Apps/ActorSheets/HeroSkillsCardV1.mjs";
 import { HeroSummaryCardV1 } from "../Apps/ActorSheets/HeroSummaryCardV1.mjs";
 import { RipCryptCombatTracker } from "../Apps/sidebar/CombatTracker.mjs";
@@ -38,7 +38,7 @@ Hooks.once(`init`, () => {
 	Logger.log(`Initializing`);
 
 	CONFIG.Combat.initiative.decimals = 2;
-	CONFIG.ui.crypt = DelveTourApp;
+	CONFIG.ui.delveDice = DelveDiceHUD;
 
 	// #region Settings
 	registerMetaSettings();

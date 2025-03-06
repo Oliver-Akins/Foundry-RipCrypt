@@ -1,4 +1,4 @@
-import { distanceBetweenFates } from "../utils/distanceBetweenFates.mjs";
+import { distanceBetweenFates } from "../utils/fates.mjs";
 
 export class RipCryptCombatant extends Combatant {
 

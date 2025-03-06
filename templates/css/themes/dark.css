@@ -41,4 +41,8 @@
 	--pill-input-background: var(--accent-2);
 	--pill-input-disabled-text: white;
 	--pill-input-disabled-background: black;
+
+	/* Custom HUD Components */
+	--DelveDice-background: var(--accent-1);
+	--DelveDice-text: white;
 }
