@@ -44,6 +44,7 @@
 	}
 
 	[data-aspect="focus"] { --row: 6; --col: 1; }
+	[data-aspect="flect"] { --row: 6; --col: 2; }
 
 	[data-aspect] {
 		&.aspect-header {
