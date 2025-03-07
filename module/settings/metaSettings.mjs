@@ -1,3 +1,8 @@
+import { gameTerms } from "../gameTerms.mjs";
+
+const { StringField } = foundry.data.fields;
+const { FatePath } = gameTerms;
+
 export function registerMetaSettings() {
 	game.settings.register(`ripcrypt`, `dc`, {
 		scope: `world`,
@@ -5,19 +10,32 @@ export function registerMetaSettings() {
 		config: false,
 		requiresReload: false,
 		onChange: () => {
-			ui.crypt.render({ parts: [ `delveConditions` ]});
+			ui.delveDice.render({ parts: [`difficulty`] });
+		},
+	});
+
+	game.settings.register(`ripcrypt`, `sandsOfFate`, {
+		scope: `world`,
+		type: Number,
+		initial: 8,
+		config: false,
+		requiresReload: false,
+		onChange: async () => {
+			ui.delveDice.animate({ parts: [`sandsOfFate`] });
 		},
 	});
 
 	game.settings.register(`ripcrypt`, `currentFate`, {
 		scope: `world`,
-		type: String,
+		type: new StringField({
+			blank: false,
+			nullable: false,
+			initial: FatePath.NORTH,
+		}),
 		config: false,
 		requiresReload: false,
 		onChange: async () => {
-			await ui.crypt.render({ parts: [ `fate` ] });
-			await game.combat.setupTurns();
-			await ui.combat.render({ parts: [ `tracker` ] });
+			ui.delveDice.animate({ parts: [`fateCompass`] });
 		},
 	});
 

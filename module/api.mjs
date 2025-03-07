@@ -6,6 +6,7 @@ import { HeroSummaryCardV1 } from "./Apps/ActorSheets/HeroSummaryCardV1.mjs";
 import { RichEditor } from "./Apps/RichEditor.mjs";
 
 // Util imports
+import { distanceBetweenFates, nextFate, previousFate } from "./utils/fates.mjs";
 import { documentSorter } from "./consts.mjs";
 
 const { deepFreeze } = foundry.utils;
@@ -24,6 +25,9 @@ Object.defineProperty(
 			},
 			utils: {
 				documentSorter,
+				distanceBetweenFates,
+				nextFate,
+				previousFate,
 			},
 		}),
 		writable: false,
