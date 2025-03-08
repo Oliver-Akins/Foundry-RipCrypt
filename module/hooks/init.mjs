@@ -10,7 +10,7 @@ import { RipCryptCombatTracker } from "../Apps/sidebar/CombatTracker.mjs";
 import { AmmoData } from "../data/Item/Ammo.mjs";
 import { ArmourData } from "../data/Item/Armour.mjs";
 import { CraftData } from "../data/Item/Craft.mjs";
-import { DifficultyDeltaBehaviorData } from "../data/region-behaviors/DifficultyDelta.mjs";
+import { DifficultyDeltaBehaviorData } from "../data/Behavior/DifficultyDelta.mjs";
 import { GoodData } from "../data/Item/Good.mjs";
 import { HeroData } from "../data/Actor/Hero.mjs";
 import { ShieldData } from "../data/Item/Shield.mjs";
