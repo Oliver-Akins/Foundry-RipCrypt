@@ -1,7 +1,7 @@
 {
 	"id": "ripcrypt",
 	"title": "RipCrypt",
-	"description": "",
+	"description": "A dungeon sprint RPG. Faster than an arrow to the eye. Smoother than a clean blade. Compact with consequences.",
 	"version": "0.0.1",
 	"compatibility": {
 		"minimum": 13,
