@@ -48,4 +48,29 @@
 			{{/if}}
 		{{/each}}
 	</ol>
+
+	<div data-aspect="fract" class="col-header aspect-header">
+		<span class="name">Fract</span>
+		<span class="small">Details</span>
+	</div>
+	<ol data-aspect="fract" class="num-before craft-list">
+		{{#each craft.fract as | craft |}}
+			{{#if craft}}
+				<li data-item-id="{{craft.uuid}}" data-ctx-menu="craft">
+					<span class="name">{{ craft.name }}</span>
+					{{#if craft.use}}
+						<rc-icon
+							name="icons/info-circle"
+							var:size="16px"
+							var:fill="currentColor"
+							data-tooltip="{{ craft.use }}"
+							data-tooltip-direction="UP"
+						></rc-icon>
+					{{/if}}
+				</li>
+			{{else}}
+				<li></li>
+			{{/if}}
+		{{/each}}
+	</ol>
 </div>
