@@ -1,5 +1,6 @@
 import { derivedMaximumBar } from "../helpers.mjs";
 import { gameTerms } from "../../gameTerms.mjs";
+import { rankToInteger } from "../../utils/rank.mjs";
 import { sumReduce } from "../../utils/sumReduce.mjs";
 
 const { fields } = foundry.data;
@@ -121,6 +122,13 @@ export class HeroData extends foundry.abstract.TypeDataModel {
 	// MARK: Base Data
 	prepareBaseData() {
 		super.prepareBaseData();
+
+		// Calculate the person's base Crafting aura
+		const rank = rankToInteger(this.level.rank);
+		this.aura = {
+			normal: ( rank + 1 ) * 2,
+			heavy: ( rank + 2 ) * 2,
+		};
 
 		this.guts.max = 0;
 

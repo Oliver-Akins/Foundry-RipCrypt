@@ -8,6 +8,7 @@ import { RichEditor } from "./Apps/RichEditor.mjs";
 // Util imports
 import { distanceBetweenFates, nextFate, previousFate } from "./utils/fates.mjs";
 import { documentSorter } from "./consts.mjs";
+import { rankToInteger } from "./utils/rank.mjs";
 
 const { deepFreeze } = foundry.utils;
 
@@ -28,6 +29,7 @@ Object.defineProperty(
 				distanceBetweenFates,
 				nextFate,
 				previousFate,
+				rankToInteger,
 			},
 		}),
 		writable: false,
