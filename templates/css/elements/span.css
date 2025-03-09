@@ -10,6 +10,13 @@
 		overflow: hidden;
 	}
 
+	&.slash {
+		width: 2px;
+		background: var(--slash-color, currentColor);
+		border-radius: 999px;
+		transform: rotate(var(--slash-rotation, 15deg));
+	}
+
 	/* Makes it so that spans are never less than the font size */
 	&:empty::before {
 		content: "\200b";
