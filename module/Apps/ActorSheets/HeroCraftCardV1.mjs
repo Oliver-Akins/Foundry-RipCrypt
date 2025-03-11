@@ -88,35 +88,7 @@ export class HeroCraftCardV1 extends GenericAppMixin(HandlebarsApplicationMixin(
 	};
 
 	static async prepareAura(ctx) {
-		const { normal, heavy } = ctx.aura = deepClone(ctx.actor.system.aura);
-
-		ctx.auraClasses = {};
-		if (heavy >= 4) {
-			ctx.auraClasses.four = `heavy`;
-		}
-		if (heavy >= 6) {
-			ctx.auraClasses.six = `heavy`;
-		}
-		if (heavy >= 8) {
-			ctx.auraClasses.eight = `heavy`;
-		}
-		if (heavy >= 10) {
-			ctx.auraClasses.ten = `heavy`;
-		}
-
-		if (normal >= 4) {
-			ctx.auraClasses.four = `normal`;
-		}
-		if (normal >= 6) {
-			ctx.auraClasses.six = `normal`;
-		}
-		if (normal >= 8) {
-			ctx.auraClasses.eight = `normal`;
-		}
-		if (normal >= 10) {
-			ctx.auraClasses.ten = `normal`;
-		}
-
+		ctx.aura = deepClone(ctx.actor.system.aura);
 		return ctx;
 	};
 
