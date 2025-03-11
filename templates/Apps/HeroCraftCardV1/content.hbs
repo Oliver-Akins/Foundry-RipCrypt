@@ -1,6 +1,6 @@
 <div class="HeroCraftCardV1">
 	<div class="col-header">
-		Glimcraft
+		{{rc-i18n "RipCrypt.common.glimcraft"}}
 	</div>
 	<div class="aura-container">
 		<div class="circle-fragment">10</div>
@@ -14,19 +14,19 @@
 		></rc-svg>
 		<div class="aura-values">
 			<div class="dual-pill">
-				<span class="label" aria-hidden="true">Aura</span>
+				<span class="label" aria-hidden="true">{{rc-i18n "RipCrypt.common.aura"}}</span>
 				<div class="values">
-					<span class="value">{{aura.normal}}</span>
+					<span class="value" data-tooltip="RipCrypt.tooltips.auras.normal">{{aura.normal}}</span>
 					<span class="slash" aria-hidden="true"></span>
-					<span class="value">{{aura.heavy}}</span>
+					<span class="value" data-tooltip="RipCrypt.tooltips.auras.heavy">{{aura.heavy}}</span>
 				</div>
 			</div>
 		</div>
 	</div>
 
 	<div data-aspect="focus" class="col-header aspect-header">
-		<span class="name">Focus</span>
-		<span class="small">Details</span>
+		<span class="name">{{rc-i18n "RipCrypt.common.aspectNames.focus"}}</span>
+		<span class="small">{{rc-i18n "RipCrypt.common.details"}}</span>
 	</div>
 	<ol data-aspect="focus" class="num-before craft-list">
 		{{#each craft.focus as | craft |}}
@@ -50,8 +50,8 @@
 	</ol>
 
 	<div data-aspect="flect" class="col-header aspect-header">
-		<span class="name">Flect</span>
-		<span class="small">Details</span>
+		<span class="name">{{rc-i18n "RipCrypt.common.aspectNames.flect"}}</span>
+		<span class="small">{{rc-i18n "RipCrypt.common.details"}}</span>
 	</div>
 	<ol data-aspect="flect" class="num-before craft-list">
 		{{#each craft.flect as | craft |}}
@@ -75,8 +75,8 @@
 	</ol>
 
 	<div data-aspect="fract" class="col-header aspect-header">
-		<span class="name">Fract</span>
-		<span class="small">Details</span>
+		<span class="name">{{rc-i18n "RipCrypt.common.aspectNames.fract"}}</span>
+		<span class="small">{{rc-i18n "RipCrypt.common.details"}}</span>
 	</div>
 	<ol data-aspect="fract" class="num-before craft-list">
 		{{#each craft.fract as | craft |}}
