@@ -43,6 +43,12 @@ export class HeroSkillsCardV1 extends GenericAppMixin(HandlebarsApplicationMixin
 	async _onRender(context, options) {
 		await super._onRender(context, options);
 		HeroSkillsCardV1._onRender.bind(this)(context, options);
+
+		const ammo = this.element.querySelector(`.ammo`);
+
+		ammo.addEventListener(`mouseenter`, () => {console.log(`mouseenter-ing`)});
+
+		ammo.addEventListener(`contextmenu`, () => {console.log(`right-clicking`)});
 	};
 
 	static async _onRender(_context, options) {
