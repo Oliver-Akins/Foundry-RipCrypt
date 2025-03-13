@@ -1,0 +1,101 @@
+<div class="HeroCraftCardV1">
+	<div class="col-header">
+		{{rc-i18n "RipCrypt.common.glimcraft"}}
+	</div>
+	<div class="aura-container">
+		<div class="circle-fragment">10</div>
+		<div class="circle-fragment">8</div>
+		<div class="circle-fragment">6</div>
+		<div class="full-circle">4</div>
+		<rc-svg
+			class="caster-silhouette"
+			name="caster-silhouette.v1"
+			var:fill="var(--accent-1)"
+		></rc-svg>
+		<div class="aura-values">
+			<div class="dual-pill">
+				<span class="label" aria-hidden="true">{{rc-i18n "RipCrypt.common.aura"}}</span>
+				<div class="values">
+					<span class="value" data-tooltip="RipCrypt.tooltips.auras.normal">{{aura.normal}}</span>
+					<span class="slash" aria-hidden="true"></span>
+					<span class="value" data-tooltip="RipCrypt.tooltips.auras.heavy">{{aura.heavy}}</span>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div data-aspect="focus" class="col-header aspect-header">
+		<span class="name">{{rc-i18n "RipCrypt.common.aspectNames.focus"}}</span>
+		<span class="small">{{rc-i18n "RipCrypt.common.details"}}</span>
+	</div>
+	<ol data-aspect="focus" class="num-before craft-list">
+		{{#each craft.focus as | craft |}}
+			{{#if craft}}
+				<li data-item-id="{{craft.uuid}}" data-ctx-menu="craft">
+					<span class="name">{{ craft.name }}</span>
+					{{#if craft.use}}
+						<rc-icon
+							name="icons/info-circle"
+							var:size="16px"
+							var:fill="currentColor"
+							data-tooltip="{{ craft.use }}"
+							data-tooltip-direction="UP"
+						></rc-icon>
+					{{/if}}
+				</li>
+			{{else}}
+				<li></li>
+			{{/if}}
+		{{/each}}
+	</ol>
+
+	<div data-aspect="flect" class="col-header aspect-header">
+		<span class="name">{{rc-i18n "RipCrypt.common.aspectNames.flect"}}</span>
+		<span class="small">{{rc-i18n "RipCrypt.common.details"}}</span>
+	</div>
+	<ol data-aspect="flect" class="num-before craft-list">
+		{{#each craft.flect as | craft |}}
+			{{#if craft}}
+				<li data-item-id="{{craft.uuid}}" data-ctx-menu="craft">
+					<span class="name">{{ craft.name }}</span>
+					{{#if craft.use}}
+						<rc-icon
+							name="icons/info-circle"
+							var:size="16px"
+							var:fill="currentColor"
+							data-tooltip="{{ craft.use }}"
+							data-tooltip-direction="UP"
+						></rc-icon>
+					{{/if}}
+				</li>
+			{{else}}
+				<li></li>
+			{{/if}}
+		{{/each}}
+	</ol>
+
+	<div data-aspect="fract" class="col-header aspect-header">
+		<span class="name">{{rc-i18n "RipCrypt.common.aspectNames.fract"}}</span>
+		<span class="small">{{rc-i18n "RipCrypt.common.details"}}</span>
+	</div>
+	<ol data-aspect="fract" class="num-before craft-list">
+		{{#each craft.fract as | craft |}}
+			{{#if craft}}
+				<li data-item-id="{{craft.uuid}}" data-ctx-menu="craft">
+					<span class="name">{{ craft.name }}</span>
+					{{#if craft.use}}
+						<rc-icon
+							name="icons/info-circle"
+							var:size="16px"
+							var:fill="currentColor"
+							data-tooltip="{{ craft.use }}"
+							data-tooltip-direction="UP"
+						></rc-icon>
+					{{/if}}
+				</li>
+			{{else}}
+				<li></li>
+			{{/if}}
+		{{/each}}
+	</ol>
+</div>

@@ -18,6 +18,7 @@
 			"AllItemsSheetV1": "RipCrypt Item Sheet",
 			"CombinedHeroSheet": "Hero Sheet",
 			"HeroSummaryCardV1": "Hero Stat Card",
+			"HeroCraftCardV1": "Hero Craft Card",
 			"HeroSkillsCardV1": "Hero Skill Card"
 		},
 		"common": {
@@ -51,6 +52,7 @@
 				"fract": "Fract",
 				"focus": "Focus"
 			},
+			"aura": "Aura",
 			"cost": "Cost",
 			"currency": {
 				"gold": "Gold",
@@ -60,6 +62,7 @@
 			"damage": "Damage",
 			"delete": "Delete",
 			"description": "Description",
+			"details": "Details",
 			"difficulties": {
 				"easy": "Easy",
 				"normal": "Normal",
@@ -75,6 +78,7 @@
 			"equipped": "Equipped",
 			"fate": "Fate",
 			"gear": "Gear",
+			"glimcraft": "Glimcraft",
 			"glory": "Glory",
 			"guts": "Guts",
 			"location": "Location",
@@ -149,7 +153,6 @@
 			}
 		},
 		"Apps": {
-			"move-run": "@RipCrypt.common.move • @RipCrypt.common.run",
 			"traits-range": "@RipCrypt.common.traits • @RipCrypt.common.range",
 			"grit-skills": "@RipCrypt.common.abilities.grit Skills",
 			"gait-skills": "@RipCrypt.common.abilities.gait Skills",
@@ -188,7 +191,11 @@
 			"set-fate-to": "Set Fate to {ordinal}",
 			"current-tour": "Current Delve Tour",
 			"next-tour": "Next Delve Tour",
-			"prev-tour": "Previous Delve Tour"
+			"prev-tour": "Previous Delve Tour",
+			"auras": {
+				"normal": "The distance of your aura normally",
+				"heavy": "The distance of your aura when using Heavycraft"
+			}
 		}
 	}
 }

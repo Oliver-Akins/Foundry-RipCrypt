@@ -8,6 +8,7 @@ import { Logger } from "../../utils/Logger.mjs";
 const { HandlebarsApplicationMixin } = foundry.applications.api;
 const { ActorSheetV2 } = foundry.applications.sheets;
 const { ContextMenu } = foundry.applications.ui;
+const { deepClone } = foundry.utils;
 
 export class HeroCraftCardV1 extends GenericAppMixin(HandlebarsApplicationMixin(ActorSheetV2)) {
 
@@ -79,9 +80,15 @@ export class HeroCraftCardV1 extends GenericAppMixin(HandlebarsApplicationMixin(
 		ctx = await super._preparePartContext(partId, ctx, opts);
 		ctx.actor = this.document;
 
+		ctx = await HeroCraftCardV1.prepareAura(ctx);
 		ctx = await HeroCraftCardV1.prepareCraft(ctx);
 
 		Logger.debug(`Context:`, ctx);
+		return ctx;
+	};
+
+	static async prepareAura(ctx) {
+		ctx.aura = deepClone(ctx.actor.system.aura);
 		return ctx;
 	};
 

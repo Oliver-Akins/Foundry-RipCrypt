@@ -2,6 +2,7 @@
 import { AllItemSheetV1 } from "../Apps/ItemSheets/AllItemSheetV1.mjs";
 import { CombinedHeroSheet } from "../Apps/ActorSheets/CombinedHeroSheet.mjs";
 import { DelveDiceHUD } from "../Apps/DelveDiceHUD.mjs";
+import { HeroCraftCardV1 } from "../Apps/ActorSheets/HeroCraftCardV1.mjs";
 import { HeroSkillsCardV1 } from "../Apps/ActorSheets/HeroSkillsCardV1.mjs";
 import { HeroSummaryCardV1 } from "../Apps/ActorSheets/HeroSummaryCardV1.mjs";
 import { RipCryptCombatTracker } from "../Apps/sidebar/CombatTracker.mjs";
@@ -90,6 +91,11 @@ Hooks.once(`init`, () => {
 		types: [`hero`],
 		label: `RipCrypt.sheet-names.HeroSkillsCardV1`,
 		themes: HeroSkillsCardV1.themes,
+	});
+	Actors.registerSheet(game.system.id, HeroCraftCardV1, {
+		types: [`hero`],
+		label: `RipCrypt.sheet-names.HeroCraftCardV1`,
+		themes: HeroCraftCardV1.themes,
 	});
 	// #endregion
 
