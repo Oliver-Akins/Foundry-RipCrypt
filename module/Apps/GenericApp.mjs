@@ -38,7 +38,7 @@ export function GenericAppMixin(HandlebarsApp) {
 		 * top after being re-rendered as normal
 		 */
 		async render(options = {}, _options = {}) {
-			super.render(options, _options);
+			await super.render(options, _options);
 			const instance = foundry.applications.instances.get(this.id);
 			if (instance !== undefined && options.orBringToFront) {
 				instance.bringToFront();
