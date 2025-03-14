@@ -1,0 +1,5 @@
+.ripcrypt.popover {
+	position: absolute;
+	z-index: var(--z-index-tooltip);
+	transform-origin: top left;
+}

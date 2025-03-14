@@ -193,8 +193,9 @@ export class HeroSkillsCardV1 extends GenericAppMixin(HandlebarsApplicationMixin
 	 * @param {PointerEvent} event
 	 */
 	async #ammoInfoPointerEnter(event) {
-		console.log(event.x, event.y);
-		const { x, y } = event;
+		const pos = event.target.getBoundingClientRect();
+		const x = pos.x + Math.floor(pos.width / 2);
+		const y = pos.y;
 
 		this.#ammoTrackerHoverTimeout = setTimeout(
 			() => {
@@ -214,7 +215,7 @@ export class HeroSkillsCardV1 extends GenericAppMixin(HandlebarsApplicationMixin
 
 	async #ammoInfoPointerOut() {
 		if (this.#ammoTracker) {
-			// this.#ammoTracker.close();
+			this.#ammoTracker.close();
 		};
 
 		if (this.#ammoTrackerHoverTimeout !== null) {
