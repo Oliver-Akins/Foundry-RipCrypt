@@ -1,9 +1,10 @@
 import { deleteItemFromElement, editItemFromElement } from "../utils.mjs";
-import { documentSorter, filePath } from "../../consts.mjs";
+import { documentSorter, filePath, getTooltipDelay } from "../../consts.mjs";
 import { gameTerms } from "../../gameTerms.mjs";
 import { GenericAppMixin } from "../GenericApp.mjs";
 import { localizer } from "../../utils/Localizer.mjs";
 import { Logger } from "../../utils/Logger.mjs";
+import { AmmoTracker } from "../popovers/AmmoTracker.mjs";
 
 const { HandlebarsApplicationMixin } = foundry.applications.api;
 const { ActorSheetV2 } = foundry.applications.sheets;
@@ -39,16 +40,19 @@ export class HeroSkillsCardV1 extends GenericAppMixin(HandlebarsApplicationMixin
 	};
 	// #endregion
 
+	// #region Instance Data
+	/** @type {number | undefined} */
+	#ammoTrackerHoverTimeout = null;
+
+	/** @type {AmmoTracker | null} */
+	#ammoTracker = null;
+	// #endregion
+
 	// #region Lifecycle
 	async _onRender(context, options) {
 		await super._onRender(context, options);
 		HeroSkillsCardV1._onRender.bind(this)(context, options);
-
-		const ammo = this.element.querySelector(`.ammo`);
-
-		ammo.addEventListener(`mouseenter`, () => {console.log(`mouseenter-ing`)});
-
-		ammo.addEventListener(`contextmenu`, () => {console.log(`right-clicking`)});
+		await this.#createAmmoTrackerEvents();
 	};
 
 	static async _onRender(_context, options) {
@@ -79,6 +83,13 @@ export class HeroSkillsCardV1 extends GenericAppMixin(HandlebarsApplicationMixin
 			],
 			{ jQuery: false, fixed: true },
 		);
+	};
+
+	async #createAmmoTrackerEvents() {
+		const ammoInfoIcon = this.element.querySelector(`.ammo-info-icon`);
+		ammoInfoIcon.addEventListener(`pointerenter`, this.#ammoInfoPointerEnter.bind(this));
+		ammoInfoIcon.addEventListener(`pointerout`, this.#ammoInfoPointerOut.bind(this));
+		ammoInfoIcon.addEventListener(`click`, this.#ammoInfoClick.bind(this));
 	};
 
 	async _preparePartContext(partId, ctx, opts) {
@@ -175,6 +186,44 @@ export class HeroSkillsCardV1 extends GenericAppMixin(HandlebarsApplicationMixin
 		}
 		return ctx;
 	};
+	// #endregion
+
+	// #region Event Listeners
+	/**
+	 * @param {PointerEvent} event
+	 */
+	async #ammoInfoPointerEnter(event) {
+		console.log(event.x, event.y);
+		const { x, y } = event;
+
+		this.#ammoTrackerHoverTimeout = setTimeout(
+			() => {
+				this.#ammoTrackerHoverTimeout = null;
+				const tracker = new AmmoTracker({
+					popover: {
+						framed: false,
+						x, y,
+					},
+				});
+				tracker.render({ force: true });
+				this.#ammoTracker = tracker;
+			},
+			getTooltipDelay(),
+		);
+	};
+
+	async #ammoInfoPointerOut() {
+		if (this.#ammoTracker) {
+			// this.#ammoTracker.close();
+		};
+
+		if (this.#ammoTrackerHoverTimeout !== null) {
+			clearTimeout(this.#ammoTrackerHoverTimeout);
+			this.#ammoTrackerHoverTimeout = null;
+		};
+	};
+
+	async #ammoInfoClick() {};
 	// #endregion
 
 	// #region Actions

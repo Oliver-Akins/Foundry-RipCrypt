@@ -54,3 +54,14 @@ export function documentSorter(a, b) {
 	};
 	return Math.sign(a.name.localeCompare(b.name));
 };
+
+// MARK: getTooltipDelay
+/**
+ * Retrieves the configured minimum delay between the user hovering an element
+ * and a tooltip showing up. Used for the pseudo-tooltip Applications that I use.
+ *
+ * @returns The number of milliseconds for the timeout
+ */
+export function getTooltipDelay() {
+	return 1000; // game.tooltip.constructor.TOOLTIP_ACTIVATION_MS;
+};

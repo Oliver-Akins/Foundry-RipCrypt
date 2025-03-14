@@ -116,6 +116,16 @@
 		--input-background: var(--base-background);
 		--input-text: var(--base-text);
 
+		&.with-icon {
+			grid-template-columns: min-content minmax(0, 1.5fr) minmax(0, 1fr);
+			gap: 4px;
+			padding: 2px 0 2px 4px;
+			.label {
+				padding: 0;
+			}
+		}
+
+
 		.input {
 			margin: 2px;
 			border-radius: 999px;

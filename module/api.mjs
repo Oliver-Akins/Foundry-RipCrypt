@@ -9,6 +9,7 @@ import { RichEditor } from "./Apps/RichEditor.mjs";
 import { distanceBetweenFates, nextFate, previousFate } from "./utils/fates.mjs";
 import { documentSorter } from "./consts.mjs";
 import { rankToInteger } from "./utils/rank.mjs";
+import { AmmoTracker } from "./Apps/popovers/AmmoTracker.mjs";
 
 const { deepFreeze } = foundry.utils;
 
@@ -18,6 +19,7 @@ Object.defineProperty(
 	{
 		value: deepFreeze({
 			Apps: {
+				AmmoTracker,
 				DicePool,
 				CombinedHeroSheet,
 				HeroSummaryCardV1,
