@@ -1,10 +1,11 @@
 import { deleteItemFromElement, editItemFromElement } from "../utils.mjs";
-import { documentSorter, filePath, getTooltipDelay } from "../../consts.mjs";
+import { documentSorter, filePath } from "../../consts.mjs";
+import { AmmoTracker } from "../popovers/AmmoTracker.mjs";
 import { gameTerms } from "../../gameTerms.mjs";
 import { GenericAppMixin } from "../GenericApp.mjs";
 import { localizer } from "../../utils/Localizer.mjs";
 import { Logger } from "../../utils/Logger.mjs";
-import { AmmoTracker } from "../popovers/AmmoTracker.mjs";
+import { PopoverEventManager } from "../../utils/PopoverEventManager.mjs";
 
 const { HandlebarsApplicationMixin } = foundry.applications.api;
 const { ActorSheetV2 } = foundry.applications.sheets;
@@ -40,19 +41,15 @@ export class HeroSkillsCardV1 extends GenericAppMixin(HandlebarsApplicationMixin
 	};
 	// #endregion
 
-	// #region Instance Data
-	/** @type {number | undefined} */
-	#ammoTrackerHoverTimeout = null;
-
-	/** @type {AmmoTracker | null} */
-	#ammoTracker = null;
-	// #endregion
-
 	// #region Lifecycle
+	async _onFirstRender(context, options) {
+		await super._onFirstRender(context, options);
+		HeroSkillsCardV1._createPopoverListeners.bind(this)();
+	};
+
 	async _onRender(context, options) {
 		await super._onRender(context, options);
 		HeroSkillsCardV1._onRender.bind(this)(context, options);
-		await this.#createAmmoTrackerEvents();
 	};
 
 	static async _onRender(_context, options) {
@@ -85,11 +82,15 @@ export class HeroSkillsCardV1 extends GenericAppMixin(HandlebarsApplicationMixin
 		);
 	};
 
-	async #createAmmoTrackerEvents() {
+	/** @type {Map<string, PopoverEventManager>} */
+	#popoverManagers = new Map();
+	/** @this {HeroSkillsCardV1} */
+	static async _createPopoverListeners() {
 		const ammoInfoIcon = this.element.querySelector(`.ammo-info-icon`);
-		ammoInfoIcon.addEventListener(`pointerenter`, this.#ammoInfoPointerEnter.bind(this));
-		ammoInfoIcon.addEventListener(`pointerout`, this.#ammoInfoPointerOut.bind(this));
-		ammoInfoIcon.addEventListener(`click`, this.#ammoInfoClick.bind(this));
+		this.#popoverManagers.set(
+			`.ammo-info-icon`,
+			new PopoverEventManager(ammoInfoIcon, AmmoTracker, { lockable: true }),
+		);
 	};
 
 	async _preparePartContext(partId, ctx, opts) {
@@ -186,45 +187,14 @@ export class HeroSkillsCardV1 extends GenericAppMixin(HandlebarsApplicationMixin
 		}
 		return ctx;
 	};
-	// #endregion
 
-	// #region Event Listeners
-	/**
-	 * @param {PointerEvent} event
-	 */
-	async #ammoInfoPointerEnter(event) {
-		const pos = event.target.getBoundingClientRect();
-		const x = pos.x + Math.floor(pos.width / 2);
-		const y = pos.y;
-
-		this.#ammoTrackerHoverTimeout = setTimeout(
-			() => {
-				this.#ammoTrackerHoverTimeout = null;
-				const tracker = new AmmoTracker({
-					popover: {
-						framed: false,
-						x, y,
-					},
-				});
-				tracker.render({ force: true });
-				this.#ammoTracker = tracker;
-			},
-			getTooltipDelay(),
-		);
-	};
-
-	async #ammoInfoPointerOut() {
-		if (this.#ammoTracker) {
-			this.#ammoTracker.close();
+	_tearDown(options) {
+		for (const manager of this.#popoverManagers.values()) {
+			manager.destroy();
 		};
-
-		if (this.#ammoTrackerHoverTimeout !== null) {
-			clearTimeout(this.#ammoTrackerHoverTimeout);
-			this.#ammoTrackerHoverTimeout = null;
-		};
+		this.#popoverManagers.clear();
+		super._tearDown(options);
 	};
-
-	async #ammoInfoClick() {};
 	// #endregion
 
 	// #region Actions

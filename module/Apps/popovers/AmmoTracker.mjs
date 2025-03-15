@@ -8,11 +8,12 @@ export class AmmoTracker extends GenericPopoverMixin(HandlebarsApplicationMixin(
 	static DEFAULT_OPTIONS = {
 		classes: [
 			`ripcrypt`,
-			`ripcrypt--AmmoTracker`,
 		],
-		position: {
-			width: 100,
-			height: 30,
+		window: {
+			title: `Ammo Tracker`,
+			contentClasses: [
+				`ripcrypt--AmmoTracker`,
+			],
 		},
 		actions: {},
 	};

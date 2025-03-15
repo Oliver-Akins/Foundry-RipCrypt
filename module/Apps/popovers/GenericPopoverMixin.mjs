@@ -1,8 +1,14 @@
 const { ApplicationV2 } = foundry.applications.api;
 
+/**
+ * This mixin provides the ability to designate an Application as a "popover",
+ * which means that it will spawn near the x/y coordinates provided it won't
+ * overflow the bounds of the screen.
+ */
 export function GenericPopoverMixin(HandlebarsApp) {
 	class GenericRipCryptPopover extends HandlebarsApp {
 		static DEFAULT_OPTIONS = {
+			id: `popover-{id}`,
 			classes: [
 				`popover`,
 			],
@@ -21,21 +27,48 @@ export function GenericPopoverMixin(HandlebarsApp) {
 			// For when the caller doesn't provide anything, we want this to behave
 			// like a normal Application instance.
 			popover.framed ??= true;
-			popover.locked ??= true;
+			popover.locked ??= false;
+
 
 			if (popover.framed) {
+				options.window ??= {};
 				options.window.frame = true;
 				options.window.minimizable = true;
-			};
+			}
+
+			options.classes ??= [];
+			options.classes.push(popover.framed ? `framed` : `frameless`);
 
 			super(options);
-
 			this.popover = popover;
 		};
 
+		toggleLock() {
+			this.popover.locked = !this.popover.locked;
+			this.classList.toggle(`locked`, this.popover.locked);
+		};
+
+		/**
+		 * This render utility is intended in order to make the popovers able to be
+		 * used in both framed and frameless mode, making sure that the content classes
+		 * from the framed mode get shunted onto the frameless Application's root
+		 * element.
+		 */
+		async _onFirstRender(...args) {
+			await super._onFirstRender(...args);
+
+			const hasContentClasses = this.options?.window?.contentClasses?.length > 0;
+			if (!this.popover.framed && hasContentClasses) {
+				this.classList.add(...this.options.window.contentClasses);
+			};
+		};
+
 		async close(options = {}) {
+			// prevent locked popovers from being closed
+			if (this.popover.locked && !options.force) { return };
+
 			if (!this.popover.framed) {
-				options.animate ??= false;
+				options.animate = false;
 			};
 			return super.close(options);
 		};
@@ -51,7 +84,7 @@ export function GenericPopoverMixin(HandlebarsApp) {
 		 */
 		_updatePosition(position) {
 			if (!this.element) { return position };
-			if (this.popover.framed) { return position }
+			if (this.popover.framed) { return super._updatePosition(position) };
 
 			const el = this.element;
 			let {width, height, left, top, scale} = position;

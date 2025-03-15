@@ -36,6 +36,7 @@ export default [
 				Combatant: `readonly`,
 				canvas: `readonly`,
 				Token: `readonly`,
+				Tour: `readonly`,
 			},
 		},
 	},
