@@ -94,9 +94,13 @@ export class PopoverEventManager {
 					return;
 				};
 
+				// When the frameless is already rendered, we should just move it to the
+				// new location instead of spawning a new one
 				if (this.#frameless?.rendered) {
-					const { width, height } = this.#frameless.position;
-					this.#frameless.render({ position: { left: x - Math.floor(width / 2), top: y - height }});
+					const { width, height } = this.#frameless.element.getBoundingClientRect();
+					const top = y - height;
+					const left = x - Math.floor(width / 2);
+					this.#frameless.setPosition({ left, top });
 					return;
 				}
 
@@ -126,7 +130,6 @@ export class PopoverEventManager {
 	};
 
 	#pointerUpHandler(event) {
-		Logger.debug(event);
 		if (event.button !== 1 || !this.#frameless?.rendered || Tour.tourInProgress) { return };
 		event.preventDefault();
 		this.#frameless.toggleLock();
