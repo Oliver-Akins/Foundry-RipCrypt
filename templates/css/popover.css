@@ -1,16 +1,17 @@
 .ripcrypt.popover {
-	border-width: 2px;
-	border-style: solid;
-	border-color: transparent;
-	border-radius: 4px;
+	box-sizing: border-box;
 
 	&.frameless {
+		border-width: 2px;
+		border-style: solid;
+		border-color: transparent;
+		border-radius: 4px;
 		position: absolute;
 		z-index: var(--z-index-tooltip);
 		transform-origin: top left;
-	}
 
-	&.locked {
-		border-color: var(--accent-3);
+		&.locked {
+			border-color: var(--accent-3);
+		}
 	}
 }
