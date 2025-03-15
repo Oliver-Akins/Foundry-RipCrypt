@@ -1,5 +1,4 @@
 import { getTooltipDelay } from "../consts.mjs";
-import { Logger } from "./Logger.mjs";
 
 export class PopoverEventManager {
 	#options;
@@ -64,16 +63,22 @@ export class PopoverEventManager {
 	#frameless;
 	#framed;
 
+	#construct(options) {
+		const valid = Hooks.call(`get${this.#class.name}Options`, options);
+		if (!valid) { return };
+		return new this.#class(options);
+	};
+
 	#clickHandler() {
 		// Cleanup for the frameless lifecycle
 		this.stopOpen();
+		this.stopClose();
 		this.#frameless?.close({ force: true });
 
 		if (!this.#framed) {
-			const app = new this.#class({ popover: { ...this.#options, framed: true } });
-			this.#framed = app;
+			this.#framed = this.#construct({ popover: { ...this.#options, framed: true } });
 		}
-		this.#framed.render({ force: true });
+		this.#framed?.render({ force: true });
 	};
 
 	#pointerEnterHandler(event) {
@@ -104,14 +109,14 @@ export class PopoverEventManager {
 					return;
 				}
 
-				this.#frameless = new this.#class({
+				this.#frameless = this.#construct({
 					popover: {
 						...this.#options,
 						framed: false,
 						x, y,
 					},
 				});
-				this.#frameless.render({ force: true });
+				this.#frameless?.render({ force: true });
 			},
 			getTooltipDelay(),
 		);

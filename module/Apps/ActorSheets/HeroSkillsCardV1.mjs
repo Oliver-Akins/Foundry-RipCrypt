@@ -44,12 +44,12 @@ export class HeroSkillsCardV1 extends GenericAppMixin(HandlebarsApplicationMixin
 	// #region Lifecycle
 	async _onFirstRender(context, options) {
 		await super._onFirstRender(context, options);
-		HeroSkillsCardV1._createPopoverListeners.bind(this)();
 	};
 
 	async _onRender(context, options) {
 		await super._onRender(context, options);
 		HeroSkillsCardV1._onRender.bind(this)(context, options);
+		HeroSkillsCardV1._createPopoverListeners.bind(this)();
 	};
 
 	static async _onRender(_context, options) {
@@ -84,13 +84,20 @@ export class HeroSkillsCardV1 extends GenericAppMixin(HandlebarsApplicationMixin
 
 	/** @type {Map<string, PopoverEventManager>} */
 	#popoverManagers = new Map();
+	/** @type {Map<number, string>} */
+	#hookIDs = new Map();
 	/** @this {HeroSkillsCardV1} */
 	static async _createPopoverListeners() {
 		const ammoInfoIcon = this.element.querySelector(`.ammo-info-icon`);
+
 		this.#popoverManagers.set(
 			`.ammo-info-icon`,
-			new PopoverEventManager(ammoInfoIcon, AmmoTracker, { lockable: true }),
+			new PopoverEventManager(ammoInfoIcon, AmmoTracker),
 		);
+
+		this.#hookIDs.set(Hooks.on(`get${AmmoTracker.name}Options`, (opts) => {
+			opts.ammo = this.actor.itemTypes.ammo;
+		}), `get${AmmoTracker.name}Options`);
 	};
 
 	async _preparePartContext(partId, ctx, opts) {
@@ -193,6 +200,9 @@ export class HeroSkillsCardV1 extends GenericAppMixin(HandlebarsApplicationMixin
 			manager.destroy();
 		};
 		this.#popoverManagers.clear();
+		for (const [id, hook] of this.#hookIDs.entries()) {
+			Hooks.off(hook, id);
+		}
 		super._tearDown(options);
 	};
 	// #endregion
