@@ -1,3 +1,4 @@
+.ripcrypt.popover.frameless table,
 .ripcrypt.hud table,
 .ripcrypt > .window-content table {
 	all: revert;

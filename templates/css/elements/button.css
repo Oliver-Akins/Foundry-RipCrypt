@@ -1,3 +1,4 @@
+.ripcrypt.popover.frameless button,
 .ripcrypt.hud button,
 .ripcrypt > .window-content button {
 	all: revert;
