@@ -55,8 +55,8 @@ export class PopoverEventManager {
 		if (this.#options.lockable) {
 			this.#element.removeEventListener(`pointerup`, this.#pointerUpHandler);
 		};
-		this.stopOpen();
-		this.stopClose();
+		this.#stopOpen();
+		this.#stopClose();
 	};
 
 	close() {
@@ -64,14 +64,14 @@ export class PopoverEventManager {
 		this.#framed?.close({ force: true });
 	};
 
-	stopOpen() {
+	#stopOpen() {
 		if (this.#openTimeout != null) {
 			clearTimeout(this.#openTimeout);
 			this.#openTimeout = null;
 		};
 	};
 
-	stopClose() {
+	#stopClose() {
 		if (this.#closeTimeout != null) {
 			clearTimeout(this.#closeTimeout);
 			this.#closeTimeout = null;
@@ -109,8 +109,8 @@ export class PopoverEventManager {
 	#clickHandler() {
 		Logger.debug(`click event handler`);
 		// Cleanup for the frameless lifecycle
-		this.stopOpen();
-		this.stopClose();
+		this.#stopOpen();
+		this.#stopClose();
 		this.#frameless?.close({ force: true });
 
 		if (!this.#framed) {
@@ -120,7 +120,7 @@ export class PopoverEventManager {
 	};
 
 	#pointerEnterHandler(event) {
-		this.stopClose();
+		this.#stopClose();
 
 		const pos = event.target.getBoundingClientRect();
 		const x = pos.x + Math.floor(pos.width / 2);
@@ -161,7 +161,7 @@ export class PopoverEventManager {
 	};
 
 	#pointerOutHandler() {
-		this.stopOpen();
+		this.#stopOpen();
 
 		this.#closeTimeout = setTimeout(
 			() => {
