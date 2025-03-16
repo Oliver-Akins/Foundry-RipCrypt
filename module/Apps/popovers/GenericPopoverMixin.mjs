@@ -3,7 +3,10 @@ const { ApplicationV2 } = foundry.applications.api;
 /**
  * This mixin provides the ability to designate an Application as a "popover",
  * which means that it will spawn near the x/y coordinates provided it won't
- * overflow the bounds of the screen.
+ * overflow the bounds of the screen. This also implements a _preparePartContext
+ * in order to allow the parent application passing new data into the popover
+ * whenever it rerenders; how the popover handles this data is up to the
+ * specific implementation.
  */
 export function GenericPopoverMixin(HandlebarsApp) {
 	class GenericRipCryptPopover extends HandlebarsApp {
@@ -28,7 +31,6 @@ export function GenericPopoverMixin(HandlebarsApp) {
 			// like a normal Application instance.
 			popover.framed ??= true;
 			popover.locked ??= false;
-
 
 			if (popover.framed) {
 				options.window ??= {};
@@ -150,6 +152,17 @@ export function GenericPopoverMixin(HandlebarsApp) {
 				top,
 				scale,
 			};
+		};
+
+		/**
+		 * This is here in order allow things that are not this Application
+		 * to provide / augment the context data for the lifecycle of the app.
+		 */
+		async _prepareContext(_partId, _context, options) {
+			const context = {};
+			Hooks.callAll(`prepare${this.constructor.name}Context`, context, options);
+			Hooks.callAll(`prepare${this.popover.managerId}Context`, context, options);
+			return context;
 		};
 	};
 	return GenericRipCryptPopover;

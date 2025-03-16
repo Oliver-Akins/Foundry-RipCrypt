@@ -31,6 +31,13 @@ export function GenericAppMixin(HandlebarsApp) {
 		};
 		// #endregion
 
+		// #region Instance Data
+		/** @type {Map<string, PopoverEventManager>} */
+		_popoverManagers = new Map();
+		/** @type {Map<number, string>} */
+		_hookIDs = new Map();
+		// #endregion
+
 		// #region Lifecycle
 		/**
 		 * @override
@@ -42,6 +49,13 @@ export function GenericAppMixin(HandlebarsApp) {
 			const instance = foundry.applications.instances.get(this.id);
 			if (instance !== undefined && options.orBringToFront) {
 				instance.bringToFront();
+			};
+		};
+
+		async _onRender() {
+			await super._onRender();
+			for (const manager of this._popoverManagers.values()) {
+				manager.render();
 			};
 		};
 
@@ -59,6 +73,22 @@ export function GenericAppMixin(HandlebarsApp) {
 			delete ctx.editable;
 
 			return ctx;
+		};
+
+		_tearDown(options) {
+			// Clear all popovers associated with the app
+			for (const manager of this._popoverManagers.values()) {
+				manager.destroy();
+			};
+			this._popoverManagers.clear();
+
+			// Remove any hooks added for this app
+			for (const [id, hook] of this._hookIDs.entries()) {
+				Hooks.off(hook, id);
+			};
+			this._hookIDs.clear();
+
+			super._tearDown(options);
 		};
 		// #endregion
 

@@ -82,22 +82,16 @@ export class HeroSkillsCardV1 extends GenericAppMixin(HandlebarsApplicationMixin
 		);
 	};
 
-	/** @type {Map<string, PopoverEventManager>} */
-	#popoverManagers = new Map();
-	/** @type {Map<number, string>} */
-	#hookIDs = new Map();
 	/** @this {HeroSkillsCardV1} */
 	static async _createPopoverListeners() {
 		const ammoInfoIcon = this.element.querySelector(`.ammo-info-icon`);
+		const idPrefix = this.actor.uuid;
 
-		this.#popoverManagers.set(
-			`.ammo-info-icon`,
-			new PopoverEventManager(ammoInfoIcon, AmmoTracker),
-		);
-
-		this.#hookIDs.set(Hooks.on(`get${AmmoTracker.name}Options`, (opts) => {
-			opts.ammo = this.actor.itemTypes.ammo;
-		}), `get${AmmoTracker.name}Options`);
+		const manager = new PopoverEventManager(`${idPrefix}.ammo-info-icon`, ammoInfoIcon, AmmoTracker);
+		this._popoverManagers.set(`.ammo-info-icon`, manager);
+		this._hookIDs.set(Hooks.on(`prepare${manager.id}Context`, (ctx) => {
+			ctx.ammos = this.actor.itemTypes.ammo;
+		}), `prepare${manager.id}Context`);
 	};
 
 	async _preparePartContext(partId, ctx, opts) {
@@ -193,17 +187,6 @@ export class HeroSkillsCardV1 extends GenericAppMixin(HandlebarsApplicationMixin
 			ctx.skills[ability] = ctx.skills[ability].sort(documentSorter);
 		}
 		return ctx;
-	};
-
-	_tearDown(options) {
-		for (const manager of this.#popoverManagers.values()) {
-			manager.destroy();
-		};
-		this.#popoverManagers.clear();
-		for (const [id, hook] of this.#hookIDs.entries()) {
-			Hooks.off(hook, id);
-		}
-		super._tearDown(options);
 	};
 	// #endregion
 

@@ -1,13 +1,28 @@
 import { getTooltipDelay } from "../consts.mjs";
+import { Logger } from "./Logger.mjs";
 
 export class PopoverEventManager {
 	#options;
+	id;
+
+	/** @type {Map<string, PopoverEventManager>} */
+	static #existing = new Map();
 
 	/**
 	 * @param {HTMLElement} element The element to attach the listeners to.
 	 * @param {GenericPopoverMixin} popoverClass The class reference that represents the popover app
 	 */
-	constructor(element, popoverClass, options = {}) {
+	constructor(id, element, popoverClass, options = {}) {
+		id = `${id}-${popoverClass.name}`;
+		this.id = id;
+
+		if (PopoverEventManager.#existing.has(id)) {
+			const manager = PopoverEventManager.#existing.get(id);
+			manager.#addListeners(element);
+			return manager;
+		};
+
+		options.managerId = id;
 		options.locked ??= false;
 		options.lockable ??= true;
 
@@ -15,11 +30,19 @@ export class PopoverEventManager {
 		this.#element = element;
 		this.#class = popoverClass;
 
+		this.#addListeners(element);
+		PopoverEventManager.#existing.set(id, this);
+	};
+
+	/**
+	 * @param {HTMLElement} element
+	 */
+	#addListeners(element) {
 		element.addEventListener(`pointerenter`, this.#pointerEnterHandler.bind(this));
 		element.addEventListener(`pointerout`, this.#pointerOutHandler.bind(this));
 		element.addEventListener(`click`, this.#clickHandler.bind(this));
 
-		if (options.lockable) {
+		if (this.#options.lockable) {
 			element.addEventListener(`pointerup`, this.#pointerUpHandler.bind(this));
 		};
 	};
@@ -55,6 +78,19 @@ export class PopoverEventManager {
 		}
 	};
 
+	get rendered() {
+		return Boolean(this.#frameless?.rendered || this.#framed?.rendered);
+	};
+
+	render(options) {
+		if (this.#framed?.rendered) {
+			this.#framed.render(options);
+		};
+		if (this.#frameless?.rendered) {
+			this.#frameless.render(options);
+		};
+	};
+
 	#element;
 	#class;
 	#openTimeout = null;
@@ -64,12 +100,14 @@ export class PopoverEventManager {
 	#framed;
 
 	#construct(options) {
-		const valid = Hooks.call(`get${this.#class.name}Options`, options);
-		if (!valid) { return };
+		options.popover ??= {};
+		options.popover.managerId = this.id;
+
 		return new this.#class(options);
 	};
 
 	#clickHandler() {
+		Logger.debug(`click event handler`);
 		// Cleanup for the frameless lifecycle
 		this.stopOpen();
 		this.stopClose();
