@@ -1,5 +1,4 @@
-.ripcrypt.popover.frameless button,
-.ripcrypt.hud button,
+.ripcrypt:where(.popover.frameless, .hud) button,
 .ripcrypt > .window-content button {
 	all: revert;
 	outline: none;

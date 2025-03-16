@@ -37,6 +37,7 @@ export const gameTerms = Object.preventExtensions({
 	}),
 	/** The types of items that contribute to the gear limit */
 	gearItemTypes: new Set([
+		`ammo`,
 		`armour`,
 		`weapon`,
 		`shield`,

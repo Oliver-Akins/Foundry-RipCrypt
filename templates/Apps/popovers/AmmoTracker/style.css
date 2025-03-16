@@ -1,4 +1,38 @@
-.ripcrypt--AmmoTracker {
-	color: var(--base-text);
-	background: var(--base-background);
+.ripcrypt--AmmoTracker.ripcrypt--AmmoTracker {
+	color: var(--popover-text);
+	background: var(--popover-background);
+	padding: 4px 8px;
+
+	--button-text: var(--header-text);
+	--button-background: var(--header-background);
+
+	button {
+		border-radius: 4px;
+	}
+
+	ul {
+		&:nth-child(even) {
+			color: var(--popover-alt-row-text);
+			background: var(--popover-alt-row-background);
+			--button-text: unset;
+			--button-background: unset;
+		}
+	}
+
+	.ammo {
+		display: grid;
+		grid-template-columns: 150px 30px min-content;
+		grid-template-rows: min-content;
+		align-items: center;
+		justify-items: center;
+		/* display: flex;
+		flex-direction: row;
+		align-items: center; */
+		gap: 8px;
+
+		.name {
+			flex-grow: 1;
+			justify-self: left;
+		}
+	}
 }

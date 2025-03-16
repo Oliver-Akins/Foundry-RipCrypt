@@ -1,0 +1,23 @@
+<div>
+	{{#if ammos}}
+		<ul>
+			{{#each ammos as | ammo |}}
+				<div class="ammo" data-item-id="{{ammo.uuid}}">
+					<span class="name">{{ ammo.name }}</span>
+					<span class="value">{{ ammo.system.quantity }}</span>
+					<button
+						type="button"
+						{{ disabled @root.canPin }}
+						data-action="pinAmmo"
+					>
+						Pin
+					</button>
+				</div>
+			{{/each}}
+		</ul>
+	{{else}}
+		<span class="placeholder">
+			{{ rc-i18n "RipCrypt.Apps.no-ammo" }}
+		</span>
+	{{/if}}
+</div>

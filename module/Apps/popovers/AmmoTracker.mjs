@@ -19,8 +19,8 @@ export class AmmoTracker extends GenericPopoverMixin(HandlebarsApplicationMixin(
 	};
 
 	static PARTS = {
-		main: {
-			template: filePath(`templates/Apps/popovers/AmmoTracker/content.hbs`),
+		ammoList: {
+			template: filePath(`templates/Apps/popovers/AmmoTracker/ammoList.hbs`),
 		},
 	};
 	// #endregion
@@ -29,6 +29,12 @@ export class AmmoTracker extends GenericPopoverMixin(HandlebarsApplicationMixin(
 	// #endregion
 
 	// #region Lifecycle
+	async _preparePartContext(partId, data) {
+		const ctx = { partId };
+		ctx.canPin = false;
+		ctx.ammos = data.ammos;
+		return ctx;
+	};
 	// #endregion
 
 	// #region Actions
