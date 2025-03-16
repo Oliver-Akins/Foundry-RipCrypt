@@ -7,7 +7,7 @@
 		border-color: transparent;
 		border-radius: 4px;
 		position: absolute;
-		z-index: var(--z-index-tooltip);
+		z-index: calc(var(--z-index-tooltip) - 5);
 		transform-origin: top left;
 
 		&.locked {
