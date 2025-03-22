@@ -35,6 +35,9 @@ import { registerMetaSettings } from "../settings/metaSettings.mjs";
 import { registerUserSettings } from "../settings/userSettings.mjs";
 import { registerWorldSettings } from "../settings/worldSettings.mjs";
 
+const { Items, Actors } = foundry.documents.collections;
+const { ItemSheet, ActorSheet } = foundry.appv1.sheets;
+
 Hooks.once(`init`, () => {
 	Logger.log(`Initializing`);
 
@@ -70,10 +73,8 @@ Hooks.once(`init`, () => {
 
 	// #region Sheets
 	// Unregister core sheets
-	/* eslint-disable no-undef */
 	Items.unregisterSheet(`core`, ItemSheet);
 	Actors.unregisterSheet(`core`, ActorSheet);
-	/* eslint-enabled no-undef */
 
 	// #region Actors
 	Actors.registerSheet(game.system.id, CombinedHeroSheet, {
