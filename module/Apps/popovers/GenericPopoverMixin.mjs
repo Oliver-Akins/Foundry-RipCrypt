@@ -81,7 +81,7 @@ export function GenericPopoverMixin(HandlebarsApp) {
 		 * want it to when being created.
 		 *
 		 * Most of this implementation is identical to the ApplicationV2
-		 * implementation, the biggest difference is how targetLeft and targetRight
+		 * implementation, the biggest difference is how targetLeft and targetTop
 		 * are calculated.
 		 */
 		_updatePosition(position) {

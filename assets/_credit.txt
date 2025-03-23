@@ -1,6 +1,8 @@
 Oliver Akins:
 	- geist-silhouette.v2.svg : All rights reserved.
 	- caster-silhouette.v1.svg : All rights reserved.
+	- icons/star-empty.svg : Modified from https://thenounproject.com/icon/star-7711815/ by Llisole
+	- icons/star.svg : Modified from https://thenounproject.com/icon/star-7711815/ by Llisole
 
 Kýnan Antos (Gritsilk Games):
 	- hero-silhouette.svg : Licensed to Distribute and Modify within the bounds of the "Foundry-RipCrypt" system.

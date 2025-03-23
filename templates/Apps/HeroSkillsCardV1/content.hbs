@@ -118,6 +118,24 @@
 			{{ ammo }}
 		</div>
 	</div>
+	{{#each favouriteAmmo as | data |}}
+		{{#if data}}
+			<div
+				class="half-pill fav-ammo"
+				data-item-id="{{data.uuid}}"
+			>
+				<label for="{{@root.meta.idp}}-{{data.uuid}}-quantity">
+					{{data.name}}
+				</label>
+				<input
+					type="number"
+					value="{{data.quantity}}"
+					id="{{@root.meta.idp}}-{{data.uuid}}-quantity"
+				>
+			</div>
+		{{else}}
+		{{/if}}
+	{{/each}}
 
 	{{!-- * Currencies --}}
 	<div class="currencies">

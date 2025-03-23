@@ -52,6 +52,11 @@ export function GenericAppMixin(HandlebarsApp) {
 			};
 		};
 
+		/**
+		 * @override
+		 * This override makes it so that if the application has any framable popovers
+		 * within it that are currently open, they will rerender as well.
+		 */
 		async _onRender() {
 			await super._onRender();
 			for (const manager of this._popoverManagers.values()) {

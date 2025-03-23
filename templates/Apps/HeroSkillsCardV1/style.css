@@ -8,6 +8,7 @@
 	grid-template-columns: repeat(3, minmax(0, 1fr));
 	grid-template-rows: repeat(13, minmax(0, 1fr));
 	column-gap: var(--col-gap);
+	row-gap: var(--row-gap);
 
 	background: var(--base-background);
 	color: var(--base-text);
@@ -125,8 +126,13 @@
 			}
 		}
 
+		label, .label {
+			white-space: nowrap;
+			text-overflow: ellipsis;
+		}
 
-		.input {
+
+		input, .input {
 			margin: 2px;
 			border-radius: 999px;
 			text-align: center;

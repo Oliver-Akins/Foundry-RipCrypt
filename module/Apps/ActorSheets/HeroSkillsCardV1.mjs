@@ -139,7 +139,23 @@ export class HeroSkillsCardV1 extends GenericAppMixin(HandlebarsApplicationMixin
 	};
 
 	static async prepareAmmo(ctx) {
-		ctx.ammo = 0;
+		let total = 0;
+		ctx.favouriteAmmo = [];
+
+		for (const ammo of ctx.actor.itemTypes.ammo) {
+			total += ammo.system.quantity;
+
+			if (ctx.favouriteAmmo.length < 3 && ammo.getFlag(game.system.id, `favourited`)) {
+				ctx.favouriteAmmo.push({
+					uuid: ammo.uuid,
+					name: ammo.name,
+					quantity: ammo.system.quantity,
+				});
+			};
+		};
+		ctx.favouriteAmmo.length = 3; // assert array length
+
+		ctx.ammo = total;
 		return ctx;
 	};
 

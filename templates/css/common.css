@@ -29,6 +29,7 @@
 		/* height: 270px; */
 		width: 680px;
 		--col-gap: 2px;
+		--row-gap: 4px;
 	}
 
 	label, input, select {

@@ -1,6 +1,9 @@
 .ripcrypt:where(.popover.frameless, .hud) button,
 .ripcrypt > .window-content button {
 	all: revert;
+	display: flex;
+	justify-content: center;
+	align-items: center;
 	outline: none;
 	border: none;
 	padding: 2px 4px;

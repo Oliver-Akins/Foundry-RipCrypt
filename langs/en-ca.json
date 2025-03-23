@@ -173,12 +173,17 @@
 			"rollTarget": "Target",
 			"difficulty": "(DC: {dc})",
 			"RichEditor-no-collaborative": "Warning: This editor is not collaborative, that means that if you and someone else are editing it at the same time, you won't see that someone else is making changes until they save, and then your changes will be lost.",
-			"no-ammo": "You don't have any ammo!"
+			"AmmoTracker": {
+				"no-ammo": "You don't have any ammo!",
+				"pin-button": "Pin {name} to your character sheet",
+				"pin-button-tooltip": "Pin {name}"
+			}
 		},
 		"notifs": {
 			"error": {
 				"cannot-equip": "Cannot equip the {itemType}, see console for more details.",
-				"invalid-delta": "The delta for \"{name}\" is not a number, cannot finish processing the action."
+				"invalid-delta": "The delta for \"{name}\" is not a number, cannot finish processing the action.",
+				"at-favourite-limit": "Cannot favourite more than three items, unfavourite one to make space."
 			},
 			"warn": {
 				"cannot-go-negative": "\"{name}\" is unable to be a negative number."

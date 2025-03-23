@@ -1,5 +1,7 @@
 import { filePath } from "../../consts.mjs";
 import { GenericPopoverMixin } from "./GenericPopoverMixin.mjs";
+import { localizer } from "../../utils/Localizer.mjs";
+import { Logger } from "../../utils/Logger.mjs";
 
 const { HandlebarsApplicationMixin, ApplicationV2 } = foundry.applications.api;
 
@@ -15,7 +17,10 @@ export class AmmoTracker extends GenericPopoverMixin(HandlebarsApplicationMixin(
 				`ripcrypt--AmmoTracker`,
 			],
 		},
-		actions: {},
+		actions: {
+			favourite: this.#favourite,
+			unfavourite: this.#unfavourite,
+		},
 	};
 
 	static PARTS = {
@@ -26,17 +31,63 @@ export class AmmoTracker extends GenericPopoverMixin(HandlebarsApplicationMixin(
 	// #endregion
 
 	// #region Instance Data
+	_favouriteCount = 0;
 	// #endregion
 
 	// #region Lifecycle
 	async _preparePartContext(partId, data) {
 		const ctx = { partId };
-		ctx.canPin = false;
-		ctx.ammos = data.ammos;
+
+		let favouriteCount = 0;
+		ctx.ammos = data.ammos.map(ammo => {
+			const favourite = ammo.getFlag(game.system.id, `favourited`) ?? false;
+			if (favourite) { favouriteCount++ };
+
+			return {
+				ammo,
+				favourite,
+			};
+		});
+
+		this._favouriteCount = favouriteCount;
+		ctx.atFavouriteLimit = favouriteCount >= 3;
 		return ctx;
 	};
 	// #endregion
 
 	// #region Actions
+	static async #favourite(_, el) {
+		const targetEl = el.closest(`[data-item-id]`);
+		if (!targetEl) {
+			Logger.warn(`Cannot find a parent element with data-item-id`);
+			return;
+		};
+
+		// get count of favourites
+		if (this._favouriteCount > 3) {
+			ui.notifications.error(localizer(`RipCrypt.notifs.error.at-favourite-limit`));
+			return;
+		};
+
+		const data = targetEl.dataset;
+		const item = await fromUuid(data.itemId);
+		if (!item) { return };
+
+		item.setFlag(game.system.id, `favourited`, true);
+	};
+
+	static async #unfavourite(_, el) {
+		const targetEl = el.closest(`[data-item-id]`);
+		if (!targetEl) {
+			Logger.warn(`Cannot find a parent element with data-item-id`);
+			return;
+		};
+
+		const data = targetEl.dataset;
+		const item = await fromUuid(data.itemId);
+		if (!item) { return };
+
+		item.unsetFlag(game.system.id, `favourited`);
+	};
 	// #endregion
 };
