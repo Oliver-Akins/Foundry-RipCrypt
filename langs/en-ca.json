@@ -173,10 +173,13 @@
 			"rollTarget": "Target",
 			"difficulty": "(DC: {dc})",
 			"RichEditor-no-collaborative": "Warning: This editor is not collaborative, that means that if you and someone else are editing it at the same time, you won't see that someone else is making changes until they save, and then your changes will be lost.",
+			"starred-ammo-placeholder": "Starred Ammo Slot",
 			"AmmoTracker": {
 				"no-ammo": "You don't have any ammo!",
-				"pin-button": "Pin {name} to your character sheet",
-				"pin-button-tooltip": "Pin {name}"
+				"star-button": "Add {name} as a starred ammo",
+				"star-button-tooltip": "Add Star",
+				"unstar-button": "Remove {name} as a starred ammo",
+				"unstar-button-tooltip": "Remove Star"
 			}
 		},
 		"notifs": {

@@ -1,4 +1,4 @@
-<div>
+<div data-tooltip-direction="RIGHT">
 	{{#if ammos}}
 		<ul>
 			{{#each ammos as | data |}}
@@ -10,7 +10,8 @@
 							type="button"
 							class="icon"
 							data-action="unfavourite"
-							aria-label="Unpin ammo"
+							aria-label="{{ rc-i18n "RipCrypt.Apps.AmmoTracker.unstar-button" name=data.ammo.name }}"
+							data-tooltip="{{ rc-i18n "RipCrypt.Apps.AmmoTracker.unstar-button-tooltip" name=data.ammo.name }}"
 						>
 							<rc-icon
 								name="icons/star"
@@ -23,7 +24,8 @@
 							class="icon"
 							{{ disabled @root.atFavouriteLimit }}
 							data-action="favourite"
-							aria-label="Pin ammo"
+							aria-label="{{ rc-i18n "RipCrypt.Apps.AmmoTracker.star-button" name=data.ammo.name }}"
+							data-tooltip="{{ rc-i18n "RipCrypt.Apps.AmmoTracker.star-button-tooltip" name=data.ammo.name }}"
 						>
 							<rc-icon
 								name="icons/star-empty"
