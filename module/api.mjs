@@ -1,4 +1,5 @@
 // App imports
+import { AmmoTracker } from "./Apps/popovers/AmmoTracker.mjs";
 import { CombinedHeroSheet } from "./Apps/ActorSheets/CombinedHeroSheet.mjs";
 import { DicePool } from "./Apps/DicePool.mjs";
 import { HeroSkillsCardV1 } from "./Apps/ActorSheets/HeroSkillsCardV1.mjs";
@@ -9,7 +10,9 @@ import { RichEditor } from "./Apps/RichEditor.mjs";
 import { distanceBetweenFates, nextFate, previousFate } from "./utils/fates.mjs";
 import { documentSorter } from "./consts.mjs";
 import { rankToInteger } from "./utils/rank.mjs";
-import { AmmoTracker } from "./Apps/popovers/AmmoTracker.mjs";
+
+// Misc Imports
+import { ItemFlags } from "./flags/item.mjs";
 
 const { deepFreeze } = foundry.utils;
 
@@ -33,6 +36,7 @@ Object.defineProperty(
 				previousFate,
 				rankToInteger,
 			},
+			ItemFlags,
 		}),
 		writable: false,
 	},

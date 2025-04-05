@@ -3,6 +3,7 @@ import { documentSorter, filePath } from "../../consts.mjs";
 import { AmmoTracker } from "../popovers/AmmoTracker.mjs";
 import { gameTerms } from "../../gameTerms.mjs";
 import { GenericAppMixin } from "../GenericApp.mjs";
+import { ItemFlags } from "../../flags/item.mjs";
 import { localizer } from "../../utils/Localizer.mjs";
 import { Logger } from "../../utils/Logger.mjs";
 import { PopoverEventManager } from "../../utils/PopoverEventManager.mjs";
@@ -142,7 +143,7 @@ export class HeroSkillsCardV1 extends GenericAppMixin(HandlebarsApplicationMixin
 		for (const ammo of ctx.actor.itemTypes.ammo) {
 			total += ammo.system.quantity;
 
-			if (favouriteCount < 3 && ammo.getFlag(game.system.id, `favourited`)) {
+			if (favouriteCount < 3 && ammo.getFlag(game.system.id, ItemFlags.FAVOURITE)) {
 				ctx.favouriteAmmo[favouriteCount] = {
 					uuid: ammo.uuid,
 					name: ammo.name,

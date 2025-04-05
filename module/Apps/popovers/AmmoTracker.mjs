@@ -1,5 +1,6 @@
 import { filePath } from "../../consts.mjs";
 import { GenericPopoverMixin } from "./GenericPopoverMixin.mjs";
+import { ItemFlags } from "../../flags/item.mjs";
 import { localizer } from "../../utils/Localizer.mjs";
 import { Logger } from "../../utils/Logger.mjs";
 
@@ -40,7 +41,7 @@ export class AmmoTracker extends GenericPopoverMixin(HandlebarsApplicationMixin(
 
 		let favouriteCount = 0;
 		ctx.ammos = data.ammos.map(ammo => {
-			const favourite = ammo.getFlag(game.system.id, `favourited`) ?? false;
+			const favourite = ammo.getFlag(game.system.id, ItemFlags.FAVOURITE) ?? false;
 			if (favourite) { favouriteCount++ };
 
 			return {
@@ -73,7 +74,7 @@ export class AmmoTracker extends GenericPopoverMixin(HandlebarsApplicationMixin(
 		const item = await fromUuid(data.itemId);
 		if (!item) { return };
 
-		item.setFlag(game.system.id, `favourited`, true);
+		item.setFlag(game.system.id, ItemFlags.FAVOURITE, true);
 	};
 
 	static async #unfavourite(_, el) {
@@ -87,7 +88,7 @@ export class AmmoTracker extends GenericPopoverMixin(HandlebarsApplicationMixin(
 		const item = await fromUuid(data.itemId);
 		if (!item) { return };
 
-		item.unsetFlag(game.system.id, `favourited`);
+		item.unsetFlag(game.system.id, ItemFlags.FAVOURITE);
 	};
 	// #endregion
 };
