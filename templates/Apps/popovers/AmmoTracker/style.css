@@ -35,9 +35,6 @@
 		grid-template-rows: min-content;
 		align-items: center;
 		justify-items: center;
-		/* display: flex;
-		flex-direction: row;
-		align-items: center; */
 		gap: 8px;
 
 		.name {
