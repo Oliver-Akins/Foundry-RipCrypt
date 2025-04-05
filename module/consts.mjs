@@ -63,5 +63,5 @@ export function documentSorter(a, b) {
  * @returns The number of milliseconds for the timeout
  */
 export function getTooltipDelay() {
-	return 1000; // game.tooltip.constructor.TOOLTIP_ACTIVATION_MS;
+	return game.tooltip.constructor.TOOLTIP_ACTIVATION_MS;
 };
