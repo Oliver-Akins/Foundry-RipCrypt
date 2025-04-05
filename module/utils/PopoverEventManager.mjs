@@ -3,7 +3,11 @@ import { Logger } from "./Logger.mjs";
 
 export class PopoverEventManager {
 	#options;
-	id;
+	#id;
+
+	get id() {
+		return this.#id;
+	};
 
 	/** @type {Map<string, PopoverEventManager>} */
 	static #existing = new Map();
@@ -14,7 +18,7 @@ export class PopoverEventManager {
 	 */
 	constructor(id, element, popoverClass, options = {}) {
 		id = `${id}-${popoverClass.name}`;
-		this.id = id;
+		this.#id = id;
 
 		if (PopoverEventManager.#existing.has(id)) {
 			const manager = PopoverEventManager.#existing.get(id);
@@ -101,7 +105,7 @@ export class PopoverEventManager {
 
 	#construct(options) {
 		options.popover ??= {};
-		options.popover.managerId = this.id;
+		options.popover.managerId = this.#id;
 
 		return new this.#class(options);
 	};
