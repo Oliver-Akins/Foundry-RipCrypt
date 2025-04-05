@@ -12,7 +12,7 @@ export class AmmoTracker extends GenericPopoverMixin(HandlebarsApplicationMixin(
 			`ripcrypt`,
 		],
 		window: {
-			title: `Ammo Tracker`,
+			title: `RipCrypt.app-titles.AmmoTracker`,
 			contentClasses: [
 				`ripcrypt--AmmoTracker`,
 			],

@@ -21,6 +21,9 @@
 			"HeroCraftCardV1": "Hero Craft Card",
 			"HeroSkillsCardV1": "Hero Skill Card"
 		},
+		"app-titles": {
+			"AmmoTracker": "Ammo Tracker"
+		},
 		"common": {
 			"abilities": {
 				"grit": "Grit",
