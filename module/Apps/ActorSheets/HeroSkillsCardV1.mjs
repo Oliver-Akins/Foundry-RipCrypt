@@ -42,10 +42,6 @@ export class HeroSkillsCardV1 extends GenericAppMixin(HandlebarsApplicationMixin
 	// #endregion
 
 	// #region Lifecycle
-	async _onFirstRender(context, options) {
-		await super._onFirstRender(context, options);
-	};
-
 	async _onRender(context, options) {
 		await super._onRender(context, options);
 		HeroSkillsCardV1._onRender.bind(this)(context, options);
