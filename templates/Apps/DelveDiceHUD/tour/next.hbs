@@ -1,7 +1,4 @@
 <div>
-	{{!-- This is here to prevent height collapsing --}}
-	&ZeroWidthSpace;
-
 	{{#if meta.editable}}
 		<button
 			type="button"
@@ -18,5 +15,8 @@
 				var:fill="currentColor"
 			></rc-icon>
 		</button>
+	{{else}}
+		{{!-- This is here to prevent height collapsing --}}
+		&ZeroWidthSpace;
 	{{/if}}
 </div>
