@@ -209,5 +209,8 @@
 				"heavy": "The distance of your aura when using Heavycraft"
 			}
 		}
+	},
+	"USER": {
+		"GM": "Keeper"
 	}
 }
