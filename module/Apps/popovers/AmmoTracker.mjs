@@ -37,7 +37,10 @@ export class AmmoTracker extends GenericPopoverMixin(HandlebarsApplicationMixin(
 
 	// #region Lifecycle
 	async _preparePartContext(partId, data) {
-		const ctx = { partId };
+		const ctx = {
+			meta: { idp: this.id },
+			partId,
+		};
 
 		let favouriteCount = 0;
 		ctx.ammos = data.ammos.map(ammo => {

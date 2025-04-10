@@ -1,4 +1,4 @@
-.ripcrypt--AmmoTracker.ripcrypt--AmmoTracker {
+.ripcrypt--AmmoTracker.ripcrypt--AmmoTracker.ripcrypt--AmmoTracker {
 	color: var(--popover-text);
 	background: var(--popover-background);
 	padding: 4px;
@@ -6,10 +6,6 @@
 	--row-gap: 4px;
 	--button-text: var(--header-text);
 	--button-background: var(--header-background);
-
-	button {
-		border-radius: 4px;
-	}
 
 	ul {
 		display: flex;
@@ -23,6 +19,8 @@
 			&:nth-child(even) {
 				color: var(--popover-alt-row-text);
 				background: var(--popover-alt-row-background);
+				--input-text: var(--popover-text);
+				--input-background: var(--popover-background);
 				--button-text: unset;
 				--button-background: unset;
 			}
@@ -31,15 +29,19 @@
 
 	.ammo {
 		display: grid;
-		grid-template-columns: 150px 30px min-content;
+		grid-template-columns: 130px 50px min-content;
 		grid-template-rows: min-content;
 		align-items: center;
-		justify-items: center;
 		gap: 8px;
 
 		.name {
 			flex-grow: 1;
 			justify-self: left;
 		}
+	}
+
+	input {
+		text-align: center;
+		border-radius: 999px;
 	}
 }

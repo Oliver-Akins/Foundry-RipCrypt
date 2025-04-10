@@ -1,10 +1,19 @@
 <div data-tooltip-direction="RIGHT">
+	{{log @root}}
 	{{#if ammos}}
 		<ul>
 			{{#each ammos as | data |}}
 				<li class="ammo" data-item-id="{{data.ammo.uuid}}">
 					<span class="name">{{ data.ammo.name }}</span>
-					<span class="value">{{ data.ammo.system.quantity }}</span>
+					<input
+						type="number"
+						id="{{@root.meta.idp}}-{{data.ammo.uuid}}-quantity"
+						class="value"
+						value="{{ data.ammo.system.quantity }}"
+						data-foreign-update-on="change,blur"
+						data-foreign-uuid="{{data.ammo.uuid}}"
+						data-foreign-name="system.quantity"
+					>
 					{{#if data.favourite}}
 						<button
 							type="button"
