@@ -129,8 +129,12 @@
 				</div>
 				<input
 					type="number"
-					value="{{data.quantity}}"
 					id="{{@root.meta.idp}}-{{data.uuid}}-quantity"
+					value="{{data.quantity}}"
+					aria-label="Quantity of {{data.name}}"
+					data-foreign-update-on="change,blur"
+					data-foreign-uuid="{{data.uuid}}"
+					data-foreign-name="system.quantity"
 				>
 			</div>
 		{{else}}

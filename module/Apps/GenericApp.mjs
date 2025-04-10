@@ -52,16 +52,34 @@ export function GenericAppMixin(HandlebarsApp) {
 			};
 		};
 
-		/**
-		 * @override
-		 * This override makes it so that if the application has any framable popovers
-		 * within it that are currently open, they will rerender as well.
-		 */
+		/** @override */
 		async _onRender(...args) {
 			await super._onRender(...args);
+
+			/*
+			Rendering each of the popover managers associated with this app allows us
+			to have them be dynamic and update when their parent application is rerendered,
+			this could eventually be something we can move into the Document's apps
+			collection so Foundry auto-rerenders it, but because it isn't actually
+			associated with the Document (as it's dependendant on the Application), I
+			decided that it would be best to do my own handling for it.
+			*/
 			for (const manager of this._popoverManagers.values()) {
 				manager.render();
 			};
+
+			/*
+			Foreign update listeners so that we can easily update items that may not
+			be this document itself, but are useful to be able to be edited from this
+			sheet. Primarily useful for editing the Actors' Item collection, or an Items'
+			ActiveEffect collection.
+			*/
+			this.element.querySelectorAll(`input[data-foreign-update-on]`).forEach(el => {
+				const events = el.dataset.foreignUpdateOn.split(`,`);
+				for (const event of events) {
+					el.addEventListener(event, this.updateEmbedded);
+				};
+			});
 		};
 
 		async _preparePartContext(partId, ctx, opts) {
@@ -131,6 +149,22 @@ export function GenericAppMixin(HandlebarsApp) {
 				compact: toBoolean(compact ),
 			});
 			app.render({ force: true });
+		};
+
+		/**
+		 * @param {Event} event
+		 */
+		async updateForeign(event) {
+			const target = event.currentTarget;
+			const data = target.dataset;
+			const document = await fromUuid(data.foreignUuid);
+
+			let value = target.value;
+			switch (target.type) {
+				case `checkbox`: value = target.checked; break;
+			};
+
+			await document?.update({ [data.foreignName]: value });
 		};
 		// #endregion
 	};
