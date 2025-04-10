@@ -1,4 +1,4 @@
-import { createItemFromElement, deleteItemFromElement, editItemFromElement } from "./utils.mjs";
+import { createItemFromElement, deleteItemFromElement, editItemFromElement, updateForeignDocumentFromEvent } from "./utils.mjs";
 import { DicePool } from "./DicePool.mjs";
 import { RichEditor } from "./RichEditor.mjs";
 import { toBoolean } from "../consts.mjs";
@@ -77,7 +77,7 @@ export function GenericAppMixin(HandlebarsApp) {
 			this.element.querySelectorAll(`input[data-foreign-update-on]`).forEach(el => {
 				const events = el.dataset.foreignUpdateOn.split(`,`);
 				for (const event of events) {
-					el.addEventListener(event, this.updateEmbedded);
+					el.addEventListener(event, updateForeignDocumentFromEvent);
 				};
 			});
 		};
@@ -149,22 +149,6 @@ export function GenericAppMixin(HandlebarsApp) {
 				compact: toBoolean(compact ),
 			});
 			app.render({ force: true });
-		};
-
-		/**
-		 * @param {Event} event
-		 */
-		async updateForeign(event) {
-			const target = event.currentTarget;
-			const data = target.dataset;
-			const document = await fromUuid(data.foreignUuid);
-
-			let value = target.value;
-			switch (target.type) {
-				case `checkbox`: value = target.checked; break;
-			};
-
-			await document?.update({ [data.foreignName]: value });
 		};
 		// #endregion
 	};

@@ -1,3 +1,5 @@
+import { updateForeignDocumentFromEvent } from "../utils.mjs";
+
 const { ApplicationV2 } = foundry.applications.api;
 
 /**
@@ -63,6 +65,23 @@ export function GenericPopoverMixin(HandlebarsApp) {
 			if (!this.popover.framed && hasContentClasses) {
 				this.classList.add(...this.options.window.contentClasses);
 			};
+		};
+
+		async _onRender(...args) {
+			await super._onRender(...args);
+
+			/*
+			Foreign update listeners so that we can easily update items that may not
+			be this document itself, but are useful to be able to be edited from this
+			sheet. Primarily useful for editing the Actors' Item collection, or an Items'
+			ActiveEffect collection.
+			*/
+			this.element.querySelectorAll(`input[data-foreign-update-on]`).forEach(el => {
+				const events = el.dataset.foreignUpdateOn.split(`,`);
+				for (const event of events) {
+					el.addEventListener(event, updateForeignDocumentFromEvent);
+				};
+			});
 		};
 
 		async close(options = {}) {
