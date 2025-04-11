@@ -42,3 +42,24 @@ export async function deleteItemFromElement(target) {
 	const item = await fromUuid(itemId);
 	item.delete();
 };
+
+/**
+ * Updates a document using the UUID, expects there to be the following
+ * dataset attributes:
+ *   - "data-foreign-uuid" : The UUID of the document to update
+ *   - "data-foreign-name" : The dot-separated path of the value to update
+ *
+ * @param {Event} event
+ */
+export async function updateForeignDocumentFromEvent(event) {
+	const target = event.currentTarget;
+	const data = target.dataset;
+	const document = await fromUuid(data.foreignUuid);
+
+	let value = target.value;
+	switch (target.type) {
+		case `checkbox`: value = target.checked; break;
+	};
+
+	await document?.update({ [data.foreignName]: value });
+};

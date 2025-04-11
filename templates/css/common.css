@@ -2,6 +2,8 @@
 
 @import url("./vars.css");
 
+@import url("./popover.css");
+
 @import url("./elements/button.css");
 @import url("./elements/input.css");
 @import url("./elements/lists.css");
@@ -27,6 +29,7 @@
 		/* height: 270px; */
 		width: 680px;
 		--col-gap: 2px;
+		--row-gap: 4px;
 	}
 
 	label, input, select {

@@ -21,6 +21,9 @@
 			"HeroCraftCardV1": "Hero Craft Card",
 			"HeroSkillsCardV1": "Hero Skill Card"
 		},
+		"app-titles": {
+			"AmmoTracker": "Ammo Tracker"
+		},
 		"common": {
 			"abilities": {
 				"grit": "Grit",
@@ -172,12 +175,21 @@
 			"numberOfDice": "# of Dice",
 			"rollTarget": "Target",
 			"difficulty": "(DC: {dc})",
-			"RichEditor-no-collaborative": "Warning: This editor is not collaborative, that means that if you and someone else are editing it at the same time, you won't see that someone else is making changes until they save, and then your changes will be lost."
+			"RichEditor-no-collaborative": "Warning: This editor is not collaborative, that means that if you and someone else are editing it at the same time, you won't see that someone else is making changes until they save, and then your changes will be lost.",
+			"starred-ammo-placeholder": "Starred Ammo Slot",
+			"AmmoTracker": {
+				"no-ammo": "You don't have any ammo!",
+				"star-button": "Add {name} as a starred ammo",
+				"star-button-tooltip": "Add Star",
+				"unstar-button": "Remove {name} as a starred ammo",
+				"unstar-button-tooltip": "Remove Star"
+			}
 		},
 		"notifs": {
 			"error": {
 				"cannot-equip": "Cannot equip the {itemType}, see console for more details.",
-				"invalid-delta": "The delta for \"{name}\" is not a number, cannot finish processing the action."
+				"invalid-delta": "The delta for \"{name}\" is not a number, cannot finish processing the action.",
+				"at-favourite-limit": "Cannot favourite more than three items, unfavourite one to make space."
 			},
 			"warn": {
 				"cannot-go-negative": "\"{name}\" is unable to be a negative number."
@@ -197,5 +209,8 @@
 				"heavy": "The distance of your aura when using Heavycraft"
 			}
 		}
+	},
+	"USER": {
+		"GM": "Keeper"
 	}
 }

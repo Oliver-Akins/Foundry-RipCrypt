@@ -8,6 +8,7 @@
 	grid-template-columns: repeat(3, minmax(0, 1fr));
 	grid-template-rows: repeat(13, minmax(0, 1fr));
 	column-gap: var(--col-gap);
+	row-gap: var(--row-gap);
 
 	background: var(--base-background);
 	color: var(--base-text);
@@ -35,6 +36,7 @@
 		display: flex;
 		justify-content: space-between;
 		align-items: center;
+		border-radius: 999px;
 	}
 	.skill-list {
 		display: grid;
@@ -106,18 +108,30 @@
 		grid-template-columns: repeat(3, minmax(0, 1fr));
 	}
 
-	.half-pill {
+	.pill {
 		display: grid;
 		grid-template-columns: minmax(0, 1.5fr) minmax(0, 1fr);
 		align-items: center;
 		background: var(--section-header-background);
-		border-radius: 0 999px 999px 0;
+		border-radius: 999px;
 		color: var(--section-header-text);
+		padding: 2px 0 2px 4px;
 		--input-background: var(--base-background);
 		--input-text: var(--base-text);
 
-		.input {
-			margin: 2px;
+		&.with-icon {
+			grid-template-columns: min-content minmax(0, 1.5fr) minmax(0, 1fr);
+			gap: 4px;
+		}
+
+		label, .label {
+			padding: 0;
+			white-space: nowrap;
+			text-overflow: ellipsis;
+		}
+
+		input, .input {
+			margin: 0 2px 0 0;
 			border-radius: 999px;
 			text-align: center;
 		}

@@ -27,6 +27,16 @@
 	--col-gap: 2px;
 	--row-gap: 0px;
 
+	/* Popover Variables */
+	--popover-text: var(--base-text);
+	--popover-background: var(--base-background);
+
+	--popover-alt-row-text: var(--alt-row-text);
+	--popover-alt-row-background: var(--alt-row-background);
+
+	--popover-header-text: var(--header-text);
+	--popover-header-background: var(--header-background);
+
 	/* Additional Variables */
 	--string-tags-border: inherit;
 	--string-tags-tag-background: inherit;

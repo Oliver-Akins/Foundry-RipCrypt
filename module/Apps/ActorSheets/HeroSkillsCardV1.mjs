@@ -1,9 +1,12 @@
 import { deleteItemFromElement, editItemFromElement } from "../utils.mjs";
 import { documentSorter, filePath } from "../../consts.mjs";
+import { AmmoTracker } from "../popovers/AmmoTracker.mjs";
 import { gameTerms } from "../../gameTerms.mjs";
 import { GenericAppMixin } from "../GenericApp.mjs";
+import { ItemFlags } from "../../flags/item.mjs";
 import { localizer } from "../../utils/Localizer.mjs";
 import { Logger } from "../../utils/Logger.mjs";
+import { PopoverEventManager } from "../../utils/PopoverEventManager.mjs";
 
 const { HandlebarsApplicationMixin } = foundry.applications.api;
 const { ActorSheetV2 } = foundry.applications.sheets;
@@ -43,6 +46,7 @@ export class HeroSkillsCardV1 extends GenericAppMixin(HandlebarsApplicationMixin
 	async _onRender(context, options) {
 		await super._onRender(context, options);
 		HeroSkillsCardV1._onRender.bind(this)(context, options);
+		HeroSkillsCardV1._createPopoverListeners.bind(this)();
 	};
 
 	static async _onRender(_context, options) {
@@ -73,6 +77,18 @@ export class HeroSkillsCardV1 extends GenericAppMixin(HandlebarsApplicationMixin
 			],
 			{ jQuery: false, fixed: true },
 		);
+	};
+
+	/** @this {HeroSkillsCardV1} */
+	static async _createPopoverListeners() {
+		const ammoInfoIcon = this.element.querySelector(`.ammo-info-icon`);
+		const idPrefix = this.actor.uuid;
+
+		const manager = new PopoverEventManager(`${idPrefix}.ammo-info-icon`, ammoInfoIcon, AmmoTracker);
+		this._popoverManagers.set(`.ammo-info-icon`, manager);
+		this._hookIDs.set(Hooks.on(`prepare${manager.id}Context`, (ctx) => {
+			ctx.ammos = this.actor.itemTypes.ammo;
+		}), `prepare${manager.id}Context`);
 	};
 
 	async _preparePartContext(partId, ctx, opts) {
@@ -120,7 +136,24 @@ export class HeroSkillsCardV1 extends GenericAppMixin(HandlebarsApplicationMixin
 	};
 
 	static async prepareAmmo(ctx) {
-		ctx.ammo = 0;
+		let total = 0;
+		let favouriteCount = 0;
+		ctx.favouriteAmmo = new Array(3).fill(null);
+
+		for (const ammo of ctx.actor.itemTypes.ammo) {
+			total += ammo.system.quantity;
+
+			if (favouriteCount < 3 && ammo.getFlag(game.system.id, ItemFlags.FAVOURITE)) {
+				ctx.favouriteAmmo[favouriteCount] = {
+					uuid: ammo.uuid,
+					name: ammo.name,
+					quantity: ammo.system.quantity,
+				};
+				favouriteCount++;
+			};
+		};
+
+		ctx.ammo = total;
 		return ctx;
 	};
 

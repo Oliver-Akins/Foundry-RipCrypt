@@ -104,7 +104,13 @@
 		{{/each}}
 	</ol>
 
-	<div class="ammo half-pill">
+	<div class="ammo pill with-icon">
+		<rc-icon
+			class="ammo-info-icon"
+			name="icons/info-circle"
+			var:size="16px"
+			var:fill="currentColor"
+		></rc-icon>
 		<div class="label">
 			{{ rc-i18n "RipCrypt.common.ammo"}}
 		</div>
@@ -112,10 +118,35 @@
 			{{ ammo }}
 		</div>
 	</div>
+	{{#each favouriteAmmo as | data |}}
+		{{#if data}}
+			<div
+				class="pill fav-ammo"
+				data-item-id="{{data.uuid}}"
+			>
+				<div>
+					{{data.name}}
+				</div>
+				<input
+					type="number"
+					id="{{@root.meta.idp}}-{{data.uuid}}-quantity"
+					value="{{data.quantity}}"
+					aria-label="Quantity of {{data.name}}"
+					data-foreign-update-on="change,blur"
+					data-foreign-uuid="{{data.uuid}}"
+					data-foreign-name="system.quantity"
+				>
+			</div>
+		{{else}}
+			<div class="pill" style="opacity: 0.5; background: var(--alt-row-background);">
+				{{ rc-i18n "RipCrypt.Apps.starred-ammo-placeholder" }}
+			</div>
+		{{/if}}
+	{{/each}}
 
 	{{!-- * Currencies --}}
 	<div class="currencies">
-		<div class="currency half-pill">
+		<div class="currency pill">
 			<label for="{{meta.idp}}-gold" >
 				{{ rc-i18n "RipCrypt.common.currency.gold"}}
 			</label>
@@ -126,7 +157,7 @@
 				value="0"
 			>
 		</div>
-		<div class="currency half-pill">
+		<div class="currency pill">
 			<label for="{{meta.idp}}-silver" >
 				{{ rc-i18n "RipCrypt.common.currency.silver"}}
 			</label>
@@ -137,7 +168,7 @@
 				value="0"
 			>
 		</div>
-		<div class="currency half-pill">
+		<div class="currency pill">
 			<label for="{{meta.idp}}-copper" >
 				{{ rc-i18n "RipCrypt.common.currency.copper"}}
 			</label>
