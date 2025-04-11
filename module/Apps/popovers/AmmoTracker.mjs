@@ -67,7 +67,6 @@ export class AmmoTracker extends GenericPopoverMixin(HandlebarsApplicationMixin(
 			return;
 		};
 
-		// get count of favourites
 		if (this._favouriteCount > 3) {
 			ui.notifications.error(localizer(`RipCrypt.notifs.error.at-favourite-limit`));
 			return;
