@@ -2,7 +2,6 @@
 .ripcrypt.hud,
 .ripcrypt > .window-content {
 	input, .input {
-		all: revert;
 		box-sizing: border-box;
 		border: none;
 		outline: none;

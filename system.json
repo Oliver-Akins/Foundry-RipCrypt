@@ -18,8 +18,10 @@
 		"module/main.mjs"
 	],
 	"styles": [
-		"templates/css/common.css",
-		"templates/Apps/apps.css"
+		{
+			"src": "templates/css/main.css",
+			"layer": "system"
+		}
 	],
 	"languages": [
 		{

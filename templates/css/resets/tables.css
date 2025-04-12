@@ -1,0 +1,7 @@
+.ripcrypt.popover.frameless,
+.ripcrypt.hud,
+.ripcrypt > .window-content {
+	table, thead, tbody, th, tr, td {
+		all: revert;
+	}
+}

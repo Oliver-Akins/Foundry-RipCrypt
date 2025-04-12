@@ -1,7 +1,6 @@
 .ripcrypt.popover.frameless select,
 .ripcrypt.hud select,
 .ripcrypt > .window-content select {
-	all: revert;
 	appearance: auto;
 	box-sizing: border-box;
 	border: none;

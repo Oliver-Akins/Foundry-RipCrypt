@@ -1,0 +1,5 @@
+.ripcrypt {
+	button, input, select {
+		all: initial;
+	}
+}
