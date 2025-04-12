@@ -90,13 +90,19 @@ Hooks.once(`init`, () => {
 		label: `RipCrypt.sheet-names.StatsCardV1`,
 		themes: StatsCardV1.themes,
 	});
+	Actors.registerSheet(game.system.id, StatsCardV1, {
+		makeDefault: true,
+		types: [`geist`],
+		label: `RipCrypt.sheet-names.StatsCardV1`,
+		themes: StatsCardV1.themes,
+	});
 	Actors.registerSheet(game.system.id, SkillsCardV1, {
-		types: [`hero`],
+		types: [`hero`, `geist`],
 		label: `RipCrypt.sheet-names.SkillsCardV1`,
 		themes: SkillsCardV1.themes,
 	});
 	Actors.registerSheet(game.system.id, CraftCardV1, {
-		types: [`hero`],
+		types: [`hero`, `geist`],
 		label: `RipCrypt.sheet-names.CraftCardV1`,
 		themes: CraftCardV1.themes,
 	});

@@ -23,14 +23,25 @@
 			{{ rc-i18n "RipCrypt.common.armour" }}
 		</div>
 		<div class="person">
-			<rc-svg
-				var:fill="var(--section-header-background)"
-				var:stroke="var(--base-background)"
-				var:stroke-width="2"
-				var:stroke-linejoin="rounded"
-				class="silhouette"
-				name="hero-silhouette"
-			></rc-svg>
+			{{#if (eq actor.type "hero")}}
+				<rc-svg
+					var:fill="var(--section-header-background)"
+					var:stroke="var(--base-background)"
+					var:stroke-width="2"
+					var:stroke-linejoin="rounded"
+					class="silhouette"
+					name="hero-silhouette"
+				></rc-svg>
+			{{else}}
+				<rc-svg
+					var:fill="var(--section-header-background)"
+					var:stroke="var(--base-background)"
+					var:stroke-width="2"
+					var:stroke-linejoin="rounded"
+					class="silhouette"
+					name="geist-silhouette.v2"
+				></rc-svg>
+			{{/if}}
 			{{#each armours as | slot |}}
 				<div class="{{@key}}">
 					<div class="compass small">
