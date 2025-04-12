@@ -6,7 +6,7 @@
 
 	display: grid;
 	grid-template-columns: repeat(3, minmax(0, 1fr));
-	grid-template-rows: repeat(13, minmax(0, 1fr));
+	grid-template-rows: repeat(14, minmax(0, 1fr));
 	column-gap: var(--col-gap);
 	row-gap: var(--row-gap);
 
@@ -68,20 +68,20 @@
 
 	.grip-skills-header {
 		grid-column: 1 / span 1;
-		grid-row: 6 / span 1;
+		grid-row: 7 / span 1;
 	}
 	.grip-skills {
 		grid-column: 1 / span 1;
-		grid-row: 7 / span 4;
+		grid-row: 8 / span 4;
 	}
 
 	.glim-skills-header {
 		grid-column: 2 / span 1;
-		grid-row: 6 / span 1;
+		grid-row: 7 / span 1;
 	}
 	.glim-skills {
 		grid-column: 2 / span 1;
-		grid-row: 7 / span 4;
+		grid-row: 8 / span 4;
 	}
 
 	.gear-list {
@@ -100,12 +100,27 @@
 		}
 	}
 
+	.ammo-list {
+		grid-column: 1 / span 2;
+		grid-row: 13 / span 2;
+		display: grid;
+		grid-template-columns: subgrid;
+		grid-template-rows: subgrid;
+		list-style-type: none;
+		padding: 0;
+	}
+
 	.currencies {
 		grid-column: 1 / span 2;
-		grid-row: 13 / span 1;
+		grid-row: 12 / span 1;
 		display: grid;
 		column-gap: var(--col-gap);
 		grid-template-columns: repeat(3, minmax(0, 1fr));
+	}
+
+	.aura-size {
+		grid-column: 3;
+		grid-row: 14;
 	}
 
 	.pill {
@@ -133,6 +148,34 @@
 		input, .input {
 			margin: 0 2px 0 0;
 			border-radius: 999px;
+			text-align: center;
+		}
+	}
+
+	.dual-pill {
+		border-radius: 999px;
+		background: var(--accent-1);
+		display: grid;
+		grid-template-columns: 2fr 1fr;
+		gap: 0.25rem;
+		align-items: center;
+		padding-left: 8px;
+
+		.values {
+			border-radius: 999px;
+			margin: 2px;
+			background: var(--base-background);
+			color: var(--base-text);
+			padding: 0.125rem 0.5rem;
+			display: flex;
+			flex-direction: row;
+			justify-content: space-evenly;
+			gap: 0.5rem;
+			--slash-color: var(--accent-1);
+		}
+
+		.value {
+			flex-grow: 1;
 			text-align: center;
 		}
 	}

@@ -11,6 +11,7 @@ import { PopoverEventManager } from "../../utils/PopoverEventManager.mjs";
 const { HandlebarsApplicationMixin } = foundry.applications.api;
 const { ActorSheetV2 } = foundry.applications.sheets;
 const { ContextMenu } = foundry.applications.ui;
+const { deepClone } = foundry.utils;
 
 export class HeroSkillsCardV1 extends GenericAppMixin(HandlebarsApplicationMixin(ActorSheetV2)) {
 
@@ -98,6 +99,8 @@ export class HeroSkillsCardV1 extends GenericAppMixin(HandlebarsApplicationMixin
 		ctx = await HeroSkillsCardV1.prepareGear(ctx);
 		ctx = await HeroSkillsCardV1.prepareAmmo(ctx);
 		ctx = await HeroSkillsCardV1.prepareSkills(ctx);
+
+		ctx.aura = deepClone(ctx.actor.system.aura);
 
 		Logger.debug(`Context:`, ctx);
 		return ctx;
