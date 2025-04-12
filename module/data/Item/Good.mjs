@@ -60,6 +60,14 @@ export class GoodData extends CommonItemData {
 				],
 			},
 			{
+				id: `cost`,
+				type: `cost`,
+				label: `RipCrypt.common.cost`,
+				gold: this.cost.gold,
+				silver: this.cost.silver,
+				copper: this.cost.copper,
+			},
+			{
 				id: `description`,
 				type: `prosemirror`,
 				label: `RipCrypt.common.description`,

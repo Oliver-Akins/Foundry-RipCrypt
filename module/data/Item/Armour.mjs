@@ -141,6 +141,14 @@ export class ArmourData extends CommonItemData {
 				],
 			},
 			{
+				id: `cost`,
+				type: `cost`,
+				label: `RipCrypt.common.cost`,
+				gold: this.cost.gold,
+				silver: this.cost.silver,
+				copper: this.cost.copper,
+			},
+			{
 				id: `weight`,
 				type: `dropdown`,
 				label: `RipCrypt.common.weightRating`,
