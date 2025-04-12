@@ -2,7 +2,7 @@
 	{{!-- * Header --}}
 	<div class="header">
 		<div class="image">Logo Image</div>
-		<label class="row-alt" for="{{meta.idp}}-name">
+		<label class="row-alt left-pill" for="{{meta.idp}}-name">
 			Hero
 		</label>
 		<div>
@@ -19,7 +19,7 @@
 
 	{{!-- * Armour --}}
 	<div class="armour">
-		<div class="section-header label row-alt">
+		<div class="section-header label row-alt right-pill">
 			{{ rc-i18n "RipCrypt.common.armour" }}
 		</div>
 		<div class="person">
@@ -56,41 +56,41 @@
 		</div>
 		<ul class="armour-items">
 			<li
-				class="row-alt"
+				class="row-alt right-pill"
 				data-ctx-menu="armour"
 				data-item-id="{{armours.head.uuid}}"
 			>
-				<span class="label">{{ rc-i18n "RipCrypt.common.anatomy.head" }}</span>
+				<span class="label small">{{ rc-i18n "RipCrypt.common.anatomy.head" }}</span>
 				<span class="value ellipses">{{ armours.head.name }}</span>
 			</li>
 			<li
 				data-ctx-menu="armour"
 				data-item-id="{{armours.body.uuid}}"
 			>
-				<span class="label">{{ rc-i18n "RipCrypt.common.anatomy.body" }}</span>
+				<span class="label small">{{ rc-i18n "RipCrypt.common.anatomy.body" }}</span>
 				<span class="value ellipses">{{ armours.body.name }}</span>
 			</li>
 			<li
-				class="row-alt"
+				class="row-alt full-pill"
 				data-ctx-menu="armour"
 				data-item-id="{{armours.arms.uuid}}"
 			>
-				<span class="label">{{ rc-i18n "RipCrypt.common.anatomy.arms" }}</span>
+				<span class="label small">{{ rc-i18n "RipCrypt.common.anatomy.arms" }}</span>
 				<span class="value ellipses">{{ armours.arms.name }}</span>
 			</li>
 			<li
 				data-ctx-menu="armour"
 				data-item-id="{{armours.legs.uuid}}"
 			>
-				<span class="label">{{ rc-i18n "RipCrypt.common.anatomy.legs" }}</span>
+				<span class="label small">{{ rc-i18n "RipCrypt.common.anatomy.legs" }}</span>
 				<span class="value ellipses">{{ armours.legs.name }}</span>
 			</li>
 			<li
-				class="row-alt"
+				class="row-alt full-pill"
 				data-ctx-menu="armour"
 				data-item-id="{{shield.uuid}}"
 			>
-				<span class="label">{{ rc-i18n "RipCrypt.common.shield" }}</span>
+				<span class="label small">{{ rc-i18n "RipCrypt.common.shield" }}</span>
 				<span class="value ellipses">{{ shield.name }}</span>
 			</li>
 		</ul>
@@ -98,11 +98,11 @@
 
 	{{!-- * Fate & Advancement --}}
 	<div class="fate">
-		<label for="{{meta.idp}}-fate-path" class="col-header">
+		<label for="{{meta.idp}}-fate-path" class="col-header left-pill fate-label">
 			{{ rc-i18n "RipCrypt.common.fate" }}
 		</label>
 		<select
-			class="row-alt"
+			class="row-alt left-pill fate-value"
 			id="{{meta.idp}}-fate-path"
 			name="system.fate"
 		>
@@ -172,7 +172,7 @@
 	<{{{ifThen meta.editable "label" "div"}}}
 		id="{{meta.idp}}-rank-label"
 		for="{{meta.idp}}-rank"
-		class="rank-label label col-header"
+		class="rank-label label col-header right-pill"
 	>
 		{{ rc-i18n "RipCrypt.common.rank" }}
 	</{{{ifThen meta.editable "label" "div"}}}>
@@ -180,7 +180,7 @@
 		<select
 			id="{{meta.idp}}-rank"
 			name="system.level.rank"
-			class="rank row-alt"
+			class="rank row-alt right-pill"
 		>
 			{{ rc-options level.rank.selected level.rank.options localize=true }}
 		</select>
@@ -197,10 +197,10 @@
 	<table class="weapons">
 		<thead>
 			<tr>
-				<th class="label col-header">{{ rc-i18n "RipCrypt.common.weapon.plural" }}</th>
+				<th class="label col-header left-pill">{{ rc-i18n "RipCrypt.common.weapon.singular" }}</th>
 				<th class="label col-header">{{ rc-i18n "RipCrypt.Apps.traits-range" }}</th>
 				<th class="label col-header">{{ rc-i18n "RipCrypt.common.wear" }}</th>
-				<th class="label col-header">{{ rc-i18n "RipCrypt.common.damage" }}</th>
+				<th class="label col-header right-pill">{{ rc-i18n "RipCrypt.common.damage" }}</th>
 			</tr>
 		</thead>
 		<tbody>
@@ -211,10 +211,10 @@
 						class="{{slot.class}}"
 						aria-hidden="true"
 					>
-						<td>{{ rc-i18n "RipCrypt.common.empty" }}</td>
+						<td class="left-pill">{{ rc-i18n "RipCrypt.common.empty" }}</td>
 						<td></td>
 						<td></td>
-						<td></td>
+						<td {{#unless @last}}class="right-pill"{{/unless}}></td>
 					</tr>
 				{{else}}
 					<tr
@@ -223,7 +223,7 @@
 						data-ctx-menu="weapon"
 						data-item-id="{{ slot.data.uuid }}"
 					>
-						<td>
+						<td class="left-pill">
 							{{!-- ? NOTE: Disabled for now to see what user feedback spawns
 							<rc-icon
 								var:size="1rem"
@@ -246,7 +246,7 @@
 						<td>
 							{{ slot.data.system.wear.value }} / {{ slot.data.system.wear.max }}
 						</td>
-						<td>
+						<td {{#unless @last}}class="right-pill"{{/unless}}>
 							{{ slot.data.system.damage }}
 						</td>
 					</tr>
@@ -291,13 +291,13 @@
 				</div>
 				{{#unless ability.readonly}}
 				<label
-					class="col-header"
+					class="col-header {{#if @first}}left-pill{{/if}}"
 					for="{{@root.meta.idp}}-{{ability.id}}-input"
 				>
 					{{ ability.name }}
 				</label>
 				{{else}}
-				<div class="col-header label">
+				<div class="col-header label {{#if @first}}left-pill{{/if}}">
 					{{ ability.name }}
 				</div>
 				{{/unless}}
@@ -350,7 +350,7 @@
 				<span class="value">{{speed.move}}</span>
 				<span class="max">{{speed.run}}</span>
 			</div>
-			<div aria-hidden="true" class="col-header label">
+			<div aria-hidden="true" class="col-header label right-pill">
 				{{ rc-i18n "RipCrypt.common.move" }}
 			</div>
 		</div>

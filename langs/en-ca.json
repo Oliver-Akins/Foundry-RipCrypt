@@ -156,7 +156,7 @@
 			}
 		},
 		"Apps": {
-			"traits-range": "@RipCrypt.common.traits • @RipCrypt.common.range",
+			"traits-range": "@RipCrypt.common.traits / @RipCrypt.common.range",
 			"grit-skills": "@RipCrypt.common.abilities.grit Skills",
 			"gait-skills": "@RipCrypt.common.abilities.gait Skills",
 			"grip-skills": "@RipCrypt.common.abilities.grip Skills",

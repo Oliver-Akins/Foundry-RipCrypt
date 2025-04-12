@@ -24,7 +24,6 @@
 		box-sizing: border-box;
 		padding: 2px 4px;
 		text-transform: uppercase;
-		font-size: var(--font-size-14);
 		overflow: hidden;
 		text-overflow: ellipsis;
 		font-weight: bold;
@@ -83,6 +82,9 @@
 		grid-row: 4 / span 2;
 		display: grid;
 		grid-template-rows: subgrid;
+	}
+	.fate-value {
+		padding-left: 2px;
 	}
 
 	.weapons {
@@ -258,7 +260,7 @@
 				justify-content: space-between;
 				align-items: center;
 				flex-wrap: nowrap;
-				padding: 0 2px;
+				padding: 0 4px;
 				gap: 4px;
 				min-width: 0;
 			}
