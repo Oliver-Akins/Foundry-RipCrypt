@@ -122,7 +122,7 @@ export class HeroSkillsCardV1 extends GenericAppMixin(HandlebarsApplicationMixin
 		};
 
 		if (ctx.gear.length < limit) {
-			for (let i = ctx.gear.length - 1; i <= limit; i++) {
+			for (let i = ctx.gear.length; i < limit; i++) {
 				ctx.gear.push({
 					index: ctx.gear.length,
 					uuid: ``,
