@@ -10,13 +10,13 @@ const { ActorSheetV2 } = foundry.applications.sheets;
 const { ContextMenu } = foundry.applications.ui;
 const { deepClone } = foundry.utils;
 
-export class HeroCraftCardV1 extends GenericAppMixin(HandlebarsApplicationMixin(ActorSheetV2)) {
+export class CraftCardV1 extends GenericAppMixin(HandlebarsApplicationMixin(ActorSheetV2)) {
 
 	// #region Options
 	static DEFAULT_OPTIONS = {
 		classes: [
 			`ripcrypt--actor`,
-			`ripcrypt--HeroCraftCardV1`,
+			`ripcrypt--CraftCardV1`,
 		],
 		position: {
 			width: `auto`,
@@ -35,7 +35,7 @@ export class HeroCraftCardV1 extends GenericAppMixin(HandlebarsApplicationMixin(
 
 	static PARTS = {
 		content: {
-			template: filePath(`templates/Apps/HeroCraftCardV1/content.hbs`),
+			template: filePath(`templates/Apps/CraftCardV1/content.hbs`),
 		},
 	};
 	// #endregion
@@ -43,7 +43,7 @@ export class HeroCraftCardV1 extends GenericAppMixin(HandlebarsApplicationMixin(
 	// #region Lifecycle
 	async _onRender(context, options) {
 		await super._onRender(context, options);
-		HeroCraftCardV1._onRender.bind(this)(context, options);
+		CraftCardV1._onRender.bind(this)(context, options);
 	};
 
 	static async _onRender(_context, options) {
@@ -80,8 +80,8 @@ export class HeroCraftCardV1 extends GenericAppMixin(HandlebarsApplicationMixin(
 		ctx = await super._preparePartContext(partId, ctx, opts);
 		ctx.actor = this.document;
 
-		ctx = await HeroCraftCardV1.prepareAura(ctx);
-		ctx = await HeroCraftCardV1.prepareCraft(ctx);
+		ctx = await CraftCardV1.prepareAura(ctx);
+		ctx = await CraftCardV1.prepareCraft(ctx);
 
 		Logger.debug(`Context:`, ctx);
 		return ctx;

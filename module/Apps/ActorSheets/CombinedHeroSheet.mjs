@@ -1,9 +1,9 @@
+import { CraftCardV1 } from "./CraftCardV1.mjs";
 import { filePath } from "../../consts.mjs";
 import { GenericAppMixin } from "../GenericApp.mjs";
-import { HeroCraftCardV1 } from "./HeroCraftCardV1.mjs";
-import { HeroSkillsCardV1 } from "./HeroSkillsCardV1.mjs";
-import { HeroSummaryCardV1 } from "./HeroSummaryCardV1.mjs";
 import { Logger } from "../../utils/Logger.mjs";
+import { SkillsCardV1 } from "./SkillsCardV1.mjs";
+import { StatsCardV1 } from "./StatsCardV1.mjs";
 
 const { HandlebarsApplicationMixin } = foundry.applications.api;
 const { ActorSheetV2 } = foundry.applications.sheets;
@@ -32,10 +32,10 @@ export class CombinedHeroSheet extends GenericAppMixin(HandlebarsApplicationMixi
 
 	static PARTS = {
 		summary: {
-			template: filePath(`templates/Apps/HeroSummaryCardV1/content.hbs`),
+			template: filePath(`templates/Apps/StatsCardV1/content.hbs`),
 		},
 		skills: {
-			template: filePath(`templates/Apps/HeroSkillsCardV1/content.hbs`),
+			template: filePath(`templates/Apps/SkillsCardV1/content.hbs`),
 		},
 		craft: {
 			template: filePath(`templates/Apps/CombinedHeroSheet/crafts.hbs`),
@@ -47,8 +47,8 @@ export class CombinedHeroSheet extends GenericAppMixin(HandlebarsApplicationMixi
 	async _onRender(context, options) {
 		await super._onRender(context, options);
 
-		const summaryElement = this.element.querySelector(`.HeroSummaryCardV1`);
-		HeroSummaryCardV1._onRender(
+		const summaryElement = this.element.querySelector(`.StatsCardV1`);
+		StatsCardV1._onRender(
 			context,
 			{
 				...options,
@@ -57,8 +57,8 @@ export class CombinedHeroSheet extends GenericAppMixin(HandlebarsApplicationMixi
 			},
 		);
 
-		const skillsElement = this.element.querySelector(`.HeroSkillsCardV1`);
-		HeroSkillsCardV1._onRender.bind(this)(
+		const skillsElement = this.element.querySelector(`.SkillsCardV1`);
+		SkillsCardV1._onRender.bind(this)(
 			context,
 			{
 				...options,
@@ -68,7 +68,7 @@ export class CombinedHeroSheet extends GenericAppMixin(HandlebarsApplicationMixi
 		);
 
 		const craftsElement = this.element.querySelector(`.crafts-summary`);
-		HeroCraftCardV1._onRender.bind(this)(
+		CraftCardV1._onRender.bind(this)(
 			context,
 			{
 				...options,
@@ -84,23 +84,23 @@ export class CombinedHeroSheet extends GenericAppMixin(HandlebarsApplicationMixi
 
 		switch (partId) {
 			case `summary`: {
-				ctx = await HeroSummaryCardV1.prepareGuts(ctx);
-				ctx = await HeroSummaryCardV1.prepareWeapons(ctx);
-				ctx = await HeroSummaryCardV1.prepareArmor(ctx);
-				ctx = await HeroSummaryCardV1.prepareFatePath(ctx);
-				ctx = await HeroSummaryCardV1.prepareAbilityRow(ctx);
-				ctx = await HeroSummaryCardV1.prepareSpeed(ctx);
-				ctx = await HeroSummaryCardV1.prepareLevelData(ctx);
+				ctx = await StatsCardV1.prepareGuts(ctx);
+				ctx = await StatsCardV1.prepareWeapons(ctx);
+				ctx = await StatsCardV1.prepareArmor(ctx);
+				ctx = await StatsCardV1.prepareFatePath(ctx);
+				ctx = await StatsCardV1.prepareAbilityRow(ctx);
+				ctx = await StatsCardV1.prepareSpeed(ctx);
+				ctx = await StatsCardV1.prepareLevelData(ctx);
 				break;
 			};
 			case `skills`: {
-				ctx = await HeroSkillsCardV1.prepareGear(ctx);
-				ctx = await HeroSkillsCardV1.prepareAmmo(ctx);
-				ctx = await HeroSkillsCardV1.prepareSkills(ctx);
+				ctx = await SkillsCardV1.prepareGear(ctx);
+				ctx = await SkillsCardV1.prepareAmmo(ctx);
+				ctx = await SkillsCardV1.prepareSkills(ctx);
 				break;
 			};
 			case `craft`: {
-				ctx = await HeroCraftCardV1.prepareCraft(ctx);
+				ctx = await CraftCardV1.prepareCraft(ctx);
 				break;
 			};
 		};

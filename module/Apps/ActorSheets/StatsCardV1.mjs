@@ -9,13 +9,13 @@ const { HandlebarsApplicationMixin } = foundry.applications.api;
 const { ActorSheetV2 } = foundry.applications.sheets;
 const { ContextMenu } = foundry.applications.ui;
 
-export class HeroSummaryCardV1 extends GenericAppMixin(HandlebarsApplicationMixin(ActorSheetV2)) {
+export class StatsCardV1 extends GenericAppMixin(HandlebarsApplicationMixin(ActorSheetV2)) {
 
 	// #region Options
 	static DEFAULT_OPTIONS = {
 		classes: [
 			`ripcrypt--actor`,
-			`ripcrypt--HeroSummaryCardV1`,
+			`ripcrypt--StatsCardV1`,
 		],
 		position: {
 			width: `auto`,
@@ -34,7 +34,7 @@ export class HeroSummaryCardV1 extends GenericAppMixin(HandlebarsApplicationMixi
 
 	static PARTS = {
 		content: {
-			template: filePath(`templates/Apps/HeroSummaryCardV1/content.hbs`),
+			template: filePath(`templates/Apps/StatsCardV1/content.hbs`),
 		},
 	};
 	// #endregion
@@ -42,7 +42,7 @@ export class HeroSummaryCardV1 extends GenericAppMixin(HandlebarsApplicationMixi
 	// #region Lifecycle
 	async _onRender(context, options) {
 		await super._onRender(context, options);
-		HeroSummaryCardV1._onRender.bind(this)(context, options);
+		StatsCardV1._onRender.bind(this)(context, options);
 	};
 
 	static async _onRender(context, options) {
@@ -79,13 +79,13 @@ export class HeroSummaryCardV1 extends GenericAppMixin(HandlebarsApplicationMixi
 		ctx = await super._preparePartContext(partId, ctx, opts);
 		ctx.actor = this.document;
 
-		ctx = await HeroSummaryCardV1.prepareGuts(ctx);
-		ctx = await HeroSummaryCardV1.prepareWeapons(ctx);
-		ctx = await HeroSummaryCardV1.prepareArmor(ctx);
-		ctx = await HeroSummaryCardV1.prepareFatePath(ctx);
-		ctx = await HeroSummaryCardV1.prepareAbilityRow(ctx);
-		ctx = await HeroSummaryCardV1.prepareSpeed(ctx);
-		ctx = await HeroSummaryCardV1.prepareLevelData(ctx);
+		ctx = await StatsCardV1.prepareGuts(ctx);
+		ctx = await StatsCardV1.prepareWeapons(ctx);
+		ctx = await StatsCardV1.prepareArmor(ctx);
+		ctx = await StatsCardV1.prepareFatePath(ctx);
+		ctx = await StatsCardV1.prepareAbilityRow(ctx);
+		ctx = await StatsCardV1.prepareSpeed(ctx);
+		ctx = await StatsCardV1.prepareLevelData(ctx);
 
 		Logger.debug(`Context:`, ctx);
 		return ctx;

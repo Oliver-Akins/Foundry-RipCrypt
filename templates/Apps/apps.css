@@ -2,9 +2,9 @@
 @import url("./CombinedHeroSheet/style.css");
 @import url("./DelveDiceHUD/style.css");
 @import url("./DicePool/style.css");
-@import url("./HeroCraftCardV1/style.css");
-@import url("./HeroSummaryCardV1/style.css");
-@import url("./HeroSkillsCardV1/style.css");
+@import url("./CraftCardV1/style.css");
+@import url("./StatsCardV1/style.css");
+@import url("./SkillsCardV1/style.css");
 @import url("./RichEditor/style.css");
 
 @import url("./popover.css");
@@ -17,9 +17,9 @@
 		margin: 0;
 	}
 
-	.HeroSummaryCardV1,
-	.HeroSkillsCardV1,
-	.HeroCraftCardV1 {
+	.StatsCardV1,
+	.SkillsCardV1,
+	.CraftCardV1 {
 		padding: 8px;
 		/* height: 270px; */
 		width: 680px;

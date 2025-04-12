@@ -1,7 +1,8 @@
 {
 	"TYPES": {
 		"Actor": {
-			"hero": "Hero"
+			"hero": "Hero",
+			"geist": "Geist"
 		},
 		"Item": {
 			"ammo": "Ammo",
@@ -17,9 +18,9 @@
 		"sheet-names": {
 			"AllItemsSheetV1": "RipCrypt Item Sheet",
 			"CombinedHeroSheet": "Hero Sheet",
-			"HeroSummaryCardV1": "Hero Stat Card",
-			"HeroCraftCardV1": "Hero Craft Card",
-			"HeroSkillsCardV1": "Hero Skill Card"
+			"StatsCardV1": "Hero Stat Card",
+			"CraftCardV1": "Hero Craft Card",
+			"SkillsCardV1": "Hero Skill Card"
 		},
 		"app-titles": {
 			"AmmoTracker": "Ammo Tracker"
@@ -156,7 +157,7 @@
 			}
 		},
 		"Apps": {
-			"traits-range": "@RipCrypt.common.traits / @RipCrypt.common.range",
+			"traits-range": "@RipCrypt.common.traits & @RipCrypt.common.range",
 			"grit-skills": "@RipCrypt.common.abilities.grit Skills",
 			"gait-skills": "@RipCrypt.common.abilities.gait Skills",
 			"grip-skills": "@RipCrypt.common.abilities.grip Skills",

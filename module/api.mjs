@@ -2,9 +2,9 @@
 import { AmmoTracker } from "./Apps/popovers/AmmoTracker.mjs";
 import { CombinedHeroSheet } from "./Apps/ActorSheets/CombinedHeroSheet.mjs";
 import { DicePool } from "./Apps/DicePool.mjs";
-import { HeroSkillsCardV1 } from "./Apps/ActorSheets/HeroSkillsCardV1.mjs";
-import { HeroSummaryCardV1 } from "./Apps/ActorSheets/HeroSummaryCardV1.mjs";
 import { RichEditor } from "./Apps/RichEditor.mjs";
+import { SkillsCardV1 } from "./Apps/ActorSheets/SkillsCardV1.mjs";
+import { StatsCardV1 } from "./Apps/ActorSheets/StatsCardV1.mjs";
 
 // Util imports
 import { distanceBetweenFates, nextFate, previousFate } from "./utils/fates.mjs";
@@ -25,8 +25,8 @@ Object.defineProperty(
 				AmmoTracker,
 				DicePool,
 				CombinedHeroSheet,
-				HeroSummaryCardV1,
-				HeroSkillsCardV1,
+				StatsCardV1,
+				SkillsCardV1,
 				RichEditor,
 			},
 			utils: {

@@ -13,13 +13,13 @@ const { ActorSheetV2 } = foundry.applications.sheets;
 const { ContextMenu } = foundry.applications.ui;
 const { deepClone } = foundry.utils;
 
-export class HeroSkillsCardV1 extends GenericAppMixin(HandlebarsApplicationMixin(ActorSheetV2)) {
+export class SkillsCardV1 extends GenericAppMixin(HandlebarsApplicationMixin(ActorSheetV2)) {
 
 	// #region Options
 	static DEFAULT_OPTIONS = {
 		classes: [
 			`ripcrypt--actor`,
-			`ripcrypt--HeroSkillsCardV1`,
+			`ripcrypt--SkillsCardV1`,
 		],
 		position: {
 			width: `auto`,
@@ -38,7 +38,7 @@ export class HeroSkillsCardV1 extends GenericAppMixin(HandlebarsApplicationMixin
 
 	static PARTS = {
 		content: {
-			template: filePath(`templates/Apps/HeroSkillsCardV1/content.hbs`),
+			template: filePath(`templates/Apps/SkillsCardV1/content.hbs`),
 		},
 	};
 	// #endregion
@@ -46,8 +46,8 @@ export class HeroSkillsCardV1 extends GenericAppMixin(HandlebarsApplicationMixin
 	// #region Lifecycle
 	async _onRender(context, options) {
 		await super._onRender(context, options);
-		HeroSkillsCardV1._onRender.bind(this)(context, options);
-		HeroSkillsCardV1._createPopoverListeners.bind(this)();
+		SkillsCardV1._onRender.bind(this)(context, options);
+		SkillsCardV1._createPopoverListeners.bind(this)();
 	};
 
 	static async _onRender(_context, options) {
@@ -80,7 +80,7 @@ export class HeroSkillsCardV1 extends GenericAppMixin(HandlebarsApplicationMixin
 		);
 	};
 
-	/** @this {HeroSkillsCardV1} */
+	/** @this {SkillsCardV1} */
 	static async _createPopoverListeners() {
 		const ammoInfoIcon = this.element.querySelector(`.ammo-info-icon`);
 		const idPrefix = this.actor.uuid;
@@ -96,9 +96,9 @@ export class HeroSkillsCardV1 extends GenericAppMixin(HandlebarsApplicationMixin
 		ctx = await super._preparePartContext(partId, ctx, opts);
 		ctx.actor = this.document;
 
-		ctx = await HeroSkillsCardV1.prepareGear(ctx);
-		ctx = await HeroSkillsCardV1.prepareAmmo(ctx);
-		ctx = await HeroSkillsCardV1.prepareSkills(ctx);
+		ctx = await SkillsCardV1.prepareGear(ctx);
+		ctx = await SkillsCardV1.prepareAmmo(ctx);
+		ctx = await SkillsCardV1.prepareSkills(ctx);
 
 		ctx.aura = deepClone(ctx.actor.system.aura);
 

@@ -1,16 +1,17 @@
 // Applications
 import { AllItemSheetV1 } from "../Apps/ItemSheets/AllItemSheetV1.mjs";
 import { CombinedHeroSheet } from "../Apps/ActorSheets/CombinedHeroSheet.mjs";
+import { CraftCardV1 } from "../Apps/ActorSheets/CraftCardV1.mjs";
 import { DelveDiceHUD } from "../Apps/DelveDiceHUD.mjs";
-import { HeroCraftCardV1 } from "../Apps/ActorSheets/HeroCraftCardV1.mjs";
-import { HeroSkillsCardV1 } from "../Apps/ActorSheets/HeroSkillsCardV1.mjs";
-import { HeroSummaryCardV1 } from "../Apps/ActorSheets/HeroSummaryCardV1.mjs";
 import { RipCryptCombatTracker } from "../Apps/sidebar/CombatTracker.mjs";
+import { SkillsCardV1 } from "../Apps/ActorSheets/SkillsCardV1.mjs";
+import { StatsCardV1 } from "../Apps/ActorSheets/StatsCardV1.mjs";
 
 // Data Models
 import { AmmoData } from "../data/Item/Ammo.mjs";
 import { ArmourData } from "../data/Item/Armour.mjs";
 import { CraftData } from "../data/Item/Craft.mjs";
+import { GeistData } from "../data/Actor/Geist.mjs";
 import { GoodData } from "../data/Item/Good.mjs";
 import { HeroData } from "../data/Actor/Hero.mjs";
 import { ShieldData } from "../data/Item/Shield.mjs";
@@ -53,7 +54,8 @@ Hooks.once(`init`, () => {
 
 	// #region Datamodels
 	CONFIG.Actor.dataModels.hero = HeroData;
-	CONFIG.Item.dataModels.ammo = AmmoData,
+	CONFIG.Actor.dataModels.geist = GeistData;
+	CONFIG.Item.dataModels.ammo = AmmoData;
 	CONFIG.Item.dataModels.armour = ArmourData;
 	CONFIG.Item.dataModels.craft = CraftData;
 	CONFIG.Item.dataModels.good = GoodData;
@@ -83,20 +85,20 @@ Hooks.once(`init`, () => {
 		label: `RipCrypt.sheet-names.CombinedHeroSheet`,
 		themes: CombinedHeroSheet.themes,
 	});
-	Actors.registerSheet(game.system.id, HeroSummaryCardV1, {
+	Actors.registerSheet(game.system.id, StatsCardV1, {
 		types: [`hero`],
-		label: `RipCrypt.sheet-names.HeroSummaryCardV1`,
-		themes: HeroSummaryCardV1.themes,
+		label: `RipCrypt.sheet-names.StatsCardV1`,
+		themes: StatsCardV1.themes,
 	});
-	Actors.registerSheet(game.system.id, HeroSkillsCardV1, {
+	Actors.registerSheet(game.system.id, SkillsCardV1, {
 		types: [`hero`],
-		label: `RipCrypt.sheet-names.HeroSkillsCardV1`,
-		themes: HeroSkillsCardV1.themes,
+		label: `RipCrypt.sheet-names.SkillsCardV1`,
+		themes: SkillsCardV1.themes,
 	});
-	Actors.registerSheet(game.system.id, HeroCraftCardV1, {
+	Actors.registerSheet(game.system.id, CraftCardV1, {
 		types: [`hero`],
-		label: `RipCrypt.sheet-names.HeroCraftCardV1`,
-		themes: HeroCraftCardV1.themes,
+		label: `RipCrypt.sheet-names.CraftCardV1`,
+		themes: CraftCardV1.themes,
 	});
 	// #endregion
 
