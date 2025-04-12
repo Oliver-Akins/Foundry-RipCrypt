@@ -43,7 +43,8 @@
 	},
 	"documentTypes": {
 		"Actor": {
-			"hero": {}
+			"hero": {},
+			"geist": {}
 		},
 		"Item": {
 			"ammo": {},
