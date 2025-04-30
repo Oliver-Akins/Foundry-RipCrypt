@@ -5,7 +5,7 @@ import { localizer } from "../utils/Localizer.mjs";
 import { Logger } from "../utils/Logger.mjs";
 
 const { HandlebarsApplicationMixin, ApplicationV2 } = foundry.applications.api;
-const { ContextMenu } = foundry.applications.ui;
+const { ContextMenu } = foundry.applications.ux;
 const { FatePath } = gameTerms;
 
 const CompassRotations = {

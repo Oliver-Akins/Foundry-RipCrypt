@@ -7,6 +7,7 @@ export function registerMetaSettings() {
 	game.settings.register(`ripcrypt`, `dc`, {
 		scope: `world`,
 		type: Number,
+		default: 5,
 		config: false,
 		requiresReload: false,
 		onChange: () => {
@@ -17,7 +18,7 @@ export function registerMetaSettings() {
 	game.settings.register(`ripcrypt`, `sandsOfFate`, {
 		scope: `world`,
 		type: Number,
-		initial: 8,
+		default: 8,
 		config: false,
 		requiresReload: false,
 		onChange: async () => {
@@ -44,7 +45,7 @@ export function registerMetaSettings() {
 		type: String,
 		config: false,
 		requiresReload: false,
-		initial: `friendly`,
+		default: `friendly`,
 		onChange: async () => {
 			await game.combat.setupTurns();
 			await ui.combat.render({ parts: [ `tracker` ] });
@@ -54,7 +55,7 @@ export function registerMetaSettings() {
 	game.settings.register(`ripcrypt`, `firstLoadFinished`, {
 		scope: `world`,
 		type: Boolean,
-		initial: false,
+		default: false,
 		requiresReload: false,
 	});
 };

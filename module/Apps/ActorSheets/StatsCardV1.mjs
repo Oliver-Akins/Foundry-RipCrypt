@@ -7,7 +7,7 @@ import { Logger } from "../../utils/Logger.mjs";
 
 const { HandlebarsApplicationMixin } = foundry.applications.api;
 const { ActorSheetV2 } = foundry.applications.sheets;
-const { ContextMenu } = foundry.applications.ui;
+const { ContextMenu } = foundry.applications.ux;
 
 export class StatsCardV1 extends GenericAppMixin(HandlebarsApplicationMixin(ActorSheetV2)) {
 
