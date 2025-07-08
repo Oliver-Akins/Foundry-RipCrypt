@@ -29,10 +29,6 @@ jobs:
         if: ${{ steps.check-tag.outputs.exists == 'true' }}
         run: exit 1
 
-      - name: Ensure there are specific files to release
-        if: ${{ vars.files_to_release == '' }}
-        run: exit 1
-
       - name: Move system.json to a temp file
         id: manifest-move
         run: mv system.json module.temp.json
@@ -42,7 +38,7 @@ jobs:
         run: cat module.temp.json | jq -r --tab '.download = "https://github.com/${{ github.repository }}/releases/download/v${{ steps.version.outputs.version }}/release.zip"' > system.json
 
       - name: Create the zip
-        run: zip -r release.zip ${{ vars.files_to_release }}
+        run: zip -r release.zip system.json module langs assets templates README.md
 
       - name: Create the draft release
         uses: ncipollo/release-action@v1
@@ -50,5 +46,6 @@ jobs:
           tag: "v${{ steps.version.outputs.version }}"
           commit: ${{ github.ref }}
           draft: true
+          body: <img aria-hidden="true" src="https://img.shields.io/github/downloads/${{ github.repository }}/v${{ steps.version.outputs.version }}/release.zip?style=flat-square&color=%2300aa00">
           generateReleaseNotes: true
           artifacts: "release.zip,system.json"
