@@ -58,6 +58,7 @@ export class CombinedHeroSheet extends GenericAppMixin(HandlebarsApplicationMixi
 		);
 
 		const skillsElement = this.element.querySelector(`.SkillsCardV1`);
+		SkillsCardV1._createPopoverListeners.bind(this)();
 		SkillsCardV1._onRender.bind(this)(
 			context,
 			{
