@@ -4,6 +4,7 @@
 	> .window-content {
 		gap: 4px;
 		background: var(--base-background);
+		overflow-y: auto;
 	}
 
 	.HeroSkillsCardV1 {
