@@ -1,0 +1,7 @@
+.ripcrypt.popover.frameless,
+.ripcrypt.hud,
+.ripcrypt > .window-content {
+	.left-pill { border-radius: 999px 0 0 999px; }
+	.right-pill { border-radius: 0 999px 999px 0; }
+	.full-pill { border-radius: 999px; }
+}

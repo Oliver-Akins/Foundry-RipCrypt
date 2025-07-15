@@ -1,0 +1,64 @@
+<div id="fate-compass">
+	<div class="compass-container">
+		<div class="compass">
+			<rc-icon
+				class="compass-pointer"
+				name="icons/arrow-compass"
+				var:fill="var(--accent-3)"
+				var:size="1rem"
+				style="transform: rotate({{rotation}})"
+			></rc-icon>
+			{{#if meta.editable}}
+				<button
+					type="button"
+					class="transparent"
+					style="grid-area: N;"
+					data-action="setFate"
+					data-to-fate="North"
+					data-tooltip="{{rc-i18n "RipCrypt.tooltips.set-fate-to" ordinal="@RipCrypt.common.ordinals.North.full"}}"
+					data-tooltip-direction="LEFT"
+				>
+					{{rc-i18n "RipCrypt.common.ordinals.North.abbv"}}
+				</button>
+				<button
+					type="button"
+					class="transparent"
+					style="grid-area: W;"
+					data-action="setFate"
+					data-to-fate="West"
+					data-tooltip="{{rc-i18n "RipCrypt.tooltips.set-fate-to" ordinal="@RipCrypt.common.ordinals.West.full"}}"
+					data-tooltip-direction="LEFT"
+				>
+					{{rc-i18n "RipCrypt.common.ordinals.West.abbv"}}
+				</button>
+				<button
+					type="button"
+					class="transparent"
+					style="grid-area: E;"
+					data-action="setFate"
+					data-to-fate="East"
+					data-tooltip="{{rc-i18n "RipCrypt.tooltips.set-fate-to" ordinal="@RipCrypt.common.ordinals.East.full"}}"
+					data-tooltip-direction="RIGHT"
+				>
+					{{rc-i18n "RipCrypt.common.ordinals.East.abbv"}}
+				</button>
+				<button
+					type="button"
+					class="transparent"
+					style="grid-area: S;"
+					data-action="setFate"
+					data-to-fate="South"
+					data-tooltip="{{rc-i18n "RipCrypt.tooltips.set-fate-to" ordinal="@RipCrypt.common.ordinals.South.full"}}"
+					data-tooltip-direction="DOWN"
+				>
+					{{rc-i18n "RipCrypt.common.ordinals.South.abbv"}}
+				</button>
+			{{else}}
+				<span style="grid-area: N;">{{rc-i18n "RipCrypt.common.ordinals.North.abbv"}}</span>
+				<span style="grid-area: W;">{{rc-i18n "RipCrypt.common.ordinals.West.abbv"}}</span>
+				<span style="grid-area: E;">{{rc-i18n "RipCrypt.common.ordinals.East.abbv"}}</span>
+				<span style="grid-area: S;">{{rc-i18n "RipCrypt.common.ordinals.South.abbv"}}</span>
+			{{/if}}
+		</div>
+	</div>
+</div>

@@ -1,7 +1,217 @@
 {
 	"TYPES": {
 		"Actor": {
-			"hero": "Hero"
+			"hero": "Hero",
+			"geist": "Geist"
+		},
+		"Item": {
+			"ammo": "Ammo",
+			"armour": "Armour",
+			"craft": "Craft",
+			"good": "Good",
+			"shield": "Shield",
+			"skill": "Skill",
+			"weapon": "Weapon"
 		}
+	},
+	"RipCrypt": {
+		"sheet-names": {
+			"AllItemsSheetV1": "RipCrypt Item Sheet",
+			"CombinedHeroSheet": "Hero Sheet",
+			"StatsCardV1": "Hero Stat Card",
+			"CraftCardV1": "Hero Craft Card",
+			"SkillsCardV1": "Hero Skill Card"
+		},
+		"app-titles": {
+			"AmmoTracker": "Ammo Tracker"
+		},
+		"common": {
+			"abilities": {
+				"grit": "Grit",
+				"gait": "Gait",
+				"grip": "Grip",
+				"glim": "Glim",
+				"thin-glim": "Thin Glim"
+			},
+			"ability": "Ability",
+			"access": "Access",
+			"accessLevels": {
+				"Common": "Common",
+				"Uncommon": "Uncommon",
+				"Rare": "Rare",
+				"Scarce": "Scarce"
+			},
+			"advances": "Advances",
+			"ammo": "Ammo",
+			"anatomy": {
+				"head": "Head",
+				"body": "Body",
+				"arms": "Arms",
+				"legs": "Legs"
+			},
+			"armour": "Armour",
+			"aspect": "Aspect",
+			"aspectNames": {
+				"flect": "Flect",
+				"fract": "Fract",
+				"focus": "Focus"
+			},
+			"aura": "Aura",
+			"cost": "Cost",
+			"currency": {
+				"gold": "Gold",
+				"silver": "Silver",
+				"copper": "Copper"
+			},
+			"damage": "Damage",
+			"delete": "Delete",
+			"description": "Description",
+			"details": "Details",
+			"difficulties": {
+				"easy": "Easy",
+				"normal": "Normal",
+				"tough": "Tough",
+				"hard": "Hard",
+				"random": "Random Condition"
+			},
+			"difficulty": "Difficulty",
+			"drag": "Drag",
+			"edit": "Edit",
+			"edge": "Edge",
+			"empty": "---",
+			"equipped": "Equipped",
+			"fate": "Fate",
+			"gear": "Gear",
+			"glimcraft": "Glimcraft",
+			"glory": "Glory",
+			"guts": "Guts",
+			"location": "Location",
+			"move": "Move",
+			"ordinals": {
+				"North": {
+					"full": "North",
+					"abbv": "N"
+				},
+				"East": {
+					"full": "East",
+					"abbv": "E"
+				},
+				"South": {
+					"full": "South",
+					"abbv": "S"
+				},
+				"West": {
+					"full": "West",
+					"abbv": "W"
+				}
+			},
+			"protection": "Protection",
+			"quantity": "Quantity",
+			"rank": "Rank",
+			"rankNames": {
+				"novice": "Novice",
+				"adept": "Adept",
+				"expert": "Expert",
+				"master": "Master"
+			},
+			"range": "Range",
+			"run": "Run",
+			"shield": "Shield",
+			"slot": "Slot",
+			"step": "Step",
+			"traits": "Traits",
+			"weapon": {
+				"singular": "Weapon",
+				"plural": "Weapons"
+			},
+			"wear": "Wear",
+			"weightRating": "Weight",
+			"weightRatings": {
+				"light": "Light",
+				"modest": "Modest",
+				"heavy": "Heavy"
+			}
+		},
+		"setting": {
+			"abbrAccess": {
+				"name": "Abbreviate Access Names",
+				"hint": "Shortens the Access level names the way the book does. (e.g. \"Common\" becomes \"C\")"
+			},
+			"condensedRange": {
+				"name": "Condense Weapon Range Input",
+				"hint": "With this enabled, the weapon range will be displayed as \"X / Y\" when editing a weapon. While disabled it will be as displayed as two different rows, one for Short Range and one for Long Range"
+			},
+			"sandsOfFateInitial": {
+				"name": "Sands of Fate Initial",
+				"hint": "What value should The Hourglass reset to when a Cryptic Event occurs"
+			},
+			"onCrypticEvent": {
+				"name": "Cryptic Event Alert",
+				"hint": "What happens when a cryptic event occurs by clicking the \"Next Delve Tour\" button in the HUD",
+				"options": {
+					"notif": "Notification",
+					"pause": "Pause Game",
+					"both": "Notification and Pause Game",
+					"nothing": "Do Nothing"
+				}
+			}
+		},
+		"Apps": {
+			"traits-range": "@RipCrypt.common.traits & @RipCrypt.common.range",
+			"grit-skills": "@RipCrypt.common.abilities.grit Skills",
+			"gait-skills": "@RipCrypt.common.abilities.gait Skills",
+			"grip-skills": "@RipCrypt.common.abilities.grip Skills",
+			"glim-skills": "@RipCrypt.common.abilities.glim Skills",
+			"a11y": {
+				"guts-value-edit": "The current amount of guts the character has",
+				"guts-value-readonly": "The current amount of guts the character has",
+				"guts-max-readonly": "The maximum amount of guts the character can have"
+			},
+			"traits-placeholder": "New Trait...",
+			"short-range": "Short @RipCrypt.common.range",
+			"long-range": "Long @RipCrypt.common.range",
+			"current-wear": "Current @RipCrypt.common.wear",
+			"max-wear": "Maximum @RipCrypt.common.wear",
+			"location-placeholder": "New Location...",
+			"numberOfDice": "# of Dice",
+			"rollTarget": "Target",
+			"difficulty": "(DC: {dc})",
+			"RichEditor-no-collaborative": "Warning: This editor is not collaborative, that means that if you and someone else are editing it at the same time, you won't see that someone else is making changes until they save, and then your changes will be lost.",
+			"starred-ammo-placeholder": "Starred Ammo Slot",
+			"AmmoTracker": {
+				"no-ammo": "You don't have any ammo!",
+				"star-button": "Add {name} as a starred ammo",
+				"star-button-tooltip": "Add Star",
+				"unstar-button": "Remove {name} as a starred ammo",
+				"unstar-button-tooltip": "Remove Star"
+			}
+		},
+		"notifs": {
+			"error": {
+				"cannot-equip": "Cannot equip the {itemType}, see console for more details.",
+				"invalid-delta": "The delta for \"{name}\" is not a number, cannot finish processing the action.",
+				"at-favourite-limit": "Cannot favourite more than three items, unfavourite one to make space."
+			},
+			"warn": {
+				"cannot-go-negative": "\"{name}\" is unable to be a negative number."
+			},
+			"info": {
+				"cryptic-event-alert": "A Cryptic Event Has Occured!"
+			}
+		},
+		"tooltips": {
+			"shield-bonus": "Shield Bonus: {value}",
+			"set-fate-to": "Set Fate to {ordinal}",
+			"current-tour": "Current Delve Tour",
+			"next-tour": "Next Delve Tour",
+			"prev-tour": "Previous Delve Tour",
+			"auras": {
+				"normal": "The distance of your aura normally",
+				"heavy": "The distance of your aura when using Heavycraft"
+			}
+		}
+	},
+	"USER": {
+		"GM": "Keeper"
 	}
 }

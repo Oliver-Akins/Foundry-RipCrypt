@@ -1,0 +1,52 @@
+<div data-tooltip-direction="RIGHT">
+	{{#if ammos}}
+		<ul>
+			{{#each ammos as | data |}}
+				<li class="ammo" data-item-id="{{data.ammo.uuid}}">
+					<span class="name">{{ data.ammo.name }}</span>
+					<input
+						type="number"
+						id="{{@root.meta.idp}}-{{data.ammo.uuid}}-quantity"
+						class="value"
+						value="{{ data.ammo.system.quantity }}"
+						data-foreign-update-on="change,blur"
+						data-foreign-uuid="{{data.ammo.uuid}}"
+						data-foreign-name="system.quantity"
+					>
+					{{#if data.favourite}}
+						<button
+							type="button"
+							class="icon"
+							data-action="unfavourite"
+							aria-label="{{ rc-i18n "RipCrypt.Apps.AmmoTracker.unstar-button" name=data.ammo.name }}"
+							data-tooltip="{{ rc-i18n "RipCrypt.Apps.AmmoTracker.unstar-button-tooltip" name=data.ammo.name }}"
+						>
+							<rc-icon
+								name="icons/star"
+								var:size="1rem"
+							></rc-icon>
+						</button>
+					{{else}}
+						<button
+							type="button"
+							class="icon"
+							{{ disabled @root.atFavouriteLimit }}
+							data-action="favourite"
+							aria-label="{{ rc-i18n "RipCrypt.Apps.AmmoTracker.star-button" name=data.ammo.name }}"
+							data-tooltip="{{ rc-i18n "RipCrypt.Apps.AmmoTracker.star-button-tooltip" name=data.ammo.name }}"
+						>
+							<rc-icon
+								name="icons/star-empty"
+								var:size="1rem"
+							></rc-icon>
+						</button>
+					{{/if}}
+				</li>
+			{{/each}}
+		</ul>
+	{{else}}
+		<span class="placeholder">
+			{{ rc-i18n "RipCrypt.Apps.AmmoTracker.no-ammo" }}
+		</span>
+	{{/if}}
+</div>

@@ -1,0 +1,36 @@
+.ripcrypt string-tags {
+	--input-background: var(--string-tags-input-background);
+
+	display: grid;
+	grid-template-columns: minmax(0, 1fr) min-content;
+	grid-template-rows: repeat(2, min-content);
+
+	border: var(--string-tags-border);
+
+	.tags {
+		grid-column: 1 / -1;
+	}
+
+	input[type="text"] {
+		border-radius: 4px;
+		padding: 2px 4px;
+	}
+
+	button.icon.icon {
+		font-family: var(--font-awesome);
+		background: var(--string-tags-add-background);
+		color: var(--string-tags-add-text);
+		width: 30px;
+		border-radius: 4px;
+	}
+
+	&:has(.tags.input-element-tags:empty) {
+		grid-template-rows: auto;
+	}
+}
+
+.ripcrypt .tag {
+	background: var(--tag-background, var(--header-background));
+	color: var(--tag-text, var(--header-text));
+	padding: 2px 4px;
+}

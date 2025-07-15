@@ -1,0 +1,7 @@
+.ripcrypt.hud,
+.ripcrypt.popover.frameless,
+.ripcrypt > .window-content {
+	button, input, select {
+		all: initial;
+	}
+}

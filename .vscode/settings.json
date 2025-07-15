@@ -1,0 +1,15 @@
+{
+	"files.exclude": {
+		"**/node_modules": true
+	},
+	"search.exclude": {
+		"foundry.*.link": true
+	},
+	"html.customData": [
+		"./.vscode/foundry.html-data.json",
+		"./.vscode/ripcrypt.html-data.json"
+	],
+	"workbench.editorAssociations": {
+		"*.svg": "default",
+	}
+}

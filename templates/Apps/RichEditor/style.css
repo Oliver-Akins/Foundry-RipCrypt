@@ -1,0 +1,19 @@
+.ripcrypt--RichEditor {
+	width: 500px;
+	height: 600px;
+
+	> .window-content {
+		padding: 4px;
+		background: var(--base-background);
+		height: 100%;
+	}
+
+	prose-mirror {
+		height: 100%;
+
+		.editor-content {
+			color: var(--input-text);
+			background: var(--input-background);
+		}
+	}
+}

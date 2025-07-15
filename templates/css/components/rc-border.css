@@ -1,0 +1,65 @@
+:host {
+	display: flex;
+	flex-direction: column;
+	--vertical-displacement: 12.5px;
+}
+
+.rc-border {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	flex-grow: 1;
+
+	padding: var(--padding, 4px);
+	border-width: 2px;
+	border-style: solid;
+	border-color: var(--border-color);
+	border-radius: 8px;
+	position: relative;
+	margin-top: var(--margin-top, var(--vertical-displacement));
+	padding-top: var(--padding-top, calc(var(--vertical-displacement) + 4px));
+
+	&::before {
+		display: block;
+		content: "";
+		position: absolute;
+		top: -3px;
+		height: 5px;
+		left: 50%;
+		right: -3px;
+		background: var(--border-mask, var(--base-background));
+	}
+	&::after {
+		display: block;
+		content: "";
+		position: absolute;
+		width: 6px;
+		top: -3px;
+		right: -3px;
+		height: 30px;
+		background: rgb(0,0,0);
+		background: linear-gradient(
+			180deg,
+			var(--border-mask, var(--base-background)) 0%,
+			var(--border-mask, var(--base-background)) 50%,
+			rgba(0,255,255,0) 100%
+		);
+	}
+
+	.title {
+		position: absolute;
+		top: calc(-1 * var(--vertical-displacement));
+		left: 50%;
+		height: minmax(var(--title-height, 20px), auto);
+		transform: translateX(-50%);
+		background: var(--title-background, var(--border-color));
+		padding: 4px 6px;
+		box-sizing: border-box;
+		width: max-content;
+		max-width: 75%;
+		min-width: 50px;
+		border-radius: 4px;
+		text-align: center;
+	}
+}

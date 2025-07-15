@@ -1,12 +1,12 @@
 {
 	"id": "ripcrypt",
 	"title": "RipCrypt",
-	"description": "",
+	"description": "A dungeon sprint RPG. Faster than an arrow to the eye. Smoother than a clean blade. Compact with consequences.",
 	"version": "0.0.1",
 	"compatibility": {
-		"minimum": 12,
-		"verified": 12,
-		"maximum": 12
+		"minimum": 13,
+		"verified": 13.339,
+		"maximum": 13
 	},
 	"authors": [
 		{
@@ -17,7 +17,12 @@
 	"esmodules": [
 		"module/main.mjs"
 	],
-	"styles": [],
+	"styles": [
+		{
+			"src": "templates/css/main.css",
+			"layer": "system"
+		}
+	],
 	"languages": [
 		{
 			"lang": "en",
@@ -33,13 +38,22 @@
 	"flags": {
 		"hotReload": {
 			"extensions": ["css", "hbs", "json", "mjs", "svg"],
-			"paths": ["Apps", "langs", "styles", "module"]
+			"paths": ["assets", "templates", "langs", "module"]
 		}
 	},
 	"documentTypes": {
 		"Actor": {
-			"hero": {}
+			"hero": {},
+			"geist": {}
 		},
-		"Item": {}
+		"Item": {
+			"ammo": {},
+			"armour": {},
+			"craft": {},
+			"good": {},
+			"shield": {},
+			"skill": {},
+			"weapon": {}
+		}
 	}
 }

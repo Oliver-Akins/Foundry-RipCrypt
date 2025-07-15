@@ -1,0 +1,25 @@
+.ripcrypt.popover.frameless span,
+.ripcrypt.hud span,
+.ripcrypt > .window-content span {
+	&.small {
+		font-size: var(--font-size-10)
+	}
+
+	&.ellipses {
+		text-overflow: ellipsis;
+		white-space: nowrap;
+		overflow: hidden;
+	}
+
+	&.slash {
+		width: 2px;
+		background: var(--slash-color, currentColor);
+		border-radius: 999px;
+		transform: rotate(var(--slash-rotation, 15deg));
+	}
+
+	/* Makes it so that spans are never less than the font size */
+	&:empty::before {
+		content: "\200b";
+	}
+}

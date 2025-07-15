@@ -1,0 +1,58 @@
+.theme-rc-dark,
+.theme-dark {
+	--accent-1: #056162;
+	--accent-2: #04262a;
+	--accent-3: #4fb258;
+
+	--base-text: white;
+	--base-background: black;
+
+	--header-text: black;
+	--header-background: var(--accent-3);
+
+	--section-header-text: white;
+	--section-header-background: var(--accent-1);
+
+	--alt-row-text: white;
+	--alt-row-background: var(--accent-2);
+
+	--input-underline: 2px dashed var(--accent-3);
+	--input-background: var(--accent-2);
+	--input-text: white;
+	--input-placeholder-text: rgba(255,255,255, 0.5);
+
+	--button-background: black;
+	--button-text: var(--accent-3);
+
+	--col-gap: 2px;
+	--row-gap: 0px;
+
+	/* Popover Variables */
+	--popover-text: var(--base-text);
+	--popover-background: var(--base-background);
+
+	--popover-alt-row-text: var(--alt-row-text);
+	--popover-alt-row-background: var(--alt-row-background);
+
+	--popover-header-text: var(--header-text);
+	--popover-header-background: var(--header-background);
+
+	/* Additional Variables */
+	--string-tags-border: inherit;
+	--string-tags-tag-background: inherit;
+	--string-tags-tag-text: inherit;
+	--string-tags-add-background: inherit;
+	--string-tags-add-text: var(--accent-3);
+
+	--pill-border: var(--accent-2);
+	--pill-background: var(--accent-2);
+	--pill-divider: var(--accent-3);
+	--pill-input-text: white;
+	--pill-input-background: var(--accent-2);
+	--pill-input-disabled-text: white;
+	--pill-input-disabled-background: black;
+
+	/* Custom HUD Components */
+	--DelveDice-background: var(--accent-1);
+	--DelveDice-text: white;
+}

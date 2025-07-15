@@ -1,0 +1,22 @@
+<div>
+	{{#if meta.editable}}
+		<button
+			type="button"
+			class="icon"
+			data-action="tourDelta"
+			data-delta="-1"
+			aria-label="{{rc-i18n "RipCrypt.tooltips.next-tour"}}"
+			data-tooltip="RipCrypt.tooltips.next-tour"
+			data-tooltip-direction="RIGHT"
+		>
+			<rc-icon
+				name="icons/arrow-right"
+				var:size="0.75rem"
+				var:fill="currentColor"
+			></rc-icon>
+		</button>
+	{{else}}
+		{{!-- This is here to prevent height collapsing --}}
+		&ZeroWidthSpace;
+	{{/if}}
+</div>

@@ -1,0 +1,15 @@
+.ripcrypt.popover.frameless select,
+.ripcrypt.hud select,
+.ripcrypt > .window-content select {
+	appearance: auto;
+	box-sizing: border-box;
+	border: none;
+	outline: none;
+	font-family: inherit;
+	font-size: inherit;
+	display: flex;
+	align-items: center;
+
+	background: var(--input-background);
+	color: var(--input-text);
+}

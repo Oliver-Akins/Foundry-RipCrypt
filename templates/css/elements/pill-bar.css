@@ -1,0 +1,49 @@
+.ripcrypt.popover.frameless .pill-bar,
+.ripcrypt.hud .pill-bar,
+.ripcrypt > .window-content .pill-bar {
+	display: flex;
+	flex-direction: row;
+	width: var(--pill-width, 100px);
+	border: 2px solid var(--pill-border);
+	border-radius: var(--pill-border-radius, 999px);
+	background: var(--pill-background);
+	align-items: center;
+	gap: 8px;
+
+	> input {
+		color: var(--pill-input-text);
+		background: var(--pill-input-background);
+		border-radius: var(--pill-border-radius, 999px);
+		flex-shrink: 1;
+		flex-grow: 1;
+		min-width: 50px;
+		max-width: unset;
+		width: initial;
+		flex-basis: 50px;
+		text-align: center;
+
+		&:disabled {
+			color: var(--pill-input-disabled-text);
+			background: var(--pill-input-disabled-background);
+		}
+	}
+
+	> :first-child {
+		order: 1;
+	}
+	> :last-child {
+		order: 3;
+	}
+
+	&::after {
+		display: block;
+		content: "";
+		order: 1;
+		position: relative;
+		width: 2px;
+		height: 75%;
+		transform: rotate(30deg);
+		background: var(--pill-divider, var(--pill-border));
+		z-index: 1;
+	}
+}

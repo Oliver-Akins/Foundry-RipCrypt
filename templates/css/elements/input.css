@@ -1,0 +1,30 @@
+.ripcrypt.popover.frameless,
+.ripcrypt.hud,
+.ripcrypt > .window-content {
+	input, .input {
+		box-sizing: border-box;
+		border: none;
+		outline: none;
+		font-family: inherit;
+		font-size: inherit;
+		position: relative;
+		background: var(--input-background);
+		color: var(--input-text);
+		padding: 0px 4px;
+
+		&[type="text"],
+		&[type="number"] {
+			border-bottom: var(--input-underline);
+		}
+
+		&[type="checkbox"] {
+			all: revert-layer;
+			--checkbox-checked-color: var(--accent-3);
+			--checkbox-background-color: var(--accent-2);
+		}
+
+		&::placeholder {
+			color: var(--input-placeholder-text);
+		}
+	}
+}

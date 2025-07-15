@@ -1,0 +1,28 @@
+Oliver Akins:
+	- geist-silhouette.v2.svg : All rights reserved.
+	- caster-silhouette.v1.svg : All rights reserved.
+	- icons/star-empty.svg : Modified from https://thenounproject.com/icon/star-7711815/ by Llisole
+	- icons/star.svg : Modified from https://thenounproject.com/icon/star-7711815/ by Llisole
+
+Kýnan Antos (Gritsilk Games):
+	- hero-silhouette.svg : Licensed to Distribute and Modify within the bounds of the "Foundry-RipCrypt" system.
+
+ARISO:
+	- icons/hourglass.svg (https://thenounproject.com/icon/hourglass-7546736/) : Rights Purchased
+
+Abdulloh Fauzan:
+	- icons/info-circle.svg (https://thenounproject.com/icon/information-4176576/) : Rights Purchased
+
+QOLBIN SALIIM:
+	- icons/arrow-left.svg (https://thenounproject.com/icon/arrow-1933583/) : Rights Purchased
+	- icons/arrow-right.svg (https://thenounproject.com/icon/arrow-1933581/) : Rights Purchased
+	- icons/arrow-compass.svg (https://thenounproject.com/icon/arrow-2052607/) : Rights Purchased
+
+Soetarman Atmodjo:
+	- icons/roll.svg (https://thenounproject.com/icon/dice-5195278/) : Rights Purchased
+
+SuperNdre:
+	- icons/edit.svg (https://thenounproject.com/icon/edit-5208207/) : Rights Purchased
+
+YANDI RS:
+	- icons/d8-outline.svg (https://thenounproject.com/icon/d8-7272826/) : Rights Purchased

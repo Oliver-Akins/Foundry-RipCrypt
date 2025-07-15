@@ -1,0 +1,368 @@
+<div class="StatsCardV1">
+	{{!-- * Header --}}
+	<div class="header">
+		<div class="image">Logo Image</div>
+		<label class="row-alt left-pill" for="{{meta.idp}}-name">
+			Hero
+		</label>
+	</div>
+	<input
+		id="{{meta.idp}}-name"
+		type="text"
+		class="hero_name row-alt"
+		value="{{actor.name}}"
+		name="name"
+	>
+
+	{{!-- * Armour --}}
+	<div class="armour">
+		<div class="section-header label row-alt right-pill">
+			{{ rc-i18n "RipCrypt.common.armour" }}
+		</div>
+		<div class="person">
+			{{#if (eq actor.type "hero")}}
+				<rc-svg
+					var:fill="var(--section-header-background)"
+					var:stroke="var(--base-background)"
+					var:stroke-width="2"
+					var:stroke-linejoin="rounded"
+					class="silhouette"
+					name="hero-silhouette"
+				></rc-svg>
+			{{else}}
+				<rc-svg
+					var:fill="var(--section-header-background)"
+					var:stroke="var(--base-background)"
+					var:stroke-width="2"
+					var:stroke-linejoin="rounded"
+					class="silhouette"
+					name="geist-silhouette.v2"
+				></rc-svg>
+			{{/if}}
+			{{#each armours as | slot |}}
+				<div class="{{@key}}">
+					<div class="compass small">
+						<span class="value">
+							{{ slot.defense }}
+						</span>
+						{{#if slot.shielded}}
+							<rc-icon
+								class="shield"
+								name="icons/shield-solid"
+								data-tooltip="{{ rc-i18n "RipCrypt.tooltips.shield-bonus" value=@root.shield.bonus }}"
+								data-tooltip-direction="UP"
+								var:size="20px"
+								var:fill="var(--accent-3)"
+								var:stroke="black"
+								var:stroke-width="8px"
+							></rc-icon>
+						{{/if}}
+					</div>
+					<span class="label">{{ rc-i18n (concat "RipCrypt.common.anatomy." @key) }}</span>
+				</div>
+			{{/each}}
+		</div>
+		<ul class="armour-items">
+			<li
+				class="row-alt right-pill"
+				data-ctx-menu="armour"
+				data-item-id="{{armours.head.uuid}}"
+			>
+				<span class="label small">{{ rc-i18n "RipCrypt.common.anatomy.head" }}</span>
+				<span class="value ellipses">{{ armours.head.name }}</span>
+			</li>
+			<li
+				data-ctx-menu="armour"
+				data-item-id="{{armours.body.uuid}}"
+			>
+				<span class="label small">{{ rc-i18n "RipCrypt.common.anatomy.body" }}</span>
+				<span class="value ellipses">{{ armours.body.name }}</span>
+			</li>
+			<li
+				class="row-alt full-pill"
+				data-ctx-menu="armour"
+				data-item-id="{{armours.arms.uuid}}"
+			>
+				<span class="label small">{{ rc-i18n "RipCrypt.common.anatomy.arms" }}</span>
+				<span class="value ellipses">{{ armours.arms.name }}</span>
+			</li>
+			<li
+				data-ctx-menu="armour"
+				data-item-id="{{armours.legs.uuid}}"
+			>
+				<span class="label small">{{ rc-i18n "RipCrypt.common.anatomy.legs" }}</span>
+				<span class="value ellipses">{{ armours.legs.name }}</span>
+			</li>
+			<li
+				class="row-alt full-pill"
+				data-ctx-menu="armour"
+				data-item-id="{{shield.uuid}}"
+			>
+				<span class="label small">{{ rc-i18n "RipCrypt.common.shield" }}</span>
+				<span class="value ellipses">{{ shield.name }}</span>
+			</li>
+		</ul>
+	</div>
+
+	{{!-- * Fate & Advancement --}}
+	<div class="fate">
+		<label for="{{meta.idp}}-fate-path" class="col-header left-pill fate-label">
+			{{ rc-i18n "RipCrypt.common.fate" }}
+		</label>
+		<select
+			class="row-alt left-pill fate-value"
+			id="{{meta.idp}}-fate-path"
+			name="system.fate"
+		>
+			{{rc-options fate.selected fate.options localize=true}}
+		</select>
+	</div>
+	{{#if meta.editable}}
+		<label
+			for="{{meta.idp}}-glory"
+			class="glory-label col-header"
+		>
+			{{ rc-i18n "RipCrypt.common.glory" }}
+		</label>
+		<input
+			id="{{meta.idp}}-glory"
+			type="number"
+			class="glory row-alt"
+			name="system.level.glory"
+			value="{{level.glory}}"
+			min="0"
+		>
+	{{else}}
+		<div
+			id="{{meta.idp}}-glory-label"
+			class="glory-label label col-header"
+		>
+			{{ rc-i18n "RipCrypt.common.glory" }}
+		</div>
+		<div
+			class="glory row-alt input"
+			aria-describedby="{{meta.idp}}-glory-label"
+		>
+			{{ level.glory }}
+		</div>
+	{{/if}}
+	{{#if meta.editable}}
+		<label
+			for="{{meta.idp}}-step"
+			class="step-label col-header"
+		>
+			{{ rc-i18n "RipCrypt.common.step" }}
+		</label>
+		<input
+			id="{{meta.idp}}-step"
+			type="number"
+			class="step row-alt"
+			name="system.level.step"
+			value="{{level.step}}"
+			min="1"
+			max="3"
+		>
+	{{else}}
+		<div
+			id="{{meta.idp}}-step-label"
+			class="step-label label col-header"
+		>
+			{{ rc-i18n "RipCrypt.common.step" }}
+		</div>
+		<div
+			class="step row-alt input"
+			aria-describedby="{{meta.idp}}-step-label"
+		>
+			{{ level.step }}
+		</div>
+	{{/if}}
+
+	<{{{ifThen meta.editable "label" "div"}}}
+		id="{{meta.idp}}-rank-label"
+		for="{{meta.idp}}-rank"
+		class="rank-label label col-header right-pill"
+	>
+		{{ rc-i18n "RipCrypt.common.rank" }}
+	</{{{ifThen meta.editable "label" "div"}}}>
+	{{#if meta.editable}}
+		<select
+			id="{{meta.idp}}-rank"
+			name="system.level.rank"
+			class="rank row-alt right-pill"
+		>
+			{{ rc-options level.rank.selected level.rank.options localize=true }}
+		</select>
+	{{else}}
+		<div
+			aria-describedby="{{meta.idp}}-rank-label"
+			class="rank row-alt input"
+		>
+			{{ level.rank.selected }}
+		</div>
+	{{/if}}
+
+	{{!-- * Weapons --}}
+	<table class="weapons">
+		<thead>
+			<tr>
+				<th class="label col-header left-pill">{{ rc-i18n "RipCrypt.common.weapon.singular" }}</th>
+				<th class="label col-header">{{ rc-i18n "RipCrypt.Apps.traits-range" }}</th>
+				<th class="label col-header">{{ rc-i18n "RipCrypt.common.wear" }}</th>
+				<th class="label col-header right-pill">{{ rc-i18n "RipCrypt.common.damage" }}</th>
+			</tr>
+		</thead>
+		<tbody>
+			{{#each weapons as | slot |}}
+				{{#if slot.empty}}
+					<tr
+						data-row="{{slot.index}}"
+						class="{{slot.class}}"
+						aria-hidden="true"
+					>
+						<td class="left-pill">{{ rc-i18n "RipCrypt.common.empty" }}</td>
+						<td></td>
+						<td></td>
+						<td {{#unless @last}}class="right-pill"{{/unless}}></td>
+					</tr>
+				{{else}}
+					<tr
+						data-row="{{ slot.index }}"
+						class="{{slot.class}}"
+						data-ctx-menu="weapon"
+						data-item-id="{{ slot.data.uuid }}"
+					>
+						<td class="left-pill">
+							{{!-- ? NOTE: Disabled for now to see what user feedback spawns
+							<rc-icon
+								var:size="1rem"
+								var:fill="var(--accent-3)"
+								name="icons/edit"
+								data-action="editItem"
+							></rc-icon> --}}
+							<span class="ellipses">
+								{{ slot.data.quantifiedName }}
+							</span>
+						</td>
+						<td>
+							{{#if slot.data.system.traitString}}
+								<span class="traits">{{ slot.data.system.traitString }}</span>
+							{{/if}}
+							{{#if slot.data.system.rangeString}}
+								<span class="range">{{ slot.data.system.rangeString }}</span>
+							{{/if}}
+						</td>
+						<td>
+							{{ slot.data.system.wear.value }} / {{ slot.data.system.wear.max }}
+						</td>
+						<td {{#unless @last}}class="right-pill"{{/unless}}>
+							{{ slot.data.system.damage }}
+						</td>
+					</tr>
+				{{/if}}
+			{{/each}}
+		</tbody>
+	</table>
+
+	{{!-- * Abilities --}}
+	<div class="abilities">
+		{{!-- Actual Abilities --}}
+		{{#each abilities as | ability |}}
+			<div class="ability">
+				<div class="compass">
+					{{#unless ability.readonly}}
+						<input
+							type="number"
+							id="{{@root.meta.idp}}-{{ability.id}}-input"
+							class="value"
+							value="{{ability.value}}"
+							name="system.ability.{{ability.id}}"
+							min=0
+						>
+					{{else}}
+						<span>{{ability.value}}</span>
+					{{/unless}}
+					{{#if @root.meta.editable}}
+						<button
+							type="button"
+							class="roll icon"
+							data-action="roll"
+							data-dice-count="{{ability.value}}"
+							data-flavor="{{ability.name}} Roll"
+						>
+							<rc-icon
+								var:size="20px"
+								var:fill="currentColor"
+								name="icons/roll"
+							></rc-icon>
+						</button>
+					{{/if}}
+				</div>
+				{{#unless ability.readonly}}
+				<label
+					class="col-header {{#if @first}}left-pill{{/if}}"
+					for="{{@root.meta.idp}}-{{ability.id}}-input"
+				>
+					{{ ability.name }}
+				</label>
+				{{else}}
+				<div class="col-header label {{#if @first}}left-pill{{/if}}">
+					{{ ability.name }}
+				</div>
+				{{/unless}}
+			</div>
+		{{/each}}
+
+		{{!-- Health --}}
+		<div class="ability">
+			<div class="compass dual">
+				{{#if meta.editable}}
+					<input
+						type="number"
+						id="{{meta.idp}}-guts-value"
+						class="value"
+						name="system.guts.value"
+						value="{{guts.value}}"
+						min="0"
+					>
+				{{else}}
+					<span
+						class="value"
+						aria-describedby="{{meta.idp}}-guts-value-label"
+						{{!-- TODO: aria-label="{{ rc-i18n "RipCrypt.Apps.a11y.guts-value-readonly" }}" --}}
+					>
+						{{ guts.value }}
+					</span>
+				{{/if}}
+				<span
+					class="max"
+					aria-hidden="true"
+					{{!-- TODO: aria-label="{{ rc-i18n "RipCrypt.Apps.a11y.guts-max-readonly" }}" --}}
+				>
+					{{ guts.max }}
+				</span>
+			</div>
+			{{#if meta.editable}}
+				<label class="col-header" for="{{meta.idp}}-guts-value">
+					{{ rc-i18n "RipCrypt.common.guts" }}
+				</label>
+			{{else}}
+				<div class="col-header label" id="{{meta.idp}}-guts-value-label">
+					{{ rc-i18n "RipCrypt.common.guts" }}
+				</div>
+			{{/if}}
+		</div>
+
+		{{!-- Move & Run --}}
+		<div class="ability">
+			<div class="compass dual">
+				<span class="value">{{speed.move}}</span>
+				<span class="max">{{speed.run}}</span>
+			</div>
+			<div aria-hidden="true" class="col-header label right-pill">
+				{{ rc-i18n "RipCrypt.common.move" }}
+			</div>
+		</div>
+	</div>
+
+	{{!-- * Equipment --}}
+</div>

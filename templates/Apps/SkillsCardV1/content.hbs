@@ -1,0 +1,202 @@
+<div class="SkillsCardV1">
+	<div class="label col-header list-header gait-skills-header">
+		<span>{{ rc-i18n "RipCrypt.Apps.grit-skills" }}</span>
+	</div>
+	<ol class="num-before skill-list even grit-skills">
+		{{#each skills.grit as | skill |}}
+			{{#if skill}}
+				<li data-item-id="{{skill.uuid}}" data-ctx-menu="skill">
+					<span class="name">{{ skill.name }}</span>
+					<rc-icon
+						name="icons/info-circle"
+						var:size="16px"
+						var:fill="currentColor"
+						data-tooltip="{{ skill.use }}"
+						data-tooltip-direction="UP"
+					></rc-icon>
+				</li>
+			{{else}}
+				<li></li>
+			{{/if}}
+		{{/each}}
+	</ol>
+
+	<div class="label col-header list-header gait-skills-header">
+		<span>{{ rc-i18n "RipCrypt.Apps.gait-skills" }}</span>
+	</div>
+	<ol class="num-before skill-list even gait-skills">
+		{{#each skills.gait as | skill |}}
+			{{#if skill}}
+				<li data-item-id="{{skill.uuid}}" data-ctx-menu="skill">
+					<span class="name">{{ skill.name }}</span>
+					<rc-icon
+						name="icons/info-circle"
+						var:size="16px"
+						var:fill="currentColor"
+						data-tooltip="{{ skill.use }}"
+						data-tooltip-direction="UP"
+					></rc-icon>
+				</li>
+			{{else}}
+				<li></li>
+			{{/if}}
+		{{/each}}
+	</ol>
+
+	<div class="label col-header list-header grip-skills-header">
+		<span>{{ rc-i18n "RipCrypt.Apps.grip-skills" }}</span>
+	</div>
+	<ol class="num-before skill-list odd grip-skills">
+		{{#each skills.grip as | skill |}}
+			{{#if skill}}
+				<li data-item-id="{{skill.uuid}}" data-ctx-menu="skill">
+					<span class="name">{{ skill.name }}</span>
+					<rc-icon
+						name="icons/info-circle"
+						var:size="16px"
+						var:fill="currentColor"
+						data-tooltip="{{ skill.use }}"
+						data-tooltip-direction="UP"
+					></rc-icon>
+				</li>
+			{{else}}
+				<li></li>
+			{{/if}}
+		{{/each}}
+	</ol>
+
+	<div class="label col-header list-header glim-skills-header">
+		<span>{{ rc-i18n "RipCrypt.Apps.glim-skills" }}</span>
+	</div>
+	<ol class="num-before skill-list odd glim-skills">
+		{{#each skills.glim as | skill |}}
+			{{#if skill}}
+				<li data-item-id="{{skill.uuid}}" data-ctx-menu="skill">
+					<span class="name">{{ skill.name }}</span>
+					<rc-icon
+						name="icons/info-circle"
+						var:size="16px"
+						var:fill="currentColor"
+						data-tooltip="{{ skill.use }}"
+						data-tooltip-direction="UP"
+					></rc-icon>
+				</li>
+			{{else}}
+				<li></li>
+			{{/if}}
+		{{/each}}
+	</ol>
+
+	<div class="label col-header list-header">
+		<span>{{ rc-i18n "RipCrypt.common.gear" }}</span>
+		<span class="small">{{ rc-i18n "RipCrypt.common.slot" }}</span>
+	</div>
+	<ol class="num-after gear-list">
+		{{#each gear as | itemInSlot |}}
+			<li
+				data-slot="{{itemInSlot.index}}"
+				data-ctx-menu="gear"
+				data-slot-empty="{{ itemInSlot.empty }}"
+				data-item-id="{{ itemInSlot.uuid }}"
+			>
+				{{itemInSlot.name}}
+			</li>
+		{{/each}}
+	</ol>
+
+	{{!-- * Currencies --}}
+	<div class="currencies">
+		<div class="currency pill">
+			<label for="{{meta.idp}}-gold" >
+				{{ rc-i18n "RipCrypt.common.currency.gold"}}
+			</label>
+			<input
+				type="number"
+				id="{{meta.idp}}-gold"
+				class="input"
+				value="0"
+			>
+		</div>
+		<div class="currency pill">
+			<label for="{{meta.idp}}-silver" >
+				{{ rc-i18n "RipCrypt.common.currency.silver"}}
+			</label>
+			<input
+				type="number"
+				id="{{meta.idp}}-silver"
+				class="input"
+				value="0"
+			>
+		</div>
+		<div class="currency pill">
+			<label for="{{meta.idp}}-copper" >
+				{{ rc-i18n "RipCrypt.common.currency.copper"}}
+			</label>
+			<input
+				type="number"
+				id="{{meta.idp}}-copper"
+				class="input"
+				value="0"
+			>
+		</div>
+	</div>
+
+	{{!-- * Ammo Summary & Stars --}}
+	<ul class="ammo-list">
+		<li>
+			<div class="ammo pill with-icon">
+				<rc-icon
+					class="ammo-info-icon"
+					name="icons/info-circle"
+					var:size="16px"
+					var:fill="currentColor"
+				></rc-icon>
+				<div class="label">
+					{{ rc-i18n "RipCrypt.common.ammo"}}
+				</div>
+				<div class="input">
+					{{ ammo }}
+				</div>
+			</div>
+		</li>
+		{{#each favouriteAmmo as | data |}}
+			<li>
+				{{#if data}}
+					<div
+						class="pill fav-ammo"
+						data-item-id="{{data.uuid}}"
+					>
+						<div>
+							{{data.name}}
+						</div>
+						<input
+							type="number"
+							id="{{@root.meta.idp}}-{{data.uuid}}-quantity"
+							value="{{data.quantity}}"
+							aria-label="Quantity of {{data.name}}"
+							data-foreign-update-on="change,blur"
+							data-foreign-uuid="{{data.uuid}}"
+							data-foreign-name="system.quantity"
+						>
+					</div>
+				{{else}}
+					<div class="pill" style="opacity: 0.5; background: var(--alt-row-background);">
+						{{ rc-i18n "RipCrypt.Apps.starred-ammo-placeholder" }}
+					</div>
+				{{/if}}
+			</li>
+		{{/each}}
+	</ul>
+
+	{{!-- * Aura Size --}}
+	{{#if aura}}
+		<div class="aura-size dual-pill">
+			<span class="label" aria-hidden="true">{{rc-i18n "RipCrypt.common.aura"}}</span>
+			<div class="values">
+				<span class="value" data-tooltip="RipCrypt.tooltips.auras.normal">{{aura.normal}}</span>
+				<span class="slash" aria-hidden="true"></span>
+				<span class="value" data-tooltip="RipCrypt.tooltips.auras.heavy">{{aura.heavy}}</span>
+			</div>
+		</div>
+	{{/if}}
+</div>

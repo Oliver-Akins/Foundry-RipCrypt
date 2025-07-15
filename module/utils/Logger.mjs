@@ -15,7 +15,7 @@ const augmentedProps = new Set([
 export const Logger = new Proxy(console, {
 	get(target, prop, _receiver) {
 		if (augmentedProps.has(prop)) {
-			return (...args) => target[prop](game.system.id, `|`, ...args);
+			return target[prop].bind(target, game.system.id, `|`);
 		};
 		return target[prop];
 	},

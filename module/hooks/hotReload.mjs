@@ -1,3 +1,5 @@
+import { Logger } from "../utils/Logger.mjs";
+
 const loaders = {
 	svg(data) {
 		const iconName = data.path.split(`/`).slice(-1)[0].slice(0, -4);
@@ -5,10 +7,7 @@ const loaders = {
 		Hooks.call(`${game.system.id}-hmr:svg`, iconName, data);
 	},
 	mjs() {window.location.reload()},
-	css(data) {
-		Logger.debug(`Hot-reloading CSS: ${data.path}`);
-		Hooks.call(`${game.system.id}-hmr:css`, data);
-	},
+	css() {window.location.reload()},
 };
 
 Hooks.on(`hotReload`, async (data) => {
