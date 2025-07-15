@@ -11,5 +11,6 @@
 	],
 	"workbench.editorAssociations": {
 		"*.svg": "default",
-	}
+	},
+	"git.branchProtection": []
 }
