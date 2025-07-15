@@ -47,7 +47,7 @@ export function registerMetaSettings() {
 		requiresReload: false,
 		default: `friendly`,
 		onChange: async () => {
-			await game.combat.setupTurns();
+			await game.combat?.setupTurns();
 			await ui.combat.render({ parts: [ `tracker` ] });
 		},
 	});
